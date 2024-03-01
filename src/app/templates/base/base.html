@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>LOUSHIRA | Accueil </title>
+
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================--> 
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Rubik:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{get_configs.logo.url}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{get_configs.logo.url}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{get_configs.logo.url}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{get_configs.logo.url}}">
+    <link rel="manifest" href="{{get_configs.logo.url}}">
+    <meta name="msapplication-TileImage" content="{{get_configs.logo.url}}">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="{% static 'app/assets/css/theme.css' %}" rel="stylesheet" />
+
+  </head>
+
+
+  <body>
+
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section class="bg-primary py-2 d-none d-sm-block">
+
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-auto d-none d-lg-block">
+              <p class="my-2 fs--1"><i class="fas fa-map-marker-alt me-3"></i><span>Avenue 15, rue 12 , ouaga </span></p>
+            </div>
+            <div class="col-auto ms-md-auto order-md-2 d-none d-sm-block">
+              <ul class="list-unstyled list-inline my-2">
+                <li class="list-inline-item"><a class="text-decoration-none" href="#!"><i class="fab fa-facebook-f text-900"></i></a></li>
+                <li class="list-inline-item"><a class="text-decoration-none" href="#!"><i class="fab fa-pinterest text-900"></i></a></li>
+                <li class="list-inline-item"><a class="text-decoration-none" href="#!"><i class="fab fa-twitter text-900"></i></a></li>
+                <li class="list-inline-item"><a class="text-decoration-none" href="#!"><i class="fab fa-instagram text-900"> </i></a></li>
+              </ul>
+            </div>
+            <div class="col-auto">
+              <p class="my-2 fs--1"><i class="fas fa-envelope me-3"></i><a class="text-900" href="mailto:vctung@outlook.com">loushira.contact@gmail.com </a></p>
+            </div>
+          </div>
+        </div>
+        <!-- end of .container-->
+
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+      <nav class="navbar navbar-expand-lg navbar-light sticky-top py-3 d-block" data-navbar-on-scroll="data-navbar-on-scroll">
+        <div class="container"><a class="navbar-brand" href="{% url 'welcome' %}"><img src="{{get_configs.logo.url}}" height="60" alt="logo" /></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
+          <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
+              <li class="nav-item px-2"><a class="nav-link active" aria-current="page" href="{% url 'welcome' %}">Accueil</a></li>
+              <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="#">A propos</a></li>
+              <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="#">Chercheur</a></li>
+              <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="#">Propriétaire</a></li>
+              <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="#">Agences Immobilières</a></li>
+            </ul><a class="btn btn-primary order-1 order-lg-0" href="#!">Catalogue</a>
+            {% comment "" %}
+                <form class="d-flex my-3 d-block d-lg-none">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+            
+            
+            <div class="dropdown d-none d-lg-block">
+              <button class="btn btn-outline-light ms-2" id="dropdownMenuButton1" type="submit" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-search text-800"></i></button>
+              <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1" style="top:55px">
+                <form>
+                  <input class="form-control" type="search" placeholder="Search" aria-label="Search" />
+                </form>
+              </ul>
+            </div>
+            {% endcomment %}
+          </div>
+        </div>
+      </nav>
+
+    {% block content %}
+      
+    {% endblock content %}
+
+      <!-- <section> begin ============================-->
+      <section class="bg-secondary" style=" padding-top: 7.5rem;padding-bottom: 7.5rem">
+
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-lg-6 mb-4 order-0 order-sm-0"><a class="text-decoration-none" href="#"><img src="{{get_configs.logo2.url}}" height="51" alt="" /></a>
+              <p class="text-light my-4"> <i class="fas fa-map-marker-alt me-3"></i><span class="text-light">Avenue 15, rue 12 , ouaga  &nbsp;</span><a class="text-light" href="tel:+604-680-9785">+225 000 000 00 00</a><br /></p>
+              <p class="text-light"> <i class="fas fa-envelope me-3"> </i><a class="text-light" href="mailto:loushira.contact@gmail.com">loushira.contact@gmail.com</a></p>
+              <p class="text-light"> <i class="fas fa-phone-alt me-3"></i><a class="text-light" href="tel:+225 0789773420">+225 0789773420 (Support)</a></p>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2 mb-3 order-2 order-sm-1">
+              <h5 class="lh-lg fw-bold mb-4 text-light font-sans-serif">Community </h5>
+              <ul class="list-unstyled mb-md-4 mb-lg-0">
+                <li class="lh-lg"><a class="text-200" href="#!">Learners</a></li>
+                <li class="lh-lg"><a class="text-200" href="#!">Partners</a></li>
+                <li class="lh-lg"><a class="text-200" href="#!">Developers</a></li>
+                
+                
+              </ul>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2 mb-3 order-3 order-sm-2">
+              <h5 class="lh-lg fw-bold text-light mb-4 font-sans-serif">Informations</h5>
+              <ul class="list-unstyled mb-md-4 mb-lg-0">
+                <li class="lh-lg"><a class="text-200" href="#!">A propos de Nous</a></li>
+                <li class="lh-lg"><a class="text-200" href="#!">Chercheur</a></li>
+                <li class="lh-lg"><a class="text-200" href="#!">Propriétaires</a></li>
+                <li class="lh-lg"><a class="text-200" href="#!">Agences Immobilières</a></li>
+              </ul>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2 mb-3 order-3 order-sm-2">
+              <h5 class="lh-lg fw-bold text-light mb-4 font-sans-serif"> Plus</h5>
+              <ul class="list-unstyled mb-md-4 mb-lg-0">
+                <li class="lh-lg"><a class="text-200" href="#!">Terms</a></li>
+                <li class="lh-lg"><a class="text-200" href="#!">Privacy</a></li>
+                <li class="lh-lg"><a class="text-200" href="#!">Help</a></li>
+                <li class="lh-lg"><a class="text-200" href="#!">Accessibility</a></li>
+                <li class="lh-lg"><a class="text-200" href="#!">Contact</a></li>
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- end of .container-->
+
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+      <section class="py-0" style="margin-top: -5.8rem;">
+        <div class="container bg-primary">
+          <div class="row justify-content-md-between justify-content-evenly py-4">
+            <div class="col-12 col-sm-8 col-md-6 col-lg-auto text-center text-md-start">
+              <p class="fs--1 my-2 fw-bold">{{get_configs.copy_right}}</p>
+            </div>
+            <div class="col-12 col-sm-8 col-md-6">
+              <p class="fs--1 my-2 text-center text-md-end fw-bold"> 
+                © Loushira, 2024
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+
+
+
+
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="{% static 'app/vendors/@popperjs/popper.min.js' %}"></script>
+    <script src="{% static 'app/vendors/bootstrap/bootstrap.min.js' %}"></script>
+    <script src="{% static 'app/vendors/is/is.min.js' %}"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="{% static 'app/vendors/fontawesome/all.min.js' %}"></script>
+    <script src="{% static 'app/assets/js/theme.js' %}"></script>
+
+    
+  </body>
+
+</html>

@@ -1,0 +1,5 @@
+BANNER_IMAGE_PATH = 'uploads/banner'
+LOCATION_PATH = 'uploads/location'
+ABOUT_PATH = 'uploads/abouts'
+WHYCHOOSE = 'uploads/whychose'
+LOGO_SITE_PATH = 'updloads/site_logo'

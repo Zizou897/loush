@@ -1,0 +1,27 @@
+from .models import (
+    Banner,
+    Propriete,
+    About,
+    Whychoose,
+    configuration,
+)
+
+
+
+def get_banner(data=dict()):
+    return Banner.objects.filter(**data).first()
+
+def get_some_vendor(data=dict()):
+    return Propriete.objects.filter(**data).order_by('created_at')[:6]
+
+def get_some_location(data=dict()):
+    return Propriete.objects.filter(**data).order_by('created_at')[:6]
+
+def get_about(data=dict()):
+    return About.objects.filter(**data).first()
+
+def get_why_choose(data=dict()):
+    return Whychoose.objects.filter(**data).first()
+
+def get_config(data=dict()):
+    return configuration.objects.filter(**data).first()

@@ -1,0 +1,176 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="pt-6 bg-600" id="home">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-5 col-lg-6 order-0 order-md-1 text-end"><img class="pt-7 pt-md-0 w-100" src="{{get_banners.picture.url}}" width="470" alt="hero-header" /></div>
+            <div class="col-md-7 col-lg-6 text-md-start text-center py-6">
+                <h1 class="fs-6 fs-xl-7 mb-2">LA PLATEFORME N°1 DE L'IMMOBILIER AU BURKINA FASO</h1>
+                <h4 class="fw-bold font-sans-serif mb-5">La plateforme offre une solution complète pour la recherche, l'achat et la vente de biens immobiliers.</h4>
+                <a class="btn btn-primary me-2" href="#!" role="button">Chercher une maison</a><a class="btn btn-outline-secondary" href="#!" role="button">Exposer une maison</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+       <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section>
+
+        <div class="container">
+          <div class="row">
+            <h1 class="text-center mb-5"> Découvrez les derniers bien à vendre</h1>
+            {% for house in get_some_vendors %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100"><img class="card-img-top w-100" src="{{house.picture.url}}" alt="courses" />
+                        <div class="card-body">
+                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">User Research for User Experience Design</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            
+          </div>
+        </div>
+        <!-- end of .container-->
+
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+       <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section>
+
+        <div class="container">
+          <div class="row">
+            <h1 class="text-center mb-5"> Découvrez les derniers bien à louer</h1>
+            {% for house in get_some_locations %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100"><img class="card-img-top w-100" src="{{house.picture.url}}" alt="courses" />
+                        <div class="card-body">
+                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">User Research for User Experience Design</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+          </div>
+        </div>
+        <!-- end of .container-->
+
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+      
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section class="pt-0">
+
+        <div class="container">
+          <div class="row h-100 align-items-center">
+            <div class="col-md-12 col-lg-6 h-100">
+              <div class="card card-span text-white h-100"><img class="w-100" src="{{get_abouts.picture.url}}" alt="..." />
+                <div class="card-body px-xl-5 px-md-3 pt-0">
+                  <div class="d-flex flex-column align-items-center bg-200" style="margin-top:-2.4rem;">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 col-lg-6 h-100">
+              <h1 class="my-4">Nous sommes les meilleurs dans<span class="text-primary"> l'immobilier de confiance</span></h1>
+              <p>{{get_abouts.description}}</p>
+              <div class="mt-6">
+                <h5 class="font-sans-serif fw-bold mb-3">The courses that Kimmie has taken</h5>
+                <div class="card card-span bg-600">
+                  <div class="card-body">
+                    <div class="row flex-center gx-0">
+                      <div class="col-lg-4 col-xl-3 text-center text-xl-start"><img src="assets/img/gallery/art-design.png" width="120" alt="courses" /></div>
+                      <div class="col-lg-8 col-xl-9">
+                        <h5 class="font-sans-serif fw-bold">Modern and Contemporary Art and Design</h5>
+                        <p class="text-muted fs--1">The Museum of Modern Art</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end of .container-->
+
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+      <section class="pt-0">
+        <div class="container"> 
+            <div class="row h-100 align-items-center">     
+                <div class="col-md-12 col-lg-6 h-100">
+                <h1 class="my-4">Pourquoi choisir <span class="text-primary"> Loushira</span></h1>
+                <p>{{get_why_chooses.description}}</p>
+                <div class="mt-6">
+                    <h5 class="font-sans-serif fw-bold mb-3">The courses that Kimmie has taken</h5>
+                    <div class="card card-span bg-600">
+                    <div class="card-body">
+                        <div class="row flex-center gx-0">
+                        <div class="col-lg-4 col-xl-3 text-center text-xl-start"><img src="assets/img/gallery/art-design.png" width="120" alt="courses" /></div>
+                        <div class="col-lg-8 col-xl-9">
+                            <h5 class="font-sans-serif fw-bold">Modern and Contemporary Art and Design</h5>
+                            <p class="text-muted fs--1">The Museum of Modern Art</p>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="col-md-12 col-lg-6 h-100">
+                <div class="card card-span text-white h-100"><img class="w-100" src="{{get_why_chooses.picture.url}}" alt="..." />
+                    <div class="card-body px-xl-5 px-md-3 pt-0">
+                    <div class="d-flex flex-column align-items-center bg-200" style="margin-top:-2.4rem;">
+                        
+                    </div>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+      </section>
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section>
+
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6 col-lg-4 mb-5"><img src="{{get_configs.newsletter_picture.url}}" width="280" alt="cta" /></div>
+            <div class="col-md-6 col-lg-5">
+              <h5 class="text-primary font-sans-serif fw-bold">Abonnez-vous dès maintenant</h5>
+              <h1 class="mb-5">{{get_configs.newsletter_text}}</h1>
+              <form class="row g-0 align-items-center">
+                <div class="col">
+                  <div class="input-group-icon">
+                    <input class="form-control form-little-squirrel-control" type="email" placeholder="Entrer votre email " aria-label="email" /><i class="fas fa-envelope input-box-icon"></i>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <button class="btn btn-primary rounded-0" type="submit">S'abonner</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- end of .container-->
+
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+    
+{% endblock %} 

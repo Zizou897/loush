@@ -9,7 +9,7 @@
             <div class="col-md-7 col-lg-6 text-md-start text-center py-6">
                 <h1 class="fs-6 fs-xl-7 mb-2">LA PLATEFORME N°1 DE L'IMMOBILIER AU BURKINA FASO</h1>
                 <h4 class="fw-bold font-sans-serif mb-5">La plateforme offre une solution complète pour la recherche, l'achat et la vente de biens immobiliers.</h4>
-                <a class="btn btn-primary me-2" href="#!" role="button">Chercher une maison</a><a class="btn btn-outline-secondary" href="#!" role="button">Exposer une maison</a>
+                <a class="btn btn-primary me-2" href="#!" role="button">Chercher une maison</a><button  class="btn btn-outline-secondary"  role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Exposer une maison</button>
             </div>
         </div>
     </div>
@@ -171,6 +171,42 @@
       <!-- <section> close ============================-->
       <!-- ============================================-->
 
+  <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row pb-4">
+          <div class="col-md-6">
+            <label for="exampleFormControlInput1" class="form-label">Nom complet</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+          <div class="col-md-6">
+            <label for="exampleFormControlInput1" class="form-label">Téléphone</label>
+            <input type="phone" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+        </div>
 
-    
+        <hr>
+        <p class="text-center">Type de propriété</p>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">fermé</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %} 

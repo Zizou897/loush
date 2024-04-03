@@ -6305,7 +6305,7 @@ fieldset:disabled .btn {
   background-color: #FFFEFE;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   outline: 0;
 }
 

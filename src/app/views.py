@@ -19,6 +19,7 @@ def home(request):
     get_abouts = get_about({'publish':True})
     get_why_chooses = get_why_choose({'publish':True})
     get_configs = get_config({'publish':True})
+    
 
     template_name = "layout/index.html"
     context = {
@@ -28,5 +29,28 @@ def home(request):
         'get_abouts': get_abouts,
         'get_why_chooses': get_why_chooses,
         'get_configs': get_configs
+    }
+    return render(request, template_name, context)
+
+
+
+def search_page(request):
+    
+    get_configs = get_config({'publish':True})
+    
+    template_name = "layout/home_search.html"
+    context = {
+        'get_configs': get_configs,
+    }
+    return render(request, template_name, context)
+
+
+def home_searcher(request):
+    
+    get_configs = get_config({'publish':True})
+    
+    template_name = "layout/home_searcher.html"
+    context = {
+        'get_configs': get_configs,
     }
     return render(request, template_name, context)

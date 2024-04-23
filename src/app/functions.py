@@ -1,6 +1,7 @@
 from .models import (
     Banner,
     Propriete,
+    Propriete2,
     About,
     Whychoose,
     configuration,

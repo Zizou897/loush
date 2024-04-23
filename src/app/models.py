@@ -2,6 +2,11 @@ from django.db import models
 
 # Create your models here.
 
+"""_modif sur la partie ventre_
+
+        sur la fonction qui return les 6 1er maison à vendre
+"""
+
 from core.constants import (
     BANNER_IMAGE_PATH, 
     LOCATION_PATH,
@@ -49,6 +54,22 @@ class Propriete(Convention):
     class Meta:
         verbose_name = "Location"
         verbose_name_plural = "Locations"
+    def __str__(self):
+        return self.title
+
+
+class Propriete2(Convention):
+    title = models.CharField(max_length = 150)
+    description = models.TextField()
+    author = models.CharField(max_length = 150)
+    validators_date = models.DateTimeField(auto_now=False, auto_now_add=False)
+    picture = models.FileField(upload_to=LOCATION_PATH, max_length = 100)
+    location_or_vendor = models.CharField(choices=TYPE_HOUSE, max_length = 150)
+    
+    
+    class Meta:
+        verbose_name = "Maison à Vendre"
+        verbose_name_plural = "Maison à Vendre"
     def __str__(self):
         return self.title
 

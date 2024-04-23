@@ -9,7 +9,7 @@
             <div class="col-md-7 col-lg-6 text-md-start text-center py-6">
                 <h1 class="fs-6 fs-xl-7 mb-2">LA PLATEFORME N°1 DE L'IMMOBILIER AU BURKINA FASO</h1>
                 <h4 class="fw-bold font-sans-serif mb-5">La plateforme offre une solution complète pour la recherche, l'achat et la vente de biens immobiliers.</h4>
-                <a class="btn btn-primary me-2" href="#!" role="button">Chercher une maison</a><button  class="btn btn-outline-secondary"  role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Exposer une maison</button>
+                <a class="btn btn-primary me-2" href="{% url 'home-searcher' %}" role="button">Chercher une maison</a> <button class="btn btn-outline-secondary"  role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Exposer une maison</button>
             </div>
         </div>
     </div>
@@ -24,9 +24,15 @@
             <h1 class="text-center mb-5"> Découvrez les derniers bien à vendre</h1>
             {% for house in get_some_vendors %}
                 <div class="col-md-4 mb-4">
-                    <div class="card h-100"><img class="card-img-top w-100" src="{{house.picture.url}}" alt="courses" />
+                    <div class="card h-100"><img class="card-img-top w-100 h-50" src="{{house.picture.url}}" alt="courses" />
                         <div class="card-body">
-                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">User Research for User Experience Design</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
+                          <i class="fa-regular fa-user text-primary fa-icon"></i> <span class=" ml-4  fs--1 stretched-link text-decoration-none fa-span">par: auteur</span><h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1 mt-3">User Research for User Experience Design</h5>
+                          <p class="mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <hr>
+                          <div class="d-flex justify-content-between"> 
+                            <span class="fa-span"><i class="fa-solid fa-calendar-days text-primary fa-icon "></i> 1 Mai 2024</span> <a href="#" class="text-primary fw-bold"> Voir + </a>
+                          </div>
+                          
                         </div>
                     </div>
                 </div>
@@ -49,10 +55,16 @@
             <h1 class="text-center mb-5"> Découvrez les derniers bien à louer</h1>
             {% for house in get_some_locations %}
                 <div class="col-md-4 mb-4">
-                    <div class="card h-100"><img class="card-img-top w-100" src="{{house.picture.url}}" alt="courses" />
-                        <div class="card-body">
-                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">User Research for User Experience Design</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
+                    <div class="card h-100"><img class="card-img-top w-100 h-50" src="{{house.picture.url}}" alt="courses" />
+                      <div class="card-body">
+                        <i class="fa-regular fa-user text-primary fa-icon"></i> <span class=" ml-4  fs--1 stretched-link text-decoration-none fa-span">par: auteur</span><h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1 mt-3">User Research for User Experience Design</h5>
+                        <p class="mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <hr>
+                        <div class="d-flex justify-content-between"> 
+                          <span class="fa-span"><i class="fa-solid fa-calendar-days text-primary fa-icon "></i> 1 Mai 2024</span> <a href="#" class="text-primary fw-bold"> Voir + </a>
                         </div>
+                        
+                      </div>
                     </div>
                 </div>
             {% endfor %}
@@ -111,7 +123,7 @@
         <div class="container"> 
             <div class="row h-100 align-items-center">     
                 <div class="col-md-12 col-lg-6 h-100">
-                <h1 class="my-4">Pourquoi choisir <span class="text-primary"> Loushira</span></h1>
+                <h1 class="my-4">Pourquoi choisir <span class="text-primary"> Louhsira</span></h1>
                 <p>{{get_why_chooses.description}}</p>
                 <div class="mt-6">
                     <h5 class="font-sans-serif fw-bold mb-3">The courses that Kimmie has taken</h5>
@@ -176,18 +188,18 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Exposé votre maison</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="row pb-4">
           <div class="col-md-6">
             <label for="exampleFormControlInput1" class="form-label">Nom complet</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="John diane">
           </div>
           <div class="col-md-6">
             <label for="exampleFormControlInput1" class="form-label">Téléphone</label>
-            <input type="phone" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="">
           </div>
         </div>
         <div class="row">

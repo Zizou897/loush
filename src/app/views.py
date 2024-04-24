@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 
 # Create your views here.
 from .functions import (
@@ -9,6 +13,13 @@ from .functions import (
     get_why_choose,
     get_config,
 )
+
+def verify_email(email):
+    try:
+        validate_email(email)
+        return False
+    except ValidationError:
+        return True
 
 
 def home(request):
@@ -54,3 +65,31 @@ def home_searcher(request):
         'get_configs': get_configs,
     }
     return render(request, template_name, context)
+
+
+@csrf_exempt
+def post_ask_home(request):
+    
+    all_is_true = False
+    msg = ''
+    
+    name = request.POST.get('name')
+    email = request.POST.get('email')
+    phone = request.POST.get('phone')
+    
+    if not name or name.isspace() or not email or email.isspace() or not phone or phone.isspace():
+        msg = 'Veuillez renseigner les champs vides'
+    elif len(phone) < 10:
+        msg = 'Le numéro de téléphone doit etre e 10 chiffres'
+    elif verify_email(email):
+        msg = 'veuillez saisir un addresse Mail correct'
+    
+    else:
+       all_is_true, msg = True, 'Vous recevrez un mail de la part de Louhsira'
+       
+    
+    data = {
+        'success': all_is_true,
+        'msg': msg
+    }
+    return JsonResponse(data,safe=False)

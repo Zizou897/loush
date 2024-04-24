@@ -10,6 +10,7 @@
                 <h1 class="fs-6 fs-xl-7 mb-2">LA PLATEFORME N°1 DE L'IMMOBILIER AU BURKINA FASO</h1>
                 <h4 class="fw-bold font-sans-serif mb-5">La plateforme offre une solution complète pour la recherche, l'achat et la vente de biens immobiliers.</h4>
                 <a class="btn btn-primary me-2" href="{% url 'home-searcher' %}" role="button">Chercher une maison</a> <button class="btn btn-outline-secondary"  role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Exposer une maison</button>
+                <button class="fa-btn-secondary"  role="button" >SiraSev</button>
             </div>
         </div>
     </div>
@@ -24,7 +25,7 @@
             <h1 class="text-center mb-5"> Découvrez les derniers bien à vendre</h1>
             {% for house in get_some_vendors %}
                 <div class="col-md-4 mb-4">
-                    <div class="card h-100"><img class="card-img-top w-100 h-50" src="{{house.picture.url}}" alt="courses" />
+                    <div class="card fa-card h-100"><img class="card-img-top w-100 h-50" src="{{house.picture.url}}" alt="courses" />
                         <div class="card-body">
                           <i class="fa-regular fa-user text-primary fa-icon"></i> <span class=" ml-4  fs--1 stretched-link text-decoration-none fa-span">par: auteur</span><h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1 mt-3">User Research for User Experience Design</h5>
                           <p class="mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -55,7 +56,7 @@
             <h1 class="text-center mb-5"> Découvrez les derniers bien à louer</h1>
             {% for house in get_some_locations %}
                 <div class="col-md-4 mb-4">
-                    <div class="card h-100"><img class="card-img-top w-100 h-50" src="{{house.picture.url}}" alt="courses" />
+                    <div class="card fa-card h-100"><img class="card-img-top w-100 h-50" src="{{house.picture.url}}" alt="courses" />
                       <div class="card-body">
                         <i class="fa-regular fa-user text-primary fa-icon"></i> <span class=" ml-4  fs--1 stretched-link text-decoration-none fa-span">par: auteur</span><h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1 mt-3">User Research for User Experience Design</h5>
                         <p class="mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

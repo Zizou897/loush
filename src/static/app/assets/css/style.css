@@ -6,3 +6,33 @@
 .fa-span{
     font-size: 0.8rem;
 }
+
+.fa-card{
+    -webkit-box-shadow: 0px 5px 12px -1px rgba(204, 204, 204, 1);
+    -moz-box-shadow: 0px 5px 12px -1px rgba(204, 204, 204, 1);
+    box-shadow: 0px 5px 12px -1px rgba(204, 204, 204, 1);
+}
+
+.fa-btn-secondary{
+    color: #FFFEFE;
+    background-color: #002147;
+    border-color: #002147;
+    border: 1px solid #002147;
+    border-radius: 3px;
+    padding: 0.375rem 0.75rem;
+    margin-left: 3px;
+    font-size: 1rem;
+    border-radius: 0.2rem;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.fa-btn-secondary:hover{
+    background-color: transparent;
+    color: #002147;
+    -webkit-box-shadow: 0 0 0 0 rgba(38, 66, 98, 0.5);
+    box-shadow: 0 0 0 0 rgba(38, 66, 98, 0.5);
+}

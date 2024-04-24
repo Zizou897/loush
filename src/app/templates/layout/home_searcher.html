@@ -88,7 +88,7 @@
                     </div>
                     <div class="col-sm-6 col-md-6">
                         <label class="form-label" for="inputLevel">Caractéristiques souhaitées</label>
-                        <select class="form-select" id="inputLevel">
+                        <select class="form-select" id="inputLevel" v-model="caract_souhaite">
                             <option selected="selected">Votre choix</option>
                             <option>Jardin</option>
                             <option>Balcon</option>
@@ -110,7 +110,7 @@
             
                 </div>
                 <div class="col-auto z-index-2">
-                <button class="btn btn-primary" type="submit" @click.prevent="sendData">Faire votre Demande</button>
+                <button class="btn btn-primary" type="submit" @click.prevent="sendData()">Faire votre Demande</button>
                 </div>
 
            

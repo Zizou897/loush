@@ -208,6 +208,7 @@
     <script src="{% static 'app/assets/js/main.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 
 
@@ -269,35 +270,44 @@
                 showConfirmButton: true,
               })
             }else{
-              Swal.fire({
-                icon: 'error',
-                title: 'Erreur',
-                text: "veuillez choisir une date de déménagement !!!",
-                showConfirmButton: true,
-              });
-              Swal.fire({
-                icon: 'success',
-                title: 'Demande envoyee',
-                text: "Vous recevrez un mail de la part de Louhsira" ,
-                showConfirmButton: true,
-              });
-              let myDataForm = new myData();
-              myData.append('name', this.name)
-              myData.append('phone', this.phone)
-              myData.append('email', this.email)
+            
+              let myForm = new FormData();
+              FormData.append('name', this.name)
+              FormData.append('phone', this.phone)
+              FormData.append('email', this.email)
               //-------------------------------------
-              myData.append('type_propriete_rechercher', this.type_propriete_rechercher)
-              myData.append('achat_or_location', this.achat_or_location)
-              myData.append('budjet', this.budjet)
-              myData.append('nbr_chambre', this.nbr_chambre)
-              myData.append('nbr_salle_bain', this.nbr_salle_bain)
-              myData.append('surface_habitable', this.surface_habitable)
-              myData.append('localisation_souhaite', this.localisation_souhaite)
-              myData.append('caract_souhaite', this.caract_souhaite)
+              FormData.append('type_propriete_rechercher', this.type_propriete_rechercher)
+              FormData.append('achat_or_location', this.achat_or_location)
+              FormData.append('budjet', this.budjet)
+              FormData.append('nbr_chambre', this.nbr_chambre)
+              FormData.append('nbr_salle_bain', this.nbr_salle_bain)
+              FormData.append('surface_habitable', this.surface_habitable)
+              FormData.append('localisation_souhaite', this.localisation_souhaite)
+              FormData.append('caract_souhaite', this.caract_souhaite)
               //-----------------------------------------
-              myData.append('date_demenag_souhaite', this.date_demenag_souhaite)
-              myData.append('comments_souhaite', this.comments_souhaite)
-
+              FormData.append('date_demenag_souhaite', this.date_demenag_souhaite)
+              FormData.append('comments_souhaite', this.comments_souhaite)
+              
+              axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
+              axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
+              axios.post("{% url 'post-ask-home' %}", FormData, {})
+              .then(function(response){
+                if(response.data.success){
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Demande envoyee',
+                    text: response.data.msg ,
+                    showConfirmButton: true,
+                  });
+                }else{
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Demande envoyee',
+                    text: response.data.msg ,
+                    showConfirmButton: true,
+                  });
+                }
+              })
               console.log(myDataForm)
              
             }

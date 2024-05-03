@@ -30,8 +30,10 @@
     <!-- ===============================================-->
     <!--    Stylesheets-->
     <!-- ===============================================-->
+    <link href="{% static 'app/assets/css/select2-bootstrap-5-theme.min.css' %}" rel="stylesheet" />
     <link href="{% static 'app/assets/css/theme.css' %}" rel="stylesheet" />
     <link href="{% static 'app/assets/css/style.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   </head>
 
@@ -206,14 +208,102 @@
     <script src="{% static 'app/vendors/fontawesome/all.min.js' %}"></script>
     <script src="{% static 'app/assets/js/theme.js' %}"></script>
     <script src="{% static 'app/assets/js/main.js' %}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-
+    <script>
+     
+      
+    </script>
 
     <script> 
+      $("#selectID").select2({
+        dropdownParent:"#staticBackdrop",
+        placeholder: "[Piscine, jardin, vue, etc.]",
+        multiple: true,
+        allowClear: true,
+        tags:["Balcon", "Jardin", "Parking"],
+      });
+
       new Vue({
+        el: "#home_owner",
+        data: {
+          //--------------------------
+          first_confirm: false,
+          second_confirm: false,
+
+          //--------------------------
+          name: '',
+          email: '',
+          phone: '',
+
+          //--------------------------
+          type_propriete_for_owner: '',
+          status_buy_sell: '',
+          home_price: '',
+          home_address: '',
+          year_building: '',
+          living_space: '',
+          nbr_room: '',
+          nbr_bath_room: '' ,
+          other_detail:'',
+
+          //--------------------------
+          home_detail: '',
+
+          //--------------------------
+          picture: '',
+
+        },
+        mounted(){},
+        computed:{},
+        methods: {
+         sendOwnerData(){
+          if(this.first_confirm, this.second_confirm){
+            if(!this.name == '', !this.phone == '', !this.email == '', !this.type_propriete_for_owner == '', !this.status_buy_sell == '', !this.home_price == '', !this.home_address == '', !this.year_building == '', !this.living_space == '', !this.nbr_room == '', !this.nbr_bath_room == ''){
+              if(!/^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.email)){
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Erreur',
+                  text: "veuillez saisir un email valide !!! ",
+                  showConfirmButton: false,
+                  timer: 2000,
+                })
+              }
+              else{
+                Swal.fire({
+                  icon: 'success',
+                  title: "Demande d'exposition envoyé",
+                  text: "Notre equipe vous contactera dans un bref delai !!! ",
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+                console.log(this.picture)
+              }
+            }else{
+              Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: "veuillez renseigner les champs requis (*) !!! ",
+                showConfirmButton: true,
+              })
+            }
+          }else{
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: "veuillez accepter les politiques de confidentialités et le plein droits sur les photos !!! ",
+              showConfirmButton: true,
+            })
+          }
+         }
+        },
+      });
+
+    var app =  new Vue({
         el: '#home_asking',
         delimiters: ['%{', '}'],
         data: {

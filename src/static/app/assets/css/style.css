@@ -36,3 +36,26 @@
     -webkit-box-shadow: 0 0 0 0 rgba(38, 66, 98, 0.5);
     box-shadow: 0 0 0 0 rgba(38, 66, 98, 0.5);
 }
+
+.fa-form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #402B2B;
+    background-color: #F5F5F5;
+    background-clip: padding-box;
+    border: 1px solid #E0E0E0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.5rem;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  }
+  

@@ -1,3 +1,9 @@
+.title-h5{
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 .fa-icon{
     font-size: 0.8rem;
     margin-right: 0.3rem;
@@ -59,3 +65,68 @@
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   }
   
+  .a-img {
+    margin-top: 0.75rem;
+    height: 7rem;
+    width: 7rem;
+  }
+
+  .a-cards {
+    border-radius: 0.5rem;
+    -webkit-box-shadow: 0px 10px 36px -28px rgba(179,179,179,1);
+    -moz-box-shadow: 0px 10px 36px -28px rgba(179,179,179,1);
+    box-shadow: 0px 10px 36px -28px rgba(179,179,179,1);
+  }
+
+  
+.a-over{
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+.a-cards p {
+    font-size: 0.9rem;
+  } 
+
+
+.a-cards:hover  {
+    padding-bottom: 10px;
+    -webkit-box-shadow: 0px 5px 12px -1px rgba(179,179,179,1);
+    -moz-box-shadow: 0px 5px 12px -1px rgba(179,179,179,1);
+    box-shadow: 0px 5px 12px -1px rgba(179,179,179,1);
+
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes pulse {
+    0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    }
+    50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+    }
+    100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    }
+    }
+    @keyframes pulse {
+    0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    }
+    50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+    }
+    100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    }
+    }

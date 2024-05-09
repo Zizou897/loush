@@ -5,6 +5,7 @@ from .views import(
     search_page,
     home_searcher,
     post_ask_home,
+    owner_page,
 )
 
 urlpatterns = [
@@ -12,5 +13,6 @@ urlpatterns = [
     path('chercher-une-maison', search_page, name="home-search"),
     path('chercheur', home_searcher, name="home-searcher"),
     path('post-data-ask-home', post_ask_home, name="post-ask-home"),
+    path('proprietaire', owner_page, name="owner-page"),
 ]
 

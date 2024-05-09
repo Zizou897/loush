@@ -1,4 +1,5 @@
 from django.db import models
+from tinymce.models import HTMLField
 
 # Create your models here.
 
@@ -12,7 +13,8 @@ from core.constants import (
     LOCATION_PATH,
     ABOUT_PATH,
     WHYCHOOSE,
-    LOGO_SITE_PATH
+    LOGO_SITE_PATH,
+    DO_TRUSTH_PATH
 )
 
 
@@ -89,7 +91,7 @@ class About(Convention):
 
 class Whychoose(Convention):
     title = models.CharField(max_length = 150)
-    description = models.TextField()
+    description = HTMLField()
     picture = models.FileField(upload_to=WHYCHOOSE, max_length = 100)
     
     class Meta:
@@ -118,3 +120,17 @@ class configuration(Convention):
         verbose_name_plural = "Configuration du site"
     def __str__(self):
         return self.name
+    
+    
+class DoTrust(Convention):
+    title = models.CharField(max_length = 150, blank=True, null=True)
+    description = models.TextField()
+    picture = models.FileField(upload_to=DO_TRUSTH_PATH, max_length=100)
+    
+    class Meta:
+        verbose_name = "Faire Confiance"
+        verbose_name_plural = "Faire Confiance"
+        
+    def __str__(self):
+        return self.title
+    

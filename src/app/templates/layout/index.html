@@ -7,180 +7,196 @@
         <div class="row align-items-center">
             <div class="col-md-5 col-lg-6 order-0 order-md-1 text-end"><img class="pt-7 pt-md-0 w-100" src="{{get_banners.picture.url}}" width="470" alt="hero-header" /></div>
             <div class="col-md-7 col-lg-6 text-md-start text-center py-6">
-                <h1 class="fs-6 fs-xl-7 mb-2">LA PLATEFORME N°1 DE L'IMMOBILIER AU BURKINA FASO</h1>
-                <h4 class="fw-bold font-sans-serif mb-5">La plateforme offre une solution complète pour la recherche, l'achat et la vente de biens immobiliers.</h4>
-                <a class="btn btn-primary me-2" href="{% url 'home-searcher' %}" role="button">Chercher une maison</a> <button class="btn btn-outline-secondary"  role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Exposer une maison</button>
-                <button class="fa-btn-secondary"  role="button" >SiraSev</button>
+                <h1 class="fs-6 mb-2 fw-bold">LA PLATEFORME N°1 DE L'IMMOBILIER AU BURKINA FASO</h1>
+                <h4 class=" font-sans-serif mb-5">Notre plateforme propose une solution complète pour la recherche, l’achat
+                  et la vente de biens immobiliers.</h4>
+                <a class="btn btn-primary me-2 fw-bold" href="{% url 'home-searcher' %}" role="button">Chercher une maison</a> <button class="btn btn-outline-secondary fw-bold"  role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Exposer une maison</button>
+                <button class="fa-btn-secondary fw-bold"  role="button" >SiraSev</button>
             </div>
         </div>
     </div>
 </section>
 
-       <!-- ============================================-->
-      <!-- <section> begin ============================-->
-      <section>
+<section>
+  <div class="container mt-4">
+    <div class="row">
+      {% for trusth in get_do_trusths %}
+        <div class="col-md-4 a-cards "> 
+          <div class="text-center"><img src="{{trusth.picture.url}}" class="a-img " alt=""></div>
+          
+          <h5 class="mt-2 title-h5 fw-bold">{{trusth.title}}</h5>
+          <p class="mt-2 ">{{trusth.description}}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
-        <div class="container">
-          <div class="row">
-            <h1 class="text-center mb-5"> Découvrez les derniers bien à vendre</h1>
-            {% for house in get_some_vendors %}
-                <div class="col-md-4 mb-4">
-                    <div class="card fa-card h-100"><img class="card-img-top w-100 h-50" src="{{house.picture.url}}" alt="courses" />
-                        <div class="card-body">
-                          <i class="fa-regular fa-user text-primary fa-icon"></i> <span class=" ml-4  fs--1 stretched-link text-decoration-none fa-span">par: auteur</span><h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1 mt-3">User Research for User Experience Design</h5>
-                          <p class="mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <hr>
-                          <div class="d-flex justify-content-between"> 
-                            <span class="fa-span"><i class="fa-solid fa-calendar-days text-primary fa-icon "></i> 1 Mai 2024</span> <a href="#" class="text-primary fw-bold"> Voir + </a>
-                          </div>
-                          
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-            
+<section class="pt-6 w-100 a-over">
+        <div class="row">
+          <div class="col-md-4 d-flex flex-column justify-content-center" style="background-color:#001731; color:#fff;height:450px">
+            <h2 class="fw-bold mb-3 ms-4" style="color:#fff;">Visibilité Optimale</h2>
+            <p class="ms-4">Chaque propriété est mise en valeur avec des
+              photographies professionnelles et des descriptions détaillées, assurant
+              une présentation attrayante pour attirer les acheteurs et locataires
+              potentiels.</p>
+          </div>
+          <div class="col-md-4 w-40" style="background-color: rgb(190, 190, 190);height:450px"></div>
+          <div class="col-md-4 d-flex flex-column justify-content-center" style="background-color:#001731; color:#fff;height:450px">
+            <h2 class="fw-bold mb-3 ms-3"  style="color:#fff;">Flexibilité pour les Professionnels</h2>
+            <p class="ms-3">Les agences immobilières
+              bénéficient d'une flexibilité sans précédent, pouvant choisir entre gérer
+              elles-mêmes leurs annonces ou collaborer avec LouhSira pour une
+              exposition et une vente optimisée.</p>
           </div>
         </div>
-        <!-- end of .container-->
+</section>
+ 
 
-      </section>
+       <!-- ============================================-->
+      <!-- <section> begin ============================-->
+<section>
+  <div class="container">
+    <div class="row">
+      <h3 class="text-center mb-5 fw-bold"> Découvrez les derniers bien <span class="text-primary">à vendre</span></h3>
+      {% for house in get_some_vendors %}
+              <div class="col-md-4 mb-4">
+                <div class="card fa-card h-100"><img class="card-img-top w-100 h-50" src="{{house.picture.url}}" alt="courses" />
+                  <div class="card-body">
+                    <i class="fa-regular fa-user text-primary fa-icon"></i> <span class=" ml-4  fs--1 stretched-link text-decoration-none fa-span">par: auteur</span><h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1 mt-3">User Research for User Experience Design</h5>
+                    <p class="mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <hr>
+                    <div class="d-flex justify-content-between"> 
+                      <span class="fa-span"><i class="fa-solid fa-calendar-days text-primary fa-icon "></i> 1 Mai 2024</span> <a href="#" class="text-primary fw-bold"> Voir + </a>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+      {% endfor %}
+      
+    </div>
+  </div>
+  <!-- end of .container-->
+</section>
       <!-- <section> close ============================-->
       <!-- ============================================-->
 
        <!-- ============================================-->
       <!-- <section> begin ============================-->
-      <section>
-
-        <div class="container">
-          <div class="row">
-            <h1 class="text-center mb-5"> Découvrez les derniers bien à louer</h1>
-            {% for house in get_some_locations %}
-                <div class="col-md-4 mb-4">
-                    <div class="card fa-card h-100"><img class="card-img-top w-100 h-50" src="{{house.picture.url}}" alt="courses" />
-                      <div class="card-body">
-                        <i class="fa-regular fa-user text-primary fa-icon"></i> <span class=" ml-4  fs--1 stretched-link text-decoration-none fa-span">par: auteur</span><h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1 mt-3">User Research for User Experience Design</h5>
-                        <p class="mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <hr>
-                        <div class="d-flex justify-content-between"> 
-                          <span class="fa-span"><i class="fa-solid fa-calendar-days text-primary fa-icon "></i> 1 Mai 2024</span> <a href="#" class="text-primary fw-bold"> Voir + </a>
-                        </div>
-                        
-                      </div>
-                    </div>
+<section>
+  <div class="container">
+    <div class="row">
+      <h3 class="text-center mb-5 fw-bolder"> Découvrez les derniers bien <span class="text-primary">à louer</span></h3>
+      {% for house in get_some_locations %}
+          <div class="col-md-4 mb-4">
+              <div class="card fa-card h-100"><img class="card-img-top w-100 h-50" src="{{house.picture.url}}" alt="courses" />
+                <div class="card-body">
+                  <i class="fa-regular fa-user text-primary fa-icon"></i> <span class=" ml-4  fs--1 stretched-link text-decoration-none fa-span">par: auteur</span><h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1 mt-3">User Research for User Experience Design</h5>
+                  <p class="mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <hr>
+                  <div class="d-flex justify-content-between"> 
+                    <span class="fa-span"><i class="fa-solid fa-calendar-days text-primary fa-icon "></i> 1 Mai 2024</span> <a href="#" class="text-primary fw-bold"> Voir + </a>
+                  </div>
+                  
                 </div>
-            {% endfor %}
+              </div>
           </div>
-        </div>
-        <!-- end of .container-->
-
-      </section>
+      {% endfor %}
+    </div>
+  </div>
+  <!-- end of .container-->
+</section>
       <!-- <section> close ============================-->
       <!-- ============================================-->
 
       
       <!-- ============================================-->
       <!-- <section> begin ============================-->
-      <section class="pt-0">
+<section class="pt-0">
 
-        <div class="container">
-          <div class="row h-100 align-items-center">
-            <div class="col-md-12 col-lg-6 h-100">
-              <div class="card card-span text-white h-100"><img class="w-100" src="{{get_abouts.picture.url}}" alt="..." />
-                <div class="card-body px-xl-5 px-md-3 pt-0">
-                  <div class="d-flex flex-column align-items-center bg-200" style="margin-top:-2.4rem;">
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-12 col-lg-6 h-100">
-              <h1 class="my-4">Nous sommes les meilleurs dans<span class="text-primary"> l'immobilier de confiance</span></h1>
-              <p>{{get_abouts.description}}</p>
-              <div class="mt-6">
-                <h5 class="font-sans-serif fw-bold mb-3">The courses that Kimmie has taken</h5>
-                <div class="card card-span bg-600">
-                  <div class="card-body">
-                    <div class="row flex-center gx-0">
-                      <div class="col-lg-4 col-xl-3 text-center text-xl-start"><img src="assets/img/gallery/art-design.png" width="120" alt="courses" /></div>
-                      <div class="col-lg-8 col-xl-9">
-                        <h5 class="font-sans-serif fw-bold">Modern and Contemporary Art and Design</h5>
-                        <p class="text-muted fs--1">The Museum of Modern Art</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+  <div class="container">
+    <div class="row h-100 align-items-center">
+      <div class="col-md-12 col-lg-6 h-100">
+        <div class="card card-span text-white h-100"><img class="w-100" src="{{get_abouts.picture.url}}" alt="..." />
+          <div class="card-body px-xl-5 px-md-3 pt-0">
+            <div class="d-flex flex-column align-items-center bg-200" style="margin-top:-2.4rem;">
+              
             </div>
           </div>
         </div>
-        <!-- end of .container-->
+      </div>
 
-      </section>
+      <div class="col-md-12 col-lg-6 h-100">
+        <h1 class="my-4 fw-bold">Nous sommes les meilleurs dans<span class="text-primary"> l'immobilier de confiance</span></h1>
+        <p>{{get_abouts.description}}</p>
+        <div class="mt-6">
+          
+          <div class="card card-span bg-600">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of .container-->
+
+</section>
       <!-- <section> close ============================-->
       <!-- ============================================-->
 
-      <section class="pt-0">
-        <div class="container"> 
-            <div class="row h-100 align-items-center">     
-                <div class="col-md-12 col-lg-6 h-100">
-                <h1 class="my-4">Pourquoi choisir <span class="text-primary"> Louhsira</span></h1>
-                <p>{{get_why_chooses.description}}</p>
-                <div class="mt-6">
-                    <h5 class="font-sans-serif fw-bold mb-3">The courses that Kimmie has taken</h5>
-                    <div class="card card-span bg-600">
-                    <div class="card-body">
-                        <div class="row flex-center gx-0">
-                        <div class="col-lg-4 col-xl-3 text-center text-xl-start"><img src="assets/img/gallery/art-design.png" width="120" alt="courses" /></div>
-                        <div class="col-lg-8 col-xl-9">
-                            <h5 class="font-sans-serif fw-bold">Modern and Contemporary Art and Design</h5>
-                            <p class="text-muted fs--1">The Museum of Modern Art</p>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
-
-                <div class="col-md-12 col-lg-6 h-100">
-                <div class="card card-span text-white h-100"><img class="w-100" src="{{get_why_chooses.picture.url}}" alt="..." />
-                    <div class="card-body px-xl-5 px-md-3 pt-0">
-                    <div class="d-flex flex-column align-items-center bg-200" style="margin-top:-2.4rem;">
-                        
-                    </div>
-                </div>
+<section class="pt-0">
+  <div class="container"> 
+      <div class="row h-100 align-items-center">     
+          <div class="col-md-12 col-lg-6 h-100">
+          <h1 class="my-4 fw-bold">Pourquoi choisir <span class="text-primary"> Louhsira</span>?</h1>
+          <p>{{get_why_chooses.description | safe}}</p>
+          
+          <div class="mt-6">
+              
+              
+          </div>
+          </div>
+          
+          <div class="col-md-12 col-lg-6 h-100">
+          <div class="card card-span text-white h-100"><img class="w-100" src="{{get_why_chooses.picture.url}}" alt="..." />
+              <div class="card-body px-xl-5 px-md-3 pt-0">
+              <div class="d-flex flex-column align-items-center bg-200" style="margin-top:-2.4rem;">
+                  
               </div>
-            </div>
-            </div>
+          </div>
         </div>
-      </section>
+      </div>
+      </div>
+  </div>
+</section>
 
       <!-- ============================================-->
       <!-- <section> begin ============================-->
-      <section>
+<section>
 
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-md-6 col-lg-4 mb-5"><img src="{{get_configs.newsletter_picture.url}}" width="280" alt="cta" /></div>
-            <div class="col-md-6 col-lg-5">
-              <h5 class="text-primary font-sans-serif fw-bold">Abonnez-vous dès maintenant</h5>
-              <h1 class="mb-5">{{get_configs.newsletter_text}}</h1>
-              <form class="row g-0 align-items-center">
-                <div class="col">
-                  <div class="input-group-icon">
-                    <input class="form-control form-little-squirrel-control" type="email" placeholder="Entrer votre email " aria-label="email" /><i class="fas fa-envelope input-box-icon"></i>
-                  </div>
-                </div>
-                <div class="col-auto">
-                  <button class="btn btn-primary rounded-0" type="submit">S'abonner</button>
-                </div>
-              </form>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 col-lg-4 mb-5"><img src="{{get_configs.newsletter_picture.url}}" width="280" alt="cta" /></div>
+      <div class="col-md-6 col-lg-5">
+        <h5 class="text-primary font-sans-serif fw-bold">Abonnez-vous dès maintenant</h5>
+        <h1 class="mb-5">{{get_configs.newsletter_text}}</h1>
+        <form class="row g-0 align-items-center">
+          <div class="col">
+            <div class="input-group-icon">
+              <input class="form-control form-little-squirrel-control" type="email" placeholder="Entrer votre email " aria-label="email" /><i class="fas fa-envelope input-box-icon"></i>
             </div>
           </div>
-        </div>
-        <!-- end of .container-->
+          <div class="col-auto">
+            <button class="btn btn-primary rounded-0" type="submit">S'abonner</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- end of .container-->
 
-      </section>
+</section>
       <!-- <section> close ============================-->
       <!-- ============================================-->
 
@@ -236,6 +252,7 @@
             <input type="text" class="form-control" id="forPrice" placeholder="Prix de location ou de vente en fcfa" v-model="home_price">
           </div>
         </div>
+
         <div class="row mt-3">
           <div class="col-sm-6 col-md-4">
             <label class="form-label" for="forAddress">Adresse de la propriété<span class="text-primary">*</span></label>
@@ -258,6 +275,7 @@
             <input type="text" class="form-control" id="forSpace" placeholder="Surface en mètres carrés" v-model="living_space">
           </div>
         </div>
+
         <div class="row mt-3">
           <div class="col-sm-6 col-md-4">
             <label class="form-label" for="forRoom">Nombre de chambres<span class="text-primary">*</span></label>
@@ -280,17 +298,17 @@
               <option> 4 salles de bain</option>
             </select>
           </div>
-        <div class="col-sm-6 col-md-4">
-          <label class="form-label" for="selectID">Caractéristiques spéciales</label>
-          <select  class="form-select"  id="">
-            <option selected="selected">Votre choix</option>
-              <option>Jardin</option>
-              <option>Balcon</option>
-              <option>Parking</option>
-          </select>
+          <div class="col-sm-6 col-md-4">
+            <label class="form-label" for="selectID">Caractéristiques spéciales</label>
+            <select  class="form-select"  id="">
+              <option selected="selected">Votre choix</option>
+                <option>Jardin</option>
+                <option>Balcon</option>
+                <option>Parking</option>
+            </select>
+          </div>
         </div>
-      </div>
-      <hr>
+        <hr>
       <p class="text-center">Description de la Propriété</p>
       <div class="row">
         <div class="col-sm-12 col-md-12">
@@ -329,4 +347,4 @@
   </div>
 </div>
 
-{% endblock %} 
+{% endblock %}

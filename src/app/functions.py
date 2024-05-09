@@ -5,6 +5,7 @@ from .models import (
     About,
     Whychoose,
     configuration,
+    DoTrust
 )
 
 
@@ -26,3 +27,6 @@ def get_why_choose(data=dict()):
 
 def get_config(data=dict()):
     return configuration.objects.filter(**data).first()
+
+def get_do_trusth(data=dict()):
+    return DoTrust.objects.filter(**data)

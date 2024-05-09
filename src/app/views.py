@@ -12,6 +12,7 @@ from .functions import (
     get_about,
     get_why_choose,
     get_config,
+    get_do_trusth
 )
 
 def verify_email(email):
@@ -30,6 +31,7 @@ def home(request):
     get_abouts = get_about({'publish':True})
     get_why_chooses = get_why_choose({'publish':True})
     get_configs = get_config({'publish':True})
+    get_do_trusths = get_do_trusth({'publish':True})
     
 
     template_name = "layout/index.html"
@@ -39,7 +41,8 @@ def home(request):
         'get_some_locations': get_some_locations,
         'get_abouts': get_abouts,
         'get_why_chooses': get_why_chooses,
-        'get_configs': get_configs
+        'get_configs': get_configs,
+        'get_do_trusths': get_do_trusths
     }
     return render(request, template_name, context)
 
@@ -61,6 +64,17 @@ def home_searcher(request):
     get_configs = get_config({'publish':True})
     
     template_name = "layout/home_searcher.html"
+    context = {
+        'get_configs': get_configs,
+    }
+    return render(request, template_name, context)
+
+
+def owner_page(request):
+    
+    
+    get_configs = get_config({'publish':True})
+    template_name = "layout/owner.html"
     context = {
         'get_configs': get_configs,
     }

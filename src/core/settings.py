@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'app',
 
     # App installed
+    'tinymce',
 
 ]
 

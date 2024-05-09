@@ -17,6 +17,7 @@
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================--> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Rubik:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="{{get_configs.logo.url}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{get_configs.logo.url}}">
@@ -33,7 +34,8 @@
     <link href="{% static 'app/assets/css/select2-bootstrap-5-theme.min.css' %}" rel="stylesheet" />
     <link href="{% static 'app/assets/css/theme.css' %}" rel="stylesheet" />
     <link href="{% static 'app/assets/css/style.css' %}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
   </head>
 
@@ -80,12 +82,12 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
           <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
-              <li class="nav-item px-2"><a class="nav-link active" aria-current="page" href="{% url 'welcome' %}">Accueil</a></li>
-              <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="#">A propos</a></li>
-              <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="{% url 'home-searcher' %}">Chercheur</a></li>
-              <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="#">Propriétaire</a></li>
-              <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="#">Agences Immobilières</a></li>
-            </ul><a class="btn btn-primary order-1 order-lg-0" href="#!">Catalogue</a>
+              <li class="nav-item px-2"><a class="nav-link active fw-bold" aria-current="page" href="{% url 'welcome' %}">Accueil</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-bold" aria-current="page" href="#">A propos</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-bold" aria-current="page" href="{% url 'home-searcher' %}">Chercheur</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-bold" aria-current="page" href="{% url 'owner-page' %}">Propriétaire</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-bold" aria-current="page" href="#">Agences Immobilières</a></li>
+            </ul><a class="btn btn-primary order-1 order-lg-0 fw-bold" href="#!">Catalogue</a>
             {% comment "" %}
                 <form class="d-flex my-3 d-block d-lg-none">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -107,6 +109,8 @@
       </nav>
 
     {% block content %}
+
+
       
     {% endblock content %}
 
@@ -135,7 +139,7 @@
               <ul class="list-unstyled mb-md-4 mb-lg-0">
                 <li class="lh-lg"><a class="text-200" href="#!">A propos de Nous</a></li>
                 <li class="lh-lg"><a class="text-200" href="{% url 'home-searcher' %}">Chercheur</a></li>
-                <li class="lh-lg"><a class="text-200" href="#!">Propriétaires</a></li>
+                <li class="lh-lg"><a class="text-200" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Propriétaires</a></li>
                 <li class="lh-lg"><a class="text-200" href="#!">Agences Immobilières</a></li>
               </ul>
             </div>
@@ -196,6 +200,7 @@
             }).datepicker('update', new Date()); 
         }); 
     </script> 
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://kit.fontawesome.com/762b1fab87.js" crossorigin="anonymous"></script>
     <script src= "https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> 
     <script src= "https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
@@ -212,10 +217,14 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+   
     <script>
-     
+     // In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+  $('.js-example-basic-single').select2({
+    border:'3px',
+  });
+});
       
     </script>
 

@@ -34,6 +34,8 @@
     <link href="{% static 'app/assets/css/select2-bootstrap-5-theme.min.css' %}" rel="stylesheet" />
     <link href="{% static 'app/assets/css/theme.css' %}" rel="stylesheet" />
     <link href="{% static 'app/assets/css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'app/assets/css/slick.css' %}" rel="stylesheet" />
+    <link href="{% static 'app/assets/css/slick-theme.css' %}" rel="stylesheet" />
     
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
@@ -41,6 +43,49 @@
 
 
   <body>
+  <style type="text/css">
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .slider {
+        width: 50%;
+        margin: 100px auto;
+    }
+
+    .slick-slide {
+      margin: 0px 20px;
+    }
+
+    .slick-slide img {
+      width: 100%;
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+      color: black;
+      
+    }
+
+
+    .slick-slide {
+      transition: all ease-in-out .3s;
+      opacity: .2;
+    }
+    
+    .slick-active {
+      opacity: .5;
+    }
+
+    .slick-current {
+      opacity: 1;
+    }
+  </style>
 
     <!-- ===============================================-->
     <!--    Main Content-->
@@ -82,12 +127,12 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
           <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
-              <li class="nav-item px-2"><a class="nav-link active fw-bold" aria-current="page" href="{% url 'welcome' %}">Accueil</a></li>
-              <li class="nav-item px-2"><a class="nav-link fw-bold" aria-current="page" href="#">A propos</a></li>
-              <li class="nav-item px-2"><a class="nav-link fw-bold" aria-current="page" href="{% url 'home-searcher' %}">Chercheur</a></li>
-              <li class="nav-item px-2"><a class="nav-link fw-bold" aria-current="page" href="{% url 'owner-page' %}">Propriétaire</a></li>
-              <li class="nav-item px-2"><a class="nav-link fw-bold" aria-current="page" href="#">Agences Immobilières</a></li>
-            </ul><a class="btn btn-primary order-1 order-lg-0 fw-bold" href="#!">Catalogue</a>
+              <li class="nav-item px-2"><a class="nav-link active fw-bold" style="color:#18163d" aria-current="page" href="{% url 'welcome' %}">Accueil</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-bold" style="color:#18163d" aria-current="page" href="{% url 'about' %}">A propos</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-bold" style="color:#18163d" aria-current="page" href="{% url 'home-searcher' %}">Chercheur</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-bold" style="color:#18163d" aria-current="page" href="{% url 'owner-page' %}">Propriétaire</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-bold" style="color:#18163d" aria-current="page" href="{% url 'agence' %}">Agences Immobilières</a></li>
+            </ul><a class="btn btn-primary order-1 order-lg-0 fw-bold" style="color:#18163d" href="{% url 'catalogue' %}">Catalogue</a>
             {% comment "" %}
                 <form class="d-flex my-3 d-block d-lg-none">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -213,6 +258,9 @@
     <script src="{% static 'app/vendors/fontawesome/all.min.js' %}"></script>
     <script src="{% static 'app/assets/js/theme.js' %}"></script>
     <script src="{% static 'app/assets/js/main.js' %}"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="{% static 'app/assets/js/slick.min.js' %}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -227,6 +275,9 @@ $(document).ready(function() {
 });
       
     </script>
+    {% block scriptDetail %}
+    
+    {% endblock scriptDetail %}
 
     <script> 
       $("#selectID").select2({

@@ -12,7 +12,7 @@ from .functions import (
     get_about,
     get_why_choose,
     get_config,
-    get_do_trusth
+    get_do_trusth,
 )
 
 def verify_email(email):
@@ -72,13 +72,65 @@ def home_searcher(request):
 
 def owner_page(request):
     
-    
     get_configs = get_config({'publish':True})
     template_name = "layout/owner.html"
     context = {
         'get_configs': get_configs,
     }
     return render(request, template_name, context)
+
+
+
+def home_detail(request):
+
+    get_configs = get_config({'publish':True})
+
+    template_name = "layout/home_detail.html"
+    context = {
+        'get_configs': get_configs,
+    }
+    return render(request, template_name, context)
+    
+
+def catalogue(request):
+
+    get_configs = get_config({'publish':True})
+    get_some_vendors = get_some_vendor({'publish':True,'location_or_vendor': 'vente'})
+
+    template_name = "layout/catalogue.html"
+    context = {
+        'get_configs': get_configs,
+        'get_some_vendors': get_some_vendors,
+    }
+    return render(request, template_name, context)
+    
+
+def about(request):
+
+    get_configs = get_config({'publish':True})
+    get_some_vendors = get_some_vendor({'publish':True,'location_or_vendor': 'vente'})
+
+    template_name = "layout/about.html"
+    context = {
+        'get_configs': get_configs,
+        'get_some_vendors': get_some_vendors,
+    }
+    return render(request, template_name, context)
+
+
+def agence(request):
+
+    get_configs = get_config({'publish':True})
+    get_some_vendors = get_some_vendor({'publish':True,'location_or_vendor': 'vente'})
+    
+    template_name = "layout/agence.html"
+    context = {
+        'get_configs': get_configs,
+        'get_some_vendors': get_some_vendors,
+    }
+    return render(request, template_name, context)
+
+
 
 
 @csrf_exempt
@@ -107,3 +159,5 @@ def post_ask_home(request):
         'msg': msg
     }
     return JsonResponse(data,safe=False)
+
+

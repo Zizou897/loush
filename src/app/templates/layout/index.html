@@ -10,7 +10,8 @@
                 <h1 class="fs-6 mb-2 fw-bold">LA PLATEFORME N°1 DE L'IMMOBILIER AU BURKINA FASO</h1>
                 <h4 class=" font-sans-serif mb-5">Notre plateforme propose une solution complète pour la recherche, l’achat
                   et la vente de biens immobiliers.</h4>
-                <a class="btn btn-primary me-2 fw-bold" href="{% url 'home-searcher' %}" role="button">Chercher une maison</a> <button class="btn btn-outline-secondary fw-bold"  role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Exposer une maison</button>
+                <button class="btn btn-primary me-2 fw-bold"role="button" data-bs-toggle="modal" data-bs-target="#modalSearch">Chercher une maison</button> 
+                <button class="btn btn-outline-secondary fw-bold"  role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Exposer une maison</button>
                 <button class="fa-btn-secondary fw-bold"  role="button" >SiraSev</button>
             </div>
         </div>
@@ -163,5 +164,7 @@
 
   <!-- Modal -->
 {% include "includes/_modal_owner.html" %}
+
+{% include "includes/_modal_search.html" %}
 
 {% endblock %}

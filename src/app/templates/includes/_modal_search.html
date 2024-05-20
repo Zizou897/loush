@@ -1,0 +1,119 @@
+<div class="modal fade" id="modalSearch" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content" id="home_asking">
+      <div class="modal-header">
+        <h5 class="modal-title">Chercher une maison</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row pb-4">
+          <p class="text-center">Informations du Propriétaire</p>
+          <div class="col-md-6">
+            <label for="forName" class="form-label">Nom complet<span class="text-primary">*</span></label>
+            <input type="text" class="form-control" id="forName" placeholder="John diane" v-model="name">
+          </div>
+          <div class="col-md-6">
+            <label for="forPhone" class="form-label">Téléphone<span class="text-primary" v-model="phone">*</span></label>
+              <input type="text" class="form-control" id="forPhone" placeholder="O7897734">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <label for="forEmail" class="form-label">Email<span class="text-primary">*</span></label>
+            <input type="email" class="form-control" id="forEmail" placeholder="name@example.com" v-model="email">
+          </div>
+        </div>
+        <hr>
+        <p class="text-center">Préférences de la Propriété</p>
+
+        <div class="row mt-3">
+          <div class="col-sm-6 col-md-4">
+            <label class="form-label" for="forType">Type de proprieté recherché<span class="text-primary">*</span></label>
+            <select class="form-select" id="forType" v-model="type_propriete_rechercher">
+                <option selected="selected">Votre choix</option>
+                <option>Appartement</option>
+                <option>Maison</option>
+                <option>Studio</option>
+            </select>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <label class="form-label" for="forStatus">Achat ou Location <span class="text-primary">*</span></label>
+            <select class="form-select" id="forStatus"  v-model="achat_or_location">
+                <option selected="selected">À louer / À vendre</option>
+                <option>À louer</option>
+                <option>À vendre</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="forPrice" class="form-label">Budget <span class="text-primary">*</span></label>
+            <input type="text" class="form-control" id="forPrice" placeholder="100 000 fcfa" v-model="budjet">
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-sm-6 col-md-4">
+            <label class="form-label" for="forAddress">Nombre de chambres<span class="text-primary">*</span></label>
+            <select class="form-select" id="forAddress" v-model="nbr_chambre">
+                <option selected="selected">Votre choix</option>
+                            <option> 1 chambre</option>
+                            <option> 2 chambres</option>
+                            <option> 3 chambres</option>
+                            <option> 4 chambres</option>
+                            <option> 5 chambres</option>
+            </select>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <label class="form-label" for="forYear">Nombre de salles de bain <span class="text-primary">*</span></label>
+            <select class="form-select" id="forYear" v-model="nbr_salle_bain">
+                <option selected="selected">Votre choix</option>
+                            <option> 1 salle de bain</option>
+                            <option> 2 salles de bain</option>
+                            <option> 3 salles de bain</option>
+                            <option> 4 salles de bain</option>
+                            <option> 5 salles de bain</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="forSpace" class="form-label">Surface habitable <span class="text-primary">*</span></label>
+            <input type="text" class="form-control" id="forSpace" placeholder="Surface en mètres carrés" v-model="surface_habitable">
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-sm-6 col-md-6">
+              <label class="form-label" for="inputLevel">Localisation souhaitée <span class="text-primary">*</span></label>
+              <input type="text" class="form-control" placeholder="Quartier, ville ou région" v-model="localisation_souhaite">
+          </div>
+          <div class="col-sm-6 col-md-6">
+              <label class="form-label" for="inputLevel">Caractéristiques souhaitées</label>
+              <select class="form-select" id="inputLevel" v-model="caract_souhaite">
+                  <option selected="selected">Votre choix</option>
+                  <option>Jardin</option>
+                  <option>Balcon</option>
+                  <option>Parking</option>
+              </select>
+          </div>
+        </div>
+        <hr>
+        <p class="text-center">Autres Préférences</p>
+        <div class="row">
+          <div class="col-sm-6 col-md-6">
+              <label class="form-label" for="inputCategories">Date de déménagement souhaitée <span class="text-primary">*</span></label>
+              <input type="date" class="form-control" v-model="date_demenag_souhaite">
+          </div>
+          <div class="col-sm-6 col-md-6">
+              <label for="floatingTextarea">Commentaires supplémentaires</label>
+              <textarea class="form-control" placeholder="Laisser un commentaire" id="floatingTextarea" v-model="comments_souhaite"></textarea>
+          </div>
+  
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermé</button>
+        <button type="button" class="btn btn-primary" @click.prevent="sendData()">Faire votre Demande</button>
+      </div>
+    </div>
+  </div>
+</div>

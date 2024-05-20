@@ -280,13 +280,6 @@ $(document).ready(function() {
     {% endblock scriptDetail %}
 
     <script> 
-      $("#selectID").select2({
-        dropdownParent:"#staticBackdrop",
-        placeholder: "[Piscine, jardin, vue, etc.]",
-        multiple: true,
-        allowClear: true,
-        tags:["Balcon", "Jardin", "Parking"],
-      });
 
       new Vue({
         el: "#home_owner",

@@ -2588,7 +2588,7 @@ progress {
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #402B2B !important;
+  color: #402b2bbd !important;
   opacity: 0,5;
 }
 
@@ -2608,7 +2608,7 @@ progress {
 }
 
 .form-control::placeholder {
-  color: #141313;
+  color: #414141;
   opacity: 0,3;
 }
 

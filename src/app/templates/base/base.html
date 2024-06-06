@@ -456,8 +456,79 @@ $(document).ready(function() {
             }
           }
         },
-      })
+    });
 
+
+    new Vue({
+            el: '#agency',
+            data: {
+              name: '',
+              phone: '',
+              site_web: '',
+              email: '',
+              agency_address:'',
+              name_representative:''
+            },
+            mounted(){},
+            computed: {},
+            methods: {
+                sendDataAgency(){
+                  if(this.name == '', this.phone == '', this.site_web == '', this.agency_address == '', this.name_representative == ''){
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Erreur',
+                      text: "veuillez remplir tous les champs !!!",
+                      showConfirmButton: true,
+                     })
+                  }else if(!/^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.email)){
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Erreur',
+                      text: "un mail valide svp !!!",
+                      showConfirmButton: true,
+                     })
+                  }else{
+                    axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
+                    axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
+                    axios.post("http://zizou897.pythonanywhere.com/api/agency/add-agency-property",{
+                      
+                        "name_agency": this.name,
+                        "phone": this.phone,
+                        "site_web": this.site_web,
+                        "email": this.email,
+                        "name_representative": this.name_representative,
+                        "address_agency": this.agency_address
+                      
+                    }).then(function(response){
+                      if(response.data.success){
+                        Swal.fire({
+                          icon: 'success',
+                          title: 'Demande envoyee',
+                          text: response.data.msg ,
+                          showConfirmButton: false,
+                          timer: 3000
+                        });
+
+                        this.name= '';
+                        this.phone= '';
+                        this.site_web= '';
+                        this.email= '';
+                        this.agency_address= '';
+                        this.name_representative= '';
+
+                      }else{
+                        Swal.fire({
+                          icon: 'error',
+                          title: 'Demande non envoyee',
+                          text: 'veuillez reéssayer !!!' ,
+                          showConfirmButton: true,
+                        });
+                      }
+                    })
+                  } 
+                }
+            }
+    })
     </script>
   </body>
 

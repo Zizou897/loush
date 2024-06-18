@@ -11,14 +11,15 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>LOUSHIRA | Accueil </title>
+    <title>{{page}}</title>
 
 
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================--> 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Rubik:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="{{get_configs.logo.url}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{get_configs.logo.url}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{get_configs.logo.url}}">
@@ -262,9 +263,12 @@
 	  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="{% static 'app/assets/js/slick.min.js' %}"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="{% static 'app/assets/js/sweetalert.js' %}"></script>
+    <script src="{% static 'app/assets/js/vue.js' %}"></script>
+    <script src="{% static 'app/assets/js/axios.js' %}"></script>
+
+    
    
     <script>
      // In your Javascript (external .js resource or <script> tag)
@@ -490,7 +494,7 @@ $(document).ready(function() {
                   }else{
                     axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
                     axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
-                    axios.post("http://zizou897.pythonanywhere.com/api/agency/add-agency-property",{
+                    axios.post("https://zizou897.pythonanywhere.com/api/agency/add-agency-property",{
                       
                         "name_agency": this.name,
                         "phone": this.phone,

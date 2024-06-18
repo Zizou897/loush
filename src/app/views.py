@@ -36,6 +36,7 @@ def home(request):
 
     template_name = "layout/index.html"
     context = {
+        'page': "LOUSHIRA | Accueil",
         'get_banners': get_banners,
         'get_some_vendors': get_some_vendors,
         'get_some_locations': get_some_locations,
@@ -54,6 +55,7 @@ def search_page(request):
     
     template_name = "layout/home_search.html"
     context = {
+        'page': "LOUSHIRA | Chercher-une-maison",
         'get_configs': get_configs,
     }
     return render(request, template_name, context)
@@ -65,6 +67,7 @@ def home_searcher(request):
     
     template_name = "layout/home_searcher.html"
     context = {
+        'page': "LOUSHIRA | chercheur",
         'get_configs': get_configs,
     }
     return render(request, template_name, context)
@@ -75,6 +78,7 @@ def owner_page(request):
     get_configs = get_config({'publish':True})
     template_name = "layout/owner.html"
     context = {
+        'page': "LOUSHIRA | Proprietaire",
         'get_configs': get_configs,
     }
     return render(request, template_name, context)
@@ -87,6 +91,7 @@ def home_detail(request):
 
     template_name = "layout/home_detail.html"
     context = {
+        'page': "LOUSHIRA | Home-detail",
         'get_configs': get_configs,
     }
     return render(request, template_name, context)
@@ -99,6 +104,7 @@ def catalogue(request):
 
     template_name = "layout/catalogue.html"
     context = {
+        'page': "LOUSHIRA | Catalogue",
         'get_configs': get_configs,
         'get_some_vendors': get_some_vendors,
     }
@@ -112,6 +118,7 @@ def about(request):
 
     template_name = "layout/about.html"
     context = {
+        'page': "LOUSHIRA | A PROPOS",
         'get_configs': get_configs,
         'get_some_vendors': get_some_vendors,
     }
@@ -125,6 +132,7 @@ def agence(request):
     
     template_name = "layout/agence.html"
     context = {
+        'page': "LOUSHIRA | AGENCE",
         'get_configs': get_configs,
         'get_some_vendors': get_some_vendors,
     }

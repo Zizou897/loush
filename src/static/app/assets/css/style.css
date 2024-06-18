@@ -1,3 +1,6 @@
+body{
+  font-family: "Roboto";
+}
 .title-h5{
     font-family: "Roboto", sans-serif;
     font-weight: 400;
@@ -42,6 +45,31 @@
     -webkit-box-shadow: 0 0 0 0 rgba(38, 66, 98, 0.5);
     box-shadow: 0 0 0 0 rgba(38, 66, 98, 0.5);
 }
+
+.fa-btn-primary{
+  color: #FFFEFE;
+  background-color: #f15a27;
+  border-color: #f15a27;
+  border: 1px solid #f15a27;
+  border-radius: 3px;
+  padding: 0.375rem 0.75rem;
+  margin-left: 3px;
+  font-size: 1rem;
+  border-radius: 0.2rem;
+  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+} 
+
+.fa-btn-primary:hover{
+  background-color: transparent;
+  color: #f15a27;
+  -webkit-box-shadow: 0 0 0 0 rgba(38, 66, 98, 0.5);
+  box-shadow: 0 0 0 0 rgba(38, 66, 98, 0.5);
+}
+
 
 .fa-form-control {
     display: block;
@@ -128,4 +156,26 @@
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
     }
-    }
+  }
+
+
+.team-card {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #FFFEFE;
+  background-clip: border-box;
+  border: thin solid #ddd;
+  transition: 0.3s;
+}
+
+.team-card:hover{
+  border: thin solid #262262;
+}

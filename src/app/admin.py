@@ -8,7 +8,11 @@ from .models import (
     About,
     Whychoose,
     configuration,
-    DoTrust
+    DoTrust,
+    Team,
+    Localite,
+    TypePropriete,
+    Social
 )
 
 
@@ -84,3 +88,41 @@ class DoTrustAdmin(admin.ModelAdmin):
     def logo_view(self, obj):
         return mark_safe(f'<img src="{obj.picture.url}" style="height:100px; width:150px">')
     logo_view.short_description = "Aperçu des images"
+    
+
+@admin.register(Team)
+class TeamAdmin(admin.ModelAdmin):
+    list_display = ("image_view", "name", "created_at", "publish")
+    date_hierarchy = "created_at"
+    list_per_page = 10
+    list_editable = ["publish"]
+
+    def image_view(self, obj):
+        return mark_safe(f'<img src="{obj.picture.url}" style="height:100px; width:150px">')
+    image_view.short_description = "Aperçu des images"
+    
+
+@admin.register(Localite)
+class LocaliteAdmin(admin.ModelAdmin):
+    list_display = ("name", "longitude", "laltitude","created_at", "publish")
+    date_hierarchy = "created_at"
+    list_per_page = 10
+    list_editable = ["publish"]
+    
+
+@admin.register(TypePropriete)
+class TypeProprieteAdmin(admin.ModelAdmin):
+    list_display = ("libele","created_at", "publish")
+    date_hierarchy = "created_at"
+    list_per_page = 10
+    list_editable = ["publish"]
+    
+
+@admin.register(Social)
+class SocialAdmin(admin.ModelAdmin):
+    list_display = ("name", "link","created_at", "publish")
+    date_hierarchy = "created_at"
+    list_per_page = 10
+    list_editable = ["publish"]
+    
+

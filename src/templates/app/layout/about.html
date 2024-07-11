@@ -84,35 +84,17 @@
     </div>
     
     <div class="row">
-      <div class="col-md-4">
-        <div class="team-card mb-md-0 h-100">
-          <div class="card-body">
-            <img class="w-100 h-90" src="{% static 'app/assets/img/gallery/ins_team1.jpg' %}" alt="">
-          <h2 class="fw-bold text-center mt-3">John Dane</h2>
-          <p class="text-center text-primary">Co-founder</p>
+      {% for team in get_teams %}
+        <div class="col-md-4">
+          <div class="team-card mb-md-0 h-100">
+            <div class="card-body">
+              <img class="w-100 h-90" src="{{team.picture.url}}" alt="">
+            <h2 class="fw-bold text-center mt-3">{{team.name}}</h2>
+            <p class="text-center text-primary">{{team.job}}</p>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="team-card mb-md-0 h-100">
-          <div class="card-body">
-            <img class="w-100 h-80" src="{% static 'app/assets/img/gallery/ins_team2.jpg' %}" alt="">
-          <h2 class="fw-bold text-center mt-3">John Dane</h2>
-          <p class="text-center text-primary">Co-founder</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-md-4">
-        <div class="team-card mb-md-0 h-100">
-          <div class="card-body">
-            <img class="w-100 h-80" src="{% static 'app/assets/img/gallery/ins_team3.jpg' %}" alt="">
-          <h2 class="fw-bold text-center mt-3">John Dane</h2>
-          <p class="text-center text-primary">Co-founder</p>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
 
     </div>
   </div>

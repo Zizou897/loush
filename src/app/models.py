@@ -14,7 +14,8 @@ from core.constants import (
     ABOUT_PATH,
     WHYCHOOSE,
     LOGO_SITE_PATH,
-    DO_TRUSTH_PATH
+    DO_TRUSTH_PATH,
+    Team_PATH
 )
 
 
@@ -25,6 +26,17 @@ class Convention(models.Model):
 
     class Meta:
         abstract = True
+
+
+class TypePropriete(Convention):
+    libele =  models.CharField(max_length=200, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    
+    class Meta:
+        verbose_name = "Type de Propriété"
+        verbose_name_plural = "Type de Propriétés"
+    def __str__(self):
+        return self.libele
 
 
 class Banner(Convention):
@@ -133,4 +145,43 @@ class DoTrust(Convention):
         
     def __str__(self):
         return self.title
+
+
+class Team(Convention):
+    name = models.CharField(max_length=150, blank=True, null=True)
+    job = models.CharField(max_length=150, blank=True, null=True)
+    picture = models.FileField(upload_to=Team_PATH, max_length=100)
     
+    class Meta:
+        verbose_name = "Notre équipe"
+        verbose_name_plural = "Notre équipes"
+
+    def __str__(self):
+        return  self.name
+
+
+class Localite(Convention):
+    name = models.CharField(max_length=150, blank=True, null=True)
+    longitude =  models.CharField(max_length=150, blank=True, null=True)
+    laltitude =  models.CharField(max_length=150, blank=True, null=True)
+    
+    class Meta:
+        verbose_name = "Localité"
+        verbose_name_plural = "Localités"
+        
+    def __str__(self):
+        return self.name
+
+
+class Social(Convention):
+    name = models.CharField(max_length=150, blank=True, null=True)
+    icon = models.CharField(max_length=150, blank=True, null=True)
+    link = models.URLField(max_length = 200)
+    
+    class Meta:
+        verbose_name = "Réseaux Social"
+        verbose_name_plural = "Réseaux Sociaux"
+
+    def __str__(self):
+        return self.name
+

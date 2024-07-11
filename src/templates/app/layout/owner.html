@@ -2,14 +2,14 @@
 {% load static %}
 {% block content %}
 
-<section class="pb-11 pt-7 bg-600">
+<section class="bg-600">
 
     <div class="container">
       <div class="row">
         <div class="col-12">
             <h6 class="font-sans-serif text-primary fw-bold"></h6>
             <h1 class="mb-6">Exposer une maison</h1>
-            <form id="home_asking" class="row g-3">
+            <form id="home_owner" class="row g-3">
 
                 <h1 class="text-center fs-2 mb-5">Informations persernelles</h1>
                 <div class="row mb-3">
@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-sm-6 col-md-6">
                     <label class="form-label" for="inputLevel">Numéro de téléphone <span class="text-primary">*</span></label>
-                    <input type="number" class="form-control" placeholder="" v-model="phone">
+                    <input type="name" class="form-control" placeholder="" v-model="phone">
                     </div>
                 </div>
                 <div class="row">
@@ -141,10 +141,8 @@
                     </div>
                   </div>
                 <div class="col-auto z-index-2">
-                <button class="btn btn-primary" type="submit" @click.prevent="sendData()">Exposer sa maison</button>
+                <button class="btn btn-primary" type="submit" @click.prevent="sendOwnerData()">Exposer sa maison</button>
                 </div>
-
-           
             </form>
         </div>
       </div>

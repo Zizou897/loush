@@ -5,7 +5,11 @@ from .models import (
     About,
     Whychoose,
     configuration,
-    DoTrust
+    DoTrust, 
+    Team, 
+    Localite,
+    TypePropriete,
+    Social
 )
 
 
@@ -30,3 +34,15 @@ def get_config(data=dict()):
 
 def get_do_trusth(data=dict()):
     return DoTrust.objects.filter(**data)
+
+def get_team(data=dict()):
+    return Team.objects.filter(**data)
+
+def get_localite(data=dict()):
+    return Localite.objects.filter(**data)
+
+def get_type_propriete(data=dict()):
+    return Localite.objects.filter(**data)
+
+def get_social(data=dict()):
+    return Social.objects.filter(**data)

@@ -39,7 +39,8 @@
     <link href="{% static 'app/assets/css/slick-theme.css' %}" rel="stylesheet" />
     
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+<div class="elfsight-app-f8f97b14-84d7-4399-a8aa-7e23f926c944" data-elfsight-app-lazy></div>
   </head>
 
 
@@ -105,10 +106,10 @@
             </div>
             <div class="col-auto ms-md-auto order-md-2 d-none d-sm-block">
               <ul class="list-unstyled list-inline my-2">
-                <li class="list-inline-item"><a class="text-decoration-none" href="#!"><i class="fab fa-facebook-f text-900"></i></a></li>
-                <li class="list-inline-item"><a class="text-decoration-none" href="#!"><i class="fab fa-pinterest text-900"></i></a></li>
-                <li class="list-inline-item"><a class="text-decoration-none" href="#!"><i class="fab fa-twitter text-900"></i></a></li>
-                <li class="list-inline-item"><a class="text-decoration-none" href="#!"><i class="fab fa-instagram text-900"> </i></a></li>
+                {% for social in get_socials %}
+                  <li class="list-inline-item"><a class="text-decoration-none" href="{{social.link}}"><i class="{{social.icon}} text-900"></i></a></li>
+                {% endfor %}
+                
               </ul>
             </div>
             <div class="col-auto">
@@ -193,7 +194,7 @@
               <h5 class="lh-lg fw-bold text-light mb-4 font-sans-serif"> Plus</h5>
               <ul class="list-unstyled mb-md-4 mb-lg-0">
                 <li class="lh-lg"><a class="text-200" href="#!">Terms</a></li>
-                <li class="lh-lg"><a class="text-200" href="#!">Privacy</a></li>
+                <li class="lh-lg"><a class="text-200" href="{% url 'condition-generale-utilisation' %}">Conditions générale d'utlisation</a></li>
                 <li class="lh-lg"><a class="text-200" href="#!">Help</a></li>
                 <li class="lh-lg"><a class="text-200" href="#!">Accessibility</a></li>
                 <li class="lh-lg"><a class="text-200" href="#!">Contact</a></li>
@@ -224,6 +225,8 @@
         </div>
       </section>
     </main>
+    
+
     <!-- ===============================================-->
     <!--    End of Main Content-->
     <!-- ===============================================-->
@@ -268,7 +271,6 @@
     <script src="{% static 'app/assets/js/vue.js' %}"></script>
     <script src="{% static 'app/assets/js/axios.js' %}"></script>
 
-    
    
     <script>
      // In your Javascript (external .js resource or <script> tag)
@@ -320,25 +322,57 @@ $(document).ready(function() {
         methods: {
          sendOwnerData(){
           if(this.first_confirm, this.second_confirm){
-            if(!this.name == '', !this.phone == '', !this.email == '', !this.type_propriete_for_owner == '', !this.status_buy_sell == '', !this.home_price == '', !this.home_address == '', !this.year_building == '', !this.living_space == '', !this.nbr_room == '', !this.nbr_bath_room == ''){
+            if(this.name == '', this.phone == '', this.email == '', this.type_propriete_for_owner == '', this.status_buy_sell == '', this.home_price == '', this.home_address == '', this.year_building == '', this.living_space == '', this.nbr_room == '', this.nbr_bath_room == ''){
               if(!/^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.email)){
                 Swal.fire({
-                  icon: 'error',
+                  icon: 'error',  
                   title: 'Erreur',
                   text: "veuillez saisir un email valide !!! ",
-                  showConfirmButton: false,
-                  timer: 2000,
+                  showConfirmButton: true,
                 })
               }
               else{
-                Swal.fire({
-                  icon: 'success',
-                  title: "Demande d'exposition envoyé",
-                  text: "Notre equipe vous contactera dans un bref delai !!! ",
-                  showConfirmButton: false,
-                  timer: 2000,
-                });
-                console.log(this.picture)
+                let myForm = new FormData();
+                myForm.append('name', this.name)
+                myForm.append('phone', this.phone)
+                myForm.append('email', this.email)
+                //-----------------------------
+                myForm.append('type_propriete_for_owner',this.type_propriete_for_owner)
+                myForm.append('status_buy_sell',this.status_buy_sell)
+                myForm.append('home_price',this.home_price)
+                myForm.append('home_address',this.home_address)
+                myForm.append('year_building',this.year_building)
+                myForm.append('living_space',this.living_space)
+                myForm.append('nbr_room',this.nbr_room)
+                myForm.append('nbr_bath_room' ,this.nbr_bath_room)
+                myForm.append('other_detail',this.other_detail)
+                //--------------------------
+                myForm.append('home_detail',this.home_detail)
+                
+                axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
+                axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
+                axios.post("{% url 'post-owner' %}", myForm, {})
+                .then(function(response){
+                  if(response.data.success){
+                    Swal.fire({
+                      icon: 'success',
+                      title: "Demande d'exposition envoyée",
+                      text: response.data.msg,
+                      showConfirmButton: true,
+                      
+                    });
+                    console.log(this.picture);
+                  }
+                  else{
+                    Swal.fire({
+                      icon: 'erreur',
+                      title: "Demande d'exposition non envoyée",
+                      text: response.data.msg,
+                      showConfirmButton: true,
+                      
+                    });
+                  }
+                })
               }
             }else{
               Swal.fire({
@@ -360,7 +394,8 @@ $(document).ready(function() {
         },
       });
 
-    var app =  new Vue({
+      
+      var app =  new Vue({
         el: '#home_asking',
         delimiters: ['%{', '}'],
         data: {
@@ -395,18 +430,11 @@ $(document).ready(function() {
                 text: "veuillez saisir votre nom & prénom !!! ",
                 showConfirmButton: true,
               })
-            }else if(this.phone == ""){
-              Swal.fire({
-                icon: 'error',
-                title: 'Erreur',
-                text: "veuillez saisir un numéro de téléphone pour vous joindre !!! ",
-                showConfirmButton: true,
-              })
             }else if(this.email == ""){
               Swal.fire({
                 icon: 'error',
                 title: 'Erreur',
-                text: "veuillez saisir votre addresse emailil !!!",
+                text: "veuillez saisir votre addresse email !!!",
                 showConfirmButton: true,
               })
             }else if(this.date_demenag_souhaite == ''){
@@ -419,37 +447,37 @@ $(document).ready(function() {
             }else{
             
               let myForm = new FormData();
-              FormData.append('name', this.name)
-              FormData.append('phone', this.phone)
-              FormData.append('email', this.email)
+              myForm.append('name', this.name)
+              myForm.append('phone', this.phone)
+              myForm.append('email', this.email)
               //-------------------------------------
-              FormData.append('type_propriete_rechercher', this.type_propriete_rechercher)
-              FormData.append('achat_or_location', this.achat_or_location)
-              FormData.append('budjet', this.budjet)
-              FormData.append('nbr_chambre', this.nbr_chambre)
-              FormData.append('nbr_salle_bain', this.nbr_salle_bain)
-              FormData.append('surface_habitable', this.surface_habitable)
-              FormData.append('localisation_souhaite', this.localisation_souhaite)
-              FormData.append('caract_souhaite', this.caract_souhaite)
+              myForm.append('type_propriete_rechercher', this.type_propriete_rechercher)
+              myForm.append('achat_or_location', this.achat_or_location)
+              myForm.append('budjet', this.budjet)
+              myForm.append('nbr_chambre', this.nbr_chambre)
+              myForm.append('nbr_salle_bain', this.nbr_salle_bain)
+              myForm.append('surface_habitable', this.surface_habitable)
+              myForm.append('localisation_souhaite', this.localisation_souhaite)
+              myForm.append('caract_souhaite', this.caract_souhaite)
               //-----------------------------------------
-              FormData.append('date_demenag_souhaite', this.date_demenag_souhaite)
-              FormData.append('comments_souhaite', this.comments_souhaite)
+              myForm.append('date_demenag_souhaite', this.date_demenag_souhaite)
+              myForm.append('comments_souhaite', this.comments_souhaite)
               
               axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
               axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
-              axios.post("{% url 'post-ask-home' %}", FormData, {})
+              axios.post("{% url 'post-searcher' %}", myForm, {})
               .then(function(response){
                 if(response.data.success){
                   Swal.fire({
                     icon: 'success',
-                    title: 'Demande envoyee',
+                    title: 'Demande envoyée',
                     text: response.data.msg ,
                     showConfirmButton: true,
                   });
                 }else{
                   Swal.fire({
                     icon: 'error',
-                    title: 'Demande envoyee',
+                    title: 'Demande non envoyée',
                     text: response.data.msg ,
                     showConfirmButton: true,
                   });
@@ -460,80 +488,17 @@ $(document).ready(function() {
             }
           }
         },
-    });
-
-
-    new Vue({
-            el: '#agency',
-            data: {
-              name: '',
-              phone: '',
-              site_web: '',
-              email: '',
-              agency_address:'',
-              name_representative:''
-            },
-            mounted(){},
-            computed: {},
-            methods: {
-                sendDataAgency(){
-                  if(this.name == '', this.phone == '', this.site_web == '', this.agency_address == '', this.name_representative == ''){
-                    Swal.fire({
-                      icon: 'error',
-                      title: 'Erreur',
-                      text: "veuillez remplir tous les champs !!!",
-                      showConfirmButton: true,
-                     })
-                  }else if(!/^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.email)){
-                    Swal.fire({
-                      icon: 'error',
-                      title: 'Erreur',
-                      text: "un mail valide svp !!!",
-                      showConfirmButton: true,
-                     })
-                  }else{
-                    axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
-                    axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
-                    axios.post("https://zizou897.pythonanywhere.com/api/agency/add-agency-property",{
-                      
-                        "name_agency": this.name,
-                        "phone": this.phone,
-                        "site_web": this.site_web,
-                        "email": this.email,
-                        "name_representative": this.name_representative,
-                        "address_agency": this.agency_address
-                      
-                    }).then(function(response){
-                      if(response.data.success){
-                        Swal.fire({
-                          icon: 'success',
-                          title: 'Demande envoyee',
-                          text: response.data.msg ,
-                          showConfirmButton: false,
-                          timer: 3000
-                        });
-
-                        this.name= '';
-                        this.phone= '';
-                        this.site_web= '';
-                        this.email= '';
-                        this.agency_address= '';
-                        this.name_representative= '';
-
-                      }else{
-                        Swal.fire({
-                          icon: 'error',
-                          title: 'Demande non envoyee',
-                          text: 'veuillez reéssayer !!!' ,
-                          showConfirmButton: true,
-                        });
-                      }
-                    })
-                  } 
-                }
-            }
-    })
+      });
+    
     </script>
+    {% block postSearcher %}
+      
+    {% endblock postSearcher %}
+
+    {% block agencePost %}
+      
+    {% endblock agencePost %}
+
   </body>
 
 </html>

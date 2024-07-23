@@ -16,7 +16,8 @@ from .functions import (
     get_team,
     get_localite,
     get_type_propriete,
-    get_social
+    get_social,
+    get_section_triple
 )
 
 def verify_email(email):
@@ -136,19 +137,22 @@ def catalogue(request):
     
 
 def about(request):
-
+    liste = [1,3,5]
     get_socials = get_social({'publish':True})
     get_configs = get_config({'publish':True})
     get_some_vendors = get_some_vendor({'publish':True,'location_or_vendor': 'vente'})
     get_teams = get_team({'publish':True})
+    get_section_triples = get_section_triple({'publish':True})
 
     template_name = "layout/about.html"
     context = {
+        'listes': liste,
         'page': "LOUSHIRA | A PROPOS",
         'get_socials': get_socials,
         'get_configs': get_configs,
         'get_some_vendors': get_some_vendors,
-        'get_teams': get_teams
+        'get_teams': get_teams,
+        'get_section_triples': get_section_triples
     }
     return render(request, template_name, context)
 

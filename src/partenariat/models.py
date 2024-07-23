@@ -64,6 +64,22 @@ class Owner(Convention):
     description = models.TextField()
     #---------------------------------------------------------------------
    
+    class Meta:
+        verbose_name = "Proprietaire"
+        verbose_name_plural = "Proprietaires"
+        
     def __str__(self):
         return self.name
 
+
+class Newsletters(Convention):
+    email = models.EmailField(max_length=254)
+    
+    class Meta:
+        verbose_name = "Newsletters"
+        verbose_name_plural = "Newsletters"
+        
+    def __str__(self):
+        return self.email
+
+    

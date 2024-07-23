@@ -1,4 +1,4 @@
-body{
+p{
   font-family: "Roboto";
 }
 .title-h5{
@@ -179,3 +179,20 @@ body{
 .team-card:hover{
   border: thin solid #262262;
 }
+
+
+@media (max-width: 434px) {
+  .margin-top-button {
+    margin-top: 15px;
+  }
+
+  .margin-right-button {
+    margin-right: 10px;
+  }
+  
+  .width-bouton {
+    width: 200px;
+  }
+}
+
+

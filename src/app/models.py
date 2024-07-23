@@ -1,4 +1,6 @@
 from django.db import models
+
+from colorfield.fields import ColorField
 from tinymce.models import HTMLField
 
 # Create your models here.
@@ -15,7 +17,7 @@ from core.constants import (
     WHYCHOOSE,
     LOGO_SITE_PATH,
     DO_TRUSTH_PATH,
-    Team_PATH
+    Team_PATH, SECTION_PATH
 )
 
 
@@ -185,3 +187,43 @@ class Social(Convention):
     def __str__(self):
         return self.name
 
+
+class ClassButton(Convention):
+    name = models.CharField(max_length=200)
+
+    class Meta:
+        verbose_name = "class boutton"
+        verbose_name_plural = "class bouttons"
+        
+    def __str__(self):
+        return self.name
+
+
+class Links(Convention):
+    name = models.CharField(max_length=100, default="Accueil", blank=True, null=True)
+    link = models.CharField(max_length=100, default="Accueil", blank=True, null=True)
+    
+    class Meta:
+        verbose_name = "Différents liens"
+        verbose_name_plural = "Différents liens"
+        
+    def __str__(self):
+        return self.name
+
+
+class SectionTriple(Convention):
+    title = models.CharField(max_length=200, blank=True, null=True)
+    libele = models.TextField(blank=True, null=True)
+    text_boutton = models.CharField(max_length=100, blank=True, null=True)
+    class_boutton = models.ForeignKey(ClassButton, on_delete=models.DO_NOTHING, related_name='class_boutton_section')
+    link_page = models.ForeignKey(Links, on_delete=models.DO_NOTHING, related_name='lin_page_section')
+    background_color = ColorField(default="#bebebe")
+    picture = models.FileField(upload_to=SECTION_PATH, max_length = 100, blank=True, null=True)
+    order = models.IntegerField()
+
+    class Meta:
+        verbose_name = "Section triple colors"
+        verbose_name_plural = "Section triple colors"
+        
+    def __str__(self):
+        return f"{self.order}"

@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-sm-6 col-md-6">
                     <label class="form-label" for="inputLevel">Numéro de téléphone <span class="text-primary">*</span></label>
-                    <input type="number" class="form-control" placeholder="" v-model="phone">
+                    <input type="number" class="form-control" placeholder="O7897734" v-model="phone">
                     </div>
                 </div>
                 <div class="row">
@@ -55,8 +55,8 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-6 col-md-4">
-                        <label class="form-label" for="inputLevel">Nombre de chambres <span class="text-primary">*</span></label>
-                        <select class="form-select" id="inputLevel" v-model="nbr_chambre">
+                        <label class="form-label" for="inputLevel">Nombre de chambres <span cO7897734lass="text-primary">*</span></label>
+                        <select class="form-select" data-placeholder="Select fruits" id="inputLevel" v-model="nbr_chambre">
                             <option selected="selected">Votre choix</option>
                             <option> 1 chambre</option>
                             <option> 2 chambres</option>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="col-sm-6 col-md-4">
                         <label class="form-label" for="inputLevel">Nombre de salles de bain <span class="text-primary">*</span></label>
-                        <select class="form-select" id="inputLevel" v-model="nbr_salle_bain">
+                        <select class="form-select" data-placeholder="Select fruits" id="inputLevel" v-model="nbr_salle_bain">
                             <option selected="selected">Votre choix</option>
                             <option> 1 salle de bain</option>
                             <option> 2 salles de bain</option>
@@ -93,13 +93,14 @@
                     </div>
                     <div class="col-sm-6 col-md-6">
                         <label class="form-label" for="inputLevel">Caractéristiques souhaitées</label>
-                        <select class="form-select" id="inputLevel" v-model="caract_souhaite">
-                            <option selected="selected">Votre choix</option>
+                        <select data-placeholder="Begin typing a name to filter..."  class="form-select" id="inputLevel" v-model="caract_souhaite">
+                            
                             <option>Jardin</option>
                             <option>Balcon</option>
                             <option>Parking</option>
                         </select>
                     </div>
+                    
                 </div>
                 <hr>
                 <h1 class="text-center fs-2 mb-5">Autres Préférences</h1>
@@ -118,8 +119,6 @@
                 <div class="col-auto z-index-2">
                 <button class="btn btn-primary" type="submit" @click.prevent="sendData()">Faire votre Demande</button>
                 </div>
-
-           
             </form>
         </div>
       </div>
@@ -135,5 +134,4 @@
     });
 </script>
 {% endblock %}
-
 

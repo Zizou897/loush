@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 
-from .models import AgencyRealEstate, Searcher, Owner
+from .models import AgencyRealEstate, Searcher, Owner, Newsletters
 # Create your views here.
 def verify_email(email):
     try:
@@ -35,12 +35,12 @@ def post_agence(request):
         msg = 'veuillez saisir un addresse Mail correct'
     
     else:
-        all_is_true, msg = True, 'Vous recevrez un mail de la part de Louhsira'
+        all_is_true, msg = True, "ce message est déjà envoyé"
        
         agence, created = AgencyRealEstate.objects.get_or_create(name_agency=name_agency,  phone=phone, email=email, site_web=site_web, name_representative=name_representative, address=address_agency)
         print(created)
         if created:
-            msg = "ce message est déjà envoyé"
+            msg = 'Vous recevrez un mail de la part de Louhsira'
         else:
             agence.save()
        
@@ -76,17 +76,15 @@ def post_searcher(request):
     
     if not name or name.isspace() or not email or email.isspace() or not phone or phone.isspace():
         msg = 'Veuillez renseigner les champs vides'
-    elif len(phone) < 10:
-        msg = 'Le numéro de téléphone doit etre e 10 chiffres'
     elif verify_email(email):
         msg = 'veuillez saisir un addresse Mail correct'
     
     else:
-       all_is_true, msg = True, 'Vous recevrez un mail de la part de Louhsira'
+       all_is_true, msg = True, "ce message est déjà envoyé"
        
        searcher, created = Searcher.objects.get_or_create(name=name, email=email, phone=phone, type_propriete_rechercher=type_propriete_rechercher, achat_or_location=achat_or_location, nbr_chambre=nbr_chambre, nbr_salle_bain=nbr_salle_bain, surface_habitable=surface_habitable, localisation_souhaite=localisation_souhaite, caract_souhaite=caract_souhaite, date_demenag_souhaite=date_demenag_souhaite, comments_souhaite=comments_souhaite)
        if created:
-            msg = "ce message est déjà envoyé"
+            msg = 'Vous recevrez un mail de la part de Louhsira'
        else:
             searcher.save()
     
@@ -118,21 +116,46 @@ def post_owner(request):
     
     description = request.POST.get('home_detail')
     
-    if not name or name.isspace() or not email or email.isspace() or not phone or phone.isspace():
-        msg = 'Veuillez renseigner les champs vides'
-    elif verify_email(email):
+    if verify_email(email):
         msg = 'veuillez saisir un addresse Mail correct'
     else:
-       all_is_true, msg = True, "Notre equipe vous contactera dans un bref delai !!! "
+       all_is_true, msg = True, "ce message est déjà envoyé" 
        owner, created = Owner.objects.get_or_create(name=name, email=email, phone=phone, type_propriete=type_propriete, status=status, budjet=budjet, address_propriete=address_propriete, annee_construction=annee_construction, surface_habitable=surface_habitable, nbr_chambre=nbr_chambre, nbr_salle_bain=nbr_salle_bain, caracteris_special=caracteris_special, description=description)
        if created:
-            msg = "ce message est déjà envoyé"
+            msg = "Notre equipe vous contactera dans un bref delai !!! "
        else:
             owner.save()
-       
+    print(name)
 
     data = {
         'success': all_is_true,
         'msg': msg
     }
+    return JsonResponse(data,safe=False)
+
+
+
+@csrf_exempt
+def post_newsletter(request):
+    all_is_true = False
+    msg = ''
+    
+    email = request.POST.get('email')
+    
+    if verify_email(email):
+        msg = 'veuillez saisir un addresse Mail correct'
+    else:
+        all_is_true, msg = True, "Vous etes déjà abonné" 
+        news, created = Newsletters.objects.get_or_create(email=email)
+        
+        if created:
+            msg = "Vous serrez mis au courant dès qu'il y a du nouveau !!! "
+        else:
+            news.save()
+        
+    data = {
+        'success': all_is_true,
+        'msg': msg
+    }
+    
     return JsonResponse(data,safe=False)

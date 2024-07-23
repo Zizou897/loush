@@ -12,7 +12,10 @@ from .models import (
     Team,
     Localite,
     TypePropriete,
-    Social
+    Social,
+    SectionTriple,
+    ClassButton,
+    Links
 )
 
 
@@ -126,3 +129,26 @@ class SocialAdmin(admin.ModelAdmin):
     list_editable = ["publish"]
     
 
+@admin.register(ClassButton)
+class ClassButtonAdmin(admin.ModelAdmin):
+    list_display = ("name","created_at", "publish")
+    date_hierarchy = "created_at"
+    list_per_page = 10
+    list_editable = ["publish"]
+
+
+@admin.register(SectionTriple)
+class SectionTripleAdmin(admin.ModelAdmin):
+    list_display = ("order", "title","created_at", "publish")
+    date_hierarchy = "created_at"
+    list_per_page = 10
+    list_editable = ["publish"]
+
+
+
+@admin.register(Links)
+class LinksAdmin(admin.ModelAdmin):
+    list_display = ("name", "created_at", "publish")
+    date_hierarchy = "created_at"
+    list_per_page = 10
+    list_editable = ["publish"]

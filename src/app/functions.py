@@ -9,7 +9,8 @@ from .models import (
     Team, 
     Localite,
     TypePropriete,
-    Social
+    Social,
+    SectionTriple,
 )
 
 
@@ -46,3 +47,6 @@ def get_type_propriete(data=dict()):
 
 def get_social(data=dict()):
     return Social.objects.filter(**data)
+
+def get_section_triple(data=dict()):
+    return SectionTriple.objects.filter(**data)

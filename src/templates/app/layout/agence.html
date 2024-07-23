@@ -43,7 +43,7 @@
                         <input type="name" id="repres" class="form-control" placeholder="john diane" v-model="name_representative">
                     </div>
                 </div>
-                
+               
                 <div class="col-auto z-index-2">
                 <button class="btn btn-primary" type="submit" @click.prevent="sendDataAgency()">Agence Immobilière</button>
                 </div>
@@ -52,6 +52,8 @@
         </div>
     </div>
 </section>
+
+
 
 {% endblock content %}
 
@@ -104,14 +106,10 @@
                           title: 'Demande envoyee',
                           text: response.data.msg ,
                           showConfirmButton: false,
-                          timer: 3000
+                          timer: 3500
                         });
-                        this.name_agency = '';
-                        this.phone = '';
-                        this.site_web = '';
-                        this.email = '';
-                        this.address_agency = '';
-                        this.name_representative = '';
+                        window.setTimeout(function(){window.location.reload();}, 3500);
+                        
                       }else{
                         Swal.fire({
                           icon: 'error',

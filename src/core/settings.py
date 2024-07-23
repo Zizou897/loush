@@ -42,9 +42,11 @@ INSTALLED_APPS = [
     # App created
     'app',
     'partenariat',
+    'propriete',
 
     # App installed
     'tinymce',
+    'colorfield',
 
 ]
 

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import AgencyRealEstate, Searcher, Owner
+from .models import AgencyRealEstate, Searcher, Owner, Newsletters
 # Register your models here.
 
 @admin.register(AgencyRealEstate)
@@ -28,3 +28,12 @@ class OwnerAdmin(admin.ModelAdmin):
     date_hierarchy = "created_at"
     list_per_page = 10
     list_editable = ["publish"]
+    
+
+
+@admin.register(Newsletters)
+class NewslettersAdmin(admin.ModelAdmin):
+    list_display = ('email','created_at')
+
+    date_hierarchy = "created_at"
+    list_per_page = 10

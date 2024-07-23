@@ -17,6 +17,11 @@
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================--> 
+   
+   <!-- Latest compiled and minified CSS -->
+
+   
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -40,7 +45,12 @@
     <link href="{% static 'app/assets/css/style.css' %}" rel="stylesheet" />
     <link href="{% static 'app/assets/css/slick.css' %}" rel="stylesheet" />
     <link href="{% static 'app/assets/css/slick-theme.css' %}" rel="stylesheet" />
+
     
+    
+    
+
+
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
 <div class="elfsight-app-f8f97b14-84d7-4399-a8aa-7e23f926c944" data-elfsight-app-lazy></div>
@@ -175,12 +185,11 @@
               <p class="text-light"> <i class="fas fa-phone-alt me-3"></i><a class="text-light" href="tel:+225 0789773420">+225 0789773420 (Support)</a></p>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 mb-3 order-2 order-sm-1">
-              <h5 class="lh-lg fw-bold mb-4 text-light font-sans-serif">Community </h5>
+              <h5 class="lh-lg fw-bold mb-4 text-light font-sans-serif">Communauté </h5>
               <ul class="list-unstyled mb-md-4 mb-lg-0">
-                <li class="lh-lg"><a class="text-200" href="#!">Learners</a></li>
-                <li class="lh-lg"><a class="text-200" href="#!">Partners</a></li>
-                <li class="lh-lg"><a class="text-200" href="#!">Developers</a></li>
-                
+                {% for socials in get_socials %} 
+                  <li class="lh-lg"><a class="text-200" href="{{socials.link}}">{{socials.name}}</a></li> 
+                {% endfor %}
                 
               </ul>
             </div>
@@ -196,10 +205,9 @@
             <div class="col-6 col-sm-4 col-lg-2 mb-3 order-3 order-sm-2">
               <h5 class="lh-lg fw-bold text-light mb-4 font-sans-serif"> Plus</h5>
               <ul class="list-unstyled mb-md-4 mb-lg-0">
-                <li class="lh-lg"><a class="text-200" href="#!">Terms</a></li>
+                
                 <li class="lh-lg"><a class="text-200" href="{% url 'condition-generale-utilisation' %}">Conditions générale d'utlisation</a></li>
-                <li class="lh-lg"><a class="text-200" href="#!">Help</a></li>
-                <li class="lh-lg"><a class="text-200" href="#!">Accessibility</a></li>
+                
                 <li class="lh-lg"><a class="text-200" href="#!">Contact</a></li>
                 
               </ul>
@@ -273,234 +281,338 @@
     <script src="{% static 'app/assets/js/sweetalert.js' %}"></script>
     <script src="{% static 'app/assets/js/vue.js' %}"></script>
     <script src="{% static 'app/assets/js/axios.js' %}"></script>
+   
+    <link href="{% static 'app/assets/css/multiple.css' %}" rel="stylesheet" />
+    <script src="{% static 'app/assets/js/multiple.js' %}"></script>
 
    
-    <script>
-     // In your Javascript (external .js resource or <script> tag)
-$(document).ready(function() {
-  $('.js-example-basic-single').select2({
-    border:'3px',
-  });
-});
-      
-    </script>
+   
+
     {% block scriptDetail %}
-    
     {% endblock scriptDetail %}
 
+    <script>
+      $('.team-rows').slick({
+        dots: true,
+        centerMode: true,
+        centerPadding: '60px',
+        infinite: true,
+        autoplay: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        speed: 300,
+      })
+    </script>
+    <!-- Pour les chercheurs -->
     <script> 
+      
+    var app =  new Vue({
+      el: '#home_asking',
+      delimiters: ['%{', '}'],
+      data: {
+        confirm: false,
+        //--------------------------
+        name: '',
+        phone: '',
+        email: '',
 
-      new Vue({
-        el: "#home_owner",
-        data: {
-          //--------------------------
-          first_confirm: false,
-          second_confirm: false,
+        //----------------------------
+        type_propriete_rechercher: '',
+        achat_or_location: '',
+        budjet: '',
+        nbr_chambre: '',
+        nbr_salle_bain: '',
+        surface_habitable: '',
+        localisation_souhaite: '',
+        caract_souhaite: '',
 
-          //--------------------------
-          name: '',
-          email: '',
-          phone: '',
-
-          //--------------------------
-          type_propriete_for_owner: '',
-          status_buy_sell: '',
-          home_price: '',
-          home_address: '',
-          year_building: '',
-          living_space: '',
-          nbr_room: '',
-          nbr_bath_room: '' ,
-          other_detail:'',
-
-          //--------------------------
-          home_detail: '',
-
-          //--------------------------
-          picture: '',
-
-        },
-        mounted(){},
-        computed:{},
-        methods: {
-         sendOwnerData(){
-          if(this.first_confirm, this.second_confirm){
-            if(this.name == '', this.phone == '', this.email == '', this.type_propriete_for_owner == '', this.status_buy_sell == '', this.home_price == '', this.home_address == '', this.year_building == '', this.living_space == '', this.nbr_room == '', this.nbr_bath_room == ''){
-              if(!/^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.email)){
-                Swal.fire({
-                  icon: 'error',  
-                  title: 'Erreur',
-                  text: "veuillez saisir un email valide !!! ",
-                  showConfirmButton: true,
-                })
-              }
-              else{
-                let myForm = new FormData();
-                myForm.append('name', this.name)
-                myForm.append('phone', this.phone)
-                myForm.append('email', this.email)
-                //-----------------------------
-                myForm.append('type_propriete_for_owner',this.type_propriete_for_owner)
-                myForm.append('status_buy_sell',this.status_buy_sell)
-                myForm.append('home_price',this.home_price)
-                myForm.append('home_address',this.home_address)
-                myForm.append('year_building',this.year_building)
-                myForm.append('living_space',this.living_space)
-                myForm.append('nbr_room',this.nbr_room)
-                myForm.append('nbr_bath_room' ,this.nbr_bath_room)
-                myForm.append('other_detail',this.other_detail)
-                //--------------------------
-                myForm.append('home_detail',this.home_detail)
-                
-                axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
-                axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
-                axios.post("{% url 'post-owner' %}", myForm, {})
-                .then(function(response){
-                  if(response.data.success){
-                    Swal.fire({
-                      icon: 'success',
-                      title: "Demande d'exposition envoyée",
-                      text: response.data.msg,
-                      showConfirmButton: true,
-                      
-                    });
-                    console.log(this.picture);
-                  }
-                  else{
-                    Swal.fire({
-                      icon: 'erreur',
-                      title: "Demande d'exposition non envoyée",
-                      text: response.data.msg,
-                      showConfirmButton: true,
-                      
-                    });
-                  }
-                })
-              }
-            }else{
-              Swal.fire({
-                icon: 'error',
-                title: 'Erreur',
-                text: "veuillez renseigner les champs requis (*) !!! ",
-                showConfirmButton: true,
-              })
-            }
-          }else{
+        // --------------------------
+        date_demenag_souhaite: '',
+        comments_souhaite: '',
+      },
+      mounted(){},
+      computed:{},
+      methods: {
+        sendData(){
+          if(this.name == ""){
             Swal.fire({
               icon: 'error',
               title: 'Erreur',
-              text: "veuillez accepter les politiques de confidentialités et le plein droits sur les photos !!! ",
+              text: "veuillez saisir votre nom & prénom !!! ",
               showConfirmButton: true,
             })
-          }
-         }
-        },
-      });
-
-      
-      var app =  new Vue({
-        el: '#home_asking',
-        delimiters: ['%{', '}'],
-        data: {
-          confirm: false,
-          //--------------------------
-          name: '',
-          phone: '',
-          email: '',
-
-          //----------------------------
-          type_propriete_rechercher: '',
-          achat_or_location: '',
-          budjet: '',
-          nbr_chambre: '',
-          nbr_salle_bain: '',
-          surface_habitable: '',
-          localisation_souhaite: '',
-          caract_souhaite: '',
-
-          // --------------------------
-          date_demenag_souhaite: '',
-          comments_souhaite: '',
-        },
-        mounted(){},
-        computed:{},
-        methods: {
-          sendData(){
-            if(this.name == ""){
-              Swal.fire({
-                icon: 'error',
-                title: 'Erreur',
-                text: "veuillez saisir votre nom & prénom !!! ",
-                showConfirmButton: true,
-              })
-            }else if(this.email == ""){
-              Swal.fire({
-                icon: 'error',
-                title: 'Erreur',
-                text: "veuillez saisir votre addresse email !!!",
-                showConfirmButton: true,
-              })
-            }else if(this.date_demenag_souhaite == ''){
-              Swal.fire({
-                icon: 'error',
-                title: 'Erreur',
-                text: "veuillez choisir une date de déménagement !!!",
-                showConfirmButton: true,
-              })
-            }else{
+          }else if(this.email == ""){
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: "veuillez saisir votre addresse email !!!",
+              showConfirmButton: true,
+            })
+          }else if(this.date_demenag_souhaite == ''){
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: "veuillez choisir une date de déménagement !!!",
+              showConfirmButton: true,
+            })
+          }else{
+          
+            let myForm = new FormData();
+            myForm.append('name', this.name)
+            myForm.append('phone', this.phone)
+            myForm.append('email', this.email)
+            //-------------------------------------
+            myForm.append('type_propriete_rechercher', this.type_propriete_rechercher)
+            myForm.append('achat_or_location', this.achat_or_location)
+            myForm.append('budjet', this.budjet)
+            myForm.append('nbr_chambre', this.nbr_chambre)
+            myForm.append('nbr_salle_bain', this.nbr_salle_bain)
+            myForm.append('surface_habitable', this.surface_habitable)
+            myForm.append('localisation_souhaite', this.localisation_souhaite)
+            myForm.append('caract_souhaite', this.caract_souhaite)
+            //-----------------------------------------
+            myForm.append('date_demenag_souhaite', this.date_demenag_souhaite)
+            myForm.append('comments_souhaite', this.comments_souhaite)
             
-              let myForm = new FormData();
-              myForm.append('name', this.name)
-              myForm.append('phone', this.phone)
-              myForm.append('email', this.email)
-              //-------------------------------------
-              myForm.append('type_propriete_rechercher', this.type_propriete_rechercher)
-              myForm.append('achat_or_location', this.achat_or_location)
-              myForm.append('budjet', this.budjet)
-              myForm.append('nbr_chambre', this.nbr_chambre)
-              myForm.append('nbr_salle_bain', this.nbr_salle_bain)
-              myForm.append('surface_habitable', this.surface_habitable)
-              myForm.append('localisation_souhaite', this.localisation_souhaite)
-              myForm.append('caract_souhaite', this.caract_souhaite)
-              //-----------------------------------------
-              myForm.append('date_demenag_souhaite', this.date_demenag_souhaite)
-              myForm.append('comments_souhaite', this.comments_souhaite)
-              
-              axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
-              axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
-              axios.post("{% url 'post-searcher' %}", myForm, {})
-              .then(function(response){
-                if(response.data.success){
-                  Swal.fire({
-                    icon: 'success',
-                    title: 'Demande envoyée',
-                    text: response.data.msg ,
-                    showConfirmButton: true,
-                  });
+            axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
+            axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
+            axios.post("{% url 'post-searcher' %}", myForm, {})
+            .then(function(response){
+              if(response.data.success){
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Demande envoyée',
+                  text: response.data.msg,
+                  showConfirmButton: false,
+                  timer: 3500,
+                });
+                window.setTimeout(function(){window.location.reload();}, 3500);
+              }else{
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Demande non envoyée',
+                  text: response.data.msg ,
+                  showConfirmButton: true,
+                });
+              }
+            })
+            console.log(myDataForm)
+           
+          }
+        }
+      },
+    });
+    
+    new Vue({
+          el: "#home_owner",
+          data: {
+            //--------------------------
+            first_confirm: false,
+            second_confirm: false,
+
+            //--------------------------
+            name: '',
+            email: '',
+            phone: '',  
+
+            //--------------------------
+            type_propriete_for_owner: '',
+            status_buy_sell: '',
+            home_price: '',
+            home_address: '',
+            year_building: '',
+            living_space: '',
+            nbr_room: '',
+            nbr_bath_room: '' ,
+            other_detail:'',
+
+            //--------------------------
+            home_detail: '',
+
+            //--------------------------
+            picture: '',
+
+          },
+          mounted(){},
+          computed:{},
+          methods: {
+            sendOwner1Data(){
+              console.log('ok')
+            }
+          } 
+        });
+
+        new Vue({
+          el: "#trust_us",
+          data: {
+            //--------------------------
+            first_confirm: false,
+            second_confirm: false,
+
+            //--------------------------
+            name: '',
+            email: '',
+            phone: '',  
+
+            //--------------------------
+            type_propriete_for_owner: '',
+            status_buy_sell: '',
+            home_price: '',
+            home_address: '',
+            year_building: '',
+            living_space: '',
+            nbr_room: '',
+            nbr_bath_room: '' ,
+            other_detail:'',
+
+            //--------------------------
+            home_detail: '',
+
+            //--------------------------
+            picture: '',
+
+          },
+          mounted(){},
+          computed:{},
+          methods: {
+            sendOwnerData(){
+              if(this.first_confirm && this.second_confirm){
+                console.log('############ 1 #############""');
+                if(!this.name == '' && !this.phone == ''){
+                console.log('############ 2 #############""');
+
+                  if(!/^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.email)){
+                console.log('############ 3 #############""');
+
+                    Swal.fire({
+                      icon: 'error',  
+                      title: 'Erreur',
+                      text: "veuillez saisir un email valide !!! ",
+                      showConfirmButton: true,
+                    })
+                  }else{
+                console.log('############ 4 #############""');
+
+                    let myForm = new FormData();
+                    myForm.append('name', this.name)
+                    myForm.append('phone', this.phone)
+                    myForm.append('email', this.email)
+                    //-----------------------------
+                    myForm.append('type_propriete_for_owner',this.type_propriete_for_owner)
+                    myForm.append('status_buy_sell',this.status_buy_sell)
+                    myForm.append('home_price',this.home_price)
+                    myForm.append('home_address',this.home_address)
+                    myForm.append('year_building',this.year_building)
+                    myForm.append('living_space',this.living_space)
+                    myForm.append('nbr_room',this.nbr_room)
+                    myForm.append('nbr_bath_room' ,this.nbr_bath_room)
+                    myForm.append('other_detail',this.other_detail)
+                    //--------------------------
+                    myForm.append('home_detail',this.home_detail)
+
+                    axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
+                    axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
+                    axios.post("{% url 'post-owner' %}", myForm, {})
+                    .then(function(response){
+                      if(response.data.success){
+                console.log('############ 5 #############""');
+
+                        Swal.fire({
+                          icon: 'success',
+                          title: "Demande d'exposition envoyée",
+                          text: response.data.msg,
+                          showConfirmButton: false,
+                          timer: 3500,
+                        });
+                        window.setTimeout(function(){window.location.reload();}, 3500);
+                       
+                      }else{
+                console.log('############ 6 #############""');
+
+                          Swal.fire({
+                            icon: 'erreur',
+                            title: "Demande d'exposition non envoyée",
+                            text: response.data.msg,
+                            showConfirmButton: true,
+                          });
+                      }
+                  })
+                  }
                 }else{
+                console.log('############ 7 #############""');
                   Swal.fire({
                     icon: 'error',
-                    title: 'Demande non envoyée',
-                    text: response.data.msg ,
+                    title: 'Erreur',
+                    text: "veuillez renseigner les champs requis (*) !!! ",
                     showConfirmButton: true,
-                  });
+                  })
                 }
-              })
-              console.log(myDataForm)
-             
+              }else{
+                console.log('############ 8 #############""');
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Erreur',
+                  text: "veuillez accepter les politiques de confidentialités et le plein droits sur les photos !!! ",
+                  showConfirmButton: true,
+                })
+              }
             }
           }
-        },
-      });
-    
-    </script>
-    {% block postSearcher %}
-      
-    {% endblock postSearcher %}
+        });
 
+    new Vue({
+      el: "#news_letter",
+      data: {
+        email: "",
+      },
+      methods: {
+        sendNewLettrData(){
+          if(!/^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.email)){
+            Swal.fire({
+              icon: 'error',  
+              title: 'Erreur',
+              text: "veuillez saisir un email valide !!! ",
+              showConfirmButton: true,
+            })
+          }else{
+            let myForm = new FormData();
+
+            myForm.append('email', this.email)
+            axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
+            axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
+            axios.post("{% url 'post-news' %}", myForm, {})
+            .then(function(response){
+              if(response.data.success){
+                
+                Swal.fire({
+                  icon: 'success',  
+                  title: 'Abonnement réussi',
+                  text: response.data.msg,
+                  timer: 3500,
+                });
+                window.setTimeout(function(){window.location.reload();}, 3500);
+                this.myForm = "";
+              }else{
+                Swal.fire({
+                  icon: 'error',  
+                  title: 'Erreur',
+                  text: response.data.msg,
+                  showConfirmButton: true,
+                })
+              }
+            })
+          }
+        }
+      }
+    })
+  </script>
+
+
+    <!-- Pour les agences imobilieres -->
     {% block agencePost %}
-      
     {% endblock agencePost %}
+
+   
 
   </body>
 

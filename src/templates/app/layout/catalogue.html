@@ -44,6 +44,7 @@
                     <option value="1">Bobodioulasso</option>
                   </select>
                 </div>
+                
                 <div class="col-auto z-index-2">
                   <button class="btn btn-primary" type="submit">Rechercher</button>
                 </div>
@@ -64,7 +65,7 @@
         <div class="container">
           <div class="row">
             {% for house in get_some_vendors %}
-                <div class="col-md-4 mb-4">
+                <div class="col col-md-4 col-sm-6 col-xs-6 mb-4">
                 <div class="card h-100"><img class="card-img-top h-75 w-100" src="{{house.picture.url}}" alt="courses" />
                     <div class="card-body">
                     <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">User Research for User Experience Design</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="{% url 'home-detail' %}">The Museum of Modern Art</a>
@@ -74,7 +75,7 @@
             {% endfor %}
 
             {% for house in get_some_vendors %}
-                <div class="col-md-4 mb-4">
+                <div class="col col-md-4 col-sm-6 col-xs-6 mb-4">
                 <div class="card h-100"><img class="card-img-top h-75 w-100" src="{{house.picture.url}}" alt="courses" />
                     <div class="card-body">
                     <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">User Research for User Experience Design</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="{% url 'home-detail' %}">The Museum of Modern Art</a>

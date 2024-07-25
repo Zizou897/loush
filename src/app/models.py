@@ -227,3 +227,15 @@ class SectionTriple(Convention):
         
     def __str__(self):
         return f"{self.order}"
+
+
+class CGU(Convention):
+    title = models.CharField(max_length=200)
+    libele = models.TextField()
+
+    class Meta:
+        verbose_name = "CGU"
+        verbose_name_plural = "CGU"
+
+    def __str__(self):
+        return self.title

@@ -11,6 +11,7 @@ from .models import (
     TypePropriete,
     Social,
     SectionTriple,
+    CGU
 )
 
 
@@ -50,3 +51,6 @@ def get_social(data=dict()):
 
 def get_section_triple(data=dict()):
     return SectionTriple.objects.filter(**data)
+
+def get_cgu_(data=dict()):
+    return CGU.objects.filter(**data)

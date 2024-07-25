@@ -180,9 +180,9 @@
         <div class="container">
           <div class="row">
             <div class="col-12 col-sm-12 col-lg-6 mb-4 order-0 order-sm-0"><a class="text-decoration-none" href="#"><img src="{{get_configs.logo2.url}}" height="51" alt="" /></a>
-              <p class="text-light my-4"> <i class="fas fa-map-marker-alt me-3"></i><span class="text-light">Avenue 15, rue 12 , ouaga  &nbsp;</span><a class="text-light" href="tel:+604-680-9785">+225 000 000 00 00</a><br /></p>
-              <p class="text-light"> <i class="fas fa-envelope me-3"> </i><a class="text-light" href="mailto:loushira.contact@gmail.com">louhsira.contact@gmail.com</a></p>
-              <p class="text-light"> <i class="fas fa-phone-alt me-3"></i><a class="text-light" href="tel:+225 0789773420">+225 0789773420 (Support)</a></p>
+              <p class="text-light my-4"> <i class="fas fa-map-marker-alt me-3"></i><span class="text-light">Avenue 15, rue 12 , ouaga  &nbsp;</span><a class="text-light text-200" href="tel:+604-680-9785">+225 000 000 00 00</a><br /></p>
+              <p class="text-light"> <i class="fas fa-envelope me-3"> </i><a class="text-light text-200" href="mailto:loushira.contact@gmail.com">louhsira.contact@gmail.com</a></p>
+              <p class="text-light"> <i class="fas fa-phone-alt me-3"></i><a class="text-light text-200" href="tel:+225 0789773420">+225 0789773420 (Support)</a></p>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 mb-3 order-2 order-sm-1">
               <h5 class="lh-lg fw-bold mb-4 text-light font-sans-serif">Communauté </h5>
@@ -196,10 +196,10 @@
             <div class="col-6 col-sm-4 col-lg-2 mb-3 order-3 order-sm-2">
               <h5 class="lh-lg fw-bold text-light mb-4 font-sans-serif">Informations</h5>
               <ul class="list-unstyled mb-md-4 mb-lg-0">
-                <li class="lh-lg"><a class="text-200" href="#!">A propos de Nous</a></li>
+                <li class="lh-lg"><a class="text-200" href="{% url 'about' %}">A propos de Nous</a></li>
                 <li class="lh-lg"><a class="text-200" href="{% url 'home-searcher' %}">Chercheur</a></li>
-                <li class="lh-lg"><a class="text-200" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Propriétaires</a></li>
-                <li class="lh-lg"><a class="text-200" href="#!">Agences Immobilières</a></li>
+                <li class="lh-lg"><a class="text-200" href="{% url 'owner-page' %}">Propriétaires</a></li>
+                <li class="lh-lg"><a class="text-200" href="{% url 'agence' %}">Agences Immobilières</a></li>
               </ul>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 mb-3 order-3 order-sm-2">
@@ -207,8 +207,6 @@
               <ul class="list-unstyled mb-md-4 mb-lg-0">
                 
                 <li class="lh-lg"><a class="text-200" href="{% url 'condition-generale-utilisation' %}">Conditions générale d'utlisation</a></li>
-                
-                <li class="lh-lg"><a class="text-200" href="#!">Contact</a></li>
                 
               </ul>
             </div>

@@ -13,26 +13,23 @@
     <section class="bg-600">
         <div class="container">
             <div class="row">
-                <h2 class="text-center">Conditions Générale d'Utilisation</h2>
+                <h2 class="text-center">Conditions Générale d'Utilisation (CGU)</h2>
             </div>
         </div>
     </section>
     <section>
         <div class="container py-4">
             <div class="row">
-                <div class="col-md-12">
-                    <h5 class="text-secondary font-sans-serif fw-bold">1. Conditions</h5>
-                    <div class="grew mb-4">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam quaerat inventore non, voluptatum illo quis ipsa, quasi nisi delectus officia molestias eos. Explicabo ratione nemo labore a libero eaque ipsam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis consectetur quam quidem repellat quisquam possimus, porro mollitia architecto nihil accusantium asperiores dolore. Facere ex autem aliquid? Reiciendis obcaecati repudiandae dolor!
+                {% for value in get_cgu_s %}
+                    
+                    <div class="col-md-12">
+                        <h5 class="text-secondary font-sans-serif fw-bold">{{value.title}}</h5>
+                        <div class="grew mb-4">
+                            {{value.libele}}
+                        </div>
                     </div>
-                </div>
+                {% endfor %}
 
-                <div class="col-md-12">
-                    <h5 class="text-secondary font-sans-serif fw-bold">2. politique</h5>
-                    <div class="grew mb-4">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam quaerat inventore non, voluptatum illo quis ipsa, quasi nisi delectus officia molestias eos. Explicabo ratione nemo labore a libero eaque ipsam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis consectetur quam quidem repellat quisquam possimus, porro mollitia architecto nihil accusantium asperiores dolore. Facere ex autem aliquid? Reiciendis obcaecati repudiandae dolor!
-                    </div>
-                </div>
             </div>
         </div>
     </section>

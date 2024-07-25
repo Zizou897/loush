@@ -17,7 +17,8 @@ from .functions import (
     get_localite,
     get_type_propriete,
     get_social,
-    get_section_triple
+    get_section_triple,
+    get_cgu_,
 )
 
 def verify_email(email):
@@ -180,11 +181,13 @@ def condition_generale(request):
     
     get_socials = get_social({'publish':True})
     get_configs = get_config({'publish':True})
+    get_cgu_s = get_cgu_({'publish': True})
     
     template_name = "layout/condition.html"
     context = {
         'page': "LOUSHIRA | CONDITIONS GENERALE",
         'get_socials': get_socials,
         'get_configs': get_configs,
+        'get_cgu_s': get_cgu_s,
     }
     return render(request, template_name, context)

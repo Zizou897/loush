@@ -31,7 +31,7 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="col-sm-6 col-md-4">
             <label class="form-label" for="forType">Type de proprieté<span class="text-primary">*</span></label>
             <select class="form-select" id="forType" v-model="type_propriete_for_owner">
-                <option selected="selected">Votre choix</option>
+              <option value="" selected hidden>Votre choix</option>
                 <option>Appartement</option>
                 <option>Maison</option>
                 <option>Studio</option>
@@ -40,9 +40,9 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="col-sm-6 col-md-4">
             <label class="form-label" for="forStatus">Status<span class="text-primary">*</span></label>
             <select class="form-select" id="forStatus"  v-model="status_buy_sell">
-                <option selected="selected">À louer / À vendre</option>
-                <option>À louer</option>
-                <option>À vendre</option>
+              <option value="" selected hidden>Faire louer / Faire vendre</option>
+              <option>Faire louer</option>
+              <option>Faire vendre</option>
             </select>
           </div>
           <div class="col-md-4">
@@ -54,7 +54,7 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="col-sm-6 col-md-4">
             <label class="form-label" for="forAddress">Adresse de la propriété<span class="text-primary">*</span></label>
             <select class="form-select" id="forAddress" v-model="home_address">
-                <option selected="selected">Adresse complète</option>
+              <option value="" selected hidden>Secteur de la propriété</option>
                 <option>Bobo Dioulasso</option>
                 <option>Ouaga</option>
             </select>
@@ -62,7 +62,7 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="col-sm-6 col-md-4">
             <label class="form-label" for="forYear">Année de construction<span class="text-primary">*</span></label>
             <select class="form-select" id="forYear" v-model="year_building">
-                <option selected="selected">Année</option>
+              <option value="" selected hidden>Année</option>
                 <option>2024</option>
                 <option>2023</option>
             </select>
@@ -76,18 +76,18 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="col-sm-6 col-md-4">
             <label class="form-label" for="forRoom">Nombre de chambres<span class="text-primary">*</span></label>
             <select class="form-select" id="forRoom" v-model="nbr_room">
-              <option selected="selected">Votre choix</option>
-                <option> 1 chambre</option>
-                <option> 2 chambres</option>
-                <option> 3 chambres</option>
-                <option> 4 chambres</option>
-                <option> 5 chambres</option>
+              <option value="" selected hidden>Votre choix</option>
+              <option> 1 chambre</option>
+              <option> 2 chambres</option>
+              <option> 3 chambres</option>
+              <option> 4 chambres</option>
+              <option> 5 chambres</option>
             </select>
           </div>
           <div class="col-sm-6 col-md-4">
             <label class="form-label" for="forBathRomm">Nombre de salles de bain<span class="text-primary">*</span></label>
             <select class="form-select" id="forBathRomm" v-model="nbr_bath_room">
-              <option selected="selected">Votre choix</option>
+              <option value="" selected hidden>Votre choix</option>
               <option> 1 salle de bain</option>
               <option> 2 salles de bain</option>
               <option> 3 salles de bain</option>
@@ -97,10 +97,10 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="col-sm-6 col-md-4">
             <label class="form-label" for="selectID">Caractéristiques spéciales</label>
             <select  class="form-select"  id="">
-              <option selected="selected">Votre choix</option>
-                <option>Jardin</option>
-                <option>Balcon</option>
-                <option>Parking</option>
+              <option value="" selected hidden>Votre choix</option>
+              <option>Jardin</option>
+              <option>Balcon</option> 
+              <option>Parking</option>
             </select>
           </div>
         </div>
@@ -120,7 +120,7 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
         </div>
         <div class="row mt-3 ms-3">
           <div class="form-check col-sm-12 col-md-12">
-          <input class="form-check-input " type="checkbox" value="" id="flexCheckIndeterminate" v-model="first_confirm">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate" v-model="first_confirm">
           <label class="form-check-label" for="flexCheckIndeterminate">
             J'accepte de fournir des photos de qualité de la propriété pour la publication.
           </label>

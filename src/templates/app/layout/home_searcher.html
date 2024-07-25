@@ -34,7 +34,7 @@
                     <div class="col-sm-6 col-md-4">
                         <label class="form-label" for="inputLevel">Type de propriété recherchée <span class="text-primary">*</span></label>
                         <select class="form-select" id="inputLevel" v-model="type_propriete_rechercher">
-                            <option selected="selected">Votre choix</option>
+                            <option value="" selected hidden >Votre choix</option>
                             {% for type in get_type_proprietes %}
                               <option>{{type.libele}}</option>
                             {% endfor %}
@@ -43,7 +43,7 @@
                     <div class="col-sm-6 col-md-4">
                         <label class="form-label" for="inputLevel">Achat ou Location <span class="text-primary">*</span></label>
                         <select class="form-select" id="inputLevel" v-model="achat_or_location">
-                            <option selected="selected">Votre choix</option>
+                            <option value="" selected hidden>Votre choix</option>
                             <option>Achat</option>
                             <option>Location</option>
                         </select>
@@ -57,7 +57,7 @@
                     <div class="col-sm-6 col-md-4">
                         <label class="form-label" for="inputLevel">Nombre de chambres <span cO7897734lass="text-primary">*</span></label>
                         <select class="form-select" data-placeholder="Select fruits" id="inputLevel" v-model="nbr_chambre">
-                            <option selected="selected">Votre choix</option>
+                            <option value="" selected hidden>Votre choix</option>
                             <option> 1 chambre</option>
                             <option> 2 chambres</option>
                             <option> 3 chambres</option>
@@ -67,8 +67,8 @@
                     </div>
                     <div class="col-sm-6 col-md-4">
                         <label class="form-label" for="inputLevel">Nombre de salles de bain <span class="text-primary">*</span></label>
-                        <select class="form-select" data-placeholder="Select fruits" id="inputLevel" v-model="nbr_salle_bain">
-                            <option selected="selected">Votre choix</option>
+                        <select class="form-select" id="inputLevel" v-model="nbr_salle_bain">
+                            <option value="" selected hidden>Votre choix</option>
                             <option> 1 salle de bain</option>
                             <option> 2 salles de bain</option>
                             <option> 3 salles de bain</option>
@@ -85,7 +85,7 @@
                     <div class="col-sm-6 col-md-6">
                         <label class="form-label" for="inputLevel">Localisation souhaitée <span class="text-primary">*</span></label>
                         <select class="form-select" id="inputLevel" v-model="localisation_souhaite">
-                          <option selected="selected">Votre choix</option>
+                          <option value="" selected hidden>Votre choix</option>
                           {% for locale in get_localites %}
                           <option>{{locale.name}}</option>
                           {% endfor %}
@@ -94,7 +94,7 @@
                     <div class="col-sm-6 col-md-6">
                         <label class="form-label" for="inputLevel">Caractéristiques souhaitées</label>
                         <select data-placeholder="Begin typing a name to filter..."  class="form-select" id="inputLevel" v-model="caract_souhaite">
-                            
+                            <option value="" selected hidden>Votre choix</option>
                             <option>Jardin</option>
                             <option>Balcon</option>
                             <option>Parking</option>

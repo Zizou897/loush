@@ -15,7 +15,8 @@ from .models import (
     Social,
     SectionTriple,
     ClassButton,
-    Links
+    Links,
+    CGU,
 )
 
 
@@ -149,6 +150,14 @@ class SectionTripleAdmin(admin.ModelAdmin):
 @admin.register(Links)
 class LinksAdmin(admin.ModelAdmin):
     list_display = ("name", "created_at", "publish")
+    date_hierarchy = "created_at"
+    list_per_page = 10
+    list_editable = ["publish"]
+    
+
+@admin.register(CGU)
+class CGUAdmin(admin.ModelAdmin):
+    list_display = ("title", "created_at", "publish")
     date_hierarchy = "created_at"
     list_per_page = 10
     list_editable = ["publish"]

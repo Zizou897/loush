@@ -31,18 +31,18 @@
           <div class="col-sm-6 col-md-4">
             <label class="form-label" for="forType">Type de proprieté recherché<span class="text-primary">*</span></label>
             <select class="form-select" id="forType" v-model="type_propriete_rechercher">
-                <option selected="selected">Votre choix</option>
-                <option>Appartement</option>
-                <option>Maison</option>
-                <option>Studio</option>
+              <option value="" selected hidden>Votre choix</option>
+              <option>Appartement</option>
+              <option>Maison</option>
+              <option>Studio</option>
             </select>
           </div>
           <div class="col-sm-6 col-md-4">
             <label class="form-label" for="forStatus">Achat ou Location <span class="text-primary">*</span></label>
             <select class="form-select" id="forStatus"  v-model="achat_or_location">
-                <option selected="selected">À louer / À vendre</option>
-                <option>À louer</option>
-                <option>À vendre</option>
+              <option value="" selected hidden>À louer / À vendre</option>
+              <option>À louer</option>
+              <option>À vendre</option>
             </select>
           </div>
           <div class="col-md-4">
@@ -55,23 +55,23 @@
           <div class="col-sm-6 col-md-4">
             <label class="form-label" for="forAddress">Nombre de chambres<span class="text-primary">*</span></label>
             <select class="form-select" id="forAddress" v-model="nbr_chambre">
-                <option selected="selected">Votre choix</option>
-                            <option> 1 chambre</option>
-                            <option> 2 chambres</option>
-                            <option> 3 chambres</option>
-                            <option> 4 chambres</option>
-                            <option> 5 chambres</option>
+              <option value="" selected hidden>Votre choix</option>
+              <option> 1 chambre</option>
+              <option> 2 chambres</option>
+              <option> 3 chambres</option>
+              <option> 4 chambres</option>
+              <option> 5 chambres</option>
             </select>
           </div>
           <div class="col-sm-6 col-md-4">
             <label class="form-label" for="forYear">Nombre de salles de bain <span class="text-primary">*</span></label>
             <select class="form-select" id="forYear" v-model="nbr_salle_bain">
-                <option selected="selected">Votre choix</option>
-                            <option> 1 salle de bain</option>
-                            <option> 2 salles de bain</option>
-                            <option> 3 salles de bain</option>
-                            <option> 4 salles de bain</option>
-                            <option> 5 salles de bain</option>
+              <option value="" selected hidden>Votre choix</option>
+              <option> 1 salle de bain</option>
+              <option> 2 salles de bain</option>
+              <option> 3 salles de bain</option>
+              <option> 4 salles de bain</option>
+              <option> 5 salles de bain</option>
             </select>
           </div>
           <div class="col-md-4">
@@ -82,16 +82,21 @@
 
         <div class="row mt-3">
           <div class="col-sm-6 col-md-6">
-              <label class="form-label" for="inputLevel">Localisation souhaitée <span class="text-primary">*</span></label>
-              <input type="text" class="form-control" placeholder="Quartier, ville ou région" v-model="localisation_souhaite">
+            <label class="form-label" for="inputLevel">Localisation souhaitée <span class="text-primary">*</span></label>
+            <select class="form-select" id="inputLevel" v-model="localisation_souhaite">
+              <option value="" selected hidden>Votre choix</option>
+              {% for locale in get_localites %}
+              <option>{{locale.name}}</option>
+              {% endfor %}
+          </select>
           </div>
           <div class="col-sm-6 col-md-6">
               <label class="form-label" for="inputLevel">Caractéristiques souhaitées</label>
               <select class="form-select" id="inputLevel" v-model="caract_souhaite">
-                  <option selected="selected">Votre choix</option>
-                  <option>Jardin</option>
-                  <option>Balcon</option>
-                  <option>Parking</option>
+                <option value="" selected hidden>Votre choix</option>
+                <option>Jardin</option>
+                <option>Balcon</option>
+                <option>Parking</option>
               </select>
           </div>
         </div>

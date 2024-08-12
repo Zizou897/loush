@@ -19,7 +19,6 @@ from propriete.models import TypePropriete, Localite, Proprietes
 def get_banner(data=dict()):
     return Banner.objects.filter(**data).first()
 
-
 def get_about(data=dict()):
     return About.objects.filter(**data).first()
 

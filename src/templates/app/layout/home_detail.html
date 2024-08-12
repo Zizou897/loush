@@ -37,7 +37,7 @@
                 {% endfor %}
               </div>
               <h1 class="my-4">Description</h1>
-              {{get_property_ids.description | safe }}
+              <span>{{get_property_ids.description | safe }}</span>
               
             </div>
             <div class="col-md-4">
@@ -50,9 +50,28 @@
                   <li class="list-group-item"><strong>Surface habitable </strong>: 500m</li>
                   <li class="list-group-item"><strong>Publié par </strong>: {{get_property_ids.proprietaire}}</li>
                   <li class="list-group-item text-center"><img src="{% static 'app/assets/img/gallery/searching.png' %}" width="78" alt="..." />
-                    <p class="text-muted mb-0 mt-4">Contactez un service client au</p><a class="text-info" href="mailto:vctung@outlook.com">louhsira.contact@gmail.com</a>
+                    <p class="text-muted mb-0 mt-4">Renseignez le formulaire en dessous pour réserver la propriété</p><a class="text-info" href="mailto:vctung@outlook.com">louhsira.contact@gmail.com</a>
                   </li>
                 </ul>
+              </div>
+              <div class="card mt-4 p-2" id="reserve">
+                <div class="row ">
+                  <div class="col-md-6">
+                    <label class="form-label" for="nameId">Nom et Prénom<span class="text-primary">*</span></label>
+                    <input type="text" class="form-control" name="" placeholder="John Diane" id="nameId" v-model="name">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="phoneId">Téléphone<span class="text-primary">*</span></label>
+                    <input type="text" class="form-control" name="" placeholder="86773620" id="phoneId" v-model="phone">
+                  </div>
+                </div>
+                <div class="row mt-2 mb-4">
+                  <div class="col-md-12">
+                    <label class="form-label" for="emailId">Email<span class="text-primary">*</span></label>
+                    <input type="email" name="" placeholder="example@gmail.com" class="form-control" id="emailId" v-model="email">
+                  </div>
+                </div>
+                <button class="fa-btn-primary fw-bold" @click.prevent="SendReservation()" > Réserver cette propriété</button>
               </div>
             </div>
           </div>
@@ -93,8 +112,76 @@
   fade: true,
   cssEase: 'linear',
   autoplay: true,
-  mobileFirst: true
+  mobileFirst: true,
+  prevArrow: '<i class="fa-solid fa-angle-right position-arrow right-arrow d-flex align-items-center justify-content-center">',
+  nextArrow: '<i class="fa-solid fa-angle-left position-arrow left-arrow d-flex align-items-center justify-content-center">',
 });
 </script>
 
 {% endblock scriptDetail %}
+
+
+{% block scriptVueDetail %}
+
+<script>
+new Vue({
+  el:"#reserve",
+  delimiters: ['%{', '}'],
+  data:{
+    name: '',
+    phone: '',
+    email: '',
+    property_reserve: {{get_property_ids.id}},
+  },
+  methods:{
+    SendReservation(){
+      if(this.name == "" ,this.phone == "", this.email == ""){
+        Swal.fire({
+          icon: 'error',
+          title: 'Erreur',
+          text: "veuillez remplir tous les champs !!! ",
+          showConfirmButton: true,
+        })
+      }else if(!/^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.email)){
+        Swal.fire({
+          icon: 'error',
+          title: 'Erreur',
+          text: "veuillez saisir un addresse Mail correct !!! ",
+          showConfirmButton: true,
+        })
+      }else{
+        let myForm = new FormData();
+        myForm.append('name', this.name)
+        myForm.append('phone', this.phone)
+        myForm.append('email', this.email)
+        myForm.append('property_reserve', this.property_reserve)
+
+        axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
+        axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
+        axios.post("{% url 'post-reservation' %}", myForm, {})
+        .then(function(response){
+          if(response.data.success){
+            Swal.fire({
+              icon: 'success',
+              title: 'Reservation envoyée',
+              text: response.data.msg,
+              showConfirmButton: false,
+              timer: 3500,
+            });
+          }else{
+            Swal.fire({
+              icon: 'error',
+              title: 'Reservation non envoyée',
+              text: response.data.msg,
+              showConfirmButton: true,
+            });
+          }
+        })
+      }
+    }
+  }
+})
+
+</script>
+  
+{% endblock scriptVueDetail %}

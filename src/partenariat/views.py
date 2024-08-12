@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
@@ -5,6 +6,8 @@ from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 
 from .models import AgencyRealEstate, Searcher, Owner, Newsletters
+from propriete.models import Proprietes
+from reserves.models import Reservation
 # Create your views here.
 def verify_email(email):
     try:
@@ -158,4 +161,41 @@ def post_newsletter(request):
         'msg': msg
     }
     
+    return JsonResponse(data,safe=False)
+
+
+@csrf_exempt
+def post_reservation(request):
+    all_is_true = False
+    msg = ''
+    
+    name = request.POST.get('name')
+    email = request.POST.get('email')
+    phone = request.POST.get('phone')
+    property_reserve = request.POST.get('property_reserve')
+    print('#####1111#########')
+    if not name or name.isspace() or not email or email.isspace() or not phone or phone.isspace():
+        msg = 'Veuillez renseigner les champs vides'
+    elif not isinstance(phone, int):
+        msg = "Veuillez renseigner un numero correct"
+    elif verify_email(email):
+        print('#####2222#########')
+        msg = 'veuillez saisir un addresse Mail correct'
+        print('#####3333#########')
+    else:
+        all_is_true = True
+        print('#####4444#########')
+        property_reserve_obj = Proprietes.objects.get(pk=(property_reserve))
+        reserve, created = Reservation.objects.get_or_create(name_of_reserver=name, phone=phone, email=email, propriete_reserve=property_reserve_obj)
+        if created:
+            msg = "Louhsira vous contactera dès que possible !!!"
+        else:
+            reserve.save()
+        print('#####5555#########')
+            
+    
+    data = {
+        'success': all_is_true,
+        'msg': msg
+    }
     return JsonResponse(data,safe=False)

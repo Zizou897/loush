@@ -81,19 +81,7 @@
       width: 100%;
     }
 
-    .slick-prev:before,
-    .slick-next:before {
-      color: #fff;
-      font-size: 2rem;
-      position: absolute;
-      right: 0%;
-      top: 50%;
-      background-color: #002147;
-      border-radius: 50%;
-      text-align: center;
-      opacity: 1;
-      
-    }
+    
 
 
     .slick-slide {
@@ -283,11 +271,10 @@
 	  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="{% static 'app/assets/js/slick.min.js' %}"></script>
 
-
+  
     <script src="{% static 'app/assets/js/sweetalert.js' %}"></script>
     <script src="{% static 'app/assets/js/vue.js' %}"></script>
-    <script src="{% static 'app/assets/js/axios.js' %}"></script>
-   
+     <script src="{% static 'app/assets/js/axios.js' %}"></script>
     <link href="{% static 'app/assets/css/multiple.css' %}" rel="stylesheet" />
     <script src="{% static 'app/assets/js/multiple.js' %}"></script>
 
@@ -296,6 +283,9 @@
 
     {% block scriptDetail %}
     {% endblock scriptDetail %}
+
+    {% block scriptVueDetail %}
+    {% endblock scriptVueDetail %}
 
     <script>
       $('.team-rows').slick({

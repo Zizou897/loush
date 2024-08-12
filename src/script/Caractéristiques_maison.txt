@@ -1,0 +1,38 @@
+Abri de jardin
+Aire de barbecue
+Balcon
+Bibliothèque
+Bureau
+Buanderie
+Cave à vin
+Cellier
+Chambre d'amis
+Chambre principale (master bedroom)
+Chauffage central
+Cheminée
+Climatisation
+Cuisine externe
+Cuisine interne
+Douche externe
+Douche interne
+Dressing (ou dress-room)
+Garage
+Jardin
+Jacuzzi
+Panneaux solaires
+Piscine
+Salle à manger
+Salle de bains d'appoint
+Salle de bains principale
+Salle de cinéma
+Salle de jeux
+Salle de sport
+Salon
+Salon extérieur
+Sauna
+Système de domotique
+Système de purification d'eau
+Système de sécurité
+Terrain de sport (basket, tennis, etc.)
+Terrasse
+Véranda

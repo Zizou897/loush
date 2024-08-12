@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # App installed
     'tinymce',
     'colorfield',
+    'import_export',
 
 ]
 

@@ -10,8 +10,7 @@ from .models import (
     configuration,
     DoTrust,
     Team,
-    Localite,
-    TypePropriete,
+    
     Social,
     SectionTriple,
     ClassButton,
@@ -106,20 +105,9 @@ class TeamAdmin(admin.ModelAdmin):
     image_view.short_description = "Aperçu des images"
     
 
-@admin.register(Localite)
-class LocaliteAdmin(admin.ModelAdmin):
-    list_display = ("name", "longitude", "laltitude","created_at", "publish")
-    date_hierarchy = "created_at"
-    list_per_page = 10
-    list_editable = ["publish"]
-    
 
-@admin.register(TypePropriete)
-class TypeProprieteAdmin(admin.ModelAdmin):
-    list_display = ("libele","created_at", "publish")
-    date_hierarchy = "created_at"
-    list_per_page = 10
-    list_editable = ["publish"]
+
+
     
 
 @admin.register(Social)

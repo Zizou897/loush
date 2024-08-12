@@ -31,3 +31,4 @@ if (document.querySelector('.modal-wrapper'))
         toggleModal('remove', btn);
     });
 }
+

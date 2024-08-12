@@ -64,30 +64,24 @@
 
         <div class="container">
           <div class="row">
-            {% for house in get_some_vendors %}
-                <div class="col col-md-4 col-sm-6 col-xs-6 mb-4">
-                <div class="card h-100"><img class="card-img-top h-75 w-100" src="{{house.picture.url}}" alt="courses" />
-                    <div class="card-body">
-                    <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">User Research for User Experience Design</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="{% url 'home-detail' %}">The Museum of Modern Art</a>
-                    </div>
-                </div>
-                </div>
-            {% endfor %}
 
-            {% for house in get_some_vendors %}
-                <div class="col col-md-4 col-sm-6 col-xs-6 mb-4">
-                <div class="card h-100"><img class="card-img-top h-75 w-100" src="{{house.picture.url}}" alt="courses" />
+            {% for house in get_all__properties %}
+            <div class="col col-md-4 col-sm-6 col-xs-6 mb-4">
+                <div class="card h-100"> 
+                  <img class="card-img-top h-50 w-100" src="{{ house.pictures.all.first.picture.url }}" alt="courses" />
                     <div class="card-body">
-                    <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">User Research for User Experience Design</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="{% url 'home-detail' %}">The Museum of Modern Art</a>
-                    </div>
+                    <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">{{house.titre_annonce}}</h5>
+                    <a class="text-muted fs--1 stretched-link text-decoration-none" href="{% url 'home-detail' house.id %}">{{ house.prix_propriete }}</a>
+                  </div>
+                  <div class="d-flex justify-content-between ms-3" style="margin-right: 5px;"> 
+                    <span class="fa-span">Publié par: {{house.proprietaire}}</span> <span>{{house.status}}</span>
+                  </div>
+                  </div>
                 </div>
-                </div>
-            {% endfor %}
-
-            
+                {% endfor %}
           </div>
         </div>
-        <!-- end of .container-->
+        <!-- end of .container--><j
       </section>
 
 {% include "includes/_email_sub.html" %}

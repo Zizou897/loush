@@ -7,8 +7,6 @@ from django.core.exceptions import ValidationError
 # Create your views here.
 from .functions import (
     get_banner,
-    get_some_vendor,
-    get_some_location,
     get_about,
     get_why_choose,
     get_config,
@@ -19,6 +17,10 @@ from .functions import (
     get_social,
     get_section_triple,
     get_cgu_,
+    get_all_properties,
+    get_property_vendor,
+    get_property_location,
+    get_property_id,
 )
 
 def verify_email(email):
@@ -33,8 +35,8 @@ def home(request):
 
     get_socials = get_social({'publish':True})
     get_banners = get_banner({'publish':True})
-    get_some_vendors = get_some_vendor({'publish':True,'location_or_vendor': 'vente'})
-    get_some_locations = get_some_location({'publish':True,'location_or_vendor': 'location'})
+    get_property_vendors = get_property_vendor({'publish':True, 'status': 'VENDRE'})
+    get_property_locations = get_property_location({'publish':True, 'status': 'LOUER'})
     get_abouts = get_about({'publish':True})
     get_why_chooses = get_why_choose({'publish':True})
     get_configs = get_config({'publish':True})
@@ -48,14 +50,14 @@ def home(request):
         'page': "LOUSHIRA | Accueil",
         'get_socials': get_socials,
         'get_banners': get_banners,
-        'get_some_vendors': get_some_vendors,
-        'get_some_locations': get_some_locations,
         'get_abouts': get_abouts,
         'get_why_chooses': get_why_chooses,
         'get_configs': get_configs,
         'get_do_trusths': get_do_trusths,
         'get_localites': get_localites,
-        'get_type_proprietes': get_type_proprietes
+        'get_type_proprietes': get_type_proprietes,
+        'get_property_vendors': get_property_vendors,
+        'get_property_locations': get_property_locations,
     }
     return render(request, template_name, context)
 
@@ -107,16 +109,17 @@ def owner_page(request):
 
 
 
-def home_detail(request):
+def home_detail(request, id):
 
     get_socials = get_social({'publish':True})
     get_configs = get_config({'publish':True})
-
+    get_property_ids = get_property_id(id)
     template_name = "layout/home_detail.html"
     context = {
         'page': "LOUSHIRA | Home-detail",
         'get_socials': get_socials,
         'get_configs': get_configs,
+        'get_property_ids': get_property_ids
     }
     return render(request, template_name, context)
     
@@ -125,14 +128,16 @@ def catalogue(request):
     
     get_socials = get_social({'publish':True})
     get_configs = get_config({'publish':True})
-    get_some_vendors = get_some_vendor({'publish':True,'location_or_vendor': 'vente'})
+
+    get_all__properties = get_all_properties({'publish': True, })
 
     template_name = "layout/catalogue.html"
     context = {
         'page': "LOUSHIRA | Catalogue",
         'get_socials': get_socials,
         'get_configs': get_configs,
-        'get_some_vendors': get_some_vendors,
+    
+        'get_all__properties': get_all__properties
     }
     return render(request, template_name, context)
     
@@ -141,7 +146,7 @@ def about(request):
     liste = [1,3,5]
     get_socials = get_social({'publish':True})
     get_configs = get_config({'publish':True})
-    get_some_vendors = get_some_vendor({'publish':True,'location_or_vendor': 'vente'})
+    
     get_teams = get_team({'publish':True})
     get_section_triples = get_section_triple({'publish':True})
 
@@ -151,7 +156,7 @@ def about(request):
         'page': "LOUSHIRA | A PROPOS",
         'get_socials': get_socials,
         'get_configs': get_configs,
-        'get_some_vendors': get_some_vendors,
+        
         'get_teams': get_teams,
         'get_section_triples': get_section_triples
     }
@@ -162,14 +167,14 @@ def agence(request):
 
     get_socials = get_social({'publish':True})
     get_configs = get_config({'publish':True})
-    get_some_vendors = get_some_vendor({'publish':True,'location_or_vendor': 'vente'})
+   
     
     template_name = "layout/agence.html"
     context = {
         'page': "LOUSHIRA | AGENCE",
         'get_socials': get_socials,
         'get_configs': get_configs,
-        'get_some_vendors': get_some_vendors,
+        
         
     }
     return render(request, template_name, context)

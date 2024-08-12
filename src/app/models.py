@@ -30,15 +30,6 @@ class Convention(models.Model):
         abstract = True
 
 
-class TypePropriete(Convention):
-    libele =  models.CharField(max_length=200, blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-    
-    class Meta:
-        verbose_name = "Type de Propriété"
-        verbose_name_plural = "Type de Propriétés"
-    def __str__(self):
-        return self.libele
 
 
 class Banner(Convention):
@@ -162,17 +153,7 @@ class Team(Convention):
         return  self.name
 
 
-class Localite(Convention):
-    name = models.CharField(max_length=150, blank=True, null=True)
-    longitude =  models.CharField(max_length=150, blank=True, null=True)
-    laltitude =  models.CharField(max_length=150, blank=True, null=True)
-    
-    class Meta:
-        verbose_name = "Localité"
-        verbose_name_plural = "Localités"
-        
-    def __str__(self):
-        return self.name
+
 
 
 class Social(Convention):

@@ -47,6 +47,12 @@
                   <li class="list-group-item"><strong>Status </strong>: {{get_property_ids.status}}</li>
                   <li class="list-group-item"><strong>Prix </strong>: {{get_property_ids.prix_propriete}}</li>
                   <li class="list-group-item"><strong>Localisation </strong>: {{get_property_ids.localite}}</li>
+                  <li class="list-group-item"><strong>Caractéristiques spéciales </strong>:
+                    {% for caracteristique_speciale in get_property_ids.caracteristique_speciale.all %}
+                      {{ caracteristique_speciale}},
+                    {% endfor %}
+                     
+                    </li>
                   <li class="list-group-item"><strong>Surface habitable </strong>: 500m</li>
                   <li class="list-group-item"><strong>Publié par </strong>: {{get_property_ids.proprietaire}}</li>
                   <li class="list-group-item text-center"><img src="{% static 'app/assets/img/gallery/searching.png' %}" width="78" alt="..." />

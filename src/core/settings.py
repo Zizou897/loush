@@ -49,8 +49,7 @@ INSTALLED_APPS = [
     # App installed
     'tinymce',
     'colorfield',
-    'import_export',
-
+    'algoliasearch_django',
 ]
 
 MIDDLEWARE = [
@@ -113,6 +112,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+ALGOLIA = {
+  'APPLICATION_ID': '3IB3LW2LEK',
+  'API_KEY': 'ea928a41cd55959a5bdc8790415e0dce'
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

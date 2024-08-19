@@ -39,6 +39,9 @@ def get_localite(data=dict()):
 def get_type_propriete(data=dict()):
     return Localite.objects.filter(**data)
 
+def get_all_type_propriete(data=dict()):
+    return Localite.objects.all()
+
 def get_social(data=dict()):
     return Social.objects.filter(**data)
 

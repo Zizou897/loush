@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+from django.db.models import Q
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
+
+from propriete.models import Proprietes, TypePropriete
 
 # Create your views here.
 from .functions import (
@@ -21,6 +24,7 @@ from .functions import (
     get_property_vendor,
     get_property_location,
     get_property_id,
+    get_all_type_propriete,
 )
 
 def verify_email(email):
@@ -125,19 +129,42 @@ def home_detail(request, id):
     
 
 def catalogue(request):
+    get_all__properties = get_all_properties({'publish': True, })
     
+    
+    if request.GET:
+        print("##################ok######################")
+        type_propriete = request.GET.get('type_propriete')  
+        status = request.GET.get('status')
+        prix_propriete = request.GET.get('prix_propriete')
+        localite = request.GET.get('localite')
+        
+        #print(f"################{type_propriete_id.id}##############")
+       
+        
+        if str(localite) == 'Votre choix' and str(type_propriete) == 'Votre choix':
+            get_all__properties = Proprietes.objects.filter(Q(status=status) | Q(prix_propriete=prix_propriete))    
+        elif  str(type_propriete) == 'Votre choix':
+            get_all__properties = Proprietes.objects.filter(Q(localite=int(localite)) | Q(status=status) | Q(prix_propriete=prix_propriete))   
+        elif str(localite) == 'Votre choix': 
+            get_all__properties = Proprietes.objects.filter(Q(type_propriete=int(type_propriete)) | Q(status=status) | Q(prix_propriete=prix_propriete)) 
+        else:
+            get_all__properties = Proprietes.objects.filter(Q(localite=int(localite)) | Q(type_propriete=int(type_propriete)) | Q(status=status) | Q(prix_propriete=prix_propriete)) 
+
     get_socials = get_social({'publish':True})
     get_configs = get_config({'publish':True})
+    get_localites = get_localite({'publish':True})
+    get_type_proprietes = get_all_type_propriete({'publish':True})
 
-    get_all__properties = get_all_properties({'publish': True, })
 
     template_name = "layout/catalogue.html"
     context = {
         'page': "LOUSHIRA | Catalogue",
         'get_socials': get_socials,
         'get_configs': get_configs,
-    
-        'get_all__properties': get_all__properties
+        'get_all__properties': get_all__properties,
+        'get_localites': get_localites,
+        'get_type_proprietes': get_type_proprietes
     }
     return render(request, template_name, context)
     

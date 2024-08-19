@@ -11,37 +11,40 @@
             <div class="col-12">
               <h6 class="font-sans-serif text-primary fw-bold">Course category</h6>
               <h1 class="mb-6">Catalogue</h1>
-              <form method="get" class="row g-3">
+              <form method="get" action="/catalogue" class="row g-3">
                 <div class="col-sm-6 col-md-3">
                   <label class="form-label" for="inputCategories">Type de propriété</label>
-                  <select class="form-select" id="inputCategories">
+                  <select class="form-select" id="inputCategories" name="type_propriete">
                     <option selected="selected">Votre choix</option>
-                    <option value="1">Appartement</option>
-                    <option value="2">Maison</option>
-                    <option value="3">Studio</option>
+                      <option value="1">Maison</option>
+                      <option value="2">Appartement</option>
+                      <option value="3">Studio</option>
                   </select>
                 </div>
                 <div class="col-sm-6 col-md-3">
                   <label class="form-label" for="inputLevel">Status</label>
-                  <select class="form-select" id="inputLevel">
+                  <select class="form-select" id="inputLevel" name="status">
                     <option selected="selected">A louer / A vendre</option>
-                    <option value="1">A louer</option>
-                    <option value="2">A vendre</option>
+                    <option value="LOUER">A louer</option>
+                    <option value="VENDRE">A vendre</option>
                   </select>
                 </div>
                 <div class="col-sm-6 col-md-3">
                   <label class="form-label" for="inputLanguage">Prix</label>
-                  <select class="form-select" id="inputLanguage">
+                  <select class="form-select" id="inputLanguage" name="prix_propriete">
                     <option selected="selected">votre choix</option>
-                    <option value="1">50 000 fcfa</option>
-                    <option value="2">100 000 fcfa</option>
+                    <option value="50.000">50.000 fcfa</option>
+                    <option value="100.000">100.000 fcfa</option>
+                    <option value="500.000 fcfa">500.000 fcfa</option>
                   </select>
                 </div>
                 <div class="col-sm-6 col-md-3">
                   <label class="form-label" for="inputInstructor">Zone</label>
-                  <select class="form-select" id="inputInstructor">
+                  <select class="form-select" id="inputInstructor" name="localite">
                     <option selected="selected">Votre choix </option>
-                    <option value="1">Bobodioulasso</option>
+                    {% for local in get_localites %}
+                      <option value="{{local.id}}">{{local.name}}</option>
+                    {% endfor %}
                   </select>
                 </div>
                 

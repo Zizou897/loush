@@ -1,5 +1,5 @@
 p{
-  font-family: "Roboto";
+  font-family: "Roboto" important!;
 }
 .title-h5{
     font-family: "Roboto", sans-serif;
@@ -79,7 +79,7 @@ p{
     font-weight: 400;
     line-height: 1.5;
     color: #402B2B;
-    background-color: #F5F5F5;
+    background-color: #f5f5f500;
     background-clip: padding-box;
     border: 1px solid #E0E0E0;
     -webkit-appearance: none;
@@ -180,6 +180,32 @@ p{
   border: thin solid #262262;
 }
 
+/* for slick on detail page */
+
+.position-arrow{
+  position: absolute;
+  top: 50%;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  text-align: center;
+  background: #002147;
+  z-index: 1;
+  border: 3px solid #f8f9fa;
+  
+}
+
+.left-arrow{
+  left: 0%;
+  
+}
+
+.right-arrow{
+  right: 0%;
+}
 
 @media (max-width: 434px) {
   .margin-top-button {

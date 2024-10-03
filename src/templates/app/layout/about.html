@@ -2,25 +2,28 @@
 {% load static %}
 {% block content %}
 
-<section class="bg-600" style="height: 300px;">
-    <div class="container">
-        <div class="row ">
-            <div class="col-md-4 col-lg-6 text-start"></div>
-            <div class="col-md-4 col-lg-6 text-md-start text-center">
-                <h3 class="fs-4 mb-2 fw-bold">Notre mission:</h3>
-                <h4 class="fs-3  mb-5">Rendre la recherche de biens immobiliers facile et accessible à tous, partout et à n’importe quel moment.
 
-                </h4>
-            </div>
-            <div class="col-md-4 col-lg-6"></div>
-        </div>
-    </div>
+
+
+<section class="pt-6 bg-600" style="height: 300;" id="home">
+  <div class="container">
+      <div class="row align-items-center">
+          <div class="col-md-7 col-lg-6  "><img class="" src="{{get_about_banners.picture.url}}" width="400" alt="about-header"  /></div>
+          <div class="col-md-5 col-lg-6 text-md-start text-center py-6">
+            <h3 class="fs-4 mb-2 fw-bold">{{get_about_banners.title}}</h3>
+            <h4 class="fs-3  mb-5">{{get_about_banners.description}}</h4>
+          </div>
+      </div>
+  </div>
 </section>
+
+
+
 
 <section>
     <div class="container">
         <div class="row text-center">
-            <h3 class="fw-bold">Louhsira</h3>
+            <h4 class="fw-bold">Louhsira</h4>
             <p class=""> Louhsira est la plateforme qui rassemble toutes les opportunités de
                 vente et de location de maisons, ainsi que les agences immobilières, en
                 un seul endroit. Notre objectif est de faciliter la recherche de biens
@@ -55,7 +58,7 @@
 <section>
   <div class="container">
     <div class="row text-center mb-4">
-        <h3 class="fw-bold">Notre équipe.</h3>
+        <h4 class="fw-bold">Notre équipe.</h4>
         <p class="">Nous sommes une jeune équipe complémentaire et soudée, engagée
                 dans une aventure visant à construire quelque chose de durable au sein
                 de notre écosystème.
@@ -103,6 +106,13 @@
   </div>
   <!-- end of .container-->
   <style>
+    #about-header{
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      left: O;
+      top: 0;
+    }
 	.slick-prev:before,
     .slick-next:before {
       color: #002147;

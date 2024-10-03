@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from .models import (
     Banner,
- 
+    AboutBanner,
     About,
     Whychoose,
     configuration,
@@ -9,7 +9,8 @@ from .models import (
     Team, 
     Social,
     SectionTriple,
-    CGU
+    CGU,
+    Partenaire
 )
 
 from propriete.models import TypePropriete, Localite, Proprietes
@@ -17,6 +18,9 @@ from propriete.models import TypePropriete, Localite, Proprietes
 
 def get_banner(data=dict()):
     return Banner.objects.filter(**data).first()
+
+def get_about_banner(data=dict()):
+    return AboutBanner.objects.filter(**data).first()
 
 def get_about(data=dict()):
     return About.objects.filter(**data).first()
@@ -51,6 +55,8 @@ def get_section_triple(data=dict()):
 def get_cgu_(data=dict()):
     return CGU.objects.filter(**data)
 
+def get_partenaire(data=dict()):
+    return Partenaire.objects.filter(**data)
 
 ##------------------CATALOGUE------------------------------
 

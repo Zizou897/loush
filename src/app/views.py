@@ -25,6 +25,8 @@ from .functions import (
     get_property_location,
     get_property_id,
     get_all_type_propriete,
+    get_about_banner,
+    get_partenaire,
 )
 
 def verify_email(email):
@@ -39,16 +41,17 @@ def home(request):
 
     get_socials = get_social({'publish':True})
     get_banners = get_banner({'publish':True})
-    get_property_vendors = get_property_vendor({'publish':True, 'status': 'VENDRE'})
-    get_property_locations = get_property_location({'publish':True, 'status': 'LOUER'})
+    get_property_vendors = get_property_vendor({'publish':True, 'status': 'à vendre'})
+    get_property_locations = get_property_location({'publish':True, 'status': 'à louer'})
     get_abouts = get_about({'publish':True})
     get_why_chooses = get_why_choose({'publish':True})
     get_configs = get_config({'publish':True})
     get_do_trusths = get_do_trusth({'publish':True})
     get_localites = get_localite({'publish':True})
     get_type_proprietes = get_type_propriete({'publish':True})
+    get_partenaires = get_partenaire({'publish':True})
     
-
+    
     template_name = "layout/index.html"
     context = {
         'page': "LOUSHIRA | Accueil",
@@ -62,6 +65,7 @@ def home(request):
         'get_type_proprietes': get_type_proprietes,
         'get_property_vendors': get_property_vendors,
         'get_property_locations': get_property_locations,
+        'get_partenaires': get_partenaires
     }
     return render(request, template_name, context)
 
@@ -173,7 +177,7 @@ def about(request):
     liste = [1,3,5]
     get_socials = get_social({'publish':True})
     get_configs = get_config({'publish':True})
-    
+    get_about_banners = get_about_banner({'publish':True})
     get_teams = get_team({'publish':True})
     get_section_triples = get_section_triple({'publish':True})
 
@@ -183,7 +187,7 @@ def about(request):
         'page': "LOUSHIRA | A PROPOS",
         'get_socials': get_socials,
         'get_configs': get_configs,
-        
+        'get_about_banners': get_about_banners,
         'get_teams': get_teams,
         'get_section_triples': get_section_triples
     }

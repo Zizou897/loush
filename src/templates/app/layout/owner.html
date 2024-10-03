@@ -120,10 +120,14 @@
                 </div>
                 <hr>
                 <h1 class="text-center fs-2 mb-5">Photos de la Propriété</h1>
-                <div class="col-sm-12 col-md-12">
-                    <label for="formFileMultiple" class="form-label">Photos<span class="text-primary">*</span></label>
-                    <input class="form-control" type="file" id="formFileMultiple" multiple v-model="picture">
-                  </div>
+                <div class="col-sm-6 col-md-6">
+                    <label for="picture" class="form-label">Photo 1<span class="text-primary">*</span></label>
+                    <input class="form-control" type="file" id="picture" v-model="picture">
+                </div>
+                <div class="col-sm-6 col-md-6">
+                  <label for="picture2" class="form-label">Photo 2<span class="text-primary">*</span></label>
+                  <input class="form-control" type="file" id="picture2" v-model="picture2">
+              </div>
                   <div class="row mt-3 ms-3">
                     <div class="form-check col-sm-12 col-md-12">
                       <input class="form-check-input " type="checkbox" value="" id="flexCheckIndeterminate" v-model="first_confirm">

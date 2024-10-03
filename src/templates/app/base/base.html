@@ -171,14 +171,14 @@
     {% endblock content %}
 
       <!-- <section> begin ============================-->
-      <section class="bg-secondary" style=" padding-top: 7.5rem;padding-bottom: 7.5rem">
+      <section class="bg-secondary" style=" padding-top: 7.5rem;padding-bottom: 7.5rem; font-style: normal;">
 
         <div class="container">
           <div class="row">
-            <div class="col-12 col-sm-12 col-lg-6 mb-4 order-0 order-sm-0"><a class="text-decoration-none" href="{% url 'welcome' %}"><img src="{{get_configs.logo2.url}}" height="51" alt="" /></a> <br> <br>
-              <span class="text-light my-4"> <i class="fas fa-map-marker-alt me-3"></i>Avenue 15, rue 12 , ouaga  &nbsp;</span><a class="text-light text-200" href="tel:+604-680-9785">+225 000 000 00 00</a><br /> <br></span>
-              <span class="text-light"> <i class="fas fa-envelope me-3"> </i><a class="text-light text-200" href="mailto:loushira.contact@gmail.com">louhsira.contact@gmail.com</a><br><br></span>
-              <span class="text-light"> <i class="fas fa-phone-alt me-3"></i><a class="text-light text-200" href="tel:+225 0789773420">+225 0789773420 (Support)</a></span>
+            <div class="col-12 col-sm-12 col-lg-6 mb-4 order-0 order-sm-0"><a class="text-decoration-none" href="{% url 'welcome' %}"><img src="{{get_configs.logo2.url}}" height="51" alt="" /></a>
+              <p class="text-light my-4"> <i class="fas fa-map-marker-alt me-3"></i>Avenue 15, rue 12 , ouaga  &nbsp;</span><a class="text-light text-200" href="tel:+604-680-9785">+225 000 000 00 00</a></p>
+              <p class="text-light"> <i class="fas fa-envelope me-3"> </i><a class="text-light text-200" href="mailto:loushira.contact@gmail.com">louhsira.contact@gmail.com</a></p>
+              <p class="text-light"> <i class="fas fa-phone-alt me-3"></i><a class="text-light text-200" href="tel:+225 0789773420">+225 0789773420 (Support)</a></p>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 mb-3 order-2 order-sm-1">
               <h5 class="lh-lg fw-bold mb-4 text-light font-sans-serif">Communauté </h5>
@@ -278,14 +278,24 @@
     <link href="{% static 'app/assets/css/multiple.css' %}" rel="stylesheet" />
     <script src="{% static 'app/assets/js/multiple.js' %}"></script>
 
-   
-   
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-multiselect@2.1.0"></script>
+  <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<div id="app">
     {% block scriptDetail %}
     {% endblock scriptDetail %}
 
     {% block scriptVueDetail %}
     {% endblock scriptVueDetail %}
+
+    <script>
+      $.fn.selectpicker.Constructor.BootstrapVersion = '4';
+     
+    $('select').selectpicker();
+
+    </script>
 
     <script>
       $('.team-rows').slick({
@@ -304,6 +314,7 @@
       
     var app =  new Vue({
       el: '#home_asking',
+      components: { Multiselect: window.VueMultiselect.default },
       delimiters: ['%{', '}'],
       data: {
         confirm: false,
@@ -325,10 +336,30 @@
         // --------------------------
         date_demenag_souhaite: '',
         comments_souhaite: '',
+
+        //---------------------------
+        value: [],
+        selectedItems: [],
+        options: [
+          {
+            "city": "San Martin"
+          },
+          {
+            "city": "San Nicolas"
+          },
+          {
+            "city": "San Francisco"
+          }
+        ]
       },
       mounted(){},
       computed:{},
       methods: {
+        onSelect(){
+          this.selectedItems.push(this.value[0]);
+          this.value = [];
+        },
+
         sendData(){
           if(this.name == ""){
             Swal.fire({
@@ -398,8 +429,10 @@
         }
       },
     });
+
+
     
-    new Vue({
+    var app1 = new Vue({
           el: "#home_owner",
           data: {
             //--------------------------
@@ -466,12 +499,16 @@
 
             //--------------------------
             picture: '',
+            picture2:'',
 
           },
           mounted(){},
           computed:{},
           methods: {
             sendOwnerData(){
+
+              
+
               if(this.first_confirm && this.second_confirm){
                 console.log('############ 1 #############""');
                 if(!this.name == '' && !this.phone == ''){
@@ -512,7 +549,6 @@
                     .then(function(response){
                       if(response.data.success){
                 console.log('############ 5 #############""');
-
                         Swal.fire({
                           icon: 'success',
                           title: "Demande d'exposition envoyée",
@@ -520,7 +556,9 @@
                           showConfirmButton: false,
                           timer: 3500,
                         });
-                        window.setTimeout(function(){window.location.reload();}, 3500);
+                        console.log(this.picture)
+                        console.log(this.picture2)
+                        //window.setTimeout(function(){window.location.reload();}, 3500);
                        
                       }else{
                 console.log('############ 6 #############""');
@@ -535,7 +573,7 @@
                   })
                   }
                 }else{
-                console.log('############ 7 #############""');
+                  console.log('############ 7 #############""');
                   Swal.fire({
                     icon: 'error',
                     title: 'Erreur',

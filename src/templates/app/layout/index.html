@@ -10,13 +10,9 @@
                 <h1 class="fs-6 mb-2 fw-bold">LA PLATEFORME N°1 DE L'IMMOBILIER AU BURKINA FASO</h1>
                 <h4 class="font-sans-serif mb-5">Notre plateforme propose une solution complète pour la recherche, l’achat
                   et la vente de biens immobiliers.</h4>
-                
-                    <button class="btn btn-primary me-2 fw-bold width-bouton "role="button" data-bs-toggle="modal" data-bs-target="#modalSearch">Chercher une maison</button> 
-                  
-                    <button class="btn fa-btn-secondary fw-bold width-bouton margin-top-button margin-right-button" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Exposer une maison</button>
-                    
+                    <button class="btn btn-primary me-2 fw-bold width-bouton font-sans-serif"role="button" data-bs-toggle="modal" data-bs-target="#modalSearch">Chercher une maison</button> 
+                    <button class="btn fa-btn-secondary fw-bold width-bouton margin-top-button margin-right-button font-sans-serif" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Exposer une maison</button>
                     {# <button class="btn-outline-secondary fw-bold"  role="button" >SiraSev</button>#}
-                
             </div>
         </div>
     </div>
@@ -24,7 +20,7 @@
 
 {% include "includes/_trusts.html" %}
 
-<section class="pt-6 pt-5 w-100 h-50 a-over">
+<section class="pt-5 w-100 h-50 a-over">
         <div class="row">
           <div class="col-md-4 d-flex flex-column justify-content-center" style="background-color:#001731; color:#fff;height:430px">
             <h2 class="fw-bold mb-3 ms-4" style="color:#fff;">Visibilité Optimale</h2>
@@ -32,11 +28,13 @@
               photographies professionnelles et des descriptions détaillées, assurant
               une présentation attrayante pour attirer les acheteurs et locataires
               potentiels.</p>
+          </div>{#  #}
+          <div class="col-md-4 w-40" style="background-color: rgb(190, 190, 190);height:430px">
+            <img src="" alt="" srcset="">
           </div>
-          <div class="col-md-4 w-40" style="background-color: rgb(190, 190, 190);height:430px"></div>
           <div class="col-md-4 d-flex flex-column justify-content-center" style="background-color:#f15a27;color:#fff;height:430px">
             <h2 class="fw-bold mb-3 ms-4"  style="color:#fff;">Flexibilité pour les Professionnels</h2>
-            <p class="ms-lg-4 ">Les agences immobilières
+            <p class="ms-4 ">Les agences immobilières
               bénéficient d'une flexibilité sans précédent, pouvant choisir entre gérer
               elles-mêmes leurs annonces ou collaborer avec LouhSira pour une
               exposition et une vente optimisée.</p>
@@ -49,13 +47,13 @@
 <section>
   <div class="container">
     <div class="row">
-      <h3 class="text-center mb-5 fw-bold"> Découvrez les derniers bien <span class="text-primary">à vendre</span></h3>
+      <h4 class="text-center mb-5 fw-bold"> Découvrez les derniers bien <span class="text-primary">à vendre</span></h4>
       {% for house in get_property_vendors %}
               <div class="col-md-4 mb-4">
                 <div class="card fa-card h-100"><img class="card-img-top w-100 h-50" src="{{house.pictures.all.first.picture.url}}" alt="courses" />
                   <div class="card-body">
                     <i class="fa-regular fa-user text-primary fa-icon"></i> <span class=" ml-4  fs--1 stretched-link text-decoration-none fa-span">par: {{house.proprietaire}}</span><h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1 mt-3">{{house.titre_annonce}}</h5>
-                    <span class="mt-3">{{ house.description | truncatechars:50 | safe }}</span>
+                    <p class="mt-3">{{ house.description | truncatechars:50 | safe }}</p>
                     <hr>
                     <div class="d-flex justify-content-between"> 
                       <span class="fa-span"><i class="fa-solid fa-calendar-days text-primary fa-icon "></i>{{house.created_at}}</span> <a class="fw-bold fs-lg--1 stretched-link text-decoration-none text-primary" href="{% url 'home-detail-index' house.id %}"> Voir + </a>
@@ -78,14 +76,14 @@
 <section>
   <div class="container">
     <div class="row">
-      <h3 class="text-center mb-5 fw-bolder"> Découvrez les derniers bien <span class="text-primary">à louer</span></h3>
+      <h4 class="text-center mb-5 fw-bolder"> Découvrez les derniers bien <span class="text-primary">à louer</span></h4>
       {% for house in get_property_locations %}
         <div class="col-md-4 col-sm-6 col-xs-6 mb-4">
           
             <div class="card fa-card h-100"><img class="card-img-top w-100 h-75" src="{{house.pictures.all.first.picture.url}}" alt="courses" />
               <div class="card-body">
                 <i class="fa-regular fa-user text-primary fa-icon"></i> <span class=" ml-4  fs--1 stretched-link text-decoration-none fa-span">par: {{house.proprietaire}}</span><h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1 mt-3">{{house.titre_annonce}}</h5>
-                <span class="mt-3 ">{{ house.description | truncatechars:50 | safe }}</span>
+                <p class="mt-3 ">{{ house.description | truncatechars:50 | safe }}</p>
                 <hr>
                 <div class="d-flex justify-content-between"> 
                   <span class="fa-span"><i class="fa-solid fa-calendar-days text-primary fa-icon "></i>{{house.created_at}}</span> <a class="fw-bold fs-lg--1 stretched-link text-decoration-none text-primary" href="{% url 'home-detail-index' house.id %}"> Voir + </a>
@@ -108,7 +106,7 @@
       <!-- ============================================-->
       <!-- <section> begin ============================-->
 <section class="pt-0">
-  <div class="container">
+  <div class="container" style="font-style: normal;">
     <div class="row h-100 align-items-center">
       <div class="col-md-12 col-lg-6 h-100">
         <div class="card card-span text-white h-100"><img class="w-100" src="{{get_abouts.picture.url}}" alt="..." />
@@ -122,12 +120,8 @@
 
       <div class="col-md-12 col-lg-6 h-100">
         <h1 class="my-4 fw-bold">Nous sommes les meilleurs dans<span class="text-primary"> l'immobilier de confiance</span></h1>
-        <span class="">{{get_abouts.description}}</span>
+        <p class="">{{get_abouts.description}}</p>
         <div class="mt-6">
-          
-          <div class="card card-span bg-600">
-            
-          </div>
         </div>
       </div>
     </div>
@@ -139,7 +133,7 @@
       <!-- ============================================-->
 
 <section class="pt-0">
-  <div class="container"> 
+  <div class="container" style="font-style: normal;"> 
       <div class="row h-100 align-items-center">     
           <div class="col-md-12 col-lg-6 h-100">
           <h1 class="my-4 fw-bold">Pourquoi choisir <span class="text-primary"> Louhsira</span>?</h1>
@@ -165,7 +159,10 @@
 </section>
 
 
+
   <!-- email subscribe -->
+{% include "includes/_partenaire.html" %}
+
 {% include "includes/_email_sub.html" %}
 
   <!-- Modal -->

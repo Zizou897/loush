@@ -17,7 +17,8 @@ from core.constants import (
     WHYCHOOSE,
     LOGO_SITE_PATH,
     DO_TRUSTH_PATH,
-    Team_PATH, SECTION_PATH
+    Team_PATH,
+    SECTION_PATH,
 )
 
 
@@ -60,6 +61,18 @@ class About(Convention):
     def __str__(self):
         return self.title
 
+
+class AboutBanner(Convention):
+    title = models.CharField(max_length = 150)
+    picture = models.FileField(upload_to=BANNER_IMAGE_PATH, max_length = 100)
+    description = models.TextField()
+    
+    class Meta:
+        verbose_name = "Bannière à propos"
+        verbose_name_plural = "Bannières à propos"
+    def __str__(self):
+        return self.title
+    
 
 class Whychoose(Convention):
     title = models.CharField(max_length = 150)
@@ -187,3 +200,17 @@ class CGU(Convention):
 
     def __str__(self):
         return self.title
+
+
+
+class Partenaire(Convention):
+    nom = models.CharField(max_length = 150)
+    picture = models.FileField(upload_to=SECTION_PATH, max_length = 100, blank=True, null=True)
+    link = models.URLField(max_length = 200, blank=True, null=True)
+    
+    class Meta:
+        verbose_name = "Parténaire"
+        verbose_name_plural = "Parténaires"
+
+    def __str__(self):
+        return self.nom

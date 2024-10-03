@@ -9,12 +9,13 @@ from .models import (
     configuration,
     DoTrust,
     Team,
-    
+    AboutBanner,
     Social,
     SectionTriple,
     ClassButton,
     Links,
     CGU,
+    Partenaire,
 )
 
 
@@ -30,6 +31,13 @@ class BannerAdmin(admin.ModelAdmin):
     image_view.short_description = "Aperçu des images"
 
 
+
+@admin.register(AboutBanner)
+class AboutBannerAdmin(admin.ModelAdmin):
+    list_display = ("image_view", "title", "created_at", "publish")
+    date_hierarchy = "created_at"
+    list_per_page = 10
+    list_editable = ["publish"]
 
     def image_view(self, obj):
         return mark_safe(f'<img src="{obj.picture.url}" style="height:100px; width:150px">')
@@ -100,9 +108,6 @@ class TeamAdmin(admin.ModelAdmin):
 
 
 
-
-    
-
 @admin.register(Social)
 class SocialAdmin(admin.ModelAdmin):
     list_display = ("name", "link","created_at", "publish")
@@ -136,9 +141,24 @@ class LinksAdmin(admin.ModelAdmin):
     list_editable = ["publish"]
     
 
+
+
 @admin.register(CGU)
 class CGUAdmin(admin.ModelAdmin):
     list_display = ("title", "created_at", "publish")
     date_hierarchy = "created_at"
     list_per_page = 10
     list_editable = ["publish"]
+
+
+
+@admin.register(Partenaire)
+class PartenaireAdmin(admin.ModelAdmin):
+    list_display = ("nom", "created_at", "publish")
+    date_hierarchy = "created_at"
+    list_per_page = 10
+    list_editable = ["publish"]
+    
+    def image_view(self, obj):
+        return mark_safe(f'<img src="{obj.picture.url}" style="height:100px; width:150px">')
+    image_view.short_description = "Aperçu des images"

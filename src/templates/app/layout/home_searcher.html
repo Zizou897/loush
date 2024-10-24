@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<section class="pt-7">
+<section class="bg-600 pt-7">
 
     <div class="container">
       <div class="row">
@@ -14,50 +14,45 @@
                 <h1 class="text-center fs-2 mb-5">Informations persernelles</h1>
                 <div class="row mb-3">
                     <div class="col-sm-6 col-md-6">
-                        <label class="form-label" for="inputCategories">Nom et Prénom <span class="text-primary">*</span></label>
-                        <input type="name" class="form-control" placeholder="john diane" v-model="name">
+                        {#  <label class="form-label" for="inputCategories">Nom et Prénom <span class="text-primary">*</span></label>#}
+                        <input type="name" class="form-control" placeholder="Nom et Prénom *" v-model="name">
                     </div>
                     <div class="col-sm-6 col-md-6">
-                    <label class="form-label" for="inputLevel">Numéro de téléphone <span class="text-primary">*</span></label>
-                    <input type="number" class="form-control" placeholder="O7897734" v-model="phone">
+                    <input type="number" class="form-control" placeholder="Numéro de téléphone *" v-model="phone">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-12">
-                        <label class="form-label" for="inputCategories">Adresse e-mail <span class="text-primary">*</span></label>
-                        <input type="email" class="form-control" placeholder="mail@gmail.com" v-model="email">
+                       {#  <label class="form-label" for="inputCategories">Adresse e-mail <span class="text-primary">*</span></label>  #}
+                        <input type="email" class="form-control" placeholder="Adresse e-mail *" v-model="email">
                     </div>
                 </div>
                 <hr>
                 <h1 class="text-center fs-2 mb-5">Préférences de la Propriété</h1>
                 <div class="row mb-3">
                     <div class="col-sm-6 col-md-4">
-                        <label class="form-label" for="inputLevel">Type de propriété recherchée <span class="text-primary">*</span></label>
                         <select class="form-select" id="inputLevel" v-model="type_propriete_rechercher">
-                            <option value="" selected hidden >Votre choix</option>
+                            <option value="" selected hidden >Type de propriété recherchée *</option>
                             {% for type in get_type_proprietes %}
                               <option>{{type.libele}}</option>
                             {% endfor %}
                         </select>
                     </div>
                     <div class="col-sm-6 col-md-4">
-                        <label class="form-label" for="inputLevel">Achat ou Location <span class="text-primary">*</span></label>
-                        <select class="form-select" id="inputLevel" v-model="achat_or_location">
-                            <option value="" selected hidden>Votre choix</option>
+                       <select class="form-select" id="inputLevel" v-model="achat_or_location">
+                            <option value="" selected hidden>Achat ou Location</option>
                             <option>Achat</option>
                             <option>Location</option>
                         </select>
                     </div>
                     <div class="col-sm-6 col-md-4">
-                        <label class="form-label" for="inputLevel">Budget <span class="text-primary">*</span></label>
-                        <input type="name" class="form-control" placeholder="100 000 Fcfa" v-model="budjet">
+                        <input type="name" class="form-control" placeholder="Budget" v-model="budjet">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-6 col-md-4">
-                        <label class="form-label" for="inputLevel">Nombre de chambres <span cO7897734lass="text-primary">*</span></label>
                         <select class="form-select" data-placeholder="Select fruits" id="inputLevel" v-model="nbr_chambre">
-                            <option value="" selected hidden>Votre choix</option>
+                            <option value="" selected hidden>Nombre de chambres</option>
                             <option> 1 chambre</option>
                             <option> 2 chambres</option>
                             <option> 3 chambres</option>
@@ -66,9 +61,8 @@
                         </select>
                     </div>
                     <div class="col-sm-6 col-md-4">
-                        <label class="form-label" for="inputLevel">Nombre de salles de bain <span class="text-primary">*</span></label>
                         <select class="form-select" id="inputLevel" v-model="nbr_salle_bain">
-                            <option value="" selected hidden>Votre choix</option>
+                            <option value="" selected hidden>Nombre de salles de bain</option>
                             <option> 1 salle de bain</option>
                             <option> 2 salles de bain</option>
                             <option> 3 salles de bain</option>
@@ -77,27 +71,24 @@
                         </select>
                     </div>
                     <div class="col-sm-6 col-md-4">
-                        <label class="form-label" for="inputLevel">Surface habitable <span class="text-primary">*</span></label>
-                        <input type="email" class="form-control" placeholder="Surface en mètres carrés souhaitée" v-model="surface_habitable">
+                        <input type="email" class="form-control" placeholder="Surface habitable" v-model="surface_habitable">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-6 col-md-6">
-                        <label class="form-label" for="inputLevel">Localisation souhaitée <span class="text-primary">*</span></label>
-                        <select class="form-select" id="inputLevel" v-model="localisation_souhaite">
-                          <option value="" selected hidden>Votre choix</option>
+                         <select class="form-select" id="inputLevel" v-model="localisation_souhaite">
+                          <option value="" selected hidden>Localisation souhaitée</option>
                           {% for locale in get_localites %}
                           <option>{{locale.name}}</option>
                           {% endfor %}
                       </select>
                     </div>
                     <div class="col-sm-6 col-md-6" style="overflow:hidden;">
-                        <label class="form-label" for="inputLevel">Caractéristiques souhaitées</label>
                         <select class="selectpicker form-control"  data-selected-text-format="count > 5" data-container="body">
-                            <option>Mustard</option>
-                            <option>Ketchup</option>
-                            <option>Relish</option>
-                            <option>Onions</option>
+                            <option>Caractéristiques souhaitées</option>
+                            <option>Jardin</option>
+                            <option>Balcon</option>
+                            <option>Parking</option>
                         </select>
                     </div>
                    
@@ -106,12 +97,10 @@
                 <h1 class="text-center fs-2 mb-5">Autres Préférences</h1>
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
-                        <label class="form-label" for="inputCategories">Date de déménagement souhaitée <span class="text-primary">*</span></label>
-                        <input type="date" class="form-control" v-model="date_demenag_souhaite">
+                       <input type="date" class="form-control" placeholder="Date de déménagement souhaitée" v-model="date_demenag_souhaite">
                     </div>
                     <div class="col-sm-6 col-md-6">
-                        <label for="floatingTextarea">Commentaires supplémentaires</label>
-                        <textarea class="form-control" placeholder="Laisser un commentaire" id="floatingTextarea" v-model="comments_souhaite"></textarea>
+                         <textarea class="form-control" placeholder="Commentaires supplémentaires" id="floatingTextarea" v-model="comments_souhaite"></textarea>
                     </div>
             
                 </div>

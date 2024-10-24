@@ -14,34 +14,29 @@
                 <h1 class="text-center fs-2 mb-5">Informations persernelles</h1>
                 <div class="row mb-3">
                     <div class="col-sm-6 col-md-6">
-                        <label class="form-label" for="inputCategories">Nom et Prénom <span class="text-primary">*</span></label>
-                        <input type="name" class="form-control" placeholder="john diane" v-model="name">
+                       <input type="name" class="form-control" placeholder="Nom et Prénom *" v-model="name">
                     </div>
                     <div class="col-sm-6 col-md-6">
-                    <label class="form-label" for="inputLevel">Numéro de téléphone <span class="text-primary">*</span></label>
-                    <input type="text" class="form-control" placeholder="O7897734" v-model="phone">
+                    <input type="text" class="form-control" placeholder="Numéro de téléphone *" v-model="phone">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-12">
-                        <label class="form-label" for="inputCategories">Adresse e-mail <span class="text-primary">*</span></label>
-                        <input type="email" class="form-control" placeholder="name@example.com" v-model="email">
+                       <input type="email" class="form-control" placeholder="Adresse e-mail *" v-model="email">
                     </div>
                 </div>
                 <hr>
                 <h1 class="text-center fs-2 mb-5">Détail de la propriété</h1>
                 <div class="row mt-3">
                     <div class="col-sm-6 col-md-4">
-                      <label class="form-label" for="forType">Type de proprieté<span class="text-primary">*</span></label>
-                      <select class=" form-control" id="forType" v-model="type_propriete_for_owner">
-                          <option value="" selected hidden>Votre choix</option>
-                          <option>Appartement</option>
-                          <option>Maison</option>
-                          <option>Studio</option>
+                      <select class="form-select" id="forType" v-model="type_propriete_for_owner">
+                        <option value="" selected hidden>Type de proprieté</option>
+                        {% for type in get_type_proprietes %}
+                          <option>{{type.libele}}</option>
+                          {% endfor %}
                       </select>
                     </div>
                     <div class="col-sm-6 col-md-4">
-                      <label class="form-label" for="forStatus">Status<span class="text-primary">*</span></label>
                       <select class="form-select" id="forStatus"  v-model="status_buy_sell">
                           <option value="" selected hidden>Faire louer / Faire vendre</option>
                           <option>Faire louer</option>
@@ -49,39 +44,34 @@
                       </select>
                     </div>
                     <div class="col-md-4">
-                      <label for="forPrice" class="form-label">Prix demandé<span class="text-primary">*</span></label>
                       <input type="text" class="form-control" id="forPrice" placeholder="Prix de location ou de vente en fcfa" v-model="home_price">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-sm-6 col-md-4">
-                      <label class="form-label" for="forAddress">Adresse de la propriété<span class="text-primary">*</span></label>
                       <select class="form-select" id="forAddress" v-model="home_address">
-                          <option value="" selected hidden>Secteur de la propriété</option>
+                          <option value="" selected hidden>Adresse de la propriété</option>
                           <option>Bobo Dioulasso</option>
                           <option>Ouaga</option>
                       </select>
                     </div>
                     <div class="col-sm-6 col-md-4">
-                      <label class="form-label" for="forYear">Année de construction<span class="text-primary">*</span></label>
                       <select class="form-select" id="forYear" v-model="year_building">
-                        <option value="" selected hidden>Votre choix</option>
+                        <option value="" selected hidden>Année de construction</option>
                           <option>2024</option>
                           <option>2023</option>
                       </select>
                     </div>
                     <div class="col-md-4">
-                      <label for="forSpace" class="form-label">Surface habitable<span class="text-primary">*</span></label>
-                      <input type="text" class="form-control" id="forSpace" placeholder="Surface en mètres carrés" v-model="living_space">
+                     <input type="text" class="form-control" id="forSpace" placeholder="Surface habitable en mètres carrés" v-model="living_space">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-sm-6 col-md-4">
-                      <label class="form-label" for="forRoom">Nombre de chambres<span class="text-primary">*</span></label>
                       <select class="form-select" id="forRoom" v-model="nbr_room">
-                        <option value="" selected hidden>Votre choix</option>
+                        <option value="" selected hidden>Nombre de chambres</option>
                           <option> 1 chambre</option>
                           <option> 2 chambres</option>
                           <option> 3 chambres</option>
@@ -90,9 +80,8 @@
                       </select>
                     </div>
                     <div class="col-sm-6 col-md-4">
-                      <label class="form-label" for="forBathRomm">Nombre de salles de bain<span class="text-primary">*</span></label>
-                      <select class="form-select" id="forBathRomm" v-model="nbr_bath_room">
-                        <option value="" selected hidden>Votre choix</option>
+                       <select class="form-select" id="forBathRomm" v-model="nbr_bath_room">
+                        <option value="" selected hidden>Nombre de salles de bain</option>
                         <option> 1 salle de bain</option>
                         <option> 2 salles de bain</option>
                         <option> 3 salles de bain</option>
@@ -100,9 +89,8 @@
                       </select>
                     </div>
                     <div class="col-sm-6 col-md-4">
-                      <label class="form-label" for="selectID">Caractéristiques spéciales</label>
                       <select  class="form-select"  id="">
-                        <option value="" selected hidden>Votre choix</option>
+                        <option value="" selected hidden>Caractéristiques spéciales</option>
                           <option>Jardin</option>
                           <option>Balcon</option>
                           <option>Parking</option>
@@ -114,20 +102,17 @@
                 <h1 class="text-center fs-2 mb-5">Description de la Propriété</h1>
                 <div class="row">
                     <div class="col-sm-12 col-md-12">
-                      <label for="forDetail">Description détaillée</label>
-                      <textarea class="form-control" placeholder="Décrivez les atouts et particularités de la propriété" id="forDetail" v-model="home_detail"></textarea>
+                       <textarea class="form-control" placeholder="Décrivez les atouts et particularités de la propriété" id="forDetail" v-model="home_detail"></textarea>
                     </div>
                 </div>
                 <hr>
                 <h1 class="text-center fs-2 mb-5">Photos de la Propriété</h1>
                 <div class="col-sm-6 col-md-6">
-                    <label for="picture" class="form-label">Photo 1<span class="text-primary">*</span></label>
-                    <input class="form-control" type="file" id="picture" v-model="picture">
+                   <input class="form-control" type="file" id="picture" v-model="picture">
                 </div>
                 <div class="col-sm-6 col-md-6">
-                  <label for="picture2" class="form-label">Photo 2<span class="text-primary">*</span></label>
-                  <input class="form-control" type="file" id="picture2" v-model="picture2">
-              </div>
+                  <input class="form-control" type="file" id="picture2" placeholder="Photo 2" v-model="picture2">
+                </div>
                   <div class="row mt-3 ms-3">
                     <div class="form-check col-sm-12 col-md-12">
                       <input class="form-check-input " type="checkbox" value="" id="flexCheckIndeterminate" v-model="first_confirm">

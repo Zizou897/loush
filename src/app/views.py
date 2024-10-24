@@ -107,11 +107,13 @@ def owner_page(request):
     
     get_socials = get_social({'publish':True})
     get_configs = get_config({'publish':True})
+    get_type_proprietes = get_type_propriete({'publish':True})
     template_name = "layout/owner.html"
     context = {
         'page': "LOUSHIRA | Proprietaire",
         'get_socials': get_socials,
         'get_configs': get_configs,
+        'get_type_proprietes': get_type_proprietes,
     }
     return render(request, template_name, context)
 

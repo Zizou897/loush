@@ -50,8 +50,8 @@
     
     
 
-
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
+    {#  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />#}
     <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
 <div class="elfsight-app-f8f97b14-84d7-4399-a8aa-7e23f926c944" data-elfsight-app-lazy></div>
   </head>
@@ -175,13 +175,13 @@
 
         <div class="container">
           <div class="row">
-            <div class="col-12 col-sm-12 col-lg-6 mb-4 order-0 order-sm-0"><a class="text-decoration-none" href="{% url 'welcome' %}"><img src="{{get_configs.logo2.url}}" height="51" alt="" /></a>
+            <div class="col-12 col-sm-12 col-lg-6 mb-4 order-0 order-sm-0"><a class="text-decoration-none" href="{% url 'welcome' %}"><img src="{{get_configs.logo2.url}}" height="51"  alt="" /></a>
               <p class="text-light my-4"> <i class="fas fa-map-marker-alt me-3"></i>Avenue 15, rue 12 , ouaga  &nbsp;</span><a class="text-light text-200" href="tel:+604-680-9785">+225 000 000 00 00</a></p>
               <p class="text-light"> <i class="fas fa-envelope me-3"> </i><a class="text-light text-200" href="mailto:loushira.contact@gmail.com">louhsira.contact@gmail.com</a></p>
-              <p class="text-light"> <i class="fas fa-phone-alt me-3"></i><a class="text-light text-200" href="tel:+225 0789773420">+225 0789773420 (Support)</a></p>
+              <p class="text-light"> <i class="fas fa-phone-alt me-3"></i><a class="text-light text-200" href="tel:+225 0789773420">+225 0789773420</a></p>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 mb-3 order-2 order-sm-1">
-              <h5 class="lh-lg fw-bold mb-4 text-light font-sans-serif">Communauté </h5>
+              <h5 class="lh-lg fw-bold mb-4 text-light font-sans-serif">Communauté</h5>
               <ul class="list-unstyled mb-md-4 mb-lg-0">
                 {% for socials in get_socials %} 
                   <li class="lh-lg"><a class="text-200" href="{{socials.link}}">{{socials.name}}</a></li> 
@@ -199,7 +199,7 @@
               </ul>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 mb-3 order-3 order-sm-2">
-              <h5 class="lh-lg fw-bold text-light mb-4 font-sans-serif"> Plus</h5>
+              <h5 class="lh-lg fw-bold text-light mb-4 font-sans-serif">Plus</h5>
               <ul class="list-unstyled mb-md-4 mb-lg-0">
                 
                 <li class="lh-lg"><a class="text-200" href="{% url 'condition-generale-utilisation' %}">Conditions générale d'utlisation</a></li>
@@ -253,6 +253,14 @@
                 title : "Geeksforgeeks datepicker" 
             }).datepicker('update', new Date()); 
         }); 
+
+        new TomSelect("#select-beast",{
+          create: true,
+          sortField: {
+            field: "text",
+            direction: "asc"
+          }
+        });
     </script> 
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://kit.fontawesome.com/762b1fab87.js" crossorigin="anonymous"></script>
@@ -282,7 +290,11 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vue-multiselect@2.1.0"></script>
   <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css">
+
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/tom-select@2.4.1/dist/css/tom-select.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/tom-select@2.4.1/dist/js/tom-select.complete.min.js"></script>
 <div id="app">
     {% block scriptDetail %}
     {% endblock scriptDetail %}

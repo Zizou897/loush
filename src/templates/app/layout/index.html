@@ -1,4 +1,4 @@
-{% extends "base/base.html" %}
+{% extends "app/base/base.html" %}
 {% load static %}
 {% block content %}
 
@@ -18,7 +18,7 @@
     </div>
 </section>
 
-{% include "includes/_trusts.html" %}
+{% include "app/includes/_trusts.html" %}
 
 <section class="pt-5 w-100 h-50 a-over">
         <div class="row">
@@ -161,14 +161,14 @@
 
 
   <!-- email subscribe -->
-{% include "includes/_partenaire.html" %}
+{% include "app/includes/_partenaire.html" %}
 
-{% include "includes/_email_sub.html" %}
+{% include "app/includes/_email_sub.html" %}
 
   <!-- Modal -->
-{% include "includes/_modal_owner.html" %}
+{% include "app/includes/_modal_owner.html" %}
 
-{% include "includes/_modal_search.html" %}
+{% include "app/includes/_modal_search.html" %}
 
 {% endblock %}
 

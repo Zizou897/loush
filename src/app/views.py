@@ -27,6 +27,7 @@ from .functions import (
     get_all_type_propriete,
     get_about_banner,
     get_partenaire,
+    get_caracteristique_home,
 )
 
 def verify_email(email):
@@ -52,7 +53,7 @@ def home(request):
     get_partenaires = get_partenaire({'publish':True})
     
     
-    template_name = "layout/index.html"
+    template_name = "app/layout/index.html"
     context = {
         'page': "LOUSHIRA | Accueil",
         'get_socials': get_socials,
@@ -65,7 +66,8 @@ def home(request):
         'get_type_proprietes': get_type_proprietes,
         'get_property_vendors': get_property_vendors,
         'get_property_locations': get_property_locations,
-        'get_partenaires': get_partenaires
+        'get_partenaires': get_partenaires,
+        'get_caracteristique_homes': get_caracteristique_home,
     }
     return render(request, template_name, context)
 
@@ -76,7 +78,7 @@ def search_page(request):
     get_socials = get_social({'publish':True})
     get_configs = get_config({'publish':True})
     
-    template_name = "layout/home_search.html"
+    template_name = "app/layout/home_search.html"
     context = {
         'page': "LOUSHIRA | Chercher-une-maison",
         'get_socials': get_socials,
@@ -92,13 +94,14 @@ def home_searcher(request):
     get_localites = get_localite({'publish':True})
     get_type_proprietes = get_type_propriete({'publish':True})
     
-    template_name = "layout/home_searcher.html"
+    template_name = "app/layout/home_searcher.html"
     context = {
         'page': "LOUSHIRA | chercheur",
         'get_socials': get_socials,
         'get_configs': get_configs,
         'get_localites': get_localites,
-        'get_type_proprietes': get_type_proprietes,
+        'get_type_proprietes': get_type_propriete,
+        'get_caracteristique_homes': get_caracteristique_home,
     }
     return render(request, template_name, context)
 
@@ -108,7 +111,7 @@ def owner_page(request):
     get_socials = get_social({'publish':True})
     get_configs = get_config({'publish':True})
     get_type_proprietes = get_type_propriete({'publish':True})
-    template_name = "layout/owner.html"
+    template_name = "app/layout/owner.html"
     context = {
         'page': "LOUSHIRA | Proprietaire",
         'get_socials': get_socials,
@@ -124,7 +127,7 @@ def home_detail(request, id):
     get_socials = get_social({'publish':True})
     get_configs = get_config({'publish':True})
     get_property_ids = get_property_id(id)
-    template_name = "layout/home_detail.html"
+    template_name = "app/layout/home_detail.html"
     context = {
         'page': "LOUSHIRA | Home-detail",
         'get_socials': get_socials,
@@ -163,7 +166,7 @@ def catalogue(request):
     get_type_proprietes = get_all_type_propriete({'publish':True})
 
 
-    template_name = "layout/catalogue.html"
+    template_name = "app/layout/catalogue.html"
     context = {
         'page': "LOUSHIRA | Catalogue",
         'get_socials': get_socials,
@@ -183,7 +186,7 @@ def about(request):
     get_teams = get_team({'publish':True})
     get_section_triples = get_section_triple({'publish':True})
 
-    template_name = "layout/about.html"
+    template_name = "app/layout/about.html"
     context = {
         'listes': liste,
         'page': "LOUSHIRA | A PROPOS",
@@ -202,7 +205,7 @@ def agence(request):
     get_configs = get_config({'publish':True})
    
     
-    template_name = "layout/agence.html"
+    template_name = "app/layout/agence.html"
     context = {
         'page': "LOUSHIRA | AGENCE",
         'get_socials': get_socials,
@@ -221,7 +224,7 @@ def condition_generale(request):
     get_configs = get_config({'publish':True})
     get_cgu_s = get_cgu_({'publish': True})
     
-    template_name = "layout/condition.html"
+    template_name = "app/layout/condition.html"
     context = {
         'page': "LOUSHIRA | CONDITIONS GENERALE",
         'get_socials': get_socials,

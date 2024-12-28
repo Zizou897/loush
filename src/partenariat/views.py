@@ -6,7 +6,8 @@ from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 
 from .models import AgencyRealEstate, Searcher, Owner, Newsletters
-from propriete.models import Proprietes
+from core.utils import send_costumize_email
+from propriete.models import Proprietes, CaracteristiqueMaison, Localite
 from reserves.models import Reservation
 # Create your views here.
 def verify_email(email):
@@ -44,6 +45,33 @@ def post_agence(request):
         print(created)
         if created:
             msg = 'Vous recevrez un mail de la part de Louhsira'
+            # Recuperer les données
+            
+            template = 'emails/agence_emails/agence.html'
+            subjet = "Demande de partenariat"
+            message = "Louhsira vous dit merci"
+            context = {}
+            receivers = [agence.email]
+            
+            # Test
+            ''' 
+                fichier = '/home/areb/Documents/GitHub/loush/src/partenariat/Secteurs(Quartiers) de Ouagadougou.txt'
+                with open(fichier, 'r', encoding='utf-8') as file:
+                    data = file.readlines()
+
+                for ligne in data:
+                    lacalite = Localite(name=ligne.strip())
+                    lacalite.save()
+            '''
+            
+            # Envoyer l'email
+            has_send = send_costumize_email( 
+                subjet=subjet, 
+                receivers=receivers, 
+                template=template, 
+                context=context
+            )
+            
         else:
             agence.save()
        
@@ -83,12 +111,29 @@ def post_searcher(request):
         msg = 'veuillez saisir un addresse Mail correct'
     
     else:
-       all_is_true, msg = True, "ce message est déjà envoyé"
+        all_is_true, msg = True, "ce message est déjà envoyé"
        
-       searcher, created = Searcher.objects.get_or_create(name=name, email=email, phone=phone, type_propriete_rechercher=type_propriete_rechercher, achat_or_location=achat_or_location, nbr_chambre=nbr_chambre, nbr_salle_bain=nbr_salle_bain, surface_habitable=surface_habitable, localisation_souhaite=localisation_souhaite, caract_souhaite=caract_souhaite, date_demenag_souhaite=date_demenag_souhaite, comments_souhaite=comments_souhaite)
-       if created:
+        searcher, created = Searcher.objects.get_or_create(name=name, email=email, phone=phone, type_propriete_rechercher=type_propriete_rechercher, achat_or_location=achat_or_location, nbr_chambre=nbr_chambre, nbr_salle_bain=nbr_salle_bain, surface_habitable=surface_habitable, localisation_souhaite=localisation_souhaite, caract_souhaite=caract_souhaite, date_demenag_souhaite=date_demenag_souhaite, comments_souhaite=comments_souhaite)
+        if created:
             msg = 'Vous recevrez un mail de la part de Louhsira'
-       else:
+            
+            # Recuperation des données 
+            
+            template = 'emails/agence_emails/agence.html'
+            subjet = "Demande de partenariat"
+            message = "Louhsira vous dit merci"
+            context = {}
+            receivers = [searcher.email]
+            
+            # Envoyer l'email
+            has_send = send_costumize_email( 
+                subjet=subjet, 
+                receivers=receivers, 
+                template=template, 
+                context=context
+            )
+            
+        else:
             searcher.save()
     
     data = {
@@ -176,8 +221,7 @@ def post_reservation(request):
     print('#####1111#########')
     if not name or name.isspace() or not email or email.isspace() or not phone or phone.isspace():
         msg = 'Veuillez renseigner les champs vides'
-    elif not isinstance(phone, int):
-        msg = "Veuillez renseigner un numero correct"
+    
     elif verify_email(email):
         print('#####2222#########')
         msg = 'veuillez saisir un addresse Mail correct'
@@ -188,9 +232,24 @@ def post_reservation(request):
         property_reserve_obj = Proprietes.objects.get(pk=(property_reserve))
         reserve, created = Reservation.objects.get_or_create(name_of_reserver=name, phone=phone, email=email, propriete_reserve=property_reserve_obj)
         if created:
-            msg = "Louhsira vous contactera dès que possible !!!"
-        else:
             reserve.save()
+            msg = "Louhsira vous contactera dès que possible !!!"
+            
+            template = 'emails/agence_emails/agence.html'
+            subjet = "Demande de réservation"
+            message = "Louhsira vous dit merci"
+            context = {}
+            receivers = [reserve.email]
+            
+            # Envoyer l'email
+            has_send = send_costumize_email( 
+                subjet=subjet, 
+                receivers=receivers, 
+                template=template, 
+                context=context
+            )
+        else:
+            msg =  "Réservation déjà prise en compte"
         print('#####5555#########')
             
     

@@ -13,7 +13,7 @@ from .models import (
     Partenaire
 )
 
-from propriete.models import TypePropriete, Localite, Proprietes
+from propriete.models import TypePropriete, Localite, Proprietes, CaracteristiqueMaison
 
 
 def get_banner(data=dict()):
@@ -39,6 +39,10 @@ def get_team(data=dict()):
 
 def get_localite(data=dict()):
     return Localite.objects.filter(**data)
+
+
+def get_caracteristique_home(data=dict()):
+    return CaracteristiqueMaison.objects.filter(**data)
 
 def get_type_propriete(data=dict()):
     return TypePropriete.objects.filter(**data)

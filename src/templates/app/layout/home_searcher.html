@@ -1,4 +1,4 @@
-{% extends "base/base.html" %}
+{% extends "app/base/base.html" %}
 {% load static %}
 {% block content %}
 
@@ -32,7 +32,7 @@
                 <div class="row mb-3">
                     <div class="col-sm-6 col-md-4">
                         <select class="form-select" id="inputLevel" v-model="type_propriete_rechercher">
-                            <option value="" selected hidden >Type de propriété recherchée *</option>
+                            <option value="" selected hidden >Type de propriété recherchée </option>
                             {% for type in get_type_proprietes %}
                               <option>{{type.libele}}</option>
                             {% endfor %}
@@ -76,19 +76,20 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-6 col-md-6">
-                         <select class="form-select" id="inputLevel" v-model="localisation_souhaite">
-                          <option value="" selected hidden>Localisation souhaitée</option>
+                         <select class="form-select" id="inputLevel" v-model="localisation_souhaite" autocomplete="off" id="select-beast" placeholder="Localisation souhaitées...">
+                          <option value="" selected hidden>Localisation souhaitées...</option>
                           {% for locale in get_localites %}
                           <option>{{locale.name}}</option>
                           {% endfor %}
                       </select>
                     </div>
-                    <div class="col-sm-6 col-md-6" style="overflow:hidden;">
-                        <select class="selectpicker form-control"  data-selected-text-format="count > 5" data-container="body">
-                            <option>Caractéristiques souhaitées</option>
-                            <option>Jardin</option>
-                            <option>Balcon</option>
-                            <option>Parking</option>
+                    <div class="col-sm-6 col-md-6" >
+                        <select class=" form-control" autocomplete="off" id="select-beast" placeholder="Caractéristiques souhaitées...">
+                            <option>Caractéristiques souhaitées...</option>
+                            {% for carat in get_caracteristique_homes %}
+                                <option>{{carat.libele}}</option>
+                            {% endfor %}
+                            
                         </select>
                     </div>
                    

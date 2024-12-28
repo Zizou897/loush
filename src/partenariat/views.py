@@ -235,11 +235,15 @@ def post_reservation(request):
             reserve.save()
             msg = "Louhsira vous contactera dès que possible !!!"
             
-            template = 'emails/agence_emails/agence.html'
+            template = 'emails/reservation/reservation.html'
             subjet = "Demande de réservation"
             message = "Louhsira vous dit merci"
-            context = {}
+            context = {
+                'name_property': property_reserve_obj.titre_annonce,
+                'name': name,
+            }
             receivers = [reserve.email]
+            
             
             # Envoyer l'email
             has_send = send_costumize_email( 

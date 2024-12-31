@@ -1,0 +1,22 @@
+Studio  
+Appartement  
+Penthouse  
+Loft  
+Duplex  
+Triplex  
+Maison basse  
+Maison traditionnelle  
+Maison moderne  
+Villa  
+Villa duplex  
+Villa triplex  
+Cour commune  
+Chambre individuelle  
+Suite résidentielle  
+Maison d’hôtes  
+Maison en location saisonnière  
+Résidence pour expatriés  
+Maison préfabriquée  
+Maison sociale  
+Maison coloniale  
+Maison en chantier évolutif

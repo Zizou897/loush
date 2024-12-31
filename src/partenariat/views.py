@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 
 from .models import AgencyRealEstate, Searcher, Owner, Newsletters
 from core.utils import send_costumize_email
-from propriete.models import Proprietes, CaracteristiqueMaison, Localite
+from propriete.models import Proprietes, CaracteristiqueMaison, Localite, TypePropriete
 from reserves.models import Reservation
 # Create your views here.
 def verify_email(email):
@@ -53,16 +53,15 @@ def post_agence(request):
             context = {}
             receivers = [agence.email]
             
-            # Test
-            ''' 
-                fichier = '/home/areb/Documents/GitHub/loush/src/partenariat/Secteurs(Quartiers) de Ouagadougou.txt'
-                with open(fichier, 'r', encoding='utf-8') as file:
-                    data = file.readlines()
 
-                for ligne in data:
-                    lacalite = Localite(name=ligne.strip())
-                    lacalite.save()
-            '''
+            fichier = '/home/areb/Documents/GitHub/loush/src/partenariat/type_maison.txt'
+            with open(fichier, 'r', encoding='utf-8') as file:
+                data = file.readlines()
+
+            for ligne in data:
+                lacalite = TypePropriete(libele=ligne.strip())
+                lacalite.save()
+           
             
             # Envoyer l'email
             has_send = send_costumize_email( 

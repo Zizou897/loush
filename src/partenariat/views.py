@@ -119,7 +119,7 @@ def post_searcher(request):
             
             # Recuperation des données 
             
-            template = 'emails/agence_emails/agence.html'
+            template = 'emails/chercheur/chercheur.html'
             subjet = "Demande de partenariat"
             message = "Louhsira vous dit merci"
             context = {}

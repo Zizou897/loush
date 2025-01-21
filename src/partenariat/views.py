@@ -6,6 +6,7 @@ from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 
 from .models import AgencyRealEstate, Searcher, Owner, Newsletters
+#from .task import send_costumize_email 
 from core.utils import send_costumize_email
 from propriete.models import Proprietes, CaracteristiqueMaison, Localite, TypePropriete
 from reserves.models import Reservation
@@ -54,17 +55,17 @@ def post_agence(request):
             receivers = [agence.email]
             
 
-            fichier = '/home/areb/Documents/GitHub/loush/src/partenariat/type_maison.txt'
-            with open(fichier, 'r', encoding='utf-8') as file:
-                data = file.readlines()
+            # fichier = '/home/areb/Documents/GitHub/loush/src/partenariat/type_maison.txt'
+            # with open(fichier, 'r', encoding='utf-8') as file:
+            #     data = file.readlines()
 
-            for ligne in data:
-                lacalite = TypePropriete(libele=ligne.strip())
-                lacalite.save()
+            # for ligne in data:
+            #     lacalite = TypePropriete(libele=ligne.strip())
+            #     lacalite.save()
            
             
             # Envoyer l'email
-            has_send = send_costumize_email( 
+            has_send = send_costumize_email.delay( 
                 subjet=subjet, 
                 receivers=receivers, 
                 template=template, 
@@ -125,7 +126,7 @@ def post_searcher(request):
             receivers = [searcher.email]
             
             # Envoyer l'email
-            has_send = send_costumize_email( 
+            has_send = send_costumize_email.delay ( 
                 subjet=subjet, 
                 receivers=receivers, 
                 template=template, 
@@ -245,7 +246,7 @@ def post_reservation(request):
             
             
             # Envoyer l'email
-            has_send = send_costumize_email( 
+            has_send = send_costumize_email.delay ( 
                 subjet=subjet, 
                 receivers=receivers, 
                 template=template, 

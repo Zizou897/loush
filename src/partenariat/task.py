@@ -1,11 +1,11 @@
 import logging
-import socket
 
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from core.celery import app
 logger = logging.getLogger(__name__)
+
 
 @app.task
 def send_costumize_email(subjet: str, receivers: list, template: str, context: dict):
@@ -30,20 +30,3 @@ def send_costumize_email(subjet: str, receivers: list, template: str, context: d
         logger.error(e)
     
     return False
-
-
-
-
-
-def get_ip():
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    try:
-        # Utiliser 8.8.8.8 comme serveur DNS
-        s.connect(('8.8.8.8', 80))
-        ip = s.getsockname()[0]
-    except Exception:
-        ip = '127.0.0.1'
-    finally:
-        s.close()
-    return ip
-

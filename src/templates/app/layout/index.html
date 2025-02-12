@@ -20,7 +20,7 @@
 
 {% include "app/includes/_trusts.html" %}
 
-<section class="pt-5 w-100 h-50 a-over">
+{% comment %} <section class="pt-5 w-100 h-50 a-over">
         <div class="row">
           <div class="col-md-4 d-flex flex-column justify-content-center" style="background-color:#001731; color:#fff;height:430px">
             <h2 class="fw-bold mb-3 ms-4" style="color:#fff;">Visibilité Optimale</h2>
@@ -40,7 +40,58 @@
               exposition et une vente optimisée.</p>
           </div>
         </div>
-</section>
+</section> {% endcomment %}
+
+
+<div class="trouve" style="background: #e8effa; padding: 70px;margin-top:100px">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <h2 style="color: #000; text-align: center;padding:15px;font-weight: bolder;">
+                  Trouvez ou vendez votre véhicule en toute simplicité avec Djona
+              </h2>
+          </div>
+      </div>
+
+      <div class="row align-items-center">
+          <div class="col-lg-4 col-md-4 col-12 d-flex flex-column align-items-start mb-4 mt-3">
+              <h3 style="font-weight: 800;">    
+                  Visibilité Optimale
+              </h3>
+              <p class="mt-2" style="font-size: 16px;">
+                  Chaque propriété est mise en valeur avec des
+                  photographies professionnelles et des descriptions détaillées, assurant
+                  une présentation attrayante pour attirer les acheteurs et locataires
+                  potentiels.  
+              </p>
+              <button class="btn btn-outline-secondary mt-2" type="button" style="background: #015479; color: #fff;" data-bs-toggle="modal" data-bs-target="#contactModal">
+                  Découvrez   
+              </button>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-12 d-flex flex-column align-items-start mb-4 mt-3">
+            <img class="pt-7 pt-md-0 w-100" src="{{get_banners.picture.url}}" width="470" alt="hero-header" />
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-12 d-flex flex-column align-items-start mb-4 mt-3">
+              <h3 style="font-weight: 800;">
+                  Flexibilité pour les Professionnels
+              </h3>
+              <p class="mt-2" style="font-size: 16px;">
+                Les agences immobilières
+                bénéficient d'une flexibilité sans précédent, pouvant choisir entre gérer
+                elles-mêmes leurs annonces ou collaborer avec LouhSira pour une
+                exposition et une vente optimisée.
+              </p>
+              <button class="btn btn-outline-secondary mt-2" type="submit" style="background: #015479; color: #fff;" data-bs-toggle="modal" data-bs-target="#contactModal">
+                  Vendre                   
+              </button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
 
        <!-- ============================================-->
       <!-- <section> begin ============================-->
@@ -63,7 +114,7 @@
                 </div>
               </div>
       {% endfor %}
-      
+
     </div>
   </div>
   <!-- end of .container-->

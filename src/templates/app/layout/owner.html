@@ -6,12 +6,12 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-12">
+        <div class="col-10" style="background:#fff;border-radius: 1rem;padding:20px;">
             <h6 class="font-sans-serif text-primary fw-bold"></h6>
-            <h1 class="mb-6">Exposer une maison</h1>
+            <h1 class="mb-6 text-center fw-bold">Exposer une maison</h1>
             <form id="trust_us" class="row g-3">
 
-                <h1 class="text-center fs-2 mb-5">Informations persernelles</h1>
+                <h1 class="fs-2 mb-4 fw-bold">Informations persernelles</h1>
                 <div class="row mb-3">
                     <div class="col-sm-6 col-md-6">
                        <input type="name" class="form-control" placeholder="Nom et Prénom *" v-model="name">
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <hr>
-                <h1 class="text-center fs-2 mb-5">Détail de la propriété</h1>
+                <h1 class="fs-2 mb-4 fw-bold">Détail de la propriété</h1>
                 <div class="row mt-3">
                     <div class="col-sm-6 col-md-4">
                       <select class="form-select" id="forType" v-model="type_propriete_for_owner">
@@ -99,21 +99,21 @@
                   </div>
                 <hr>
 
-                <h1 class="text-center fs-2 mb-5">Description de la Propriété</h1>
+                <h1 class="fs-2 mb-4 fw-bold">Description de la Propriété</h1>
                 <div class="row">
                     <div class="col-sm-12 col-md-12">
                        <textarea class="form-control" placeholder="Décrivez les atouts et particularités de la propriété" id="forDetail" v-model="home_detail"></textarea>
                     </div>
                 </div>
                 <hr>
-                <h1 class="text-center fs-2 mb-5">Photos de la Propriété</h1>
+                <h1 class="fs-2 mb-4 fw-bold">Photos de la Propriété</h1>
                 <div class="col-sm-6 col-md-6">
                    <input class="form-control" type="file" id="picture" v-model="picture">
                 </div>
                 <div class="col-sm-6 col-md-6">
                   <input class="form-control" type="file" id="picture2" placeholder="Photo 2" v-model="picture2">
                 </div>
-                  <div class="row mt-3 ms-3">
+                <div class="row mt-3 ms-3">
                     <div class="form-check col-sm-12 col-md-12">
                       <input class="form-check-input " type="checkbox" value="" id="flexCheckIndeterminate" v-model="first_confirm">
                       <label class="form-check-label" for="flexCheckIndeterminate">
@@ -129,8 +129,8 @@
                       </label>
                     </div>
                   </div>
-                <div class="col-auto z-index-2">
-                <button class="btn btn-primary" type="submit" @click.prevent="sendOwnerData()">Exposer sa maison</button>
+                <div class="col-12 z-index-2">
+                    <button class="btn btn-primary" type="submit" @click.prevent="sendOwnerData()" style="width:100%;">Exposer sa maison</button>
                 </div>
             </form>
         </div>

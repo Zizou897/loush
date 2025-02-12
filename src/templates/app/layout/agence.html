@@ -5,12 +5,12 @@
 <section class="bg-600 h-100">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-10" style="background:#fff;border-radius: 1rem;padding:20px;">
             <h6 class="font-sans-serif text-primary fw-bold"></h6>
-            <h1 class="mb-6">Dévénir partenaire</h1>
+            <h1 class="mb-6 text-center fw-bold">Dévénir partenaire</h1>
             <form id="agency" class="row g-3">
 
-                <h1 class="text-center fs-2 mb-5">Informations de l'agence</h1>
+                <h1 class="fs-2 mb-4 fw-bold">Informations de l'agence</h1>
                 <div class="row mb-3">
                     <div class="col-sm-6 col-md-4">
                          <input id="agenceName" type="name" class="form-control" placeholder="Nom de l'agence *" v-model="name_agency">
@@ -30,16 +30,17 @@
                         <input id="agenceAdresse" type="name" class="form-control" placeholder="Adresse de l'agence *" v-model="address_agency">
                     </div>
                 </div>
+
                 <hr>
-                <h1 class="text-center fs-2 mb-5">Représentant de l'Agence</h1>
+                <h1 class="fs-2 mb-4 fw-bold">Représentant de l'Agence</h1>
                 <div class="row mb-3">
                     <div class="col-sm-12 col-md-12">
                         <input type="name" id="repres" class="form-control" placeholder="Représentant de l'Agence *" v-model="name_representative">
                     </div>
                 </div>
-               
-                <div class="col-auto z-index-2">
-                <button class="btn btn-primary" type="submit" @click.prevent="sendDataAgency()">Agence Immobilière</button>
+
+                <div class="col-12 z-index-2">
+                    <button class="btn btn-primary" type="submit" @click.prevent="sendDataAgency()" style="width:100%;">Agence Immobilière</button>
                 </div>
             </form>
         </div>

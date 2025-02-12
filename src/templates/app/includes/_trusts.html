@@ -1,4 +1,4 @@
-<section class="pt-6 w-100 h-50">
+{% comment %} <section class="pt-6 w-100 h-50">
   <div class="container mt-4">
     <div class="row">
       {% for trusth in get_do_trusths %}
@@ -11,4 +11,63 @@
       {% endfor %}
     </div>
   </div>
-</section>
+</section> {% endcomment %}
+
+
+
+<div class="container mt-5">
+  <div class="row">
+      {% for trusth in get_do_trusths %}
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 card_trust">
+              <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+                  <div class="d-flex justify-content-center mt-3">
+                      <img src="{{trusth.picture.url}}" class="card-img-top" alt="trusth.picture.url" style="width:70px; height:70px;">
+                  </div>
+                  <div class="card-body">
+                      <h5 class="card-title fw-bold text-center">{{trusth.title}}</h5>
+                      <p class="card-text">{{trusth.description}}</p>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+  </div>
+</div>
+
+<style>
+  .card_trust:nth-child(1) .card {
+    border-left: 2px solid #ff5733; /* Rouge-orangé */
+  }
+
+  .card_trust:nth-child(1) h5 {
+      color: #ff5733;
+  }
+
+  .card_trust:nth-child(2)  .card {
+      border-left: 2px solid #33c1ff; /* Bleu clair */
+  }
+
+  .card_trust:nth-child(2) h5 {
+      color: #33c1ff;
+  }
+
+  .card_trust:nth-child(3)  .card {
+      border-left: 2px solid #28a745; /* Vert */
+  }
+
+  .card_trust:nth-child(3) h5 {
+      color: #28a745;
+  }
+
+  .card_trust {
+      border: 1px solid var(--color-three);
+      margin: 25px 0 25px 0;
+      transition: border 0.1s, transform 0.3s;
+  }
+  .card_trust:hover {
+      border: 1px solid var(--color-two);
+      -webkit-transform: translateY(-10px);
+      transform: translateY(-10px);
+      cursor: pointer;
+      
+  }
+</style>

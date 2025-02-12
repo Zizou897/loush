@@ -2,11 +2,11 @@
   <div class="modal-dialog modal-xl modal-dialog-scrollable">
     <div class="modal-content" id="home_asking">
       <div class="modal-header">
-        <h5 class="modal-title">Chercher une maison</h5>
+        <h5 class="modal-title mb-6 text-center fw-bold">Chercher une maison</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="row pb-4">
+        {% comment %} <div class="row pb-4">
           <p class="text-center">Informations du Propriétaire</p>
           <div class="col-md-6">
             <input type="text" class="form-control" id="forName" placeholder="Nom complet *" v-model="name">
@@ -14,15 +14,35 @@
           <div class="col-md-6">
             <input type="number" class="form-control" id="forPhone" placeholder="Téléphone *" v-model="phone">
           </div>
+        </div> {% endcomment %}
+
+        <div class="info_perso" style="border-radius: 1rem;padding:10px">
+            <h5 class="fs-2 mb-4 fw-bold">Informations personnelles</h5>
+            <div class="row mb-3">
+                <div class="col-sm-6 col-md-4">
+                    {#  <label class="form-label" for="inputCategories">Nom et Prénom <span class="text-primary">*</span></label>#}
+                    <input type="name" class="form-control" placeholder="Nom et Prénom *" v-model="name">
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <input type="number" class="form-control" placeholder="Numéro de téléphone *" v-model="phone">
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    {#  <label class="form-label" for="inputCategories">Adresse e-mail <span class="text-primary">*</span></label>  #}
+                    <input type="email" class="form-control" placeholder="Adresse e-mail *" v-model="email">
+                </div>
+            </div>
         </div>
 
-        <div class="row">
+        {% comment %} <div class="row">
           <div class="col-md-12">
             <input type="email" class="form-control" id="forEmail" placeholder="Email" v-model="email">
           </div>
-        </div>
+        </div> {% endcomment %}
+
+
+
         <hr>
-        <p class="text-center">Préférences de la Propriété</p>
+        {% comment %} <p class="text-center">Préférences de la Propriété</p>
 
         <div class="row mt-3">
           <div class="col-sm-6 col-md-4">
@@ -88,9 +108,88 @@
                 {% endfor %}
               </select>
           </div>
+        </div> {% endcomment %}
+
+        <div class="info_perso" style="border-radius: 1rem;padding:10px">
+          <h5 class="fs-2 mb-4 fw-bold">Préférences de la Propriété</h5>
+          <div class="row mb-3">
+              <div class="col-sm-6 col-md-3">
+                  <select class="form-select" id="inputLevel" v-model="type_propriete_rechercher">
+                      <option value="" selected hidden >Type de propriété recherchée </option>
+                      {% for type in get_type_proprietes %}
+                      <option>{{type.libele}}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+              <div class="col-sm-6 col-md-3">
+              <select class="form-select" id="inputLevel" v-model="achat_or_location">
+                      <option value="" selected hidden>Achat ou Location</option>
+                      <option>Achat</option>
+                      <option>Location</option>
+                  </select>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                  <input type="name" class="form-control" placeholder="Budget" v-model="budjet">
+              </div>
+              <div class="col-sm-6 col-md-3">
+                  <select class="form-select" data-placeholder="Select fruits" id="inputLevel" v-model="nbr_chambre">
+                      <option value="" selected hidden>Nombre de chambres</option>
+                      <option> 1 chambre</option>
+                      <option> 2 chambres</option>
+                      <option> 3 chambres</option>
+                      <option> 4 chambres</option>
+                      <option> 5 chambres</option>
+                  </select>
+              </div>
+          </div>
+          <div class="row mb-3">      
+              <div class="col-sm-6 col-md-3">
+                  <select class="form-select" id="inputLevel" v-model="nbr_salle_bain">
+                      <option value="" selected hidden>Nombre de salles de bain</option>
+                      <option> 1 salle de bain</option>
+                      <option> 2 salles de bain</option>
+                      <option> 3 salles de bain</option>
+                      <option> 4 salles de bain</option>
+                      <option> 5 salles de bain</option>
+                  </select>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                  <input type="email" class="form-control" placeholder="Surface habitable" v-model="surface_habitable">
+              </div>
+              <div class="col-sm-6 col-md-3">
+                  <select class="form-select" id="inputLevel" v-model="localisation_souhaite" autocomplete="off" id="select-beast" placeholder="Localisation souhaitées...">
+                  <option value="" selected hidden>Localisation souhaitées...</option>
+                  {% for locale in get_localites %}
+                  <option>{{locale.name}}</option>
+                  {% endfor %}
+              </select>
+          </div>
+          {% comment %} <div class="col-sm-6 col-md-3 multi-select-container">
+              <select class=" form-control" autocomplete="off" id="multiSelect select-beast" placeholder="Caractéristiques souhaitées..." multiple>
+                  <option>Caractéristiques souhaitées...</option>
+                  {% for carat in get_caracteristique_homes %}
+                      <option>{{carat.libele}}</option>
+                  {% endfor %}
+              </select>
+              <div class="multi-select-display"></div>
+          </div> {% endcomment %}
+
+          <div class="col-sm-6 col-md-3">
+              <select id="multiSelect" multiple placeholder="Caractéristiques souhaitées...">
+                  <option disabled>Caractéristiques souhaitées...</option>
+                  {% for carat in get_caracteristique_homes %}
+                      <option>{{carat.libele}}</option>
+                  {% endfor %}
+              </select>
+              <div class="multi-select-display" value="Caractéristiques souhaitées..."></div>
+          </div>
+
+          </div>
         </div>
+
+
         <hr>
-        <p class="text-center">Autres Préférences</p>
+        {% comment %} <p class="text-center">Autres Préférences</p>
         <div class="row">
           <div class="col-sm-6 col-md-6">
               <input type="date" class="form-control" v-model="date_demenag_souhaite">
@@ -99,6 +198,19 @@
             <textarea class="form-control" placeholder="Commentaires supplémentaires" id="floatingTextarea" v-model="comments_souhaite"></textarea>
           </div>
   
+        </div> {% endcomment %}
+
+        <div class="info_perso" style="border-radius: 1rem;padding:10px">
+            <h5 class="fs-2 mb-4 fw-bold">Autres Préférences</h5>
+            <div class="row">
+                <div class="col-sm-6 col-md-6">
+                <input type="date" class="form-control" placeholder="Date de déménagement souhaitée" v-model="date_demenag_souhaite">
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <textarea class="form-control" placeholder="Commentaires supplémentaires" id="floatingTextarea" v-model="comments_souhaite"></textarea>
+                </div>
+        
+            </div>
         </div>
 
       </div>
@@ -111,3 +223,114 @@
 </div>
 
 
+
+<style>
+    #multiSelect {
+        display: none;
+    }
+
+    .multi-select-display {
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        padding: 10px;
+        background-color: #fff;
+        cursor: pointer;
+        min-height: 40px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .multi-select-tag {
+        background-color: #FF9100FF;
+        color: #fff;
+        border-radius: 3px;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .multi-select-tag .remove {
+        cursor: pointer;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .multi-select-options {
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        background-color: #fff;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 10;
+        display: none;
+    }
+
+    /* Options individuelles */
+    .multi-select-options div {
+        padding: 5px;
+        cursor: pointer;
+    }
+
+    .multi-select-options div:hover {
+        background-color: #FF9100FF;
+        color: #fff;
+    }
+</style>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const select = document.getElementById('multiSelect');
+        const display = document.querySelector('.multi-select-display');
+        const optionsContainer = document.createElement('div');
+        optionsContainer.className = 'multi-select-options';
+    
+        // Ajouter les options dans le conteneur personnalisé
+        Array.from(select.options).forEach(option => {
+            const div = document.createElement('div');
+            div.textContent = option.text;
+            div.dataset.value = option.value;
+            div.addEventListener('click', () => toggleOption(option, div));
+            optionsContainer.appendChild(div);
+        });
+    
+        // Ajouter le conteneur des options au DOM
+        display.parentNode.appendChild(optionsContainer);
+    
+        // Afficher ou cacher les options au clic
+        display.addEventListener('click', () => {
+            const isVisible = optionsContainer.style.display === 'block';
+            optionsContainer.style.display = isVisible ? 'none' : 'block';
+        });
+    
+        // Gérer la sélection des options
+        function toggleOption(option, div) {
+            option.selected = !option.selected;
+            div.classList.toggle('selected', option.selected);
+            updateSelectedOptions();
+        }
+    
+        // Mettre à jour les options sélectionnées
+        function updateSelectedOptions() {
+            display.innerHTML = '';
+            Array.from(select.selectedOptions).forEach(option => {
+                const tag = document.createElement('span');
+                tag.className = 'multi-select-tag';
+                tag.textContent = option.text;
+    
+                const remove = document.createElement('span');
+                remove.className = 'remove';
+                remove.textContent = '×';
+                remove.addEventListener('click', () => {
+                    option.selected = false;
+                    updateSelectedOptions();
+                    optionsContainer.querySelector(`[data-value="${option.value}"]`).classList.remove('selected');
+                });
+    
+                tag.appendChild(remove);
+                display.appendChild(tag);
+            });
+        }
+    });
+</script>

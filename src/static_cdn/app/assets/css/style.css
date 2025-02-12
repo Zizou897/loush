@@ -227,3 +227,18 @@ p{
 }
 
 
+.container-center {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 100vh !important;
+  margin: 0 !important;
+}
+
+.box {
+  background-color: #f0f0f0;
+  padding: 30px !important;
+  border: 2px solid #ccc !important;
+  border-radius: 10px ;
+  text-align: center;
+}

@@ -8,53 +8,53 @@
 
         <div class="container">
           <div class="row"> 
-            <div class="col-12">
-              <h6 class="font-sans-serif text-primary fw-bold">Course category</h6>
-              <h1 class="mb-6">Catalogue</h1>
+            <div class="col-12" style="background:#fff;border-radius: 1rem;padding:20px;">
+              {% comment %} <h6 class="font-sans-serif text-primary fw-bold">Course category</h6>{% endcomment %}
+              <h1 class="fs-2 mb-3 fw-bold">Catalogue</h1> 
               <form method="get" action="/catalogue" class="row g-3">
                 <div class="col-sm-6 col-md-3">
-                  <label class="form-label" for="inputCategories">Type de propriété</label>
+                  {% comment %} <label class="form-label" for="inputCategories">Type de propriété</label> {% endcomment %}
                   <select class="form-select" id="inputCategories" name="type_propriete">
-                    <option selected="selected">Votre choix</option>
+                    <option selected="selected">Type de propriété</option>
                       <option value="1">Maison</option>
                       <option value="2">Appartement</option>
                       <option value="3">Studio</option>
                   </select>
                 </div>
                 <div class="col-sm-6 col-md-3">
-                  <label class="form-label" for="inputLevel">Status</label>
+                  {% comment %} <label class="form-label" for="inputLevel">Status</label> {% endcomment %}
                   <select class="form-select" id="inputLevel" name="status">
-                    <option selected="selected">A louer / A vendre</option>
+                    <option selected="selected">Status (A louer / A vendre)</option>
                     <option value="LOUER">A louer</option>
                     <option value="VENDRE">A vendre</option>
                   </select>
                 </div>
                 <div class="col-sm-6 col-md-3">
-                  <label class="form-label" for="inputLanguage">Prix</label>
+                  {% comment %} <label class="form-label" for="inputLanguage">Prix</label> {% endcomment %}
                   <select class="form-select" id="inputLanguage" name="prix_propriete">
-                    <option selected="selected">votre choix</option>
+                    <option selected="selected">Prix</option>
                     <option value="50.000">50.000 fcfa</option>
                     <option value="100.000">100.000 fcfa</option>
                     <option value="500.000 fcfa">500.000 fcfa</option>
                   </select>
                 </div>
                 <div class="col-sm-6 col-md-3">
-                  <label class="form-label" for="inputInstructor">Zone</label>
+                  {% comment %} <label class="form-label" for="inputInstructor">Zone</label> {% endcomment %}
                   <select class="form-select" id="inputInstructor" name="localite">
-                    <option selected="selected">Votre choix </option>
+                    <option selected="selected">Zone </option>
                     {% for local in get_localites %}
                       <option value="{{local.id}}">{{local.name}}</option>
                     {% endfor %}
                   </select>
                 </div>
-                
-                <div class="col-auto z-index-2">
-                  <button class="btn btn-primary" type="submit">Rechercher</button>
+
+                <div class="col-12 z-index-2">
+                    <button class="btn btn-primary" type="submit" style="width:100%;">Rechercher</button>
                 </div>
               </form>
             </div>
           </div>
-        </div>
+        </div><br/>
         <!-- end of .container-->
 
       </section>

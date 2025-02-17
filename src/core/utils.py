@@ -27,11 +27,14 @@ def send_costumize_email(subjet: str, receivers: list, template: str, context: d
         return True
          
     except Exception as e:
-        logger.error(e)
+        logger.error(f"Erreur lors de l'envoi de l'email : {e}")
     
     return False
 
-
+@app.task
+def simple_task():
+    print("Celery fonctionne !")
+    return True
 
 
 

@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 
 from .models import AgencyRealEstate, Searcher, Owner, Newsletters
 #from .task import send_costumize_email 
-from core.utils import send_costumize_email
+from core.utils import send_costumize_email, simple_task
 from propriete.models import Proprietes, CaracteristiqueMaison, Localite, TypePropriete
 from reserves.models import Reservation
 # Create your views here.
@@ -246,12 +246,16 @@ def post_reservation(request):
             
             
             # Envoyer l'email
-            has_send = send_costumize_email.delay ( 
-                subjet=subjet, 
-                receivers=receivers, 
-                template=template, 
-                context=context
-            )
+            print('66666666666666666666666')
+            # has_send = send_costumize_email( 
+            #     subjet=subjet, 
+            #     receivers=receivers, 
+            #     template=template, 
+            #     context=context
+            # )
+            simple_task.delay()
+            #print(has_send)
+            print('intercepting.....')
         else:
             msg =  "Réservation déjà prise en compte"
         print('#####5555#########')

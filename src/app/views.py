@@ -148,14 +148,22 @@ def catalogue(request):
         prix_propriete = request.GET.get('prix_propriete')
         localite = request.GET.get('localite')
         
+        print("intercepting...")
+        print(type_propriete)
+        print(status)
+        print(prix_propriete)
+        print(localite)
         #print(f"################{type_propriete_id.id}##############")
        
         
-        if str(localite) == 'Votre choix' and str(type_propriete) == 'Votre choix':
-            get_all__properties = Proprietes.objects.filter(Q(status=status) | Q(prix_propriete=prix_propriete))    
-        elif  str(type_propriete) == 'Votre choix':
-            get_all__properties = Proprietes.objects.filter(Q(localite=int(localite)) | Q(status=status) | Q(prix_propriete=prix_propriete))   
-        elif str(localite) == 'Votre choix': 
+        if type(localite) == str and type(type_propriete) == str and status == "Status (A louer / A vendre)" and prix_propriete == "Prix":
+            get_all__properties = get_all_properties({'publish': True, })    
+        elif  type(type_propriete) == str and type(localite) == str:
+            get_all__properties = Proprietes.objects.filter(
+                Q(status=status) | 
+                Q(prix_propriete=prix_propriete) if str(prix_propriete) else ()
+            )   
+        elif type(localite) == str: 
             get_all__properties = Proprietes.objects.filter(Q(type_propriete=int(type_propriete)) | Q(status=status) | Q(prix_propriete=prix_propriete)) 
         else:
             get_all__properties = Proprietes.objects.filter(Q(localite=int(localite)) | Q(type_propriete=int(type_propriete)) | Q(status=status) | Q(prix_propriete=prix_propriete)) 

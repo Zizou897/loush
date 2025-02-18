@@ -16,17 +16,18 @@
                   {% comment %} <label class="form-label" for="inputCategories">Type de propriété</label> {% endcomment %}
                   <select class="form-select" id="inputCategories" name="type_propriete">
                     <option selected="selected">Type de propriété</option>
-                      <option value="1">Maison</option>
-                      <option value="2">Appartement</option>
-                      <option value="3">Studio</option>
+                    {% for type in get_type_proprietes %}
+                      <option value="{{type.id}}">{{type.libele}}</option>
+                    {% endfor %}
+                </select>
                   </select>
                 </div>
                 <div class="col-sm-6 col-md-3">
                   {% comment %} <label class="form-label" for="inputLevel">Status</label> {% endcomment %}
                   <select class="form-select" id="inputLevel" name="status">
                     <option selected="selected">Status (A louer / A vendre)</option>
-                    <option value="LOUER">A louer</option>
-                    <option value="VENDRE">A vendre</option>
+                    <option value="à louer">A louer</option>
+                    <option value="à vendre">A vendre</option>
                   </select>
                 </div>
                 <div class="col-sm-6 col-md-3">

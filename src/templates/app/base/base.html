@@ -209,8 +209,28 @@
   <footer>
       <p>Copyright &copy; 2025 <a class="text-decoration-none" href="{% url 'welcome' %}"><img src="{{get_configs.logo.url}}" height="51"  alt="" /></a> Tous droits réservés.</p>
   </footer>
+
+  <style>
+    .taille-boutton {
+      width:25%;
+    }
+
+
+  @media (max-width: 768px) {
+    .taille-boutton {
+      width:50%;
+    }
+}
+
+/* Pour les très petits écrans (mobiles) */
+@media (max-width: 480px) {
+    .taille-boutton {
+      width:75%;
+    }
+  </style>
   
   <style>
+
       img {
           max-width: 100%;
           height: auto;

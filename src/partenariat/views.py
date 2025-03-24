@@ -247,7 +247,7 @@ def post_reservation(request):
             
             # Envoyer l'email
             print('66666666666666666666666')
-            # has_send = send_costumize_email( 
+            # has_send = send_costumize_email.delay( 
             #     subjet=subjet, 
             #     receivers=receivers, 
             #     template=template, 

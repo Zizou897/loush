@@ -35,6 +35,7 @@ APPEND_SLASH = True
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -170,3 +171,46 @@ EMAIL_PORT = config('EMAIL_PORT')
 CELERY_BROKER_URL = f"redis://:AT8pAAIjcDFmNDJlZjdhYTAxNjY0ODQ2OTk0NTJlZTZjOTAzMWZlYXAxMA@electric-yeti-16169.upstash.io:6379?ssl_cert_reqs=required"
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
+
+
+JAZZMIN_SETTINGS = {
+    
+    "site_title": "Admin LouhSira",
+    "site_header": "Tableau de Bord",
+    "site_brand": "LouhSira Pro",
+    "welcome_sign": "Bienvenue sur le panneau d’administration",
+    "copyright": "LouhSira Pro © 2025",
+    "hide_apps": [],  # Assure-toi que tes apps ne sont pas cachées ici
+    "order_with_respect_to": ["app"],
+    
+    # Icône et logo
+    "site_logo": "app/assets/img/LOGO_1_LOUHSIRAArtboard_1.svg",  # Mets ton logo dans /static/mon_app/logo.png
+    "login_logo": "app/assets/img/LOGO_2_LOUHSIRAArtboard_1.svg", 
+    
+    # Menu de navigation
+    "topmenu_links": [
+        {"name": "Accueil", "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "Site Web", "url": "/", "new_window": True},
+    ],
+    
+    # Organisation du menu latéral
+    "custom_links": {
+        "app": [{"name": "Ajouter une propriété", "url": "admin:propriete_proprietes_add", "icon": "fas fa-plus"}]
+    },
+    
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "web.Article": "fas fa-newspaper",
+        "partenariat.AgencyRealEstate": "fas fa-handshake-simple",
+        "partenariat.Searcher": "fas fa-landmark",
+        "web.RendezVous": "fas fa-calendar-check",
+        "partenariat.Owner": "fas fa-dice",
+        "partenariat.Newsletters": "fas fa-envelope",
+    },
+   
+    
+    # Personnalisation des couleurs
+    "theme": "cyborg",  # Essaye aussi "lux", "solar", "darkly", "flatly"...
+}

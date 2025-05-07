@@ -1,4 +1,6 @@
+from datetime import timedelta
 from django.db import models
+from django.utils import timezone
 from tinymce.models import HTMLField
 
 # Create your models here.
@@ -8,7 +10,7 @@ from core.constants import (
 )
 
 
-STATUS_CHOICES = (
+STATUS_CHOICES = (  
     ('à vendre', 'à vendre'),
     ('à louer', 'à louer'),
 )
@@ -77,6 +79,9 @@ class Proprietes(Convention):
     caracteristique_speciale = models.ManyToManyField(CaracteristiqueMaison)
     pictures = models.ManyToManyField(Photo)
     
+    @property
+    def is_new(self):
+        return self.created_at >= timezone.now() - timedelta(days=7)
     
     class Meta:
         verbose_name = 'Les Propriétés'

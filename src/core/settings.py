@@ -28,9 +28,11 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
 
-APPEND_SLASH = True
+
+ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = ['louhsira.com', 'www.louhsira.com']
+
 
 # Application definition
 
@@ -87,13 +89,27 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+"""
+    
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config('MYSQL_DB'),
+        'USER': config('MYSQL_USER'),
+        'PASSWORD': config('MYSQL_PASSWORD'),
+        'HOST': config('MYSQL_HOST'),
+        'PORT': config('MYSQL_PORT'),
+    }
+}
+    
 
 
 # Password validation
@@ -143,8 +159,17 @@ MEDIA_ROOT = BASE_DIR / 'media_cdn'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
+# Securté supplementaires
+
+SECURE_SSL_HOST = True
+SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
+X_FRAME_OPTIONS = "DENY"
+
+
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-APPEND_SLASH = False
+APPEND_SLASH = True
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -171,6 +196,9 @@ EMAIL_PORT = config('EMAIL_PORT')
 CELERY_BROKER_URL = f"redis://:AT8pAAIjcDFmNDJlZjdhYTAxNjY0ODQ2OTk0NTJlZTZjOTAzMWZlYXAxMA@electric-yeti-16169.upstash.io:6379?ssl_cert_reqs=required"
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
+
+
+
 
 
 JAZZMIN_SETTINGS = {

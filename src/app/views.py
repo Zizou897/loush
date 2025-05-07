@@ -28,6 +28,7 @@ from .functions import (
     get_about_banner,
     get_partenaire,
     get_caracteristique_home,
+    get_all_properties_for_index,
 )
 
 def verify_email(email):
@@ -42,7 +43,7 @@ def home(request):
 
     get_socials = get_social({'publish':True})
     get_banners = get_banner({'publish':True})
-    get_property_vendors = get_property_vendor({'publish':True, 'status': 'à vendre'})
+    get_property_vendors = get_all_properties_for_index({'publish':True})
     get_property_locations = get_property_location({'publish':True, 'status': 'à louer'})
     get_abouts = get_about({'publish':True})
     get_why_chooses = get_why_choose({'publish':True})

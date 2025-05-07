@@ -67,6 +67,9 @@ def get_partenaire(data=dict()):
 def get_all_properties(data=dict()):
     return Proprietes.objects.filter(**data)
 
+def get_all_properties_for_index(data=dict()):
+    return Proprietes.objects.filter(**data).order_by('-created_at')[:6]
+
 def get_property_vendor(data=dict()):
     return Proprietes.objects.filter(**data).order_by('created_at')[:6]
 

@@ -1,5 +1,6 @@
 {% extends "app/base/base.html" %}
 {% load static %}
+{% load custom_tags %}
 {% block content %}
 
 <!-- ============================================-->
@@ -64,25 +65,82 @@
 
               <!-- ============================================-->
       <!-- <section> begin ============================-->
+        <style>
+          .property-card {
+            transition: box-shadow 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); /* ombre légère */
+          }
+        
+          .property-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* ombre plus marquée au survol */
+          }
+        </style>
       <section class="pb-0" style="margin-top:-17rem">
 
         <div class="container">
           <div class="row">
 
-            {% for house in get_all__properties %}
-            <div class="col col-md-4 col-sm-6 col-xs-6 mb-4">
-                <div class="card h-100"> 
-                  <img class="card-img-top h-50 w-100" src="{{ house.pictures.all.first.picture.url }}" alt="courses" />
+                {% for house in get_all__properties %}
+                <div class="col-md-4 mb-4">
+                  <div class="card h-100 border-0 property-card">
+                    <!-- Image -->
+                    <div class="position-relative">
+                      <img src="{{ house.pictures.all.first.picture.url }}" class="card-img-top" alt="{{ house.titre_annonce }}" style="height:220px;object-fit: cover;object-position: center;">
+                      
+                      <!-- Statut -->
+                      {% if house.status == "à vendre" %}
+                        <span class="badge bg-success position-absolute top-0 start-0 m-2  rounded-pill px-3 py-2" style="font-size: 0.75rem;">{{ house.status }}</span>
+                      {% else %}
+                        <span class="badge bg-warning position-absolute top-0 start-0 m-2  rounded-pill px-3 py-2" style="font-size: 0.75rem;">{{ house.status }}</span>
+                      {% endif %}
+          
+                      {% if house.is_new %}
+                        <span class="badge bg-gradient text-white shadow-sm d-flex align-items-center gap-1 position-absolute top-0 end-0 m-2 rounded-pill px-3 py-2" style="font-size: 0.75rem;"><i class="fa-solid fa-bolt fa-sm"></i> Nouveau</span>
+                      {% endif %}
+            
+                      <!-- Prix -->
+                      <span class="badge bg-dark position-absolute bottom-0 end-0 m-2  rounded-pill px-3 py-2" style="font-size: 0.75rem;">
+                        {{ house.prix_propriete }}
+                      </span>
+                    </div>
+            
+                    <!-- Infos de la card -->
                     <div class="card-body">
-                    <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">{{house.titre_annonce}}</h5>
-                    <a class="text-muted fs--1 stretched-link text-decoration-none" href="{% url 'home-detail' house.id %}">{{ house.prix_propriete }}</a>
-                  </div>
-                  <div class="d-flex justify-content-between ms-3" style="margin-right: 5px;"> 
-                    <span class="fa-span">Publié par: {{house.proprietaire}}</span> <span>{{house.status}}</span>
-                  </div>
+                      <h5 class="card-title fw-bold mb-2">{{ house.titre_annonce }}  <span class="text-muted fw-light">({{house.type_propriete}})</span></h5>
+                      <!-- Localité et surface -->
+                      <p class="mb-1 text-muted">
+                        <i class="fa-solid fa-location-dot text-primary me-1"></i> {{ house.localite }}
+                        &nbsp;|&nbsp;
+                        <i class="fa-solid fa-maximize text-primary me-1"></i> {{ house.surface_habitable }} m²
+                      </p>
+          
+                      <div class="mt-2">
+                        {% for carac in house.caracteristique_speciale.all %}
+                          <span class="badge bg-light text-dark border me-1 mb-1 rounded-pill px-3 py-2" style="font-size: 0.75rem;">
+                            <i class="fa-solid {{ carac.libele|icone_caracteristique }} text-success me-1"></i> {{ carac.libele }}
+                          </span>
+                        {% empty %}
+                          <span class="text-muted">Aucune caractéristique renseignée</span>
+                        {% endfor %}
+                      </div>
+            
+                      <p class="card-text mt-2">{{ house.description|truncatechars:60|safe }}</p>
+            
+                      <hr>
+            
+                      <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">
+                          <i class="fa-solid fa-calendar-days text-primary me-1"></i>
+                          {{ house.created_at|date:"d M Y" }}
+                        </small>
+                        <a href="{% url 'home-detail-index' house.id %}" class="text-primary fw-bold text-decoration-none">
+                          Voir +
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                {% endfor %}
+              {% endfor %}
           </div>
         </div>
         <!-- end of .container--><j

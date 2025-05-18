@@ -55,7 +55,9 @@ def post_agence(request):
             receivers = [agence.email]
             
 
-            # fichier = '/home/areb/Documents/GitHub/loush/src/partenariat/type_maison.txt'
+            # fichier = '/home/areb/Documents/GitHub/loush/src/partenariat/type_maison.txt' 
+            # fichier = 'src/partenariat/Secteurs(Quartiers) de Ouagadougou.txt'
+            # src/partenariat/Caractéristiques_maison.txt
             # with open(fichier, 'r', encoding='utf-8') as file:
             #     data = file.readlines()
 
@@ -99,7 +101,7 @@ def post_searcher(request):
     nbr_salle_bain = request.POST.get('nbr_salle_bain')
     surface_habitable = request.POST.get('surface_habitable')
     localisation_souhaite = request.POST.get('localisation_souhaite')
-    caract_souhaite = request.POST.get('caract_souhaite')
+    caract_souhaite = request.POST.get('select_features')
     #-------------------------------------------
     date_demenag_souhaite = request.POST.get('date_demenag_souhaite')
     comments_souhaite = request.POST.get('comments_souhaite')
@@ -160,8 +162,9 @@ def post_owner(request):
     surface_habitable = request.POST.get('living_space')
     nbr_chambre = request.POST.get('nbr_room')
     nbr_salle_bain = request.POST.get('nbr_bath_room')
-    caracteris_special = request.POST.get('other_detail')
-    
+    caracteris_special = request.POST.get('select_features')
+    print("##########")
+    print(caracteris_special)
     description = request.POST.get('home_detail')
     
     if verify_email(email):

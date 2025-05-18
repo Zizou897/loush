@@ -1,4 +1,4 @@
-
+{% comment %} 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-scrollable">
@@ -130,6 +130,169 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermé</button>
         <button type="button" class="btn btn-primary" @click.prevent="sendOwnerData()">Exposer sa maison</button>
+      </div>
+    </div>
+  </div>
+</div> {% endcomment %}
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content shadow-lg border-0 rounded-4" id="trust_us">
+
+      <!-- Header -->
+      <div class="modal-header bg-gradient text-color rounded-top-4 p-4" style="background: linear-gradient(45deg, #3f51b5, #2196f3);">
+        <h4 class="modal-title fw-bold">📸 Exposez votre maison avec style</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body px-4 py-4">
+
+        <!-- Étape 1 - Infos propriétaire -->
+        <div class="mb-5">
+          <h5 class="text-color fw-bold text-center mb-4">👤 Informations du Propriétaire</h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Nom complet *" v-model="name">
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Téléphone *" v-model="phone">
+            </div>
+            <div class="col-md-12">
+              <input type="email" class="form-control" placeholder="Email" v-model="email">
+            </div>
+          </div>
+        </div>
+
+        <!-- Étape 2 - Détails de la propriété -->
+         <hr>
+        <div class="mb-5">
+          <h5 class="text-color fw-bold text-center mb-4">🏡 Détails de la Propriété</h5>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <select class="form-select" v-model="type_propriete_for_owner">
+                <option value="" disabled hidden>Type de propriété</option>
+                {% for type in get_type_proprietes %}
+                  <option>{{ type.libele }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-md-4">
+              <select class="form-select" v-model="status_buy_sell">
+                <option value="" disabled hidden>Location ou Vente</option>
+                <option>Faire louer</option>
+                <option>Faire vendre</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <input type="text" class="form-control" placeholder="Prix (FCFA)" v-model="home_price">
+            </div>
+
+            <div class="col-md-4">
+              <select class="form-select" v-model="home_address">
+                <option value="" disabled hidden>Adresse</option>
+                <option>Ouaga</option>
+                <option>Bobo Dioulasso</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <select class="form-select" v-model="year_building">
+                <option value="" disabled hidden>Année de construction</option>
+                <option>2024</option>
+                <option>2023</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <input type="text" class="form-control" placeholder="Surface (m²)" v-model="living_space">
+            </div>
+
+            <div class="col-md-4">
+              <select class="form-select" v-model="nbr_room">
+                <option value="" disabled hidden>Chambres</option>
+                <option>1 chambre</option>
+                <option>2 chambres</option>
+                <option>3 chambres</option>
+                <option>4 chambres</option>
+                <option>5 chambres</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <select class="form-select" v-model="nbr_bath_room">
+                <option value="" disabled hidden>Salles de bain</option>
+                <option>1 salle de bain</option>
+                <option>2 salles de bain</option>
+                <option>3 salles de bain</option>
+                <option>4 salles de bain</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <multiselect
+              v-model="select_features"
+              :options="all_features"
+              :multiple="true"
+              :preserve-search="true"
+              :select-label="'sélectionner'"
+              :selected-label="'Sélectionné'"
+              :deselect-label="'Supprimer'"
+              filter
+              placeholder="Les caractéristiques"
+              
+              class="w-100"
+            > </multiselect>
+            </div>
+          </div>
+        </div>
+
+        <!-- Étape 3 - Description -->
+         <hr>
+        <div class="mb-5">
+          <h5 class="text-color fw-bold text-center mb-4">📝 Description</h5>
+          <textarea class="form-control" rows="4" placeholder="Décrivez la propriété..." v-model="home_detail"></textarea>
+        </div>
+
+        <!-- Étape 4 - Images --> 
+         <hr>
+        <div class="mb-5">
+          <h5 class="text-color fw-bold text-center mb-4">📷 Téléversement de Photos</h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <input class="form-control" type="file" @change="handleFile($event, 'picture')">
+            </div>
+            <div class="col-md-6">
+              <input class="form-control" type="file" @change="handleFile($event, 'picture2')">
+            </div>
+          </div>
+        </div>
+
+        <!-- Étape 5 - Confirmation -->
+         <hr>
+        <div class="mb-3">
+          <h5 class="text-color fw-bold text-center mb-3">✅ Engagements</h5>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" v-model="first_confirm" id="confirm1">
+            <label class="form-check-label" for="confirm1">
+              Je m’engage à fournir des <strong>photos de qualité</strong>.
+            </label>
+          </div>
+          <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" v-model="second_confirm" id="confirm2">
+            <label class="form-check-label" for="confirm2">
+              J’accepte la publication de mes données selon la <strong>politique de confidentialité</strong>.
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer d-flex justify-content-between px-4 py-3 bg-light rounded-bottom-4">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+          ❌ Fermer
+        </button>
+        <button type="button" class="btn btn-primary px-4" @click.prevent="sendOwnerData()">
+          🚀 Exposer la Maison
+        </button>
       </div>
     </div>
   </div>

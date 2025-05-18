@@ -2,142 +2,132 @@
 {% load static %}
 {% block content %}
 
-<section class="bg-600 pt-7">
-
+<section class="bg-light py-6" >
     <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div class="col-10" style="background:#fff;border-radius: 1rem;padding:20px;">
-                <h1 class="mb-6 text-center fw-bold">Chercher une maison</h1>
-                <form id="home_asking" class="row g-3">
-
-                    <h1 class="fs-2 mb-4 fw-bold">Informations personnelles</h1>
-                    <div class="info_perso" style="border-radius: 1rem;padding:20px">
-                        <div class="row mb-3">
-                            <div class="col-sm-6 col-md-4 mb-3">
-                                {#  <label class="form-label" for="inputCategories">Nom et Prénom <span class="text-primary">*</span></label>#}
-                                <input type="name" class="form-control" placeholder="Nom et Prénom *" v-model="name">
-                            </div>
-                            <div class="col-sm-6 col-md-4 mb-3">
-                                <input type="number" class="form-control" placeholder="Numéro de téléphone *" v-model="phone">
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                {#  <label class="form-label" for="inputCategories">Adresse e-mail <span class="text-primary">*</span></label>  #}
-                                <input type="email" class="form-control" placeholder="Adresse e-mail *" v-model="email">
-                            </div>
-                        </div>
-                        {% comment %} <div class="row">
-                            <div class="col-sm-6 col-md-3 col-lg-3">
-                                <input type="email" class="form-control" placeholder="Adresse e-mail *" v-model="email">
-                            </div>
-                        </div> {% endcomment %}
-                    </div>
-                    
-                    <hr>
-                    <div class="info_perso" style="border-radius: 1rem;padding:20px">
-                        <h1 class="fs-2 mb-4 fw-bold">Préférences de la Propriété</h1>
-                        <div class="row mb-3">
-                            <div class="col-sm-6 col-md-3 mb-3">
-                                <select class="form-select" id="inputLevel" v-model="type_propriete_rechercher">
-                                    <option value="" selected hidden >Type de propriété recherchée </option>
-                                    {% for type in get_type_proprietes %}
-                                    <option>{{type.libele}}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div class="col-sm-6 col-md-3 mb-3">
-                            <select class="form-select" id="inputLevel" v-model="achat_or_location">
-                                    <option value="" selected hidden>Achat ou Location</option>
-                                    <option>Achat</option>
-                                    <option>Location</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-6 col-md-3 mb-3">
-                                <input type="name" class="form-control" placeholder="Budget" v-model="budjet">
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <select class="form-select" data-placeholder="Select fruits" id="inputLevel" v-model="nbr_chambre">
-                                    <option value="" selected hidden>Nombre de chambres</option>
-                                    <option> 1 chambre</option>
-                                    <option> 2 chambres</option>
-                                    <option> 3 chambres</option>
-                                    <option> 4 chambres</option>
-                                    <option> 5 chambres</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row mb-3">      
-                            <div class="col-sm-6 col-md-3 mb-3">
-                                <select class="form-select" id="inputLevel" v-model="nbr_salle_bain">
-                                    <option value="" selected hidden>Nombre de salles de bain</option>
-                                    <option> 1 salle de bain</option>
-                                    <option> 2 salles de bain</option>
-                                    <option> 3 salles de bain</option>
-                                    <option> 4 salles de bain</option>
-                                    <option> 5 salles de bain</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-6 col-md-3 mb-3">
-                                <input type="email" class="form-control" placeholder="Surface habitable" v-model="surface_habitable">
-                            </div>
-                            <div class="col-sm-6 col-md-3 mb-3">
-                                <select class="form-select" id="inputLevel" v-model="localisation_souhaite" autocomplete="off" id="select-beast" placeholder="Localisation souhaitées...">
-                                <option value="" selected hidden>Localisation souhaitées...</option>
-                                {% for locale in get_localites %}
-                                <option>{{locale.name}}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col-sm-6 col-md-3" >
-                            <select class=" form-control" autocomplete="off" id="select-beast" placeholder="Caractéristiques souhaitées...">
-                                <option>Caractéristiques souhaitées...</option>
-                                {% for carat in get_caracteristique_homes %}
-                                    <option>{{carat.libele}}</option>
-                                {% endfor %}
-                                
-                            </select>
-                        </div>
-                        </div>
-                    </div>
-
-                    <hr>
-                    <div class="info_perso" style="border-radius: 1rem;padding:20px">
-                        <h1 class="fs-2 mb-4 fw-bold">Autres Préférences</h1>
-                        <div class="row">
-                            <div class="col-sm-6 col-md-6 mb-3">
-                            <input type="date" class="form-control" placeholder="Date de déménagement souhaitée" v-model="date_demenag_souhaite">
-                            </div>
-                            <div class="col-sm-6 col-md-6">
-                                <textarea class="form-control" placeholder="Commentaires supplémentaires" id="floatingTextarea" v-model="comments_souhaite"></textarea>
-                            </div>
-                    
-                        </div>
-                    </div>
-
-                    <div class="col-12 z-index-2 d-flex justify-content-center">
-                        <button class="btn btn-primary taille-boutton" type="submit" @click.prevent="sendData()">Faire votre Demande</button>
-                    </div>
-                </form>
+      <div class="row justify-content-center">
+        <div class="col-lg-10 bg-white p-5 rounded-4">
+  
+          <!-- En-tête de section -->
+          <div class="text-center mb-5">
+            <h1 class="fw-bold text-color mb-2">🔍 Trouvez la maison de vos rêves</h1>
+            <p class="text-muted">Remplissez le formulaire ci-dessous pour que nous puissions vous aider à trouver le bien idéal selon vos critères.</p>
+          </div>
+  
+          <!-- Formulaire -->
+          <form id="home_asking" class="row g-4">
+  
+            <!-- Bloc : Informations personnelles -->
+            <div class="col-12">
+              <h4 class="text-color fw-bold mb-3 border-bottom pb-2">👤 Vos informations</h4>
             </div>
+            <div class="col-md-4">
+              <input type="text" class="form-control" placeholder="Nom & Prénom *" v-model="name">
+            </div>
+            <div class="col-md-4">
+              <input type="text" class="form-control" placeholder="Téléphone *" v-model="phone">
+            </div>
+            <div class="col-md-4">
+              <input type="email" class="form-control" placeholder="Adresse e-mail *" v-model="email">
+            </div>
+  
+            <!-- Bloc : Préférences propriété -->
+            <div class="col-12 mt-4">
+              <h4 class="text-color fw-bold mb-3 border-bottom pb-2">🏠 Préférences de propriété</h4>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select" v-model="type_propriete_rechercher">
+                <option value="" selected hidden>Type de propriété</option>
+                {% for type in get_type_proprietes %}
+                <option>{{ type.libele }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select" v-model="achat_or_location">
+                <option value="" selected hidden>Achat ou Location</option>
+                <option>Achat</option>
+                <option>Location</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-control " placeholder="Budget *" v-model="budjet">
+            </div>
+            <div class="col-md-3">
+              <select class="form-select form-select-lg" v-model="nbr_chambre">
+                <option value="" selected hidden>Nombre de chambres</option>
+                <option>1 chambre</option>
+                <option>2 chambres</option>
+                <option>3 chambres</option>
+                <option>4 chambres</option>
+                <option>5 chambres</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select form-select-lg" v-model="nbr_salle_bain">
+                <option value="" selected hidden>Salles de bain</option>
+                <option>1 salle de bain</option>
+                <option>2 salles de bain</option>
+                <option>3 salles de bain</option>
+                <option>4 salles de bain</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-control " placeholder="Surface habitable" v-model="surface_habitable">
+            </div>
+            <div class="col-md-3">
+              <select class="form-select form-select-lg" v-model="localisation_souhaite">
+                <option value="" selected hidden>Localisation souhaitée</option>
+                {% for locale in get_localites %}
+                <option>{{ locale.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-md-3">
+              {% comment %} <select class="form-select form-select-lg">
+                <option value="" selected hidden>Caractéristiques souhaitées</option>
+                {% for carat in get_caracteristique_homes %}
+                <option>{{ carat.libele }}</option>
+                {% endfor %}
+              </select> {% endcomment %}
+              <multiselect
+              v-model="select_features"
+              :options="all_features"
+              :multiple="true"
+              :preserve-search="true"
+              :select-label="'sélectionner'"
+              :selected-label="'Sélectionné'"
+              :deselect-label="'Supprimer'"
+              filter
+              placeholder="Les caractéristiques"
+              
+              class="w-100"
+            > </multiselect>
+            </div>
+  
+            <!-- Bloc : Autres préférences -->
+            <div class="col-12 mt-4">
+              <h4 class="text-color fw-bold mb-3 border-bottom pb-2">📝 Autres préférences</h4>
+            </div>
+            <div class="col-md-6">
+              <input type="date" class="form-control " v-model="date_demenag_souhaite">
+            </div>
+            <div class="col-md-6">
+              <textarea class="form-control " placeholder="Commentaires supplémentaires" rows="3" v-model="comments_souhaite"></textarea>
+            </div>
+  
+            <!-- Bouton d'envoi -->
+            <div class="col-12 text-center mt-4">
+              <button type="submit" @click.prevent="sendData()" class="btn btn-primary px-4 py-2 fw-bold text-color">
+                🔎 Faire votre demande
+              </button>
+              <p class="text-muted mt-2" style="font-size: 0.9rem;">Nous vous recontacterons rapidement avec des suggestions adaptées à votre besoin.</p>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
-    <!-- end of .container-->
-    <div>
-        <multiselect
-          v-model="value"
-          placeholder="Select City"
-          label="city"
-          :options="options"
-          :multiple="true"
-          :close-on-select="false"
-          @input="onSelect"
-        >
-        </multiselect>
-    </div>
-    
-      <pre class="language-json"><code>{{ selectedItems }}</code></pre>
-    
-
-</section>
+  </section>
+  
 
 
 <script>

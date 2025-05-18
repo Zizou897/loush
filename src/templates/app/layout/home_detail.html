@@ -9,7 +9,7 @@
 
       <!-- ============================================-->
       <!-- <section> begin ============================-->
-      <section class="pb-11 pt-7 bg-600">
+      {% comment %} <section class="pb-11 pt-7 bg-600">
 
         <div class="container">
           <div class="row">
@@ -21,10 +21,10 @@
         </div>
         <!-- end of .container-->
 
-      </section>
+      </section> {% endcomment %}
       <!-- <section> close ============================-->
       <!-- <section> begin ============================-->
-      <section style="margin-top:-21.5rem">
+      {% comment %} <section style="margin-top:-21.5rem">
 
         <div class="container">
           <div class="row">
@@ -84,24 +84,103 @@
         </div>
         <!-- end of .container-->
 
-      </section>
+      </section> {% endcomment %}
       <!-- <section> close ============================-->
       <!-- ============================================-->
 
+<!-- Section titre -->
+<section class="bg-light py-5">
+  <div class="container">
+    <h6 class="text-primary text-uppercase fw-bold mb-2">Détail de la propriété</h6>
+    <h1 class="fw-bold display-5">{{ get_property_ids.titre_annonce }}</h1>
+  </div>
+</section>
 
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
-        <!-- email subscribe -->
+<!-- Section principale -->
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+      
+      <!-- Galerie & description -->
+      <div class="col-lg-8">
+        <!-- Galerie Slick -->
+        <div class="fader mb-4 rounded overflow-hidden shadow-sm">
+          {% for pic in get_property_ids.pictures.all %}
+            <div>
+              <img src="{{ pic.picture.url }}" class="img-fluid w-100" alt="Image propriété">
+            </div>
+          {% endfor %}
+        </div>
+
+        <!-- Description -->
+        <div>
+          <h4 class="fw-semibold mb-3">Description</h4>
+          <p class="text-muted">{{ get_property_ids.description | safe }}</p>
+        </div>
+      </div>
+
+      <!-- Détails & formulaire -->
+      <div class="col-lg-4">
+        
+        <!-- Détails de la propriété -->
+        <div class="card shadow-sm mb-4">
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Type :</strong> {{ get_property_ids.type_propriete }}</li>
+              <li class="list-group-item"><strong>Status :</strong> {{ get_property_ids.status }}</li>
+              <li class="list-group-item"><strong>Prix :</strong> {{ get_property_ids.prix_propriete }}</li>
+              <li class="list-group-item"><strong>Localisation :</strong> {{ get_property_ids.localite }}</li>
+              <li class="list-group-item">
+                <strong>Caractéristiques :</strong><br>
+                {% for caracteristique_speciale in get_property_ids.caracteristique_speciale.all %}
+                  <span class="badge bg-primary text-light me-1 mb-1">{{ caracteristique_speciale }}</span>
+                {% endfor %}
+              </li>
+              <li class="list-group-item"><strong>Surface :</strong> 500 m²</li>
+              <li class="list-group-item"><strong>Publié par :</strong> {{ get_property_ids.proprietaire }}</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Info de contact -->
+        <div class="text-center mb-4">
+          <img src="{% static 'app/assets/img/gallery/searching.png' %}" width="60" alt="Contact icon">
+          <p class="text-muted mt-3 mb-1">Renseignez le formulaire ci-dessous pour réserver cette propriété</p>
+          <a href="mailto:louhsira.contact@gmail.com" class="text-decoration-none text-info fw-semibold">louhsira.contact@gmail.com</a>
+        </div>
+
+        <!-- Formulaire de réservation -->
+        <div class="card shadow-sm p-4" id="reserve">
+          <h5 class="fw-bold mb-3">Réserver maintenant</h5>
+          <form @submit.prevent="SendReservation()">
+            <div class="mb-3">
+              <label for="nameId" class="form-label">Nom et Prénom<span class="text-danger">*</span></label>
+              <input type="text" id="nameId" class="form-control" placeholder="John Diane" v-model="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="phoneId" class="form-label">Téléphone<span class="text-danger">*</span></label>
+              <input type="text" id="phoneId" class="form-control" placeholder="86773620" v-model="phone" required>
+            </div>
+            <div class="mb-3">
+              <label for="emailId" class="form-label">Email<span class="text-danger">*</span></label>
+              <input type="email" id="emailId" class="form-control" placeholder="example@gmail.com" v-model="email" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 fw-bold">Réserver cette propriété</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section newsletter -->
 {% include "app/includes/_email_sub.html" %}
-      <!-- <section> close ============================-->
-      <!-- ============================================-->
 
 
+<!-- Section abonnement newsletter -->
 
 
-      <!-- ============================================-->
-
-  
     </main>
 
 

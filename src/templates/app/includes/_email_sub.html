@@ -1,13 +1,17 @@
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
-<section>
+<section class="py-5" id="news_letter">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      
+      <!-- Image à gauche -->
+      <div class="col-md-6 col-lg-5 mb-4 mb-md-0 text-center text-md-start">
+        <img src="{{ get_configs.newsletter_picture.url }}" alt="Illustration newsletter" class="img-fluid" style="max-width: 300px;">
+      </div>
 
-  <div id="news_letter" class="container" style="font-style: normal;">
-    <div class="row align-items-center d-flex justify-content-center">
-      <div class="col-md-6 col-lg-4 mb-5"><img src="{{get_configs.newsletter_picture.url}}" width="280" alt="cta" /></div>
-      <div class="col-md-6 col-lg-5">
-        <h5 class="text-secondary font-sans-serif fw-bold">{{get_configs.newsletter_text}}</h5>
-        <h1 class="mb-5"></h1>
+      <!-- Formulaire à droite -->
+      <div class="col-md-6 col-lg-6">
+        <h4 class="fw-bold mb-3">Restez informé</h4>
+        <p class="text-muted mb-4">{{ get_configs.newsletter_text }}</p>
+
         <form class="row g-0 align-items-center">
           <div class="col">
             <div class="input-group-icon">
@@ -19,10 +23,7 @@
           </div>
         </form>
       </div>
+
     </div>
   </div>
-  <!-- end of .container-->
-
 </section>
-      <!-- <section> close ============================-->
-      <!-- ============================================-->

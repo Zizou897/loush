@@ -42,7 +42,7 @@ def get_localite(data=dict()):
 
 
 def get_caracteristique_home(data=dict()):
-    return CaracteristiqueMaison.objects.filter(**data)
+    return CaracteristiqueMaison.objects.all()
 
 def get_type_propriete(data=dict()):
     return TypePropriete.objects.filter(**data)

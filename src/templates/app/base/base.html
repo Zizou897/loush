@@ -57,6 +57,10 @@
     <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>  
 
 <div class="elfsight-app-f8f97b14-84d7-4399-a8aa-7e23f926c944" data-elfsight-app-lazy></div>
+<!-- Multiselect CSS -->
+<link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.6/dist/vue-multiselect.min.css">
+<!-- Vue Multiselect -->
+<script src="https://unpkg.com/vue-multiselect@2.1.6"></script>
   </head>
 
 
@@ -99,6 +103,12 @@
     .slick-current {
       opacity: 1;
     }
+    .text-color {
+      color: #002147;
+    }
+    .bg-color-secondary{
+      background-color: #002147,
+    }
   </style>
 
     <!-- ===============================================-->
@@ -109,29 +119,41 @@
 
       <!-- ============================================-->
       <!-- <section> begin ============================-->
-      <section class="bg-primary py-2 d-none d-sm-block">
+      <!-- Barre de contact supérieure modernisée -->
+<section class="bg-primary text-gray py-2 d-none d-sm-block border-bottom border-light">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
 
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-auto d-none d-lg-block">
-              <p class="my-2 fs--1"><i class="fas fa-map-marker-alt me-3"></i><span>Avenue 15, rue 12 , ouaga </span></p>
-            </div>
-            <div class="col-auto ms-md-auto order-md-2 d-none d-sm-block">
-              <ul class="list-unstyled list-inline my-2">
-                {% for social in get_socials %}
-                  <li class="list-inline-item"><a class="text-decoration-none" href="{{social.link}}"><i class="{{social.icon}} text-900"></i></a></li>
-                {% endfor %}
-                
-              </ul>
-            </div>
-            <div class="col-auto">
-              <p class="my-2 fs--1"><i class="fas fa-envelope me-3"></i><a class="text-900" href="loushira.@gmail.com">{{get_confgs.louhsira_email}} </a></p>
-            </div>
-          </div>
+      <!-- Adresse et Email -->
+      <div class="col-lg-5 col-md-6 d-flex align-items-center gap-3">
+        <div class="d-flex align-items-center">
+          <i class="fas fa-map-marker-alt me-2 text-color"></i>
+          <small>{{ get_configs.louhsira_address }}</small>
         </div>
-        <!-- end of .container-->
+        <span class="vr text-white mx-2 d-none d-md-inline-block"></span>
+        <div class="d-flex align-items-center">
+          <i class="fas fa-envelope me-2 text-color"></i>
+          <small><a href="mailto:{{ get_configs.louhsira_email }}" class="text-color text-decoration-none">{{ get_configs.louhsira_email }}</a></small>
+        </div>
+      </div>
 
-      </section>
+      <!-- Réseaux sociaux -->
+      <div class="col-lg-4 col-md-5 text-md-end mt-2 mt-md-0">
+        <ul class="list-inline mb-0">
+          {% for social in get_socials %}
+            <li class="list-inline-item">
+              <a href="{{ social.link }}" class="text-color fs-1 me-2" target="_blank">
+                <i class="{{ social.icon }}"></i>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
       <!-- <section> close ============================-->
       <!-- ============================================-->
 
@@ -190,8 +212,8 @@
                       <a class="text-decoration-none" href="{% url 'welcome' %}"><img src="{{get_configs.logo2.url}}" height="51"  alt="" /></a>
                       <p>  </p>
                       <div class="hr"></div>
-                      <h6>Avenue 15, rue 12 , ouaga</h6>
-                      <h6>(+225) 000 000 00 00<span>|</span><a class="text-light text-200" href="mailto:loushira.contact@gmail.com">louhsira@gmail.com</a></h6>
+                      <h6>{{get_configs.louhsira_address}}</h6>
+                      <h6 class="text-light text-200" >{{get_configs.louhsira_phone}}<span>|</span><a class="text-light text-200" href="mailto:{{get_configs.louhsira_email}}">{{get_configs.louhsira_email}}</a></h6>
                       <div class="contact-social">
                           <ul>
                               {% for socials in get_socials %} 
@@ -310,6 +332,60 @@
       footer img {
           width: 44px;
       }
+
+       /* Adapter le style à Bootstrap */
+  .multiselect-bootstrap .multiselect {
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    min-height: 38px;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    
+  }
+  
+  /* Supprime la bordure inutile du wrapper */
+  .multiselect-bootstrap .multiselect__tags {
+    border: none !important;
+    padding: 0 !important;
+  }
+  
+  /* Ajuste le padding des éléments */
+  .multiselect__tag {
+    background: #f15a27 !important;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  /* Taille de la zone d'entrée */
+  .multiselect__input {
+    height: 28px !important;
+    line-height: 28px;
+    font-size: 1rem;
+  }
+  
+  /* Flèche de sélection */
+  .multiselect__select {
+    top: 0px !important;
+  }
+
+  /* Label affiché quand une option est survolée dans les tags */
+  .multiselect__option--highlight .multiselect__option--selected {
+    background-color:rgb(163, 7, 20) !important;
+    color: white;
+  }
+
+  /* Icône de suppression (la croix) sur les tags */
+  .multiselect__tag-icon {
+    color: #fff !important;
+  }
+
+  /* Au survol de la croix */
+  .multiselect__tag-icon:hover {
+    background:rgb(228, 12, 66) !important;
+    border-radius: 2px;
+  }
+
   </style>
 
     <!-- ===============================================-->
@@ -399,10 +475,13 @@
       
     var app =  new Vue({
       el: '#home_asking',
-      components: { Multiselect: window.VueMultiselect.default },
-      delimiters: ['%{', '}'],
+      components: {
+          multiselect: window.VueMultiselect.default
+        },
       data: {
         confirm: false,
+        select_features: [],
+        all_features: [],
         //--------------------------
         name: '',
         phone: '',
@@ -423,28 +502,21 @@
         comments_souhaite: '',
 
         //---------------------------
-        value: [],
-        selectedItems: [],
-        options: [
-          {
-            "city": "San Martin"
-          },
-          {
-            "city": "San Nicolas"
-          },
-          {
-            "city": "San Francisco"
-          }
-        ]
+        
       },
-      mounted(){},
+      mounted(){
+        fetch('http://127.0.0.1:8000/data/caract')
+        .then(response => response.json())
+        .then(data => {
+          this.all_features = data.features;
+        })
+        .catch(error => {
+          console.error("Erreur lors du chargement des caractéristiques :", error);
+        });
+      },
       computed:{},
       methods: {
-        onSelect(){
-          this.selectedItems.push(this.value[0]);
-          this.value = [];
-        },
-
+        
         sendData(){
           if(this.name == ""){
             Swal.fire({
@@ -485,6 +557,7 @@
             //-----------------------------------------
             myForm.append('date_demenag_souhaite', this.date_demenag_souhaite)
             myForm.append('comments_souhaite', this.comments_souhaite)
+            myForm.append('select_features', JSON.stringify(this.select_features));
             
             axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
             axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
@@ -555,13 +628,20 @@
             }
           } 
         });
-
+       
         new Vue({
           el: "#trust_us",
+          components: {
+            multiselect: window.VueMultiselect.default
+          },
+          
           data: {
+            
             //--------------------------
             first_confirm: false,
             second_confirm: false,
+            select_features: [],
+            all_features: [],
 
             //--------------------------
             name: '',
@@ -587,12 +667,19 @@
             picture2:'',
 
           },
-          mounted(){},
+          mounted(){
+            fetch('http://127.0.0.1:8000/data/caract')
+        .then(response => response.json())
+        .then(data => {
+          this.all_features = data.features;
+        })
+        .catch(error => {
+          console.error("Erreur lors du chargement des caractéristiques :", error);
+        });
+          },
           computed:{},
           methods: {
             sendOwnerData(){
-
-              
 
               if(this.first_confirm && this.second_confirm){
                 console.log('############ 1 #############""');
@@ -625,6 +712,7 @@
                     myForm.append('nbr_room',this.nbr_room)
                     myForm.append('nbr_bath_room' ,this.nbr_bath_room)
                     myForm.append('other_detail',this.other_detail)
+                    myForm.append('select_features', JSON.stringify(this.select_features));
                     //--------------------------
                     myForm.append('home_detail',this.home_detail)
 

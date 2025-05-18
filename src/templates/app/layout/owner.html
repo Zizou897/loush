@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<section class="bg-600">
+{% comment %} <section class="bg-600">
 
     <div class="container">
       <div class="row justify-content-center">
@@ -138,11 +138,168 @@
     </div>
     <!-- end of .container-->
 
+</section> {% endcomment %}
+
+<section class="bg-light py-6" >
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 bg-white rounded-4 p-5">
+
+        <!-- Titre principal -->
+        <div class="text-center mb-5">
+          <h1 class="fw-bold text-color">🏡 Exposer votre propriété</h1>
+          <p class="text-muted">Soumettez les détails de votre bien pour le mettre en valeur sur notre plateforme.</p>
+        </div>
+
+        <!-- Formulaire -->
+        <form id="trust_us" class="row g-4">
+
+          <!-- Informations personnelles -->
+          <div class="col-12">
+            <h4 class="text-color border-bottom pb-2 mb-3 fw-bold">👤 Vos informations</h4>
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Nom & Prénom *" v-model="name">
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Téléphone *" v-model="phone">
+          </div>
+          <div class="col-12">
+            <input type="email" class="form-control" placeholder="Email *" v-model="email">
+          </div>
+
+          <!-- Détails propriété -->
+          <div class="col-12 mt-4">
+            <h4 class="text-color border-bottom pb-2 mb-3 fw-bold">📋 Détails de la propriété</h4>
+          </div>
+          <div class="col-md-4">
+            <select class="form-select " v-model="type_propriete_for_owner">
+              <option value="" selected hidden>Type de propriété</option>
+              {% for type in get_type_proprietes %}
+              <option>{{type.libele}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-4">
+            <select class="form-select form-select-lg" v-model="status_buy_sell">
+              <option value="" selected hidden>Louer ou Vendre</option>
+              <option>Faire louer</option>
+              <option>Faire vendre</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Prix (FCFA)" v-model="home_price">
+          </div>
+
+          <div class="col-md-4">
+            <select class="form-select form-select-lg" v-model="home_address">
+              <option value="" selected hidden>Ville / Quartier</option>
+              <option>Bobo Dioulasso</option>
+              <option>Ouaga</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <select class="form-select" v-model="year_building">
+              <option value="" selected hidden>Année de construction</option>
+              <option>2024</option>
+              <option>2023</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Surface (m²)" v-model="living_space">
+          </div>
+
+          <div class="col-md-4">
+            <select class="form-select" v-model="nbr_room">
+              <option value="" selected hidden>Nombre de chambres</option>
+              <option>1 chambre</option>
+              <option>2 chambres</option>
+              <option>3 chambres</option>
+              <option>4 chambres</option>
+              <option>5 chambres</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <select class="form-select" v-model="nbr_bath_room">
+              <option value="" selected hidden>Salles de bain</option>
+              <option>1 salle de bain</option>
+              <option>2 salles de bain</option>
+              <option>3 salles de bain</option>
+              <option>4 salles de bain</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            {% comment %} <select class="form-select" multiple>
+              <option value="" selected hidden>Caractéristiques spéciales</option>
+              <option>Jardin</option>
+              <option>Balcon</option>
+              <option>Parking</option>
+            </select> {% endcomment %}
+            <multiselect
+              v-model="select_features"
+              :options="all_features"
+              :multiple="true"
+              :preserve-search="true"
+              :select-label="'sélectionner'"
+              :selected-label="'Sélectionné'"
+              :deselect-label="'Supprimer'"
+              filter
+              placeholder="Les caractéristiques"
+              
+              class="w-100"
+            > </multiselect>
+          </div>
+
+          <!-- Description -->
+          <div class="col-12 mt-4">
+            <h4 class="text-color border-bottom pb-2 mb-3 fw-bold">📝 Description de la propriété</h4>
+            <textarea class="form-control form-control-lg" rows="4" placeholder="Décrivez les atouts de la propriété..." v-model="home_detail"></textarea>
+          </div>
+
+          <!-- Photos -->
+          <div class="col-12 mt-4">
+            <h4 class="text-color border-bottom pb-2 mb-3 fw-bold">📸 Photos</h4>
+          </div>
+          <div class="col-md-6">
+            <input class="form-control" type="file" v-model="picture">
+          </div>
+          <div class="col-md-6">
+            <input class="form-control" type="file" v-model="picture2">
+          </div>
+
+          <!-- Conditions -->
+          <div class="col-12 mt-4">
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" v-model="first_confirm" id="confirm1">
+              <label class="form-check-label" for="confirm1">
+                J'accepte de fournir des photos de qualité de la propriété.
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" v-model="second_confirm" id="confirm2">
+              <label class="form-check-label" for="confirm2">
+                J'accepte la publication de mes informations conformément à la politique de confidentialité.
+              </label>
+            </div>
+          </div>
+
+          <!-- Bouton -->
+          <div class="col-12 text-center mt-4">
+            <button class="btn btn-primary px-4 py-2 fw-bold text-color" type="submit" @click.prevent="sendOwnerData()">
+              🚀 Publier ma propriété
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
 </section>
 
-
-
-
+ <style>
+ 
+</style>
+  
 {% endblock %}
 
 

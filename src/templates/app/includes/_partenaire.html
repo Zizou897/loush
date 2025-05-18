@@ -1,15 +1,39 @@
-<section class=" bg-200" id="home">
+<section class="bg-200 py-5" id="home">
     <div class="container">
-        <div class="row align-items-center text-center"   >
-            <h4 class="fw-bold pb-4">Nos parténaires</h4>
-            <div class="d-flex justify-content-evenly">
-                {% for partenaire in get_partenaires %}
-                    <div class="card fa-card" style="width: 200px; height: 100px; ">
-                        <img class="" src="{{partenaire.picture.url}}" alt="courses" style="width: 100%; height: 100%; border-radius: 5px;"/>
-                    </div>
-                {% endfor %}
+      <div class="text-center mb-5">
+        <h4 class="fw-bold">Nos partenaires</h4>
+        <p class="text-muted">Ils nous font confiance</p>
+      </div>
+  
+      <div class="row justify-content-center g-4">
+        {% for partenaire in get_partenaires %}
+          <div class="col-6 col-sm-4 col-md-3 col-lg-2 d-flex align-items-center justify-content-center">
+            <div class="partner-card p-2 bg-white rounded-3">
+              <img src="{{ partenaire.picture.url }}" alt="Logo partenaire" class="img-fluid partner-logo">
             </div>
-        </div>
+          </div>
+        {% endfor %}
+      </div>
     </div>
-</section>
-
+  </section>
+  
+  <style>
+    .partner-card {
+        width: 100%;
+        height: 100px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .partner-card:hover {
+        transform: scale(1.05);
+      }
+      
+      .partner-logo {
+        max-height: 80px;
+        object-fit: contain;
+      }
+  </style>

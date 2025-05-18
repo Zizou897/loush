@@ -96,6 +96,7 @@ class configuration(Convention):
     newsletter_title = models.CharField(max_length = 150, blank=True, null=True)
     louhsira_email = models.EmailField(max_length=254, blank=True, null=True, default="louhsira@gmail.com")
     louhsira_phone = models.CharField(max_length = 150, blank=True, null=True, default="+226 96701256")
+    louhsira_address = models.CharField(max_length = 150, blank=True, null=True, default="Avenue 15, rue 12 , ouaga")
     newsletter_text = models.TextField()
     newsletter_picture = models.FileField(upload_to=LOGO_SITE_PATH, max_length = 100)
     copy_right = models.CharField(max_length = 150, blank=True, null=True)

@@ -112,16 +112,21 @@ def owner_page(request):
     get_socials = get_social({'publish':True})
     get_configs = get_config({'publish':True})
     get_type_proprietes = get_type_propriete({'publish':True})
+    get_caracteristique_homes = get_caracteristique_home({'publish': True})
     template_name = "app/layout/owner.html"
     context = {
         'page': "LOUSHIRA | Proprietaire",
         'get_socials': get_socials,
         'get_configs': get_configs,
         'get_type_proprietes': get_type_proprietes,
+        'get_caracteristique_homes': get_caracteristique_homes,
     }
     return render(request, template_name, context)
 
-
+def data_caract(request):
+    from django.http import JsonResponse
+    data = list(get_caracteristique_home().values_list('libele', flat=True))
+    return JsonResponse({'features': data})
 
 def home_detail(request, id):
 
@@ -154,21 +159,25 @@ def catalogue(request):
         print(status)
         print(prix_propriete)
         print(localite)
-        #print(f"################{type_propriete_id.id}##############")
-       
         
-        if type(localite) == str and type(type_propriete) == str and status == "Status (A louer / A vendre)" and prix_propriete == "Prix":
-            get_all__properties = get_all_properties({'publish': True, })    
-        elif  type(type_propriete) == str and type(localite) == str:
-            get_all__properties = Proprietes.objects.filter(
-                Q(status=status) | 
-                Q(prix_propriete=prix_propriete) if str(prix_propriete) else ()
-            )   
-        elif type(localite) == str: 
-            get_all__properties = Proprietes.objects.filter(Q(type_propriete=int(type_propriete)) | Q(status=status) | Q(prix_propriete=prix_propriete)) 
-        else:
-            get_all__properties = Proprietes.objects.filter(Q(localite=int(localite)) | Q(type_propriete=int(type_propriete)) | Q(status=status) | Q(prix_propriete=prix_propriete)) 
+    
+        filters = Q(publish=True)  # on affiche seulement les propriétés publiées
 
+        if localite and localite != "Zone":
+            filters &= Q(localite=int(localite))
+
+        if type_propriete and type_propriete != "Type de propriété":
+            filters &= Q(type_propriete=int(type_propriete))
+
+        if status and status != "Status (A louer / A vendre)":
+            filters &= Q(status=status)
+
+        if prix_propriete and prix_propriete != "Prix":
+            filters &= Q(prix_propriete=prix_propriete)
+
+        get_all__properties = Proprietes.objects.filter(filters)
+
+       
     get_socials = get_social({'publish':True})
     get_configs = get_config({'publish':True})
     get_localites = get_localite({'publish':True})
@@ -239,5 +248,21 @@ def condition_generale(request):
         'get_socials': get_socials,
         'get_configs': get_configs,
         'get_cgu_s': get_cgu_s,
+    }
+    return render(request, template_name, context)
+
+
+def contact(request):
+    
+    get_socials = get_social({'publish':True})
+    get_configs = get_config({'publish':True})
+    
+    
+    template_name = "app/layout/contact.html"
+    context = {
+        'page': "LOUSHIRA | Contact",
+        'get_socials': get_socials,
+        'get_configs': get_configs,
+        
     }
     return render(request, template_name, context)

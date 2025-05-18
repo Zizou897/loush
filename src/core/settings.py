@@ -26,12 +26,12 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 
-ALLOWED_HOSTS = ['*']
 #ALLOWED_HOSTS = ['louhsira.com', 'www.louhsira.com']
+ALLOWED_HOSTS = ['louhsira.com', 'www.louhsira.com']
 
 
 # Application definition
@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -110,7 +110,7 @@ DATABASES = {
     }
 }
     
-"""
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -160,12 +160,12 @@ MEDIA_ROOT = BASE_DIR / 'media_cdn'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 # Securté supplementaires
-"""
+
 SECURE_SSL_HOST = True
 SECURE_SSL_REDIRECT = True
 CSRF_COOKIE_SECURE = True
 X_FRAME_OPTIONS = "DENY"
-""" 
+
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

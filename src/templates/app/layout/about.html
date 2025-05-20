@@ -97,7 +97,7 @@
   <div class="container">
     <div class="row align-items-center justify-content-between">
       <div class="col-md-6 mb-4 mb-md-0">
-        <img src="/static/images/vision.jpg" alt="Notre vision" class="img-fluid rounded-3 shadow-sm">
+        <img src="{% static '/app/assets/img/about-V.svg' %}" alt="Notre vision" class="img-fluid rounded-3">
       </div>
       <div class="col-md-6">
         <h3 class="fw-bold mb-3" style="color:#002147">Notre vision</h3>
@@ -191,7 +191,7 @@
 </style> {% endcomment %}
 
 
- <section class="pt-5 w-100 h-50 a-over">
+ <section class="pt-5 w-100 h-50 a-over d-none d-md-block">
     <div class="row">
       {% for triples in get_section_triples %}
         {% if triples.order in listes  %}
@@ -211,6 +211,8 @@
 
       </div>
 </section> 
+
+
 
 {% comment %} <section class="pt-5 w-100 a-over">
   <div class="container-fluid">

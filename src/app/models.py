@@ -108,7 +108,18 @@ class configuration(Convention):
         verbose_name_plural = "Configuration du site"
     def __str__(self):
         return self.name
+
+class Vision(Convention):
+    title = models.CharField(max_length = 150, blank=True, null=True)
+    description = models.TextField()
+    picture = models.FileField(upload_to=DO_TRUSTH_PATH, max_length=100)
     
+    class Meta:
+        verbose_name = "Notre Vision"
+        verbose_name_plural = "Notre Vision"
+        
+    def __str__(self):
+        return self.title    
     
 class DoTrust(Convention):
     title = models.CharField(max_length = 150, blank=True, null=True)

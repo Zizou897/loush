@@ -16,6 +16,7 @@ from .models import (
     Links,
     CGU,
     Partenaire,
+    Vision,
 )
 
 
@@ -82,6 +83,18 @@ class configurationAdmin(admin.ModelAdmin):
     logo_view.short_description = "Aperçu des images"
     
 
+@admin.register(Vision)
+class VisionAdmin(admin.ModelAdmin):
+    list_display = ("logo_view", "title", "created_at", "publish")
+    date_hierarchy = "created_at"
+    list_per_page = 10
+    list_editable = ["publish"]
+
+    def logo_view(self, obj):
+        return mark_safe(f'<img src="{obj.picture.url}" style="height:100px; width:150px">')
+    logo_view.short_description = "Aperçu des images"
+    
+    
 @admin.register(DoTrust)
 class DoTrustAdmin(admin.ModelAdmin):
     list_display = ("logo_view", "title", "created_at", "publish")
@@ -92,7 +105,7 @@ class DoTrustAdmin(admin.ModelAdmin):
     def logo_view(self, obj):
         return mark_safe(f'<img src="{obj.picture.url}" style="height:100px; width:150px">')
     logo_view.short_description = "Aperçu des images"
-    
+
 
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):

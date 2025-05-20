@@ -10,7 +10,8 @@ from .models import (
     Social,
     SectionTriple,
     CGU,
-    Partenaire
+    Partenaire,
+    Vision
 )
 
 from propriete.models import TypePropriete, Localite, Proprietes, CaracteristiqueMaison
@@ -33,6 +34,9 @@ def get_config(data=dict()):
 
 def get_do_trusth(data=dict()):
     return DoTrust.objects.filter(**data)
+
+def get_vision(data=dict()):
+    return Vision.objects.filter(**data).first()
 
 def get_team(data=dict()):
     return Team.objects.filter(**data)

@@ -133,7 +133,7 @@
         <span class="vr text-white mx-2 d-none d-md-inline-block"></span>
         <div class="d-flex align-items-center">
           <i class="fas fa-envelope me-2 text-color"></i>
-          <small><a href="mailto:{{ get_configs.louhsira_email }}" class="text-color text-decoration-none">{{ get_configs.louhsira_email }}</a></small>
+          <small><a href="mailto:{{ get_configs.louhsira_email }}" class="text-color text-decoration-none link">{{ get_configs.louhsira_email }}</a></small>
         </div>
       </div>
 
@@ -142,14 +142,18 @@
         <ul class="list-inline mb-0">
           {% for social in get_socials %}
             <li class="list-inline-item">
-              <a href="{{ social.link }}" class="text-color fs-1 me-2" target="_blank">
+              <a href="{{ social.link }}" class="text-color fs-1 me-2 link" target="_blank">
                 <i class="{{ social.icon }}"></i>
               </a>
             </li>
           {% endfor %}
         </ul>
       </div>
-
+      <style>
+        .link:hover {
+          color:rgb(0, 31, 70);
+        }
+      </style>
     </div>
   </div>
 </section>
@@ -451,6 +455,7 @@
     {% block scriptVueDetail %}
     {% endblock scriptVueDetail %}
 
+
     <script>
       $.fn.selectpicker.Constructor.BootstrapVersion = '4';
      
@@ -486,6 +491,7 @@
         name: '',
         phone: '',
         email: '',
+        url: "{% url 'welcome' %}",
 
         //----------------------------
         type_propriete_rechercher: '',
@@ -505,7 +511,7 @@
         
       },
       mounted(){
-        fetch('https://louhsira.com/data/caract')
+        fetch('http://127.0.0.1:8000/data/caract')
         .then(response => response.json())
         .then(data => {
           this.all_features = data.features;
@@ -572,6 +578,7 @@
                   timer: 3500,
                 });
                 window.setTimeout(function(){window.location.reload();}, 3500);
+                this.url;
               }else{
                 Swal.fire({
                   icon: 'error',
@@ -588,6 +595,66 @@
       },
     });
 
+    new Vue({
+      el:"#contact_form",
+      delimiters: ['%{', '}'],
+      data:{
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      
+      },
+      methods:{
+        SendContact(){
+          if(this.name == '', this.subject == '', this.message == ''){
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: "veuillez remplir tous les champs !!!",
+              showConfirmButton: true,
+            })
+          }else if(!/^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.email)){
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: "un mail valide svp !!!",
+              showConfirmButton: true,
+            })
+          }else{
+            let myForm = new FormData();
+            myForm.append('name', this.name)
+            myForm.append('email', this.email)
+            myForm.append('subject', this.subject)
+            myForm.append('message', this.message)
+
+            axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
+            axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
+            axios.post(" {% url 'contact-us' %} ", myForm,{})
+            .then(function(response){
+              if(response.data.success){
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Demande envoyee',
+                  text: response.data.msg ,
+                  showConfirmButton: true,
+                  timer: 3500
+                });
+                window.setTimeout(function(){window.location.reload();}, 3500);
+                        
+              }else{
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Demande non envoyee',
+                  text: response.data.msg ,
+                  showConfirmButton: true,
+                });
+              }
+            })
+          }
+        }
+      }
+    });
 
     
     var app1 = new Vue({
@@ -668,7 +735,7 @@
 
           },
           mounted(){
-            fetch('https://louhsira.com/data/caract')
+            fetch('http://127.0.0.1:8000/data/caract')
         .then(response => response.json())
         .then(data => {
           this.all_features = data.features;

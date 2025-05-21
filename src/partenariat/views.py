@@ -9,7 +9,7 @@ from .models import AgencyRealEstate, Searcher, Owner, Newsletters
 #from .task import send_costumize_email 
 from core.utils import send_costumize_email, simple_task
 from propriete.models import Proprietes, CaracteristiqueMaison, Localite, TypePropriete
-from reserves.models import Reservation
+from reserves.models import Reservation, ContactUs
 # Create your views here.
 def verify_email(email):
     try:
@@ -269,3 +269,45 @@ def post_reservation(request):
         'msg': msg
     }
     return JsonResponse(data,safe=False)
+
+
+
+@csrf_exempt
+def contact_us(request):
+    
+    name = request.POST.get('name')
+    email = request.POST.get('email')
+    subject = request.POST.get('subject')
+    message = request.POST.get('message')
+    
+    if not all([name, email, subject]):
+        data = {
+            'success': False,
+            'msg': 'Veuillez renseigner les champs obligatoires'
+        }
+        return JsonResponse(data, safe=False)
+    
+    if verify_email(email):
+        data = {
+            'success': False,
+            'msg': 'Veuillez saisir une adresse email valide'
+        }
+        return JsonResponse(data, safe=False)
+    
+    contact, created = ContactUs.objects.get_or_create(name=name, email=email, subject=subject, message=message)
+   
+   
+    if created:
+        data = {
+            'success': True,
+            'msg': 'Louhsira vous contactera dans les heures qui suivent'
+        }
+        
+        return JsonResponse(data, safe=False)
+    else:
+       
+        data = {
+            'success': True,
+            'msg': 'Message déjà envoyé'
+        }
+        return JsonResponse(data, safe=False)

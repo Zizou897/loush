@@ -4,7 +4,8 @@ from .views import (
     post_searcher,
     post_owner,
     post_newsletter,
-    post_reservation
+    post_reservation,
+    contact_us
 )
 
 urlpatterns = [
@@ -13,5 +14,6 @@ urlpatterns = [
     path('owner/', post_owner, name="post-owner"),
     path('newsletter/', post_newsletter, name="post-news"),
     path('reservation/', post_reservation, name="post-reservation"),
+    path('contact-us/', contact_us, name="contact-us"),
 
 ]

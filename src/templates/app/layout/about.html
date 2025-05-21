@@ -117,30 +117,16 @@
   <div class="container">
     <h3 class="fw-bold mb-4" style="color:#002147">Nos valeurs fondamentales</h3>
     <div class="row g-4">
+    {% for valeur in get_nos_valeurs %}
       <div class="col-md-4">
         <div class="p-4 team-card rounded-3 h-100">
-          <h5 class="fw-bold text-dark">Transparence</h5>
+          <h5 class="fw-bold text-dark">{{valeur.title}}</h5>
           <p class="text-secondary">
-            Toutes nos annonces sont vérifiées pour assurer des échanges honnêtes et sécurisés.
+            {{valeur.description}}
           </p>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="p-4 team-card rounded-3 h-100">
-          <h5 class="fw-bold text-dark">Accessibilité</h5>
-          <p class="text-secondary">
-            Une plateforme pensée pour tous, peu importe votre niveau de connaissance du digital.
-          </p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="p-4 team-card rounded-3 h-100">
-          <h5 class="fw-bold text-dark">Confiance</h5>
-          <p class="text-secondary">
-            Nous bâtissons des relations durables basées sur le sérieux, le respect et la fiabilité.
-          </p>
-        </div>
-      </div>
+    {% endfor %} 
     </div>
   </div>
 </section>

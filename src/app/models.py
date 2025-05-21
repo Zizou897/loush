@@ -121,6 +121,7 @@ class Vision(Convention):
     def __str__(self):
         return self.title    
     
+    
 class DoTrust(Convention):
     title = models.CharField(max_length = 150, blank=True, null=True)
     description = models.TextField()
@@ -132,6 +133,19 @@ class DoTrust(Convention):
         
     def __str__(self):
         return self.title
+    
+
+class Valeur(Convention):
+    title = models.CharField(max_length = 150, blank=True, null=True)
+    description = models.TextField()
+    
+    class Meta:
+        verbose_name = "Nos Valeurs"
+        verbose_name_plural = "Nos Valeurs"
+        
+    def __str__(self):
+        return self.title
+
 
 
 class Team(Convention):

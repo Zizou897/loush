@@ -19,3 +19,17 @@ class Reservation(Convention):
         return self.name_of_reserver
     
     
+
+class ContactUs(Convention):
+    name = models.CharField(max_length=200, blank=True, null=True)
+    email = models.EmailField(max_length=254, blank=True, null=True)
+    subject = models.CharField(max_length=200, blank=True, null=True)
+    message = models.CharField(max_length=200, blank=True, null=True)
+    
+    class Meta: 
+        verbose_name = "Nous Contacter"
+        verbose_name_plural = "Nous Contacter"
+    
+    def __str__(self):
+        return self.name
+    

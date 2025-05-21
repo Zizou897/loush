@@ -30,6 +30,7 @@ from .functions import (
     get_caracteristique_home,
     get_all_properties_for_index,
     get_vision,
+    get_nos_valeur
 )
 
 def verify_email(email):
@@ -205,6 +206,7 @@ def about(request):
     get_teams = get_team({'publish':True})
     get_section_triples = get_section_triple({'publish':True})
     get_visions = get_vision({'publish':True})
+    get_nos_valeurs = get_nos_valeur({'publish':True})
     template_name = "app/layout/about.html"
     context = {
         'listes': liste,
@@ -214,7 +216,8 @@ def about(request):
         'get_about_banners': get_about_banners,
         'get_teams': get_teams,
         'get_section_triples': get_section_triples,
-        'get_visions': get_visions
+        'get_visions': get_visions,
+        'get_nos_valeurs': get_nos_valeurs
     }
     return render(request, template_name, context)
 

@@ -174,7 +174,6 @@ MEDIA_ROOT = BASE_DIR / 'media_cdn'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-APPEND_SLASH = True
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

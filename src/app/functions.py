@@ -11,7 +11,8 @@ from .models import (
     SectionTriple,
     CGU,
     Partenaire,
-    Vision
+    Vision,
+    Valeur,
 )
 
 from propriete.models import TypePropriete, Localite, Proprietes, CaracteristiqueMaison
@@ -65,6 +66,9 @@ def get_cgu_(data=dict()):
 
 def get_partenaire(data=dict()):
     return Partenaire.objects.filter(**data)
+
+def get_nos_valeur(data=dict()):
+    return Valeur.objects.filter(**data)
 
 ##------------------CATALOGUE------------------------------
 

@@ -17,6 +17,7 @@ from .models import (
     CGU,
     Partenaire,
     Vision,
+    Valeur,
 )
 
 
@@ -82,6 +83,14 @@ class configurationAdmin(admin.ModelAdmin):
         return mark_safe(f'<img src="{obj.logo.url}" style="height:100px; width:150px">')
     logo_view.short_description = "Aperçu des images"
     
+
+@admin.register(Valeur)
+class ValeurAdmin(admin.ModelAdmin):
+    list_display = ("title", "created_at", "publish")
+    date_hierarchy = "created_at"
+    list_per_page = 10
+    list_editable = ["publish"]
+
 
 @admin.register(Vision)
 class VisionAdmin(admin.ModelAdmin):

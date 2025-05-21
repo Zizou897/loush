@@ -511,7 +511,7 @@
         
       },
       mounted(){
-        fetch('http://127.0.0.1:8000/data/caract')
+        fetch('https://louhsira.com/data/caract')
         .then(response => response.json())
         .then(data => {
           this.all_features = data.features;
@@ -735,7 +735,7 @@
 
           },
           mounted(){
-            fetch('http://127.0.0.1:8000/data/caract')
+            fetch('https://louhsira.com/data/caract')
         .then(response => response.json())
         .then(data => {
           this.all_features = data.features;

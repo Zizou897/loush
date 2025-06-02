@@ -101,7 +101,7 @@
             <h2 class="fw-bold mb-3 ms-4" style="color:#fff;">{{triples.title}}</h2>
             <p class="ms-4">{{triples.libele}}
             </p>
-            <a href="{% url 'owner-page' %}" class="{{triples.class_boutton}} ms-4 mt-4 fw-bold w-50">Exposer une maison</a> 
+            <a href="{{ triples.link_page.link}}" class="{{triples.class_boutton}} ms-4 mt-4 fw-bold w-50">{{triples.title}}</a> 
           </div>
         {% else %}
           <div class="col-md-4 d-flex flex-column justify-content-evenly" style="background-color:{{triples.background_color}}; color:#fff;height:430px">

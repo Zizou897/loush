@@ -474,7 +474,7 @@
         
       },
       mounted(){
-        fetch('http://127.0.0.1:8000/data/caract')
+        fetch('https://louhsira.com/data/caract')
         .then(response => response.json())
         .then(data => {
           this.all_features = data.features;
@@ -483,7 +483,7 @@
           console.error("Erreur lors du chargement des caractéristiques :", error);
         });
 
-        fetch('http://127.0.0.1:8000/data/local')
+        fetch('https://louhsira.com/data/local')
         .then(response => response.json())
         .then(data => {
           this.all_features_local = data.features
@@ -645,7 +645,7 @@
             picture2:'',
           },
           mounted(){
-            fetch('http://127.0.0.1:8000/data/caract')
+            fetch('https://louhsira.com/data/caract')
         .then(response => response.json())
         .then(data => {
           this.all_features = data.features;

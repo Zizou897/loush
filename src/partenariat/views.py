@@ -100,7 +100,7 @@ def post_searcher(request):
     nbr_chambre = request.POST.get('nbr_chambre')
     nbr_salle_bain = request.POST.get('nbr_salle_bain')
     surface_habitable = request.POST.get('surface_habitable')
-    localisation_souhaite = request.POST.get('localisation_souhaite')
+    localisation_souhaite = request.POST.get('select_features_local')
     caract_souhaite = request.POST.get('select_features')
     #-------------------------------------------
     date_demenag_souhaite = request.POST.get('date_demenag_souhaite')

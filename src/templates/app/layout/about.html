@@ -4,19 +4,6 @@
 
 
 
-
-{% comment %} <section class="pt-6 bg-600" style="height: 300;" id="home">
-  <div class="container">
-      <div class="row align-items-center">
-          <div class="col-md-7 col-lg-6  "><img class="" src="{{get_about_banners.picture.url}}" width="400" alt="about-header"  /></div>
-          <div class="col-md-5 col-lg-6 text-md-start text-center py-6">
-            <h3 class="fs-4 mb-2 fw-bold"> Notre Mission:</h3>
-            <h4 class="fs-3  mb-5">Rendre la recherche de biens immobiliers facile et accessible à tous, partout et à n’importe quel moment.</h4>
-          </div>
-      </div>
-  </div>
-</section> {% endcomment %}
-
 <section class="py-6 bg-light position-relative overflow-hidden" id="home-banner">
   <div class="container">
     <div class="row align-items-center justify-content-between">
@@ -35,39 +22,12 @@
         <p class="lead text-secondary mb-4">
           Nous connectons les acheteurs, vendeurs et agences à travers une plateforme rapide, fluide et pensée pour vous faire gagner du temps.
         </p>
-        {% comment %} <div class="d-flex flex-wrap justify-content-center justify-content-md-start gap-3">
-          <a href="#modalSearch" class="btn btn-primary px-4 py-2 fw-semibold" data-bs-toggle="modal" data-bs-target="#modalSearch">
-            Trouver un bien
-          </a>
-          <a href="#staticBackdrop" class="btn btn-outline-primary px-4 py-2 fw-semibold" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Publier une annonce
-          </a>
-        </div> {% endcomment %}
       </div>
 
     </div>
   </div>
 </section>
 
-<style>
-  #home-banner {
-    background: linear-gradient(120deg, #f0f4fa 0%, #ffffff 100%);
-  }
-
-  #home-banner h1 {
-    font-size: 2.5rem;
-  }
-
-  @media (max-width: 768px) {
-    #home-banner h1 {
-      font-size: 1.8rem;
-    }
-
-    #home-banner p {
-      font-size: 1rem;
-    }
-  }
-</style>
 
 
 <section class="py-5 bg-white">
@@ -132,48 +92,6 @@
 </section>
 
 
-{% comment %} <section class="py-5 bg-light">
-  <div class="container">
-    <h3 class="fw-bold text-center mb-5">Notre histoire</h3>
-    <div class="timeline">
-      <div class="timeline-item">
-        <span class="timeline-year">2023</span>
-        <p class="text-dark">Naissance de Louhsira avec une idée simple : rendre l’immobilier accessible au Burkina Faso.</p>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-year">2024</span>
-        <p class="text-dark">Lancement officiel de la plateforme et premiers partenaires immobiliers intégrés.</p>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-year">2025</span>
-        <p class="text-dark">+500 biens listés, une communauté solide et des projets d’expansion dans toute l’Afrique de l’Ouest.</p>
-      </div>
-    </div>
-  </div>
-</section> {% endcomment %}
-
-{% comment %} <style>
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    position: relative;
-    padding-left: 1rem;
-    border-left: 3px solid #015479;
-  }
-
-  .timeline-item {
-    position: relative;
-  }
-
-  .timeline-year {
-    font-weight: bold;
-    color: #015479;
-    font-size: 1.2rem;
-    margin-bottom: .5rem;
-  }
-</style> {% endcomment %}
-
 
  <section class="pt-5 w-100 h-50 a-over d-none d-md-block">
     <div class="row">
@@ -196,35 +114,6 @@
       </div>
 </section> 
 
-
-
-{% comment %} <section class="pt-5 w-100 a-over">
-  <div class="container-fluid">
-    <div class="row g-0">
-      {% for triples in get_section_triples %}
-        <div class="col-md-4 col-12 d-flex flex-column justify-content-between p-4 text-white"
-             style="background-color:{{triples.background_color}}; height: 430px;">
-          
-          {% if triples.order in listes %}
-            <div>
-              <h2 class="fw-bold mb-3">{{triples.title}}</h2>
-              <p class="mb-4" style="font-size: 1rem; line-height: 1.6;">
-                {{triples.libele}}
-              </p>
-            </div>
-            <div>
-              <a href="{% url 'owner-page' %}" class="{{triples.class_boutton}} fw-bold text-white px-3 py-2 rounded-pill"
-                 style="background-color: rgba(255,255,255,0.2); border: 1px solid #fff; width: fit-content;">
-                Exposer une maison
-              </a>
-            </div>
-          {% endif %}
-
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-</section> {% endcomment %}
 
 
 <section class="py-5">
@@ -256,27 +145,10 @@
   </div>
 </section>
 
-<style>
-  .team-card:hover{
-    border: thin solid #262262;
-  }
-  .team-profile img {
-    height: 300px;
-    object-fit: cover;
-  }
-  
-  .team-profile .card-body {
-    padding: 1rem 1.2rem;
-  }
-
-  
-</style>
 
 <section class="bg-200">
-
   <div id="news_letter" class="container">
     <div class="d-fex row align-items-center justify-content-center">
-      
       <div class="col-md-6 col-lg-5">
         <h6 class="text-secondary font-sans-serif fs-1 fw-bold">Abonnez-vous dès maintenant pour être le premier au courant !</h6>
         <form class="row g-0 align-items-center">
@@ -293,7 +165,40 @@
     </div>
   </div>
   <!-- end of .container-->
-  <style>
+
+<style>
+
+  .team-card:hover{
+    border: thin solid #262262;
+  }
+  .team-profile img {
+    height: 300px;
+    object-fit: cover;
+  }
+  
+  .team-profile .card-body {
+    padding: 1rem 1.2rem;
+  }
+
+  
+  #home-banner {
+    background: linear-gradient(120deg, #f0f4fa 0%, #ffffff 100%);
+  }
+
+  #home-banner h1 {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    #home-banner h1 {
+      font-size: 1.8rem;
+    }
+
+    #home-banner p {
+      font-size: 1rem;
+    }
+  }
+
     #about-header{
       position: absolute;
       width: 400px;
@@ -356,8 +261,6 @@
 		color: #8ec63d;
 	  }
 
-
-	  
 	</style>
 
 </section>

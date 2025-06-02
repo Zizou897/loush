@@ -3,22 +3,6 @@
 {% load custom_tags %}
 {% block content %}
 
-{% comment %} <section class="pt-6 bg-600" id="home">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-5 col-lg-6 order-0 order-md-1 text-end"><img class="pt-7 pt-md-0 w-100" src="{{get_banners.picture.url}}" width="470" alt="hero-header" /></div>
-            <div class="col-md-7 col-lg-6 text-md-start text-center py-6">
-                <h1 class="fs-6 mb-2 fw-bold">LA PLATEFORME N°1 DE L'IMMOBILIER AU BURKINA FASO</h1>
-                <h4 class="font-sans-serif mb-5">Notre plateforme propose une solution complète pour la recherche, l’achat
-                  et la vente de biens immobiliers.</h4>
-                    <button class="btn btn-primary me-2 fw-bold width-bouton font-sans-serif"role="button" data-bs-toggle="modal" data-bs-target="#modalSearch">Chercher une maison</button> 
-                    <button class="btn fa-btn-secondary fw-bold width-bouton margin-top-button margin-right-button font-sans-serif" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Exposer une maison</button>
-                    {# <button class="btn-outline-secondary fw-bold"  role="button" >SiraSev</button>#}
-            </div>
-        </div>
-    </div>
-</section> {% endcomment %}
-
 <section class="py-6 bg-light position-relative overflow-hidden" id="home-banner">
   <div class="container">
     <div class="row align-items-center justify-content-between">
@@ -80,77 +64,6 @@
 
 {% include "app/includes/_trusts.html" %}
 
-{% comment %} <section class="pt-5 w-100 h-50 a-over">
-        <div class="row">
-          <div class="col-md-4 d-flex flex-column justify-content-center" style="background-color:#001731; color:#fff;height:430px">
-            <h2 class="fw-bold mb-3 ms-4" style="color:#fff;">Visibilité Optimale</h2>
-            <p class="ms-4 ">Chaque propriété est mise en valeur avec des
-              photographies professionnelles et des descriptions détaillées, assurant
-              une présentation attrayante pour attirer les acheteurs et locataires
-              potentiels.</p>
-          </div>{#  #}
-          <div class="col-md-4 w-40" style="background-color: rgb(190, 190, 190);height:430px">
-            <img src="" alt="" srcset="">
-          </div>
-          <div class="col-md-4 d-flex flex-column justify-content-center" style="background-color:#f15a27;color:#fff;height:430px">
-            <h2 class="fw-bold mb-3 ms-4"  style="color:#fff;">Flexibilité pour les Professionnels</h2>
-            <p class="ms-4 ">Les agences immobilières
-              bénéficient d'une flexibilité sans précédent, pouvant choisir entre gérer
-              elles-mêmes leurs annonces ou collaborer avec LouhSira pour une
-              exposition et une vente optimisée.</p>
-          </div>
-        </div>
-</section> {% endcomment %}
-
-
-{% comment %} <div class="trouve" style="background: #e8effa; padding: 70px;margin-top:100px">
-  <div class="container">
-      <div class="row">
-          <div class="col-12">
-              <h2 style="color: #000; text-align: center;padding:15px;font-weight: bolder;">
-                  Trouvez ou vendez votre propriéte en toute simplicité avec Louhsira
-              </h2>
-          </div>
-      </div>
-
-      <div class="row align-items-center">
-          <div class="col-lg-4 col-md-4 col-12 d-flex flex-column align-items-start mb-4 mt-3">
-              <h3 style="font-weight: 800;">    
-                  Visibilité Optimale
-              </h3>
-              <p class="mt-2" style="font-size: 16px;">
-                  Chaque propriété est mise en valeur avec des
-                  photographies professionnelles et des descriptions détaillées, assurant
-                  une présentation attrayante pour attirer les acheteurs et locataires
-                  potentiels.  
-              </p>
-              <button class="btn btn-outline-secondary mt-2" type="button" style="background: #015479; color: #fff;" data-bs-toggle="modal" data-bs-target="#contactModal">
-                  Découvrez   
-              </button>
-          </div>
-
-          <div class="col-lg-4 col-md-4 col-12 d-flex flex-column align-items-start mb-4 mt-3">
-            <img class="pt-7 pt-md-0 w-100" src="{{get_banners.picture.url}}" width="470" alt="hero-header" />
-          </div>
-
-          <div class="col-lg-4 col-md-4 col-12 d-flex flex-column align-items-start mb-4 mt-3">
-              <h3 style="font-weight: 800;">
-                  Flexibilité pour les Professionnels
-              </h3>
-              <p class="mt-2" style="font-size: 16px;">
-                Les agences immobilières
-                bénéficient d'une flexibilité sans précédent, pouvant choisir entre gérer
-                elles-mêmes leurs annonces ou collaborer avec LouhSira pour une
-                exposition et une vente optimisée.
-              </p>
-              <button class="btn btn-outline-secondary mt-2" type="submit" style="background: #015479; color: #fff;" data-bs-toggle="modal" data-bs-target="#contactModal">
-                  Vendre                   
-              </button>
-          </div>
-      </div>
-  </div>
-</div> {% endcomment %}
-
 <section class="py-5" style="background: #e8effa; margin-top: 100px;" id="property-section">
   <div class="container">
     
@@ -199,8 +112,6 @@
 
 
 
-       <!-- ============================================-->
-      <!-- <section> begin ============================-->
         <style>
           .property-card {
             transition: box-shadow 0.3s ease;
@@ -324,11 +235,7 @@
   </div>
   <!-- end of .container-->
 </section>
-      <!-- <section> close ============================-->
-      <!-- ============================================-->
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
-
+     
       <section class="about-trust-section py-5">
         <div class="container">
           <div class="row align-items-center">
@@ -370,63 +277,7 @@
         </div>
       </section>
       
-       {% comment "" %}
-        
-<section class="pt-0">
-  <div class="container" style="font-style: normal;">
-    <div class="row h-100 align-items-center">
-      <div class="col-md-12 col-lg-6 h-100">
-        <div class="card card-span text-white h-100"><img class="w-100" src="{{get_abouts.picture.url}}" alt="..." />
-          <div class="card-body px-xl-5 px-md-3 pt-0">
-            <div class="d-flex flex-column align-items-center bg-200" style="margin-top:-2.4rem;">
-              
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="col-md-12 col-lg-6 h-100">
-        <h1 class="my-4 fw-bold">Nous sommes les meilleurs dans<span class="text-primary"> l'immobilier de confiance</span></h1>
-        <p class="">{{get_abouts.description}}</p>
-        <div class="mt-6">
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- end of .container-->
-
-</section>
-{% endcomment %}
-      <!-- <section> close ============================-->
-      <!-- ============================================-->
-
-      {% comment "" %}
-<section class="pt-0">
-  <div class="container" style="font-style: normal;"> 
-      <div class="row h-100 align-items-center">     
-          <div class="col-md-12 col-lg-6 h-100">
-          <h1 class="my-4 fw-bold">Pourquoi choisir <span class="text-primary"> Louhsira</span>?</h1>
-          <span class="">{{get_why_chooses.description | safe}}</span>
-          
-          <div class="mt-6">
-              
-              
-          </div>
-          </div>
-          
-          <div class="col-md-12 col-lg-6 h-100">
-          <div class="card card-span text-white h-100"><img class="w-100" src="{{get_why_chooses.picture.url}}" alt="..." />
-              <div class="card-body px-xl-5 px-md-3 pt-0">
-              <div class="d-flex flex-column align-items-center bg-200" style="margin-top:-2.4rem;">
-                  
-              </div>
-          </div>
-        </div>
-      </div>
-      </div>
-  </div>
-</section>
-{% endcomment %}
 
 <section class="pt-5 pb-5">
   <div class="container">
@@ -439,7 +290,7 @@
           {{ get_why_chooses.description|safe }}
         </div>
 
-        <!-- Liste des points forts (exemple, à adapter selon le contenu) -->
+
         <ul class="list-unstyled">
           <li class="mb-3 d-flex align-items-start">
             <i class="fa-solid fa-check-circle text-success me-3 fa-lg"></i>

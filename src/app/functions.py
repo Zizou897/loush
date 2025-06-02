@@ -45,6 +45,8 @@ def get_team(data=dict()):
 def get_localite(data=dict()):
     return Localite.objects.filter(**data)
 
+def get_localisation(data=dict()):
+    return Localite.objects.all()
 
 def get_caracteristique_home(data=dict()):
     return CaracteristiqueMaison.objects.all()

@@ -7,21 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-    <!-- ===============================================-->
-    <!--    Document Title-->
-    <!-- ===============================================-->
     <title>{{page}}</title>
 
-
-    <!-- ===============================================-->
-    <!--    Favicons-->
-    <!-- ===============================================--> 
-   
-   <!-- Latest compiled and minified CSS -->
-
-   
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -38,23 +25,18 @@
     <meta name="msapplication-TileImage" content="{{get_configs.logo.url}}">
     <meta name="theme-color" content="#ffffff">
 
-
-    <!-- ===============================================-->
-    <!--    Stylesheets-->
-    <!-- ===============================================-->
     <link href="{% static 'app/assets/css/select2-bootstrap-5-theme.min.css' %}" rel="stylesheet" />
     <link href="{% static 'app/assets/css/theme.css' %}" rel="stylesheet" />
     <link href="{% static 'app/assets/css/style.css' %}" rel="stylesheet" />
     <link href="{% static 'app/assets/css/slick.css' %}" rel="stylesheet" />
     <link href="{% static 'app/assets/css/slick-theme.css' %}" rel="stylesheet" />
 
-    
-    
-    
 
-    
     {#  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />#}
     <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 
 <div class="elfsight-app-f8f97b14-84d7-4399-a8aa-7e23f926c944" data-elfsight-app-lazy></div>
 <!-- Multiselect CSS -->
@@ -62,7 +44,6 @@
 <!-- Vue Multiselect -->
 <script src="https://unpkg.com/vue-multiselect@2.1.6"></script>
   </head>
-
 
   <body>
   <style type="text/css">
@@ -111,52 +92,46 @@
     }
   </style>
 
-    <!-- ===============================================-->
-    <!--    Main Content-->
-    <!-- ===============================================-->
     <main class="main" id="top">
 
 
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
-      <!-- Barre de contact supérieure modernisée -->
-<section class="bg-primary text-gray py-2 d-none d-sm-block border-bottom border-light">
-  <div class="container">
-    <div class="row align-items-center justify-content-between">
+      <section class="bg-primary text-gray py-2 d-none d-sm-block border-bottom border-light">
+        <div class="container">
+          <div class="row align-items-center justify-content-between">
 
-      <!-- Adresse et Email -->
-      <div class="col-lg-5 col-md-6 d-flex align-items-center gap-3">
-        <div class="d-flex align-items-center">
-          <i class="fas fa-map-marker-alt me-2 text-color"></i>
-          <small>{{ get_configs.louhsira_address }}</small>
-        </div>
-        <span class="vr text-white mx-2 d-none d-md-inline-block"></span>
-        <div class="d-flex align-items-center">
-          <i class="fas fa-envelope me-2 text-color"></i>
-          <small><a href="mailto:{{ get_configs.louhsira_email }}" class="text-color text-decoration-none link">{{ get_configs.louhsira_email }}</a></small>
-        </div>
-      </div>
+            <!-- Adresse et Email -->
+            <div class="col-lg-5 col-md-6 d-flex align-items-center gap-3">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-map-marker-alt me-2 text-color"></i>
+                <small>{{ get_configs.louhsira_address }}</small>
+              </div>
+              <span class="vr text-white mx-2 d-none d-md-inline-block"></span>
+              <div class="d-flex align-items-center">
+                <i class="fas fa-envelope me-2 text-color"></i>
+                <small><a href="mailto:{{ get_configs.louhsira_email }}" class="text-color text-decoration-none link">{{ get_configs.louhsira_email }}</a></small>
+              </div>
+            </div>
 
-      <!-- Réseaux sociaux -->
-      <div class="col-lg-4 col-md-5 text-md-end mt-2 mt-md-0">
-        <ul class="list-inline mb-0">
-          {% for social in get_socials %}
-            <li class="list-inline-item">
-              <a href="{{ social.link }}" class="text-color fs-1 me-2 link" target="_blank">
-                <i class="{{ social.icon }}"></i>
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-      <style>
-        .link:hover {
-          color:rgb(0, 31, 70);
-        }
-      </style>
-    </div>
-  </div>
-</section>
+            <!-- Réseaux sociaux -->
+            <div class="col-lg-4 col-md-5 text-md-end mt-2 mt-md-0">
+              <ul class="list-inline mb-0">
+                {% for social in get_socials %}
+                  <li class="list-inline-item">
+                    <a href="{{ social.link }}" class="text-color fs-1 me-2 link" target="_blank">
+                      <i class="{{ social.icon }}"></i>
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <style>
+              .link:hover {
+                color:rgb(0, 31, 70);
+              }
+            </style>
+          </div>
+        </div>
+      </section>
 
       <!-- <section> close ============================-->
       <!-- ============================================-->
@@ -173,22 +148,6 @@
               <li class="nav-item px-2"><a class="nav-link fw-bold" style="color:#18163d" aria-current="page" href="{% url 'owner-page' %}">Propriétaire</a></li>
               <li class="nav-item px-2"><a class="nav-link fw-bold" style="color:#18163d" aria-current="page" href="{% url 'agence' %}">Agences Immobilières</a></li>
             </ul><a class="btn btn-primary order-1 order-lg-0 fw-bold" style="color:#18163d" href="{% url 'catalogue' %}">Catalogue</a>
-            {% comment "" %}
-                <form class="d-flex my-3 d-block d-lg-none">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-outline-primary" type="submit">Search</button>
-                </form>
-            
-            
-            <div class="dropdown d-none d-lg-block">
-              <button class="btn btn-outline-light ms-2" id="dropdownMenuButton1" type="submit" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-search text-800"></i></button>
-              <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1" style="top:55px">
-                <form>
-                  <input class="form-control" type="search" placeholder="Search" aria-label="Search" />
-                </form>
-              </ul>
-            </div>
-            {% endcomment %}
           </div>
         </div>
       </nav>
@@ -201,12 +160,6 @@
 
       
     </main>
-    
-
-    <!-- ===============================================-->
-    <!--    End of Main Content-->
-    <!-- ===============================================-->
-
 
     <section class="contact-area" id="contact" style="background: #1A1E25;padding:50px;">
       <div class="container">
@@ -230,8 +183,7 @@
           </div>
       </div>
   </section>
-  <!-- =============== 1.9 Contact Area End ====================-->
-  <!-- =============== 1.9 Footer Area Start ====================-->
+
   <footer>
       <p>Copyright &copy; 2025 <a class="text-decoration-none" href="{% url 'welcome' %}"><img src="{{get_configs.logo.url}}" height="51"  alt="" /></a> Tous droits réservés.</p>
   </footer>
@@ -392,12 +344,10 @@
 
   </style>
 
-    <!-- ===============================================-->
-    <!--    JavaScripts-->
-    <!-- ===============================================-->
     <script src= "https://code.jquery.com/jquery-3.6.1.min.js" integrity= "sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"> </script> 
-      
+    
     <script> 
+      
         $(function () { 
             $("#datepicker").datepicker({  
                 autoclose: true,  
@@ -476,9 +426,20 @@
       })
     </script>
     <!-- Pour les chercheurs -->
-    <script> 
+
+
+    <!-- Pour les agences imobilieres -->
+    {% block agencePost %}
+    {% endblock agencePost %}
+
+    
+    {% block contactForm %}
+    {% endblock contactForm %}
+
+
+<script>
       
-    var app =  new Vue({
+  var app =  new Vue({
       el: '#home_asking',
       components: {
           multiselect: window.VueMultiselect.default
@@ -487,6 +448,8 @@
         confirm: false,
         select_features: [],
         all_features: [],
+        select_features_local: [],
+        all_features_local: [],
         //--------------------------
         name: '',
         phone: '',
@@ -511,7 +474,7 @@
         
       },
       mounted(){
-        fetch('https://louhsira.com/data/caract')
+        fetch('http://127.0.0.1:8000/data/caract')
         .then(response => response.json())
         .then(data => {
           this.all_features = data.features;
@@ -519,6 +482,16 @@
         .catch(error => {
           console.error("Erreur lors du chargement des caractéristiques :", error);
         });
+
+        fetch('http://127.0.0.1:8000/data/local')
+        .then(response => response.json())
+        .then(data => {
+          this.all_features_local = data.features
+        })
+        .catch(error => {
+          console.error("Erreur lors du chargement des caractéristiques :", error);
+        });
+
       },
       computed:{},
       methods: {
@@ -564,6 +537,7 @@
             myForm.append('date_demenag_souhaite', this.date_demenag_souhaite)
             myForm.append('comments_souhaite', this.comments_souhaite)
             myForm.append('select_features', JSON.stringify(this.select_features));
+            myForm.append('select_features_local', JSON.stringify(this.select_features_local));
             
             axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
             axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
@@ -595,68 +569,6 @@
       },
     });
 
-    new Vue({
-      el:"#contact_form",
-      delimiters: ['%{', '}'],
-      data:{
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      
-      },
-      methods:{
-        SendContact(){
-          if(this.name == '', this.subject == '', this.message == ''){
-            Swal.fire({
-              icon: 'error',
-              title: 'Erreur',
-              text: "veuillez remplir tous les champs !!!",
-              showConfirmButton: true,
-            })
-          }else if(!/^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.email)){
-            Swal.fire({
-              icon: 'error',
-              title: 'Erreur',
-              text: "un mail valide svp !!!",
-              showConfirmButton: true,
-            })
-          }else{
-            let myForm = new FormData();
-            myForm.append('name', this.name)
-            myForm.append('email', this.email)
-            myForm.append('subject', this.subject)
-            myForm.append('message', this.message)
-
-            axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
-            axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
-            axios.post(" {% url 'contact-us' %} ", myForm,{})
-            .then(function(response){
-              if(response.data.success){
-                Swal.fire({
-                  icon: 'success',
-                  title: 'Demande envoyee',
-                  text: response.data.msg ,
-                  showConfirmButton: true,
-                  timer: 3500
-                });
-                window.setTimeout(function(){window.location.reload();}, 3500);
-                        
-              }else{
-                Swal.fire({
-                  icon: 'error',
-                  title: 'Demande non envoyee',
-                  text: response.data.msg ,
-                  showConfirmButton: true,
-                });
-              }
-            })
-          }
-        }
-      }
-    });
-
-    
     var app1 = new Vue({
           el: "#home_owner",
           data: {
@@ -709,6 +621,7 @@
             second_confirm: false,
             select_features: [],
             all_features: [],
+           
 
             //--------------------------
             name: '',
@@ -725,17 +638,14 @@
             nbr_room: '',
             nbr_bath_room: '' ,
             other_detail:'',
-
             //--------------------------
             home_detail: '',
-
             //--------------------------
             picture: '',
             picture2:'',
-
           },
           mounted(){
-            fetch('https://louhsira.com/data/caract')
+            fetch('http://127.0.0.1:8000/data/caract')
         .then(response => response.json())
         .then(data => {
           this.all_features = data.features;
@@ -743,11 +653,12 @@
         .catch(error => {
           console.error("Erreur lors du chargement des caractéristiques :", error);
         });
+
+          
           },
           computed:{},
           methods: {
             sendOwnerData(){
-
               if(this.first_confirm && this.second_confirm){
                 console.log('############ 1 #############""');
                 if(!this.name == '' && !this.phone == ''){
@@ -833,7 +744,6 @@
             }
           }
         });
-
     new Vue({
       el: "#news_letter",
       data: {
@@ -845,7 +755,7 @@
             Swal.fire({
               icon: 'error',  
               title: 'Erreur',
-              text: "veuillez saisir un email valide !!! ",
+              text: "veuillez saisir un email valide !!!",
               showConfirmButton: true,
             })
           }else{
@@ -878,14 +788,9 @@
           }
         }
       }
-    })
-  </script>
-
-
-    <!-- Pour les agences imobilieres -->
-    {% block agencePost %}
-    {% endblock agencePost %}
-
+    });
+</script>
+   
    
 
   </body>

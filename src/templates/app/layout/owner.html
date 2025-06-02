@@ -2,143 +2,6 @@
 {% load static %}
 {% block content %}
 
-{% comment %} <section class="bg-600">
-
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-10" style="background:#fff;border-radius: 1rem;padding:20px;">
-            <h6 class="font-sans-serif text-primary fw-bold"></h6>
-            <h1 class="mb-6 text-center fw-bold">Exposer une maison</h1>
-            <form id="trust_us" class="row g-3">
-
-                <h1 class="fs-2 mb-4 fw-bold">Informations persernelles</h1>
-                <div class="row mb-3">
-                    <div class="col-sm-6 col-md-6 mb-3">
-                       <input type="name" class="form-control" placeholder="Nom et Prénom *" v-model="name">
-                    </div>
-                    <div class="col-sm-6 col-md-6">
-                    <input type="text" class="form-control" placeholder="Numéro de téléphone *" v-model="phone">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12 col-md-12">
-                       <input type="email" class="form-control" placeholder="Adresse e-mail *" v-model="email">
-                    </div>
-                </div>
-                <hr>
-                <h1 class="fs-2 mb-4 fw-bold">Détail de la propriété</h1>
-                <div class="row mt-3">
-                    <div class="col-sm-6 col-md-4 mb-3">
-                      <select class="form-select" id="forType" v-model="type_propriete_for_owner">
-                        <option value="" selected hidden>Type de proprieté</option>
-                        {% for type in get_type_proprietes %}
-                          <option>{{type.libele}}</option>
-                          {% endfor %}
-                      </select>
-                    </div>
-                    <div class="col-sm-6 col-md-4 mb-3">
-                      <select class="form-select" id="forStatus"  v-model="status_buy_sell">
-                          <option value="" selected hidden>Faire louer / Faire vendre</option>
-                          <option>Faire louer</option>
-                          <option>Faire vendre</option>
-                      </select>
-                    </div>
-                    <div class="col-md-4">
-                      <input type="text" class="form-control" id="forPrice" placeholder="Prix de location ou de vente en fcfa" v-model="home_price">
-                    </div>
-                </div>
-
-                <div class="row mt-3">
-                    <div class="col-sm-6 col-md-4 mb-3">
-                      <select class="form-select" id="forAddress" v-model="home_address">
-                          <option value="" selected hidden>Adresse de la propriété</option>
-                          <option>Bobo Dioulasso</option>
-                          <option>Ouaga</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6 col-md-4 mb-3">
-                      <select class="form-select" id="forYear" v-model="year_building">
-                        <option value="" selected hidden>Année de construction</option>
-                          <option>2024</option>
-                          <option>2023</option>
-                      </select>
-                    </div>
-                    <div class="col-md-4">
-                     <input type="text" class="form-control" id="forSpace" placeholder="Surface habitable en mètres carrés" v-model="living_space">
-                    </div>
-                </div>
-
-                <div class="row mt-3">
-                    <div class="col-sm-6 col-md-4 mb-3">
-                      <select class="form-select" id="forRoom" v-model="nbr_room">
-                        <option value="" selected hidden>Nombre de chambres</option>
-                          <option> 1 chambre</option>
-                          <option> 2 chambres</option>
-                          <option> 3 chambres</option>
-                          <option> 4 chambres</option>
-                          <option> 5 chambres</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6 col-md-4 mb-3">
-                       <select class="form-select" id="forBathRomm" v-model="nbr_bath_room">
-                        <option value="" selected hidden>Nombre de salles de bain</option>
-                        <option> 1 salle de bain</option>
-                        <option> 2 salles de bain</option>
-                        <option> 3 salles de bain</option>
-                        <option> 4 salles de bain</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                      <select  class="form-select"  id="">
-                        <option value="" selected hidden>Caractéristiques spéciales</option>
-                          <option>Jardin</option>
-                          <option>Balcon</option>
-                          <option>Parking</option>
-                      </select>
-                    </div>
-                  </div>
-                <hr>
-
-                <h1 class="fs-2 mb-4 fw-bold">Description de la Propriété</h1>
-                <div class="row">
-                    <div class="col-sm-12 col-md-12">
-                       <textarea class="form-control" placeholder="Décrivez les atouts et particularités de la propriété" id="forDetail" v-model="home_detail"></textarea>
-                    </div>
-                </div>
-                <hr>
-                <h1 class="fs-2 mb-4 fw-bold">Photos de la Propriété</h1>
-                <div class="col-sm-6 col-md-6">
-                   <input class="form-control" type="file" id="picture" v-model="picture">
-                </div>
-                <div class="col-sm-6 col-md-6">
-                  <input class="form-control" type="file" id="picture2" placeholder="Photo 2" v-model="picture2">
-                </div>
-                <div class="row mt-3 ms-3">
-                    <div class="form-check col-sm-12 col-md-12">
-                      <input class="form-check-input " type="checkbox" value="" id="flexCheckIndeterminate" v-model="first_confirm">
-                      <label class="form-check-label" for="flexCheckIndeterminate">
-                        J'accepte de fournir des photos de qualité de la propriété pour la publication.
-                      </label>
-                    </div>
-                  </div>
-                  <div class="row ms-3">
-                    <div class="form-check col-sm-12 col-md-12">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate" v-model="second_confirm">
-                      <label class="form-check-label" for="flexCheckIndeterminate">
-                        J'accepte que mes informations et celles de ma propriété soient publiées sur la plateforme immobilière conformément à la politique de confidentialité.
-                      </label>
-                    </div>
-                  </div>
-                <div class="col-12 z-index-2 d-flex justify-content-center">
-                    <button class="btn btn-primary taille-boutton" type="submit" @click.prevent="sendOwnerData()">Exposer sa maison</button>
-                </div>
-            </form>
-        </div>
-      </div>
-    </div>
-    <!-- end of .container-->
-
-</section> {% endcomment %}
 
 <section class="bg-light py-6" >
   <div class="container">
@@ -173,10 +36,10 @@
             <h4 class="text-color border-bottom pb-2 mb-3 fw-bold">📋 Détails de la propriété</h4>
           </div>
           <div class="col-md-4">
-            <select class="form-select " v-model="type_propriete_for_owner">
+            <select class="form-select" v-model="type_propriete_for_owner">
               <option value="" selected hidden>Type de propriété</option>
               {% for type in get_type_proprietes %}
-              <option>{{type.libele}}</option>
+                <option>{{type.libele}}</option>
               {% endfor %}
             </select>
           </div>
@@ -192,11 +55,13 @@
           </div>
 
           <div class="col-md-4">
+            
             <select class="form-select form-select-lg" v-model="home_address">
-              <option value="" selected hidden>Ville / Quartier</option>
-              <option>Bobo Dioulasso</option>
-              <option>Ouaga</option>
-            </select>
+                <option value="" selected hidden>Ville / Quartier</option>
+                {% for locale in get_localites %}
+                <option>{{ locale.name }}</option>
+                {% endfor %}
+              </select> 
           </div>
           <div class="col-md-4">
             <select class="form-select" v-model="year_building">
@@ -204,7 +69,7 @@
               <option>2024</option>
               <option>2023</option>
             </select>
-          </div>
+          </div>    
           <div class="col-md-4">
             <input type="text" class="form-control" placeholder="Surface (m²)" v-model="living_space">
           </div>
@@ -229,12 +94,6 @@
             </select>
           </div>
           <div class="col-md-4">
-            {% comment %} <select class="form-select" multiple>
-              <option value="" selected hidden>Caractéristiques spéciales</option>
-              <option>Jardin</option>
-              <option>Balcon</option>
-              <option>Parking</option>
-            </select> {% endcomment %}
             <multiselect
               v-model="select_features"
               :options="all_features"
@@ -303,3 +162,45 @@
 {% endblock %}
 
 
+{% block Owner %}
+  <script>
+    var app1 = new Vue({
+          el: "#home_owner",
+          data: {
+            //--------------------------
+            first_confirm: false,
+            second_confirm: false,
+
+            //--------------------------
+            name: '',
+            email: '',
+            phone: '',  
+
+            //--------------------------
+            type_propriete_for_owner: '',
+            status_buy_sell: '',
+            home_price: '',
+            home_address: '',
+            year_building: '',
+            living_space: '',
+            nbr_room: '',
+            nbr_bath_room: '' ,
+            other_detail:'',
+
+            //--------------------------
+            home_detail: '',
+
+            //--------------------------
+            picture: '',
+
+          },
+          mounted(){},
+          computed:{},
+          methods: {
+            sendOwner1Data(){
+              console.log('ok')
+            }
+          } 
+        });
+  </script>
+{% endblock Owner %}

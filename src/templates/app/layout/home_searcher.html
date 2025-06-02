@@ -38,7 +38,7 @@
               <select class="form-select" v-model="type_propriete_rechercher">
                 <option value="" selected hidden>Type de propriété</option>
                 {% for type in get_type_proprietes %}
-                <option>{{ type.libele }}</option>
+                  <option>{{ type.libele }}</option>
                 {% endfor %}
               </select>
             </div>
@@ -75,20 +75,13 @@
               <input type="text" class="form-control " placeholder="Surface habitable" v-model="surface_habitable">
             </div>
             <div class="col-md-3">
-              <select class="form-select form-select-lg" v-model="localisation_souhaite">
+              {% comment %} <select class="form-select form-select-lg" v-model="localisation_souhaite">
                 <option value="" selected hidden>Localisation souhaitée</option>
                 {% for locale in get_localites %}
                 <option>{{ locale.name }}</option>
                 {% endfor %}
-              </select>
-            </div>
-            <div class="col-md-3">
-              {% comment %} <select class="form-select form-select-lg">
-                <option value="" selected hidden>Caractéristiques souhaitées</option>
-                {% for carat in get_caracteristique_homes %}
-                <option>{{ carat.libele }}</option>
-                {% endfor %}
               </select> {% endcomment %}
+
               <multiselect
               v-model="select_features"
               :options="all_features"
@@ -99,6 +92,21 @@
               :deselect-label="'Supprimer'"
               filter
               placeholder="Les caractéristiques"
+              
+              class="w-100"
+            > </multiselect>
+            </div>
+            <div class="col-md-3">
+              <multiselect
+              v-model="select_features_local"
+              :options="all_features_local"
+              :multiple="true"
+              :preserve-search="true"
+              :select-label="'sélectionner'"
+              :selected-label="'Sélectionné'"
+              :deselect-label="'Supprimer'"
+              filter
+              placeholder="Les Localités"
               
               class="w-100"
             > </multiselect>

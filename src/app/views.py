@@ -30,7 +30,8 @@ from .functions import (
     get_caracteristique_home,
     get_all_properties_for_index,
     get_vision,
-    get_nos_valeur
+    get_nos_valeur,
+    get_localisation
 )
 
 def verify_email(email):
@@ -103,7 +104,7 @@ def home_searcher(request):
         'get_socials': get_socials,
         'get_configs': get_configs,
         'get_localites': get_localites,
-        'get_type_proprietes': get_type_propriete,
+        'get_type_proprietes': get_type_proprietes,
         'get_caracteristique_homes': get_caracteristique_home,
     }
     return render(request, template_name, context)
@@ -114,21 +115,21 @@ def owner_page(request):
     get_socials = get_social({'publish':True})
     get_configs = get_config({'publish':True})
     get_type_proprietes = get_type_propriete({'publish':True})
+    get_localites = get_localite({'publish':True})
     get_caracteristique_homes = get_caracteristique_home({'publish': True})
+    
     template_name = "app/layout/owner.html"
     context = {
         'page': "LOUSHIRA | Proprietaire",
         'get_socials': get_socials,
         'get_configs': get_configs,
+        'get_localites': get_localites,
         'get_type_proprietes': get_type_proprietes,
         'get_caracteristique_homes': get_caracteristique_homes,
     }
     return render(request, template_name, context)
 
-def data_caract(request):
-    from django.http import JsonResponse
-    data = list(get_caracteristique_home().values_list('libele', flat=True))
-    return JsonResponse({'features': data})
+
 
 def home_detail(request, id):
 
@@ -271,3 +272,15 @@ def contact(request):
         
     }
     return render(request, template_name, context)
+
+
+def data_caract(request):
+    from django.http import JsonResponse
+    data = list(get_caracteristique_home().values_list('libele', flat=True))
+    return JsonResponse({'features': data})
+
+
+def data_local(request):
+    from django.http import JsonResponse 
+    data = list(get_localisation().values_list('name', flat=True))
+    return JsonResponse({'features': data})

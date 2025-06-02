@@ -92,4 +92,69 @@
 
 {% endblock content %}
 
+{% block contactForm %}
+<script>
 
+  new Vue({
+      el:"#contact_form",
+      delimiters: ['%{', '}'],
+      data:{
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      
+      },
+      methods:{
+        SendContact(){
+          if(this.name == '', this.subject == '', this.message == ''){
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: "veuillez remplir tous les champs !!!",
+              showConfirmButton: true,
+            })
+          }else if(!/^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(this.email)){
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: "un mail valide svp !!!",
+              showConfirmButton: true,
+            })
+          }else{
+            let myForm = new FormData();
+            myForm.append('name', this.name)
+            myForm.append('email', this.email)
+            myForm.append('subject', this.subject)
+            myForm.append('message', this.message)
+
+            axios.defaults.xsrfCookieName = 'XSRF-TOKEN'
+            axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN'
+            axios.post(" {% url 'contact-us' %} ", myForm,{})
+            .then(function(response){
+              if(response.data.success){
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Demande envoyee',
+                  text: response.data.msg ,
+                  showConfirmButton: true,
+                  timer: 3500
+                });
+                window.setTimeout(function(){window.location.reload();}, 3500);
+                        
+              }else{
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Demande non envoyee',
+                  text: response.data.msg ,
+                  showConfirmButton: true,
+                });
+              }
+            })
+          }
+        }
+      }
+    });
+
+</script>
+{% endblock contactForm %}

@@ -10,6 +10,7 @@ from .views import(
     agence,
     condition_generale,
     data_caract,
+    data_local,
     contact
 )
 
@@ -26,5 +27,7 @@ urlpatterns = [
     path('agence-immobiliere', agence, name="agence"),
     path('condition-generale-utilisation', condition_generale, name="condition-generale-utilisation"),
     path('data/caract', data_caract, name="data"),
+    path('data/local', data_local, name="data-local"),
+
 ]
 

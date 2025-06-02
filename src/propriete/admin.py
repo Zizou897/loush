@@ -1,9 +1,12 @@
 from django.contrib import admin
-
+from django.urls import path
+from django.urls import path
+from django.shortcuts import render, redirect
+from django.utils.html import format_html
+from django.urls import reverse
 
 # Register your models here.
 from propriete.models import Proprietes, Photo, TypePropriete, Localite, CaracteristiqueMaison
-
 
 
 @admin.register(TypePropriete)
@@ -42,3 +45,4 @@ class CaracteristiqueMaisonAdmin(admin.ModelAdmin):
     date_hierarchy = "created_at"
     list_per_page = 10
     list_editable = ["publish"]
+    

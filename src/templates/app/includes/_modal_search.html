@@ -75,12 +75,19 @@
               <input type="text" class="form-control" placeholder="Surface (m²)" v-model="surface_habitable">
             </div>
             <div class="col-md-3">
-              <select class="form-select" v-model="localisation_souhaite">
-                <option value="" hidden>Localisation souhaitée</option>
-                {% for locale in get_localites %}
-                  <option>{{ locale.name }}</option>
-                {% endfor %}
-              </select>
+              <multiselect
+              v-model="select_features_local"
+              :options="all_features_local"
+              :multiple="true"
+              :preserve-search="true"
+              :select-label="'sélectionner'"
+              :selected-label="'Sélectionné'"
+              :deselect-label="'Supprimer'"
+              filter
+              placeholder="Les Localités"
+              
+              class="w-100"
+            > </multiselect>
             </div>
             <div class="col-md-3">
               <multiselect

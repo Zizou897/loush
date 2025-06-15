@@ -74,6 +74,22 @@
             <div class="col-md-3">
               <input type="text" class="form-control " placeholder="Surface habitable" v-model="surface_habitable">
             </div>
+            
+            <div class="col-md-3">
+              <multiselect
+              v-model="select_features_local"
+              :options="all_features_local"
+              :multiple="true"
+              :preserve-search="true"
+              :select-label="'sélectionner'"
+              :selected-label="'Sélectionné'"
+              :deselect-label="'Supprimer'"
+              filter
+              placeholder="Les Localités"
+              
+              class="w-100"
+            > </multiselect>
+            </div>
             <div class="col-md-3">
               {% comment %} <select class="form-select form-select-lg" v-model="localisation_souhaite">
                 <option value="" selected hidden>Localisation souhaitée</option>
@@ -96,22 +112,6 @@
               class="w-100"
             > </multiselect>
             </div>
-            <div class="col-md-3">
-              <multiselect
-              v-model="select_features_local"
-              :options="all_features_local"
-              :multiple="true"
-              :preserve-search="true"
-              :select-label="'sélectionner'"
-              :selected-label="'Sélectionné'"
-              :deselect-label="'Supprimer'"
-              filter
-              placeholder="Les Localités"
-              
-              class="w-100"
-            > </multiselect>
-            </div>
-  
             <!-- Bloc : Autres préférences -->
             <div class="col-12 mt-4">
               <h4 class="text-color fw-bold mb-3 border-bottom pb-2">📝 Autres préférences</h4>

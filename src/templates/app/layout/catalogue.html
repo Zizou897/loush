@@ -15,7 +15,7 @@
                 <div class="col-sm-6 col-md-3">
                   
                   <select class="form-select" id="inputCategories" name="type_propriete">
-                    <option selected="selected">Type de propriété</option>
+                    <option value="" selected hidden>Type de propriété</option>
                     {% for type in get_type_proprietes %}
                       <option value="{{type.id}}">{{type.libele}}</option>
                     {% endfor %}
@@ -25,7 +25,7 @@
                 <div class="col-sm-6 col-md-3">
                   
                   <select class="form-select" id="inputLevel" name="status">
-                    <option selected="selected">Status (A louer / A vendre)</option>
+                    <option value="" selected hidden>Status (A louer / A vendre)</option>
                     <option value="à louer">A louer</option>
                     <option value="à vendre">A vendre</option>
                   </select>
@@ -33,7 +33,7 @@
                 <div class="col-sm-6 col-md-3">
                   
                   <select class="form-select" id="inputLanguage" name="prix_propriete">
-                    <option selected="selected">Prix</option>
+                    <option value="" selected hidden>Prix</option>
                     <option value="50.000">50.000 fcfa</option>
                     <option value="100.000">100.000 fcfa</option>
                     <option value="500.000 fcfa">500.000 fcfa</option>
@@ -42,7 +42,7 @@
                 <div class="col-sm-6 col-md-3">
                   
                   <select class="form-select" id="inputInstructor" name="localite">
-                    <option selected="selected">Zone </option>
+                    <option value="" selected hidden>Zone </option>
                     {% for local in get_localites %}
                       <option value="{{local.id}}">{{local.name}}</option>
                     {% endfor %}
@@ -80,7 +80,7 @@
                   <div class="card h-100 border-0 property-card">
                     <!-- Image -->
                     <div class="position-relative">
-                      <img src="{{ house.pictures.all.first.picture.url }}" class="card-img-top" alt="{{ house.titre_annonce }}" style="height:220px;object-fit: cover;object-position: center;">
+                      <img src="{{ house.pictures.all.first.picture.url }}" class="card-img-top" alt="{{ house.titre_annonce }}" style="height:180px;object-fit: cover;object-position: center;">
                       
                       <!-- Statut -->
                       {% if house.status == "à vendre" %}

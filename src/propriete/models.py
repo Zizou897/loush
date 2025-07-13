@@ -68,7 +68,7 @@ class Proprietes(Convention):
     proprietaire = models.CharField(max_length=220, blank=True, null=True)
     proprietaire_contact = models.CharField(max_length=220, blank=True, null=True)
     type_propriete = models.ForeignKey(TypePropriete, on_delete=models.DO_NOTHING, related_name="type_propriete_related")
-    prix_propriete = models.CharField(max_length=220, blank=True, null=True)
+    prix_propriete = models.PositiveIntegerField(max_length=220, blank=True, null=True)
     adresse_propriete = models.CharField(max_length=220, blank=True, null=True)
     localite = models.ForeignKey(Localite, on_delete=models.DO_NOTHING, related_name="localite_propriete")
     annee_construction = models.DateField(auto_now=False, auto_now_add=False)

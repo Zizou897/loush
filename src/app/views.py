@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.db.models import Q
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
+from django.contrib import messages
 
 from propriete.models import Proprietes, TypePropriete
 
@@ -147,6 +148,34 @@ def home_detail(request, id):
     
 
 def catalogue(request):
+    import sweetify
+    def format_price_xof(price_str):
+        """
+        Nettoie l'entrée utilisateur (virgules, points) et renvoie une chaîne formatée style '250.000'
+        """
+        if not price_str:
+            return ""
+
+        # Supprimer tous les séparateurs actuels
+        cleaned = price_str.replace('.', '').replace(',', '')
+
+        try:
+            # Convertir en entier
+            number = int(cleaned)
+            # Formater avec des points pour les milliers (style européen)
+            return "{:,}".format(number).replace(",", ".")
+        except ValueError:
+            return price_str  # On renvoie brut si ce n'est pas un nombre
+
+    def parse_price_int(price_str):
+        if not price_str:
+            return None
+        cleaned = price_str.replace('.', '').replace(',', '')
+        try:
+            return int(cleaned)
+        except ValueError:
+            return None
+    
     get_all__properties = get_all_properties({'publish': True, })
     
     
@@ -154,14 +183,18 @@ def catalogue(request):
         print("##################ok######################")
         type_propriete = request.GET.get('type_propriete')  
         status = request.GET.get('status')
-        prix_propriete = request.GET.get('prix_propriete')
         localite = request.GET.get('localite')
+        # prix_propriete = request.GET.get('prix_propriete')
+        
+        prix_min = parse_price_int(request.GET.get('budget_min'))
+        prix_max = parse_price_int(request.GET.get('budget_max'))
         
         print("intercepting...")
-        print(type_propriete)
-        print(status)
-        print(prix_propriete)
-        print(localite)
+        print(f'type_propriete {type_propriete}')
+        print(f'status {status}')
+        print(f'prix_min {prix_min}')
+        print(f'prix_max {prix_max}')
+        print(f'localite {localite}')
         
     
         filters = Q(publish=True)  # on affiche seulement les propriétés publiées
@@ -175,10 +208,41 @@ def catalogue(request):
         if status and status != "Status (A louer / A vendre)":
             filters &= Q(status=status)
 
-        if prix_propriete and prix_propriete != "Prix":
-            filters &= Q(prix_propriete=prix_propriete)
+        if prix_min is not None and prix_max is not None:
+            if prix_min <= prix_max:
+                filters &= Q(prix_propriete__gte=prix_min) & Q(prix_propriete__lte=prix_max)
+            else:
+                sweetify.warning(request, '', text='Le budget minimum doit être inférieur au budget maximum.', persistent='OK')
+        elif prix_min is not None:
+            filters &= Q(prix_propriete__gte=prix_min)
+        elif prix_max is not None:
+            filters &= Q(prix_propriete__lte=prix_max)
 
         get_all__properties = Proprietes.objects.filter(filters)
+
+
+        # if prix_propriete and prix_propriete != "Prix":
+        #     filters &= Q(prix_propriete=prix_propriete)
+            
+        # Filtrage par plage de prix
+        # if prix_min is not None and prix_max is not None:
+        #     if prix_min < prix_max:
+            
+        #         prix_min = format_price_xof(prix_min)
+        #         prix_max = format_price_xof(prix_max)
+
+        #         if prix_min > prix_max:
+        #             # messages.warning(request, "")
+        #             sweetify.warning(request, '', text='Le budget minimum doit être inférieur au budget maximum.', persistent='OK')
+        #         else:
+        #             filters &= Q(prix_propriete__gte=prix_min) & Q(prix_propriete__lte=prix_max)
+        #             print("cool")
+
+        
+        #         # messages.warning(request, "Les valeurs de budget doivent être des nombres valides.")
+        # sweetify.warning(request, '', text='Les valeurs de budget doivent être des nombres valides.', persistent='OK')
+        
+
 
        
     get_socials = get_social({'publish':True})
@@ -190,6 +254,8 @@ def catalogue(request):
     template_name = "app/layout/catalogue.html"
     context = {
         'page': "LOUSHIRA | Catalogue",
+        'budget_min': request.GET.get('budget_min', ''),
+        'budget_max': request.GET.get('budget_max', ''),
         'get_socials': get_socials,
         'get_configs': get_configs,
         'get_all__properties': get_all__properties,

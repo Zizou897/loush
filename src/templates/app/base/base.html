@@ -474,7 +474,7 @@
         
       },
       mounted(){
-        fetch('https://louhsira.com/data/caract')
+        fetch('http://127.0.0.1:8000/data/caract')
         .then(response => response.json())
         .then(data => {
           this.all_features = data.features;
@@ -483,7 +483,7 @@
           console.error("Erreur lors du chargement des caractéristiques :", error);
         });
 
-        fetch('https://louhsira.com/data/local')
+        fetch('http://127.0.0.1:8000/data/local')
         .then(response => response.json())
         .then(data => {
           this.all_features_local = data.features
@@ -511,13 +511,6 @@
               text: "veuillez saisir votre addresse email !!!",
               showConfirmButton: true,
             })
-          }else if(this.date_demenag_souhaite == ''){
-            Swal.fire({
-              icon: 'error',
-              title: 'Erreur',
-              text: "veuillez choisir une date de déménagement !!!",
-              showConfirmButton: true,
-            })
           }else{
           
             let myForm = new FormData();
@@ -534,7 +527,7 @@
             myForm.append('localisation_souhaite', this.localisation_souhaite)
             myForm.append('caract_souhaite', this.caract_souhaite)
             //-----------------------------------------
-            myForm.append('date_demenag_souhaite', this.date_demenag_souhaite)
+            
             myForm.append('comments_souhaite', this.comments_souhaite)
             myForm.append('select_features', JSON.stringify(this.select_features));
             myForm.append('select_features_local', JSON.stringify(this.select_features_local));
@@ -580,6 +573,7 @@
             name: '',
             email: '',
             phone: '',  
+            url: "{% url 'welcome' %}",
 
             //--------------------------
             type_propriete_for_owner: '',
@@ -710,6 +704,8 @@
                         console.log(this.picture)
                         console.log(this.picture2)
                         //window.setTimeout(function(){window.location.reload();}, 3500);
+                        window.setTimeout(function(){window.location.reload();}, 3500);
+                        this.url;
                        
                       }else{
                 console.log('############ 6 #############""');
@@ -792,6 +788,8 @@
 </script>
    
    
+{% load sweetify %}
+{% sweetify %}
 
   </body>
 

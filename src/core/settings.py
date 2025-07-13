@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
-import redis
+#import redis
 from pathlib import Path
 from decouple import config, Csv
 from core.utils import get_ip
@@ -30,8 +30,8 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 
 
-#ALLOWED_HOSTS = ['louhsira.com', 'www.louhsira.com']
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 # Application definition
@@ -53,7 +53,9 @@ INSTALLED_APPS = [
 
     # App installed
     'tinymce',
+     'sweetify',
     'colorfield', 
+    'after_response',
 ]
 
 MIDDLEWARE = [
@@ -197,9 +199,9 @@ EMAIL_PORT = config('EMAIL_PORT')
 # )
 
 
-CELERY_BROKER_URL = f"redis://:AT8pAAIjcDFmNDJlZjdhYTAxNjY0ODQ2OTk0NTJlZTZjOTAzMWZlYXAxMA@electric-yeti-16169.upstash.io:6379?ssl_cert_reqs=required"
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
+# CELERY_BROKER_URL = f"redis://:AT8pAAIjcDFmNDJlZjdhYTAxNjY0ODQ2OTk0NTJlZTZjOTAzMWZlYXAxMA@electric-yeti-16169.upstash.io:6379?ssl_cert_reqs=required"
+# CELERY_ACCEPT_CONTENT = ['json']
+# CELERY_TASK_SERIALIZER = 'json'
 
 
 

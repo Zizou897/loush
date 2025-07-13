@@ -2,6 +2,14 @@ from django import template
 
 register = template.Library()
 
+@register.filter
+def format_with_dot(value):
+    try:
+        number = int(value)
+        return '{:,}'.format(number).replace(',', '.')
+    except (ValueError, TypeError):
+        return value
+
 @register.simple_tag
 def my_enumerate(queryset):
     for index, item in enumerate(queryset):

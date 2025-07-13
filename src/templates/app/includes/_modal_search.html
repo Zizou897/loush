@@ -112,11 +112,11 @@
         <div class="mb-5">
           <h5 class="fw-bold mb-3 text-color text-center">📅 Autres préférences</h5>
           <div class="row g-3">
-            <div class="col-md-6">
+            {% comment %} <div class="col-md-6">
               <input type="date" class="form-control" v-model="date_demenag_souhaite">
-            </div>
-            <div class="col-md-6">
-              <textarea class="form-control" rows="3" placeholder="Commentaires ou besoins spécifiques" v-model="comments_souhaite"></textarea>
+            </div> {% endcomment %}
+            <div class="col-md-12">
+              <textarea class="form-control" rows="3" placeholder="Commentaires ou besoins spécifiques..." v-model="comments_souhaite"></textarea>
             </div>
           </div>
         </div>

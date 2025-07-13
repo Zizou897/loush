@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 
 from .models import AgencyRealEstate, Searcher, Owner, Newsletters
 #from .task import send_costumize_email 
-from core.utils import send_costumize_email, simple_task
+from core.utils import send_costumize_email
 from propriete.models import Proprietes, CaracteristiqueMaison, Localite, TypePropriete
 from reserves.models import Reservation, ContactUs
 # Create your views here.
@@ -67,7 +67,7 @@ def post_agence(request):
            
             
             # Envoyer l'email
-            has_send = send_costumize_email.delay( 
+            has_send = send_costumize_email.after_response( 
                 subjet=subjet, 
                 receivers=receivers, 
                 template=template, 
@@ -103,7 +103,7 @@ def post_searcher(request):
     localisation_souhaite = request.POST.get('select_features_local')
     caract_souhaite = request.POST.get('select_features')
     #-------------------------------------------
-    date_demenag_souhaite = request.POST.get('date_demenag_souhaite')
+    date_demenag_souhaite = "12/13/2023"
     comments_souhaite = request.POST.get('comments_souhaite')
     
     
@@ -128,7 +128,7 @@ def post_searcher(request):
             receivers = [searcher.email]
             
             # Envoyer l'email
-            has_send = send_costumize_email.delay ( 
+            has_send = send_costumize_email.after_response ( 
                 subjet=subjet, 
                 receivers=receivers, 
                 template=template, 
@@ -250,13 +250,13 @@ def post_reservation(request):
             
             # Envoyer l'email
             print('66666666666666666666666')
-            # has_send = send_costumize_email.delay( 
+            # has_send = send_costumize_email.after_response( 
             #     subjet=subjet, 
             #     receivers=receivers, 
             #     template=template, 
             #     context=context
             # )
-            simple_task.delay()
+           
             #print(has_send)
             print('intercepting.....')
         else:

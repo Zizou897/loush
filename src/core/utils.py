@@ -1,18 +1,17 @@
 import logging
 import socket
-
+import after_response
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
-from core.celery import app
 logger = logging.getLogger(__name__)
 
-@app.task
+
+@after_response.enable
 def send_costumize_email(subjet: str, receivers: list, template: str, context: dict):
     """
         pour envoyer des emails personalisés
     """
-    
     try:
         message = render_to_string(template, context)
         send_mail(
@@ -31,10 +30,7 @@ def send_costumize_email(subjet: str, receivers: list, template: str, context: d
     
     return False
 
-@app.task
-def simple_task():
-    print("Celery fonctionne !")
-    return True
+
 
 
 
@@ -49,4 +45,3 @@ def get_ip():
     finally:
         s.close()
     return ip
-

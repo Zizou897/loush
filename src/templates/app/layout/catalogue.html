@@ -4,8 +4,7 @@
 {% block content %}
 
 
-      <section class="pb-11 pt-7 bg-600">
-
+      {% comment %} <section class="pb-11 pt-7 bg-600">
         <div class="container">
           <div class="row"> 
             <div class="col-12" style="background:#fff;border-radius: 1rem;padding:20px;">
@@ -58,7 +57,139 @@
         </div><br/>
         
 
-      </section>
+      </section> {% endcomment %}
+
+<section class="pb-11 pt-7 bg-600">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 bg-white rounded-4 shadow-sm p-4">
+        <h1 class="fs-3 mb-4 fw-bold text-color">Trouvez votre future propriété</h1>
+
+        <form method="get" action="/catalogue" class="row g-3 align-items-end">
+          <!-- Type -->
+          <div class="col-sm-6 col-md-3">
+            <select class="form-select" id="inputCategories" name="type_propriete">
+              <option value="" selected hidden>Type de propriété...</option>
+              {% for type in get_type_proprietes %}
+                <option value="{{type.id}}">{{type.libele}}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <!-- Statut -->
+          <div class="col-sm-6 col-md-3">
+            <select class="form-select" id="inputLevel" name="status">
+              <option value="" selected hidden>Statut...</option>
+              <option value="à louer">À louer</option>
+              <option value="à vendre">À vendre</option>
+            </select>
+          </div>
+
+          <!-- Zone -->
+          <div class="col-sm-6 col-md-3">
+            <select class="form-select" id="inputZone" name="localite">
+              <option value="" selected hidden>Zone...</option>
+              {% for local in get_localites %}
+                <option value="{{local.id}}">{{local.name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <!-- Budget -->
+          <div class="col-sm-6 col-md-3">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#budgetModal">
+            <i class="fas fa-piggy-bank me-1"></i> Budget (FCFA)
+            </button>
+          </div>
+
+          <!-- Champs cachés pour le budget -->
+          <input type="hidden" name="budget_min" id="budgetMinInput">
+          <input type="hidden" name="budget_max" id="budgetMaxInput">
+
+          <!-- Bouton -->
+          <div class="col-12 d-flex justify-content-center mt-3">
+            <button type="submit" class="btn btn-primary px-5 py-2 fw-semibold">
+              <i class="fas fa-search me-2"></i>Rechercher
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal fade" id="budgetModal" tabindex="-1" aria-labelledby="budgetModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 border-0 shadow">
+      <div class="modal-body">
+        <!-- Navigation onglets -->
+        <ul class="nav nav-tabs mb-4 border-bottom" id="budgetTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="budget-tab" data-bs-toggle="tab" data-bs-target="#budget" type="button" role="tab">
+              <i class="fas fa-piggy-bank me-1"></i> Budget
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link disabled" type="button">
+              <i class="fas fa-expand me-1"></i> Surface
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link disabled" type="button">
+              <i class="fas fa-door-open me-1"></i> Pièces
+            </button>
+          </li>
+        </ul>
+
+        <!-- Contenu de l’onglet Budget -->
+        <div class="tab-content" id="budgetTabContent">
+          <div class="tab-pane fade show active" id="budget" role="tabpanel">
+            <form id="budgetForm" class="row g-3">
+              <div class="col-6">
+                <label class="form-label text-muted small">À PARTIR DE</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" id="budgetMin" placeholder="Budget min" value="{{ budget_min }}">
+                  <span class="input-group-text">XOF</span>
+                </div>
+              </div>
+              <div class="col-6">
+                <label class="form-label text-muted small">JUSQU’À</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" id="budgetMax" placeholder="Budget max" value="{{ budget_max }}">
+                  <span class="input-group-text">XOF</span>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOUTON D’APPLICATION -->
+      <div class="modal-footer border-0 pt-0">
+        <button type="button" class="btn btn-primary w-100 fw-bold" onclick="applyBudget()">Appliquer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function applyBudget() {
+    const min = document.getElementById('budgetMin').value;
+    const max = document.getElementById('budgetMax').value;
+
+    // Ajoute les valeurs dans des inputs cachés du formulaire principal
+    document.getElementById('budgetMinInput').value = min;
+    document.getElementById('budgetMaxInput').value = max;
+
+    // Ferme le modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('budgetModal'));
+    modal.hide();
+  }
+</script>
+
+
 
         <style>
           .property-card {
@@ -95,7 +226,7 @@
             
                       <!-- Prix -->
                       <span class="badge bg-dark position-absolute bottom-0 end-0 m-2  rounded-pill px-3 py-2" style="font-size: 0.75rem;">
-                        {{ house.prix_propriete }}
+                        {{ house.prix_propriete|format_with_dot }} fcfa
                       </span>
                     </div>
             

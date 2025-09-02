@@ -7,3 +7,6 @@ django-tinymce==4.0.0
 pillow==10.3.0
 celery[redis]
 python-decouple==3.8
+django-after-response
+sweetify
+django-jazzmin

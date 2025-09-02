@@ -8,6 +8,7 @@ from app.models import Convention
 from core.constants import (
     PICTURE_PATH,
 )
+from partenariat.models import Owner
 
 
 STATUS_CHOICES = (  
@@ -65,12 +66,11 @@ class CaracteristiqueMaison(Convention):
 
 class Proprietes(Convention):
     titre_annonce = models.CharField(max_length=220, blank=True, null=True)
-    proprietaire = models.CharField(max_length=220, blank=True, null=True)
-    proprietaire_contact = models.CharField(max_length=220, blank=True, null=True)
-    type_propriete = models.ForeignKey(TypePropriete, on_delete=models.DO_NOTHING, related_name="type_propriete_related")
-    prix_propriete = models.PositiveIntegerField(max_length=220, blank=True, null=True)
+    proprietaire = models.ForeignKey(Owner, on_delete=models.PROTECT, related_name="proprietes", null=True, blank=True)
+    type_propriete = models.ForeignKey(TypePropriete, on_delete=models.PROTECT, related_name="type_propriete_related")
+    prix_propriete = models.PositiveIntegerField(blank=True, null=True)
     adresse_propriete = models.CharField(max_length=220, blank=True, null=True)
-    localite = models.ForeignKey(Localite, on_delete=models.DO_NOTHING, related_name="localite_propriete")
+    localite = models.ForeignKey(Localite, on_delete=models.PROTECT, related_name="localite_propriete")
     annee_construction = models.DateField(auto_now=False, auto_now_add=False)
     nbre_chambre = models.IntegerField()
     nbre_salle_bain = models.IntegerField()

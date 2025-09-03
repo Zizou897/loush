@@ -8,7 +8,6 @@ from app.models import Convention
 from core.constants import (
     PICTURE_PATH,
 )
-from partenariat.models import Owner
 
 
 STATUS_CHOICES = (  
@@ -60,13 +59,23 @@ class CaracteristiqueMaison(Convention):
     def __str__(self):
         return self.libele
 
-    
 
+class Proprietaire(Convention):
+    nom = models.CharField(max_length=220, blank=True, null=True)
+    contact = models.CharField(max_length=220, blank=True, null=True)
+    email = models.EmailField(max_length=254, blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Propriétaire"
+        verbose_name_plural = "Propriétaires"
+
+    def __str__(self):
+        return self.nom
 
 
 class Proprietes(Convention):
     titre_annonce = models.CharField(max_length=220, blank=True, null=True)
-    proprietaire = models.ForeignKey(Owner, on_delete=models.PROTECT, related_name="proprietes", null=True, blank=True)
+    proprietaire = models.ForeignKey(Proprietaire, on_delete=models.PROTECT, related_name="proprietes", null=True, blank=True)
     type_propriete = models.ForeignKey(TypePropriete, on_delete=models.PROTECT, related_name="type_propriete_related")
     prix_propriete = models.PositiveIntegerField(blank=True, null=True)
     adresse_propriete = models.CharField(max_length=220, blank=True, null=True)

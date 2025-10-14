@@ -29,9 +29,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-
-ALLOWED_HOSTS = ['*']
-#ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', cast=Csv())
 
 
 # Application definition
@@ -53,7 +51,7 @@ INSTALLED_APPS = [
 
     # App installed
     'tinymce',
-     'sweetify',
+    # 'sweetify',
     'colorfield', 
     'after_response',
 ]
@@ -188,20 +186,10 @@ EMAIL_PORT = config('EMAIL_PORT')
 
 
 # Celery Configuration Options
-# CELERY_BROKER_URL = f'redis://127.0.0.1:6379'
-# CELERY_RESULT_BACKEND = f'redis://127.0.0.1:6379'
-
-# r = redis.Redis(
-#   host='electric-yeti-16169.upstash.io',
-#   port=6379,
-#   password='AT8pAAIjcDFmNDJlZjdhYTAxNjY0ODQ2OTk0NTJlZTZjOTAzMWZlYXAxMA',
-#   ssl=True
-# )
-
-
-# CELERY_BROKER_URL = f"redis://:AT8pAAIjcDFmNDJlZjdhYTAxNjY0ODQ2OTk0NTJlZTZjOTAzMWZlYXAxMA@electric-yeti-16169.upstash.io:6379?ssl_cert_reqs=required"
-# CELERY_ACCEPT_CONTENT = ['json']
-# CELERY_TASK_SERIALIZER = 'json'
+CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='redis://127.0.0.1:6379')
+CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND', default='redis://127.0.0.1:6379')
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
 
 
 

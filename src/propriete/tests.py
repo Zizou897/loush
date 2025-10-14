@@ -1,3 +1,72 @@
 from django.test import TestCase
+from datetime import date
+from .models import Proprietes, TypePropriete, Localite, CaracteristiqueMaison, Photo
 
-# Create your tests here.
+class ProprieteModelTest(TestCase):
+    """
+    Suite de tests pour les modèles de l'application Propriete.
+    """
+
+    @classmethod
+    def setUpTestData(cls):
+        """
+        Configure les objets non modifiés utilisés par toutes les méthodes de test.
+        """
+        cls.localite = Localite.objects.create(name="Cocody Angré")
+        cls.type_propriete = TypePropriete.objects.create(libele="Appartement")
+
+    def test_creation_propriete(self):
+        """
+        Teste la création d'une instance du modèle Proprietes.
+        """
+        propriete = Proprietes.objects.create(
+            titre_annonce="Appartement moderne à Angré",
+            proprietaire="M. Dupont",
+            proprietaire_contact="0123456789",
+            type_propriete=self.type_propriete,
+            prix_propriete=50000000,
+            adresse_propriete="Près du nouveau pont",
+            localite=self.localite,
+            annee_construction=date(2021, 5, 10),
+            nbre_chambre=3,
+            nbre_salle_bain=2,
+            description="<p>Un bel appartement lumineux.</p>",
+            status='à vendre'
+        )
+
+        # Vérifie que l'objet a été créé et que les champs sont corrects
+        self.assertEqual(propriete.titre_annonce, "Appartement moderne à Angré")
+        self.assertEqual(str(propriete), "Appartement moderne à Angré")
+        self.assertEqual(propriete.nbre_chambre, 3)
+        self.assertEqual(propriete.status, "à vendre")
+        self.assertTrue(propriete.is_new) # Le bien a été créé récemment
+
+    def test_relations_many_to_many(self):
+        """
+        Teste les relations ManyToMany (caractéristiques et photos).
+        """
+        propriete = Proprietes.objects.create(
+            titre_annonce="Test ManyToMany",
+            type_propriete=self.type_propriete,
+            localite=self.localite,
+            annee_construction=date(2020, 1, 1),
+            nbre_chambre=1,
+            nbre_salle_bain=1,
+            status='à louer'
+        )
+
+        # Ajout de caractéristiques
+        caracteristique1 = CaracteristiqueMaison.objects.create(libele="Piscine")
+        caracteristique2 = CaracteristiqueMaison.objects.create(libele="Jardin")
+        propriete.caracteristique_speciale.add(caracteristique1, caracteristique2)
+
+        self.assertEqual(propriete.caracteristique_speciale.count(), 2)
+        self.assertIn(caracteristique1, propriete.caracteristique_speciale.all())
+
+        # Ajout de photos
+        photo1 = Photo.objects.create(title="Façade")
+        photo2 = Photo.objects.create(title="Salon")
+        propriete.pictures.add(photo1, photo2)
+
+        self.assertEqual(propriete.pictures.count(), 2)
+        self.assertIn(photo2, propriete.pictures.all())

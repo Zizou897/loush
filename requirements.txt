@@ -9,3 +9,4 @@ celery[redis]
 python-decouple==3.8
 django-after-response==0.2.2
 django-jazzmin==3.0.1
+sweetify==2.3.1

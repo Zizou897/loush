@@ -1,4 +1,5 @@
-from django.test import TestCase
+from django.test import TestCase, Client
+from django.urls import reverse
 from datetime import date
 from .models import Proprietes, TypePropriete, Localite, CaracteristiqueMaison, Photo
 
@@ -70,3 +71,54 @@ class ProprieteModelTest(TestCase):
 
         self.assertEqual(propriete.pictures.count(), 2)
         self.assertIn(photo2, propriete.pictures.all())
+
+
+class ProprieteViewTest(TestCase):
+    """
+    Suite de tests pour les vues liées aux propriétés.
+    """
+
+    @classmethod
+    def setUpTestData(cls):
+        """
+        Configure les objets nécessaires pour les tests des vues.
+        """
+        cls.client = Client()
+        cls.localite = Localite.objects.create(name="Testville")
+        cls.type_propriete = TypePropriete.objects.create(libele="Maison")
+        cls.propriete = Proprietes.objects.create(
+            titre_annonce="Maison à Testville",
+            type_propriete=cls.type_propriete,
+            localite=cls.localite,
+            annee_construction=date(2022, 1, 1),
+            nbre_chambre=4,
+            nbre_salle_bain=3,
+            status='à vendre'
+        )
+        cls.catalogue_url = reverse('catalogue')
+        cls.detail_url = reverse('home-detail', args=[cls.propriete.id])
+        cls.invalid_detail_url = reverse('home-detail', args=[999])
+
+    def test_catalogue_view(self):
+        """
+        Teste que la page du catalogue se charge correctement.
+        """
+        response = self.client.get(self.catalogue_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'app/layout/catalogue.html')
+
+    def test_home_detail_view_success(self):
+        """
+        Teste que la page de détail d'une propriété se charge correctement.
+        """
+        response = self.client.get(self.detail_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'app/layout/home_detail.html')
+        self.assertContains(response, self.propriete.titre_annonce)
+
+    def test_home_detail_view_not_found(self):
+        """
+        Teste que la page de détail renvoie une erreur 404 pour un ID invalide.
+        """
+        response = self.client.get(self.invalid_detail_url)
+        self.assertEqual(response.status_code, 404)

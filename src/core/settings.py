@@ -51,7 +51,7 @@ INSTALLED_APPS = [
 
     # App installed
     'tinymce',
-    # 'sweetify',
+    'sweetify',
     'colorfield', 
     'after_response',
 ]

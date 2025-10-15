@@ -5,30 +5,41 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('propriete', '0009_alter_proprietes_type_propriete'),
+        ("propriete", "0009_alter_proprietes_type_propriete"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='TypePropriete',
+            name="TypePropriete",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('libele', models.CharField(blank=True, max_length=200, null=True)),
-                ('description', models.TextField(blank=True, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("libele", models.CharField(blank=True, max_length=200, null=True)),
+                ("description", models.TextField(blank=True, null=True)),
             ],
             options={
-                'verbose_name': 'Type de Propriété',
-                'verbose_name_plural': 'Type de Propriétés',
+                "verbose_name": "Type de Propriété",
+                "verbose_name_plural": "Type de Propriétés",
             },
         ),
         migrations.AlterField(
-            model_name='proprietes',
-            name='type_propriete',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, related_name='type_propriete_related', to='propriete.typepropriete'),
+            model_name="proprietes",
+            name="type_propriete",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.DO_NOTHING,
+                related_name="type_propriete_related",
+                to="propriete.typepropriete",
+            ),
         ),
     ]

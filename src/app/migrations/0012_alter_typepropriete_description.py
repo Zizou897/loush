@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0011_rename_name_typepropriete_libele'),
+        ("app", "0011_rename_name_typepropriete_libele"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='typepropriete',
-            name='description',
+            model_name="typepropriete",
+            name="description",
             field=models.TextField(blank=True, null=True),
         ),
     ]

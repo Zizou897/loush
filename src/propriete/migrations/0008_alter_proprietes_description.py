@@ -5,15 +5,14 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('propriete', '0007_rename_name_photo_title'),
+        ("propriete", "0007_rename_name_photo_title"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='proprietes',
-            name='description',
+            model_name="proprietes",
+            name="description",
             field=tinymce.models.HTMLField(),
         ),
     ]

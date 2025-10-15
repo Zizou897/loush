@@ -1,18 +1,5 @@
-from django.db import models
-
-from colorfield.fields import ColorField
-from tinymce.models import HTMLField
-
-# Create your models here.
-
-"""_modif sur la partie ventre_
-
-        sur la fonction qui return les 6 1er maison à vendre
-"""
-
 from core.constants import (
-    BANNER_IMAGE_PATH, 
-    LOCATION_PATH,
+    BANNER_IMAGE_PATH,
     ABOUT_PATH,
     WHYCHOOSE,
     LOGO_SITE_PATH,
@@ -20,6 +7,10 @@ from core.constants import (
     Team_PATH,
     SECTION_PATH,
 )
+from django.db import models
+
+from colorfield.fields import ColorField
+from tinymce.models import HTMLField
 
 
 class Convention(models.Model):
@@ -31,144 +22,151 @@ class Convention(models.Model):
         abstract = True
 
 
-
-
 class Banner(Convention):
-    title = models.CharField(max_length = 150)
-    picture = models.FileField(upload_to=BANNER_IMAGE_PATH, max_length = 100)
+    title = models.CharField(max_length=150)
+    picture = models.FileField(upload_to=BANNER_IMAGE_PATH, max_length=100)
     description = models.TextField()
 
     class Meta:
         verbose_name = "Bannière"
         verbose_name_plural = "Bannières"
+
     def __str__(self):
         return self.title
 
-TYPE_HOUSE = (
-    ('location', 'location'),
-    ('vente', 'vente')
-)
+
+TYPE_HOUSE = (("location", "location"), ("vente", "vente"))
 
 
 class About(Convention):
-    title = models.CharField(max_length = 150)
+    title = models.CharField(max_length=150)
     description = models.TextField()
-    picture = models.FileField(upload_to=ABOUT_PATH, max_length = 100)
-    
+    picture = models.FileField(upload_to=ABOUT_PATH, max_length=100)
+
     class Meta:
         verbose_name = "A propos"
         verbose_name_plural = "A propos"
+
     def __str__(self):
         return self.title
 
 
 class AboutBanner(Convention):
-    title = models.CharField(max_length = 150)
-    picture = models.FileField(upload_to=BANNER_IMAGE_PATH, max_length = 100)
+    title = models.CharField(max_length=150)
+    picture = models.FileField(upload_to=BANNER_IMAGE_PATH, max_length=100)
     description = models.TextField()
-    
+
     class Meta:
         verbose_name = "Bannière à propos"
         verbose_name_plural = "Bannières à propos"
+
     def __str__(self):
         return self.title
-    
+
 
 class Whychoose(Convention):
-    title = models.CharField(max_length = 150)
+    title = models.CharField(max_length=150)
     description = HTMLField()
-    picture = models.FileField(upload_to=WHYCHOOSE, max_length = 100)
-    
+    picture = models.FileField(upload_to=WHYCHOOSE, max_length=100)
+
     class Meta:
         verbose_name = "Pourquoi Nous choisir"
         verbose_name_plural = "Pourquoi Nous choisir"
+
     def __str__(self):
         return self.title
-
 
 
 class configuration(Convention):
-    name = models.CharField(max_length = 150, blank=True, null=True)
-    vendor_title = models.CharField(max_length = 150, blank=True, null=True)
-    location_title = models.CharField(max_length = 150, blank=True, null=True)
-    about_title = models.CharField(max_length = 150, blank=True, null=True)
-    why_choose_title = models.CharField(max_length = 150, blank=True, null=True)
-    newsletter_title = models.CharField(max_length = 150, blank=True, null=True)
-    louhsira_email = models.EmailField(max_length=254, blank=True, null=True, default="louhsira@gmail.com")
-    louhsira_phone = models.CharField(max_length = 150, blank=True, null=True, default="+226 96701256")
-    louhsira_address = models.CharField(max_length = 150, blank=True, null=True, default="Avenue 15, rue 12 , ouaga")
+    name = models.CharField(max_length=150, blank=True, null=True)
+    vendor_title = models.CharField(max_length=150, blank=True, null=True)
+    location_title = models.CharField(max_length=150, blank=True, null=True)
+    about_title = models.CharField(max_length=150, blank=True, null=True)
+    why_choose_title = models.CharField(max_length=150, blank=True, null=True)
+    newsletter_title = models.CharField(max_length=150, blank=True, null=True)
+    louhsira_email = models.EmailField(
+        max_length=254, blank=True, null=True, default="louhsira@gmail.com"
+    )
+    louhsira_phone = models.CharField(
+        max_length=150, blank=True, null=True, default="+226 96701256"
+    )
+    louhsira_address = models.CharField(
+        max_length=150, blank=True, null=True, default="Avenue 15, rue 12 , ouaga"
+    )
     newsletter_text = models.TextField()
-    newsletter_picture = models.FileField(upload_to=LOGO_SITE_PATH, max_length = 100)
-    copy_right = models.CharField(max_length = 150, blank=True, null=True)
-    logo = models.FileField(upload_to=LOGO_SITE_PATH , max_length = 100, blank=True, null=True)
-    logo2 = models.FileField(upload_to=LOGO_SITE_PATH , max_length = 100, blank=True, null=True)
-    
+    newsletter_picture = models.FileField(upload_to=LOGO_SITE_PATH, max_length=100)
+    copy_right = models.CharField(max_length=150, blank=True, null=True)
+    logo = models.FileField(
+        upload_to=LOGO_SITE_PATH, max_length=100, blank=True, null=True
+    )
+    logo2 = models.FileField(
+        upload_to=LOGO_SITE_PATH, max_length=100, blank=True, null=True
+    )
+
     class Meta:
         verbose_name = "Configuration du site"
         verbose_name_plural = "Configuration du site"
+
     def __str__(self):
         return self.name
 
+
 class Vision(Convention):
-    title = models.CharField(max_length = 150, blank=True, null=True)
+    title = models.CharField(max_length=150, blank=True, null=True)
     description = models.TextField()
     picture = models.FileField(upload_to=DO_TRUSTH_PATH, max_length=100)
-    
+
     class Meta:
         verbose_name = "Notre Vision"
         verbose_name_plural = "Notre Vision"
-        
+
     def __str__(self):
-        return self.title    
-    
-    
+        return self.title
+
+
 class DoTrust(Convention):
-    title = models.CharField(max_length = 150, blank=True, null=True)
+    title = models.CharField(max_length=150, blank=True, null=True)
     description = models.TextField()
     picture = models.FileField(upload_to=DO_TRUSTH_PATH, max_length=100)
-    
+
     class Meta:
         verbose_name = "Faire Confiance"
         verbose_name_plural = "Faire Confiance"
-        
+
     def __str__(self):
         return self.title
-    
+
 
 class Valeur(Convention):
-    title = models.CharField(max_length = 150, blank=True, null=True)
+    title = models.CharField(max_length=150, blank=True, null=True)
     description = models.TextField()
-    
+
     class Meta:
         verbose_name = "Nos Valeurs"
         verbose_name_plural = "Nos Valeurs"
-        
+
     def __str__(self):
         return self.title
-
 
 
 class Team(Convention):
     name = models.CharField(max_length=150, blank=True, null=True)
     job = models.CharField(max_length=150, blank=True, null=True)
     picture = models.FileField(upload_to=Team_PATH, max_length=100)
-    
+
     class Meta:
         verbose_name = "Notre équipe"
         verbose_name_plural = "Notre équipes"
 
     def __str__(self):
-        return  self.name
-
-
-
+        return self.name
 
 
 class Social(Convention):
     name = models.CharField(max_length=150, blank=True, null=True)
     icon = models.CharField(max_length=150, blank=True, null=True)
-    link = models.URLField(max_length = 200)
-    
+    link = models.URLField(max_length=200)
+
     class Meta:
         verbose_name = "Réseaux Social"
         verbose_name_plural = "Réseaux Sociaux"
@@ -183,7 +181,7 @@ class ClassButton(Convention):
     class Meta:
         verbose_name = "class boutton"
         verbose_name_plural = "class bouttons"
-        
+
     def __str__(self):
         return self.name
 
@@ -191,11 +189,11 @@ class ClassButton(Convention):
 class Links(Convention):
     name = models.CharField(max_length=100, default="Accueil", blank=True, null=True)
     link = models.CharField(max_length=100, default="Accueil", blank=True, null=True)
-    
+
     class Meta:
         verbose_name = "Différents liens"
         verbose_name_plural = "Différents liens"
-        
+
     def __str__(self):
         return self.name
 
@@ -204,16 +202,22 @@ class SectionTriple(Convention):
     title = models.CharField(max_length=200, blank=True, null=True)
     libele = models.TextField(blank=True, null=True)
     text_boutton = models.CharField(max_length=100, blank=True, null=True)
-    class_boutton = models.ForeignKey(ClassButton, on_delete=models.DO_NOTHING, related_name='class_boutton_section')
-    link_page = models.ForeignKey(Links, on_delete=models.DO_NOTHING, related_name='lin_page_section')
+    class_boutton = models.ForeignKey(
+        ClassButton, on_delete=models.DO_NOTHING, related_name="class_boutton_section"
+    )
+    link_page = models.ForeignKey(
+        Links, on_delete=models.DO_NOTHING, related_name="lin_page_section"
+    )
     background_color = ColorField(default="#bebebe")
-    picture = models.FileField(upload_to=SECTION_PATH, max_length = 100, blank=True, null=True)
+    picture = models.FileField(
+        upload_to=SECTION_PATH, max_length=100, blank=True, null=True
+    )
     order = models.IntegerField()
 
     class Meta:
         verbose_name = "Section triple colors"
         verbose_name_plural = "Section triple colors"
-        
+
     def __str__(self):
         return f"{self.order}"
 
@@ -230,12 +234,13 @@ class CGU(Convention):
         return self.title
 
 
-
 class Partenaire(Convention):
-    nom = models.CharField(max_length = 150)
-    picture = models.FileField(upload_to=SECTION_PATH, max_length = 100, blank=True, null=True)
-    link = models.URLField(max_length = 200, blank=True, null=True)
-    
+    nom = models.CharField(max_length=150)
+    picture = models.FileField(
+        upload_to=SECTION_PATH, max_length=100, blank=True, null=True
+    )
+    link = models.URLField(max_length=200, blank=True, null=True)
+
     class Meta:
         verbose_name = "Parténaire"
         verbose_name_plural = "Parténaires"

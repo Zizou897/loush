@@ -11,109 +11,105 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
-#import redis
+
+# import redis
 from pathlib import Path
-from decouple import config, Csv
-from core.utils import get_ip
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config("DEBUG", default=False, cast=bool)
 
 
-
-ALLOWED_HOSTS = ['*']
-#ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-
+    "jazzmin",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
     # App created
-    'app',
-    'partenariat',
-    'propriete',
-    'reserves',
-
+    "app",
+    "partenariat",
+    "propriete",
+    "reserves",
     # App installed
-    'tinymce',
-     'sweetify',
-    'colorfield', 
-    'after_response',
+    "tinymce",
+    "sweetify",
+    "colorfield",
+    "after_response",
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'core.urls'
+ROOT_URLCONF = "core.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [TEMPLATES_DIR],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'core.wsgi.application'
+WSGI_APPLICATION = "core.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-PRODUCTION = config('PRODUCTION', default=True, cast=bool)
+PRODUCTION = config("PRODUCTION", default=True, cast=bool)
 
-if PRODUCTION == False:
+if not PRODUCTION:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "new1.sqlite3",
         }
     }
 else:
-    
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': config('MYSQL_DB'),
-            'USER': config('MYSQL_USER'),
-            'PASSWORD': config('MYSQL_PASSWORD'),
-            'HOST': config('MYSQL_HOST'),
-            'PORT': config('MYSQL_PORT'),
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": config("MYSQL_DB"),
+            "USER": config("MYSQL_USER"),
+            "PASSWORD": config("MYSQL_PASSWORD"),
+            "HOST": config("MYSQL_HOST"),
+            "PORT": config("MYSQL_PORT"),
         }
     }
-    
+
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
@@ -122,33 +118,31 @@ else:
     SECURE_CONTENT_TYPE_NOSNIFF = True
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
-
 
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'fr-fr'
+LANGUAGE_CODE = "fr-fr"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -158,47 +152,43 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 
-MEDIA_URL = '/media/'
+MEDIA_URL = "/media/"
 
-STATICFILES_DIRS = [BASE_DIR /'static']
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
-STATIC_ROOT = BASE_DIR / 'static_cdn'
+STATIC_ROOT = BASE_DIR / "static_cdn"
 
-MEDIA_ROOT = BASE_DIR / 'media_cdn'
+MEDIA_ROOT = BASE_DIR / "media_cdn"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 # Securté supplementaires
 
 
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-EMAIL_USE_TLS = config('EMAIL_USE_TLS')
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_USE_TLS = config("EMAIL_USE_TLS")
+EMAIL_HOST = config("EMAIL_HOST")
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = config("EMAIL_PORT")
 
 
 # Celery Configuration Options
-CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='redis://127.0.0.1:6379')
-CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND', default='redis://127.0.0.1:6379')
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
-
-
-
+CELERY_BROKER_URL = config("CELERY_BROKER_URL", default="redis://127.0.0.1:6379")
+CELERY_RESULT_BACKEND = config(
+    "CELERY_RESULT_BACKEND", default="redis://127.0.0.1:6379"
+)
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
 
 
 JAZZMIN_SETTINGS = {
-    
     "site_title": "Admin LouhSira",
     "site_header": "Tableau de Bord",
     "site_brand": "LouhSira Pro",
@@ -206,22 +196,24 @@ JAZZMIN_SETTINGS = {
     "copyright": "LouhSira Pro © 2025",
     "hide_apps": [],  # Assure-toi que tes apps ne sont pas cachées ici
     "order_with_respect_to": ["app"],
-    
     # Icône et logo
     "site_logo": "app/assets/img/LOGO_1_LOUHSIRAArtboard_1.svg",  # Mets ton logo dans /static/mon_app/logo.png
-    "login_logo": "app/assets/img/LOGO_2_LOUHSIRAArtboard_1.svg", 
-    
+    "login_logo": "app/assets/img/LOGO_2_LOUHSIRAArtboard_1.svg",
     # Menu de navigation
     "topmenu_links": [
         {"name": "Accueil", "url": "admin:index", "permissions": ["auth.view_user"]},
         {"name": "Site Web", "url": "/", "new_window": True},
     ],
-    
     # Organisation du menu latéral
     "custom_links": {
-        "app": [{"name": "Ajouter une propriété", "url": "admin:propriete_proprietes_add", "icon": "fas fa-plus"}]
+        "app": [
+            {
+                "name": "Ajouter une propriété",
+                "url": "admin:propriete_proprietes_add",
+                "icon": "fas fa-plus",
+            }
+        ]
     },
-    
     "icons": {
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-user",
@@ -233,8 +225,6 @@ JAZZMIN_SETTINGS = {
         "partenariat.Owner": "fas fa-dice",
         "partenariat.Newsletters": "fas fa-envelope",
     },
-   
-    
     # Personnalisation des couleurs
     "theme": "cyborg",  # Essaye aussi "lux", "solar", "darkly", "flatly"...
 }

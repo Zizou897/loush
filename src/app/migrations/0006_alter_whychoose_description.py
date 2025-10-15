@@ -5,15 +5,14 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0005_dotrust_propriete2'),
+        ("app", "0005_dotrust_propriete2"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='whychoose',
-            name='description',
+            model_name="whychoose",
+            name="description",
             field=tinymce.models.HTMLField(),
         ),
     ]

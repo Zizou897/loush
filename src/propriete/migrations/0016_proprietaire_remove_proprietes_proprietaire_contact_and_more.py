@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("propriete", "0015_alter_proprietes_prix_propriete"),
     ]
@@ -27,7 +26,6 @@ class Migration(migrations.Migration):
                 ("update_at", models.DateTimeField(auto_now=True)),
                 ("publish", models.BooleanField(default=False)),
                 ("nom", models.CharField(blank=True, max_length=220, null=True)),
-                ("contact", models.CharField(blank=True, max_length=220, null=True)),
                 ("email", models.EmailField(blank=True, max_length=254, null=True)),
             ],
             options={

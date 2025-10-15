@@ -4,19 +4,18 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('propriete', '0004_rename_propriete_proprietes'),
+        ("propriete", "0004_rename_propriete_proprietes"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='proprietes',
-            name='pictures',
+            model_name="proprietes",
+            name="pictures",
         ),
         migrations.AddField(
-            model_name='proprietes',
-            name='pictures',
-            field=models.ManyToManyField(to='propriete.photo'),
+            model_name="proprietes",
+            name="pictures",
+            field=models.ManyToManyField(to="propriete.photo"),
         ),
     ]

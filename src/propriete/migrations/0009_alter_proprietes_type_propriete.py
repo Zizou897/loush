@@ -5,17 +5,21 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0016_cgu'),
-        ('propriete', '0008_alter_proprietes_description'),
+        ("app", "0016_cgu"),
+        ("propriete", "0008_alter_proprietes_description"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='proprietes',
-            name='type_propriete',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.DO_NOTHING, related_name='type_propriete_related', to='app.typepropriete'),
+            model_name="proprietes",
+            name="type_propriete",
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.DO_NOTHING,
+                related_name="type_propriete_related",
+                to="app.typepropriete",
+            ),
             preserve_default=False,
         ),
     ]

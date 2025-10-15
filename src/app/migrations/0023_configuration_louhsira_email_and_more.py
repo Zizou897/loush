@@ -4,20 +4,23 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0022_partenaire'),
+        ("app", "0022_partenaire"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='configuration',
-            name='louhsira_email',
-            field=models.EmailField(blank=True, default='louhsira@gmail.com', max_length=254, null=True),
+            model_name="configuration",
+            name="louhsira_email",
+            field=models.EmailField(
+                blank=True, default="louhsira@gmail.com", max_length=254, null=True
+            ),
         ),
         migrations.AddField(
-            model_name='configuration',
-            name='louhsira_phone',
-            field=models.CharField(blank=True, default='+226 96701256', max_length=150, null=True),
+            model_name="configuration",
+            name="louhsira_phone",
+            field=models.CharField(
+                blank=True, default="+226 96701256", max_length=150, null=True
+            ),
         ),
     ]

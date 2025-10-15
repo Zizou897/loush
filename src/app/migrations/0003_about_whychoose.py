@@ -4,42 +4,57 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0002_propriete'),
+        ("app", "0002_propriete"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='About',
+            name="About",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('title', models.CharField(max_length=150)),
-                ('description', models.TextField()),
-                ('picture', models.FileField(upload_to='uploads/abouts')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("title", models.CharField(max_length=150)),
+                ("description", models.TextField()),
+                ("picture", models.FileField(upload_to="uploads/abouts")),
             ],
             options={
-                'verbose_name': 'A propos',
-                'verbose_name_plural': 'A propos',
+                "verbose_name": "A propos",
+                "verbose_name_plural": "A propos",
             },
         ),
         migrations.CreateModel(
-            name='Whychoose',
+            name="Whychoose",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('title', models.CharField(max_length=150)),
-                ('description', models.TextField()),
-                ('picture', models.FileField(upload_to='uploads/whychose')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("title", models.CharField(max_length=150)),
+                ("description", models.TextField()),
+                ("picture", models.FileField(upload_to="uploads/whychose")),
             ],
             options={
-                'verbose_name': 'Pourquoi Nous choisir',
-                'verbose_name_plural': 'Pourquoi Nous choisir',
+                "verbose_name": "Pourquoi Nous choisir",
+                "verbose_name_plural": "Pourquoi Nous choisir",
             },
         ),
     ]

@@ -4,29 +4,42 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0001_initial'),
+        ("app", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Propriete',
+            name="Propriete",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('title', models.CharField(max_length=150)),
-                ('description', models.TextField()),
-                ('author', models.CharField(max_length=150)),
-                ('validators_date', models.DateTimeField()),
-                ('picture', models.FileField(upload_to='uploads/location')),
-                ('location_or_vendor', models.CharField(choices=[('location', 'location'), ('vente', 'vente')], max_length=150)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("title", models.CharField(max_length=150)),
+                ("description", models.TextField()),
+                ("author", models.CharField(max_length=150)),
+                ("validators_date", models.DateTimeField()),
+                ("picture", models.FileField(upload_to="uploads/location")),
+                (
+                    "location_or_vendor",
+                    models.CharField(
+                        choices=[("location", "location"), ("vente", "vente")],
+                        max_length=150,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Location',
-                'verbose_name_plural': 'Locations',
+                "verbose_name": "Location",
+                "verbose_name_plural": "Locations",
             },
         ),
     ]

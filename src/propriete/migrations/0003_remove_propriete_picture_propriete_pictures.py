@@ -5,20 +5,24 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('propriete', '0002_remove_propriete_picture_propriete_picture'),
+        ("propriete", "0002_remove_propriete_picture_propriete_picture"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='propriete',
-            name='picture',
+            model_name="propriete",
+            name="picture",
         ),
         migrations.AddField(
-            model_name='propriete',
-            name='pictures',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='propriete_picture', to='propriete.photo'),
+            model_name="propriete",
+            name="pictures",
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="propriete_picture",
+                to="propriete.photo",
+            ),
             preserve_default=False,
         ),
     ]

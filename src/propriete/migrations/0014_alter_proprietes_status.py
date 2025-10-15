@@ -4,15 +4,17 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('propriete', '0013_remove_caracteristiquemaison_name'),
+        ("propriete", "0013_remove_caracteristiquemaison_name"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='proprietes',
-            name='status',
-            field=models.CharField(choices=[('à vendre', 'à vendre'), ('à louer', 'à louer')], max_length=15),
+            model_name="proprietes",
+            name="status",
+            field=models.CharField(
+                choices=[("à vendre", "à vendre"), ("à louer", "à louer")],
+                max_length=15,
+            ),
         ),
     ]

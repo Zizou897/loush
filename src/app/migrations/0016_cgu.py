@@ -4,25 +4,32 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0015_classbutton_links_sectiontriple'),
+        ("app", "0015_classbutton_links_sectiontriple"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='CGU',
+            name="CGU",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('title', models.CharField(max_length=200)),
-                ('libele', models.TextField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("title", models.CharField(max_length=200)),
+                ("libele", models.TextField()),
             ],
             options={
-                'verbose_name': 'CGU',
-                'verbose_name_plural': 'CGU',
+                "verbose_name": "CGU",
+                "verbose_name_plural": "CGU",
             },
         ),
     ]

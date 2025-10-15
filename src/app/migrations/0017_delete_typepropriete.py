@@ -4,14 +4,13 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0016_cgu'),
-        ('propriete', '0010_typepropriete_alter_proprietes_type_propriete'),
+        ("app", "0016_cgu"),
+        ("propriete", "0010_typepropriete_alter_proprietes_type_propriete"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='TypePropriete',
+            name="TypePropriete",
         ),
     ]

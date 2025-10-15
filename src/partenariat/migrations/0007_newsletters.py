@@ -4,24 +4,31 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('partenariat', '0006_alter_owner_options'),
+        ("partenariat", "0006_alter_owner_options"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Newsletters',
+            name="Newsletters",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('email', models.EmailField(max_length=254)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("email", models.EmailField(max_length=254)),
             ],
             options={
-                'verbose_name': 'Newsletters',
-                'verbose_name_plural': 'Newsletters',
+                "verbose_name": "Newsletters",
+                "verbose_name_plural": "Newsletters",
             },
         ),
     ]

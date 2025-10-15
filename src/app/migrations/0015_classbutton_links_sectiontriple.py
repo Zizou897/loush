@@ -6,60 +6,120 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0014_alter_social_options'),
+        ("app", "0014_alter_social_options"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ClassButton',
+            name="ClassButton",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('name', models.CharField(max_length=200)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("name", models.CharField(max_length=200)),
             ],
             options={
-                'verbose_name': 'class boutton',
-                'verbose_name_plural': 'class bouttons',
+                "verbose_name": "class boutton",
+                "verbose_name_plural": "class bouttons",
             },
         ),
         migrations.CreateModel(
-            name='Links',
+            name="Links",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('name', models.CharField(blank=True, default='Accueil', max_length=100, null=True)),
-                ('link', models.CharField(blank=True, default='Accueil', max_length=100, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                (
+                    "name",
+                    models.CharField(
+                        blank=True, default="Accueil", max_length=100, null=True
+                    ),
+                ),
+                (
+                    "link",
+                    models.CharField(
+                        blank=True, default="Accueil", max_length=100, null=True
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Différents liens',
-                'verbose_name_plural': 'Différents liens',
+                "verbose_name": "Différents liens",
+                "verbose_name_plural": "Différents liens",
             },
         ),
         migrations.CreateModel(
-            name='SectionTriple',
+            name="SectionTriple",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('title', models.CharField(blank=True, max_length=200, null=True)),
-                ('libele', models.TextField(blank=True, null=True)),
-                ('text_boutton', models.CharField(blank=True, max_length=100, null=True)),
-                ('background_color', colorfield.fields.ColorField(default='#bebebe', image_field=None, max_length=25, samples=None)),
-                ('picture', models.FileField(blank=True, null=True, upload_to='uploads/section')),
-                ('order', models.IntegerField()),
-                ('class_boutton', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, related_name='class_boutton_section', to='app.classbutton')),
-                ('link_page', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, related_name='lin_page_section', to='app.links')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("title", models.CharField(blank=True, max_length=200, null=True)),
+                ("libele", models.TextField(blank=True, null=True)),
+                (
+                    "text_boutton",
+                    models.CharField(blank=True, max_length=100, null=True),
+                ),
+                (
+                    "background_color",
+                    colorfield.fields.ColorField(
+                        default="#bebebe", image_field=None, max_length=25, samples=None
+                    ),
+                ),
+                (
+                    "picture",
+                    models.FileField(
+                        blank=True, null=True, upload_to="uploads/section"
+                    ),
+                ),
+                ("order", models.IntegerField()),
+                (
+                    "class_boutton",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        related_name="class_boutton_section",
+                        to="app.classbutton",
+                    ),
+                ),
+                (
+                    "link_page",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        related_name="lin_page_section",
+                        to="app.links",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Section triple colors',
-                'verbose_name_plural': 'Section triple colors',
+                "verbose_name": "Section triple colors",
+                "verbose_name_plural": "Section triple colors",
             },
         ),
     ]

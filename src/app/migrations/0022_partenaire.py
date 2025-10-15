@@ -4,26 +4,38 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0021_aboutbanner'),
+        ("app", "0021_aboutbanner"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Partenaire',
+            name="Partenaire",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('nom', models.CharField(max_length=150)),
-                ('picture', models.FileField(blank=True, null=True, upload_to='uploads/section')),
-                ('link', models.URLField(blank=True, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("nom", models.CharField(max_length=150)),
+                (
+                    "picture",
+                    models.FileField(
+                        blank=True, null=True, upload_to="uploads/section"
+                    ),
+                ),
+                ("link", models.URLField(blank=True, null=True)),
             ],
             options={
-                'verbose_name': 'Parténaire',
-                'verbose_name_plural': 'Parténaires',
+                "verbose_name": "Parténaire",
+                "verbose_name_plural": "Parténaires",
             },
         ),
     ]

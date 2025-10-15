@@ -4,35 +4,69 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('partenariat', '0003_agencyrealestate_email'),
+        ("partenariat", "0003_agencyrealestate_email"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Searcher',
+            name="Searcher",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('name', models.CharField(blank=True, max_length=150, null=True)),
-                ('phone', models.CharField(blank=True, max_length=150, null=True)),
-                ('email', models.EmailField(max_length=150)),
-                ('type_propriete_rechercher', models.CharField(blank=True, max_length=150, null=True)),
-                ('achat_or_location', models.CharField(blank=True, max_length=150, null=True)),
-                ('nbr_chambre', models.CharField(blank=True, max_length=150, null=True)),
-                ('nbr_salle_bain', models.CharField(blank=True, max_length=150, null=True)),
-                ('surface_habitable', models.CharField(blank=True, max_length=150, null=True)),
-                ('localisation_souhaite', models.CharField(blank=True, max_length=150, null=True)),
-                ('caract_souhaite', models.CharField(blank=True, max_length=150, null=True)),
-                ('date_demenag_souhaite', models.CharField(blank=True, max_length=150, null=True)),
-                ('comments_souhaite', models.CharField(blank=True, max_length=150, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("name", models.CharField(blank=True, max_length=150, null=True)),
+                ("phone", models.CharField(blank=True, max_length=150, null=True)),
+                ("email", models.EmailField(max_length=150)),
+                (
+                    "type_propriete_rechercher",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                (
+                    "achat_or_location",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                (
+                    "nbr_chambre",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                (
+                    "nbr_salle_bain",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                (
+                    "surface_habitable",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                (
+                    "localisation_souhaite",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                (
+                    "caract_souhaite",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                (
+                    "date_demenag_souhaite",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                (
+                    "comments_souhaite",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
             ],
             options={
-                'verbose_name': 'Chercheur',
-                'verbose_name_plural': 'Chercheurs',
+                "verbose_name": "Chercheur",
+                "verbose_name_plural": "Chercheurs",
             },
         ),
     ]

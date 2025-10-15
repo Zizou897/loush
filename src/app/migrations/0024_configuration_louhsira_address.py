@@ -4,15 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0023_configuration_louhsira_email_and_more'),
+        ("app", "0023_configuration_louhsira_email_and_more"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='configuration',
-            name='louhsira_address',
-            field=models.CharField(blank=True, default='Avenue 15, rue 12 , ouaga', max_length=150, null=True),
+            model_name="configuration",
+            name="louhsira_address",
+            field=models.CharField(
+                blank=True,
+                default="Avenue 15, rue 12 , ouaga",
+                max_length=150,
+                null=True,
+            ),
         ),
     ]

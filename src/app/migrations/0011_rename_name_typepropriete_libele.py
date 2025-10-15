@@ -4,15 +4,14 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0010_typepropriete'),
+        ("app", "0010_typepropriete"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='typepropriete',
-            old_name='name',
-            new_name='libele',
+            model_name="typepropriete",
+            old_name="name",
+            new_name="libele",
         ),
     ]

@@ -4,14 +4,13 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('propriete', '0003_remove_propriete_picture_propriete_pictures'),
+        ("propriete", "0003_remove_propriete_picture_propriete_pictures"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='Propriete',
-            new_name='Proprietes',
+            old_name="Propriete",
+            new_name="Proprietes",
         ),
     ]

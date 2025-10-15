@@ -4,25 +4,32 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0012_alter_typepropriete_description'),
+        ("app", "0012_alter_typepropriete_description"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Social',
+            name="Social",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('name', models.CharField(blank=True, max_length=150, null=True)),
-                ('icon', models.CharField(blank=True, max_length=150, null=True)),
-                ('link', models.URLField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("name", models.CharField(blank=True, max_length=150, null=True)),
+                ("icon", models.CharField(blank=True, max_length=150, null=True)),
+                ("link", models.URLField()),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
     ]

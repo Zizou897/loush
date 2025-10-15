@@ -4,14 +4,16 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('partenariat', '0005_owner'),
+        ("partenariat", "0005_owner"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='owner',
-            options={'verbose_name': 'Proprietaire', 'verbose_name_plural': 'Proprietaires'},
+            name="owner",
+            options={
+                "verbose_name": "Proprietaire",
+                "verbose_name_plural": "Proprietaires",
+            },
         ),
     ]

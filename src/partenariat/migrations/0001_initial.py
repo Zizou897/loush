@@ -4,29 +4,41 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Name',
+            name="Name",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('name_agency', models.CharField(blank=True, max_length=150, null=True)),
-                ('phone', models.CharField(blank=True, max_length=50, null=True)),
-                ('site_web', models.URLField()),
-                ('name_representative', models.CharField(blank=True, max_length=150, null=True)),
-                ('address', models.CharField(blank=True, max_length=150, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                (
+                    "name_agency",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                ("phone", models.CharField(blank=True, max_length=50, null=True)),
+                ("site_web", models.URLField()),
+                (
+                    "name_representative",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                ("address", models.CharField(blank=True, max_length=150, null=True)),
             ],
             options={
-                'verbose_name': 'Agence Immobilière',
-                'verbose_name_plural': 'Agence Immobilière',
+                "verbose_name": "Agence Immobilière",
+                "verbose_name_plural": "Agence Immobilière",
             },
         ),
     ]

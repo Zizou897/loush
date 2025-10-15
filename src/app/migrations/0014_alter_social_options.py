@@ -4,14 +4,16 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0013_social'),
+        ("app", "0013_social"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='social',
-            options={'verbose_name': 'Réseaux Social', 'verbose_name_plural': 'Réseaux Sociaux'},
+            name="social",
+            options={
+                "verbose_name": "Réseaux Social",
+                "verbose_name_plural": "Réseaux Sociaux",
+            },
         ),
     ]

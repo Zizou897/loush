@@ -4,26 +4,33 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0020_delete_propriete2'),
+        ("app", "0020_delete_propriete2"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='AboutBanner',
+            name="AboutBanner",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('title', models.CharField(max_length=150)),
-                ('picture', models.FileField(upload_to='uploads/banner')),
-                ('description', models.TextField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("title", models.CharField(max_length=150)),
+                ("picture", models.FileField(upload_to="uploads/banner")),
+                ("description", models.TextField()),
             ],
             options={
-                'verbose_name': 'Bannière à propos',
-                'verbose_name_plural': 'Bannières à propos',
+                "verbose_name": "Bannière à propos",
+                "verbose_name_plural": "Bannières à propos",
             },
         ),
     ]

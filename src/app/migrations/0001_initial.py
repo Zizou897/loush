@@ -4,27 +4,33 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Banner',
+            name="Banner",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('title', models.CharField(max_length=150)),
-                ('picture', models.FileField(upload_to='uploads/banner')),
-                ('description', models.TextField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("title", models.CharField(max_length=150)),
+                ("picture", models.FileField(upload_to="uploads/banner")),
+                ("description", models.TextField()),
             ],
             options={
-                'verbose_name': 'Bannière',
-                'verbose_name_plural': 'Bannières',
+                "verbose_name": "Bannière",
+                "verbose_name_plural": "Bannières",
             },
         ),
     ]

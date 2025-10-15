@@ -4,20 +4,21 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('propriete', '0005_remove_proprietes_pictures_proprietes_pictures'),
+        ("propriete", "0005_remove_proprietes_pictures_proprietes_pictures"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='photo',
-            name='name',
+            model_name="photo",
+            name="name",
             field=models.CharField(blank=True, max_length=220, null=True),
         ),
         migrations.AlterField(
-            model_name='photo',
-            name='picture',
-            field=models.FileField(blank=True, max_length=200, null=True, upload_to='uploads/propriete'),
+            model_name="photo",
+            name="picture",
+            field=models.FileField(
+                blank=True, max_length=200, null=True, upload_to="uploads/propriete"
+            ),
         ),
     ]

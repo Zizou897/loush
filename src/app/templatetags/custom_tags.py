@@ -2,18 +2,20 @@ from django import template
 
 register = template.Library()
 
+
 @register.filter
 def format_with_dot(value):
     try:
         number = int(value)
-        return '{:,}'.format(number).replace(',', '.')
+        return "{:,}".format(number).replace(",", ".")
     except (ValueError, TypeError):
         return value
+
 
 @register.simple_tag
 def my_enumerate(queryset):
     for index, item in enumerate(queryset):
-        yield index, item 
+        yield index, item
 
 
 ICONE_CARACTERISTIQUES = {
@@ -52,6 +54,7 @@ ICONE_CARACTERISTIQUES = {
     "terrasse": "fa-sun",
     "véranda": "fa-house-chimney-window",
 }
+
 
 @register.filter
 def icone_caracteristique(nom):

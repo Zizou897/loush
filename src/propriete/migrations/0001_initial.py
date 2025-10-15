@@ -5,51 +5,98 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Photo',
+            name="Photo",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('picture', models.FileField(max_length=200, upload_to='uploads/propriete')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                (
+                    "picture",
+                    models.FileField(max_length=200, upload_to="uploads/propriete"),
+                ),
             ],
             options={
-                'verbose_name': 'Photo des Proprietes',
-                'verbose_name_plural': 'Photo des Proprietes',
+                "verbose_name": "Photo des Proprietes",
+                "verbose_name_plural": "Photo des Proprietes",
             },
         ),
         migrations.CreateModel(
-            name='Propriete',
+            name="Propriete",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('titre_annonce', models.CharField(blank=True, max_length=220, null=True)),
-                ('proprietaire', models.CharField(blank=True, max_length=220, null=True)),
-                ('proprietaire_contact', models.CharField(blank=True, max_length=220, null=True)),
-                ('type_propriete', models.CharField(blank=True, max_length=220, null=True)),
-                ('prix_propriete', models.CharField(blank=True, max_length=220, null=True)),
-                ('adresse_propriete', models.CharField(blank=True, max_length=220, null=True)),
-                ('localité', models.CharField(blank=True, max_length=220, null=True)),
-                ('annee_construction', models.DateField()),
-                ('nbre_chambre', models.IntegerField()),
-                ('nbre_salle_bain', models.IntegerField()),
-                ('description', models.TextField()),
-                ('status', models.CharField(choices=[('VENDRE', 'à vendre'), ('LOUER', 'à louer')], max_length=15)),
-                ('picture', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='propriete.photo')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                (
+                    "titre_annonce",
+                    models.CharField(blank=True, max_length=220, null=True),
+                ),
+                (
+                    "proprietaire",
+                    models.CharField(blank=True, max_length=220, null=True),
+                ),
+                (
+                    "proprietaire_contact",
+                    models.CharField(blank=True, max_length=220, null=True),
+                ),
+                (
+                    "type_propriete",
+                    models.CharField(blank=True, max_length=220, null=True),
+                ),
+                (
+                    "prix_propriete",
+                    models.CharField(blank=True, max_length=220, null=True),
+                ),
+                (
+                    "adresse_propriete",
+                    models.CharField(blank=True, max_length=220, null=True),
+                ),
+                ("localité", models.CharField(blank=True, max_length=220, null=True)),
+                ("annee_construction", models.DateField()),
+                ("nbre_chambre", models.IntegerField()),
+                ("nbre_salle_bain", models.IntegerField()),
+                ("description", models.TextField()),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[("VENDRE", "à vendre"), ("LOUER", "à louer")],
+                        max_length=15,
+                    ),
+                ),
+                (
+                    "picture",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="propriete.photo",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Les Propriétés',
-                'verbose_name_plural': 'Les Propriétés',
+                "verbose_name": "Les Propriétés",
+                "verbose_name_plural": "Les Propriétés",
             },
         ),
     ]

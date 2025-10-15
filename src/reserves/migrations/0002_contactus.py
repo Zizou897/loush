@@ -4,27 +4,34 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('reserves', '0001_initial'),
+        ("reserves", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ContactUs',
+            name="ContactUs",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('name', models.CharField(blank=True, max_length=200, null=True)),
-                ('email', models.EmailField(blank=True, max_length=254, null=True)),
-                ('subjet', models.CharField(blank=True, max_length=200, null=True)),
-                ('message', models.CharField(blank=True, max_length=200, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("name", models.CharField(blank=True, max_length=200, null=True)),
+                ("email", models.EmailField(blank=True, max_length=254, null=True)),
+                ("subjet", models.CharField(blank=True, max_length=200, null=True)),
+                ("message", models.CharField(blank=True, max_length=200, null=True)),
             ],
             options={
-                'verbose_name': 'Nous Contacter',
-                'verbose_name_plural': 'Nous Contacter',
+                "verbose_name": "Nous Contacter",
+                "verbose_name_plural": "Nous Contacter",
             },
         ),
     ]

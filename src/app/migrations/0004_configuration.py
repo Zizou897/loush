@@ -4,34 +4,69 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0003_about_whychoose'),
+        ("app", "0003_about_whychoose"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='configuration',
+            name="configuration",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('name', models.CharField(blank=True, max_length=150, null=True)),
-                ('vendor_title', models.CharField(blank=True, max_length=150, null=True)),
-                ('location_title', models.CharField(blank=True, max_length=150, null=True)),
-                ('about_title', models.CharField(blank=True, max_length=150, null=True)),
-                ('why_choose_title', models.CharField(blank=True, max_length=150, null=True)),
-                ('newsletter_title', models.CharField(blank=True, max_length=150, null=True)),
-                ('newsletter_text', models.TextField()),
-                ('newsletter_picture', models.FileField(upload_to='updloads/site_logo')),
-                ('copy_right', models.CharField(blank=True, max_length=150, null=True)),
-                ('logo', models.FileField(blank=True, null=True, upload_to='updloads/site_logo')),
-                ('logo2', models.FileField(blank=True, null=True, upload_to='updloads/site_logo')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("name", models.CharField(blank=True, max_length=150, null=True)),
+                (
+                    "vendor_title",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                (
+                    "location_title",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                (
+                    "about_title",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                (
+                    "why_choose_title",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                (
+                    "newsletter_title",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                ("newsletter_text", models.TextField()),
+                (
+                    "newsletter_picture",
+                    models.FileField(upload_to="updloads/site_logo"),
+                ),
+                ("copy_right", models.CharField(blank=True, max_length=150, null=True)),
+                (
+                    "logo",
+                    models.FileField(
+                        blank=True, null=True, upload_to="updloads/site_logo"
+                    ),
+                ),
+                (
+                    "logo2",
+                    models.FileField(
+                        blank=True, null=True, upload_to="updloads/site_logo"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Configuration du site',
-                'verbose_name_plural': 'Configuration du site',
+                "verbose_name": "Configuration du site",
+                "verbose_name_plural": "Configuration du site",
             },
         ),
     ]

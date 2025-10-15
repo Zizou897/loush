@@ -3,7 +3,7 @@ from django.utils.safestring import mark_safe
 
 # Register your models here.
 from .models import (
-    Banner, 
+    Banner,
     About,
     Whychoose,
     configuration,
@@ -29,9 +29,11 @@ class BannerAdmin(admin.ModelAdmin):
     list_editable = ["publish"]
 
     def image_view(self, obj):
-        return mark_safe(f'<img src="{obj.picture.url}" style="height:100px; width:150px">')
-    image_view.short_description = "Aperçu des images"
+        return mark_safe(
+            f'<img src="{obj.picture.url}" style="height:100px; width:150px">'
+        )
 
+    image_view.short_description = "Aperçu des images"
 
 
 @admin.register(AboutBanner)
@@ -42,9 +44,11 @@ class AboutBannerAdmin(admin.ModelAdmin):
     list_editable = ["publish"]
 
     def image_view(self, obj):
-        return mark_safe(f'<img src="{obj.picture.url}" style="height:100px; width:150px">')
-    image_view.short_description = "Aperçu des images"
+        return mark_safe(
+            f'<img src="{obj.picture.url}" style="height:100px; width:150px">'
+        )
 
+    image_view.short_description = "Aperçu des images"
 
 
 @admin.register(About)
@@ -55,9 +59,11 @@ class AboutAdmin(admin.ModelAdmin):
     list_editable = ["publish"]
 
     def image_view(self, obj):
-        return mark_safe(f'<img src="{obj.picture.url}" style="height:100px; width:150px">')
-    image_view.short_description = "Aperçu des images"
+        return mark_safe(
+            f'<img src="{obj.picture.url}" style="height:100px; width:150px">'
+        )
 
+    image_view.short_description = "Aperçu des images"
 
 
 @admin.register(Whychoose)
@@ -68,7 +74,10 @@ class WhychooseAdmin(admin.ModelAdmin):
     list_editable = ["publish"]
 
     def image_view(self, obj):
-        return mark_safe(f'<img src="{obj.picture.url}" style="height:100px; width:150px">')
+        return mark_safe(
+            f'<img src="{obj.picture.url}" style="height:100px; width:150px">'
+        )
+
     image_view.short_description = "Aperçu des images"
 
 
@@ -80,9 +89,12 @@ class configurationAdmin(admin.ModelAdmin):
     list_editable = ["publish"]
 
     def logo_view(self, obj):
-        return mark_safe(f'<img src="{obj.logo.url}" style="height:100px; width:150px">')
+        return mark_safe(
+            f'<img src="{obj.logo.url}" style="height:100px; width:150px">'
+        )
+
     logo_view.short_description = "Aperçu des images"
-    
+
 
 @admin.register(Valeur)
 class ValeurAdmin(admin.ModelAdmin):
@@ -100,10 +112,13 @@ class VisionAdmin(admin.ModelAdmin):
     list_editable = ["publish"]
 
     def logo_view(self, obj):
-        return mark_safe(f'<img src="{obj.picture.url}" style="height:100px; width:150px">')
+        return mark_safe(
+            f'<img src="{obj.picture.url}" style="height:100px; width:150px">'
+        )
+
     logo_view.short_description = "Aperçu des images"
-    
-    
+
+
 @admin.register(DoTrust)
 class DoTrustAdmin(admin.ModelAdmin):
     list_display = ("logo_view", "title", "created_at", "publish")
@@ -112,7 +127,10 @@ class DoTrustAdmin(admin.ModelAdmin):
     list_editable = ["publish"]
 
     def logo_view(self, obj):
-        return mark_safe(f'<img src="{obj.picture.url}" style="height:100px; width:150px">')
+        return mark_safe(
+            f'<img src="{obj.picture.url}" style="height:100px; width:150px">'
+        )
+
     logo_view.short_description = "Aperçu des images"
 
 
@@ -124,23 +142,24 @@ class TeamAdmin(admin.ModelAdmin):
     list_editable = ["publish"]
 
     def image_view(self, obj):
-        return mark_safe(f'<img src="{obj.picture.url}" style="height:100px; width:150px">')
-    image_view.short_description = "Aperçu des images"
-    
+        return mark_safe(
+            f'<img src="{obj.picture.url}" style="height:100px; width:150px">'
+        )
 
+    image_view.short_description = "Aperçu des images"
 
 
 @admin.register(Social)
 class SocialAdmin(admin.ModelAdmin):
-    list_display = ("name", "link","created_at", "publish")
+    list_display = ("name", "link", "created_at", "publish")
     date_hierarchy = "created_at"
     list_per_page = 10
     list_editable = ["publish"]
-    
+
 
 @admin.register(ClassButton)
 class ClassButtonAdmin(admin.ModelAdmin):
-    list_display = ("name","created_at", "publish")
+    list_display = ("name", "created_at", "publish")
     date_hierarchy = "created_at"
     list_per_page = 10
     list_editable = ["publish"]
@@ -148,11 +167,10 @@ class ClassButtonAdmin(admin.ModelAdmin):
 
 @admin.register(SectionTriple)
 class SectionTripleAdmin(admin.ModelAdmin):
-    list_display = ("order", "title","created_at", "publish")
+    list_display = ("order", "title", "created_at", "publish")
     date_hierarchy = "created_at"
     list_per_page = 10
     list_editable = ["publish"]
-
 
 
 @admin.register(Links)
@@ -161,8 +179,6 @@ class LinksAdmin(admin.ModelAdmin):
     date_hierarchy = "created_at"
     list_per_page = 10
     list_editable = ["publish"]
-    
-
 
 
 @admin.register(CGU)
@@ -173,14 +189,16 @@ class CGUAdmin(admin.ModelAdmin):
     list_editable = ["publish"]
 
 
-
 @admin.register(Partenaire)
 class PartenaireAdmin(admin.ModelAdmin):
     list_display = ("nom", "created_at", "publish")
     date_hierarchy = "created_at"
     list_per_page = 10
     list_editable = ["publish"]
-    
+
     def image_view(self, obj):
-        return mark_safe(f'<img src="{obj.picture.url}" style="height:100px; width:150px">')
+        return mark_safe(
+            f'<img src="{obj.picture.url}" style="height:100px; width:150px">'
+        )
+
     image_view.short_description = "Aperçu des images"

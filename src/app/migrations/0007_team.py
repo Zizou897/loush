@@ -4,26 +4,33 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0006_alter_whychoose_description'),
+        ("app", "0006_alter_whychoose_description"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Team',
+            name="Team",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('name', models.CharField(blank=True, max_length=150, null=True)),
-                ('job', models.CharField(blank=True, max_length=150, null=True)),
-                ('picture', models.FileField(upload_to='updloads/team')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("name", models.CharField(blank=True, max_length=150, null=True)),
+                ("job", models.CharField(blank=True, max_length=150, null=True)),
+                ("picture", models.FileField(upload_to="updloads/team")),
             ],
             options={
-                'verbose_name': 'Notre équipe',
-                'verbose_name_plural': 'Notre équipes',
+                "verbose_name": "Notre équipe",
+                "verbose_name_plural": "Notre équipes",
             },
         ),
     ]

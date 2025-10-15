@@ -4,25 +4,32 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0025_vision'),
+        ("app", "0025_vision"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Valeur',
+            name="Valeur",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('title', models.CharField(blank=True, max_length=150, null=True)),
-                ('description', models.TextField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("title", models.CharField(blank=True, max_length=150, null=True)),
+                ("description", models.TextField()),
             ],
             options={
-                'verbose_name': 'Nos Valeurs',
-                'verbose_name_plural': 'Nos Valeurs',
+                "verbose_name": "Nos Valeurs",
+                "verbose_name_plural": "Nos Valeurs",
             },
         ),
     ]

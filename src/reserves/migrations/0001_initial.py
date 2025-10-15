@@ -5,29 +5,46 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('propriete', '0014_alter_proprietes_status'),
+        ("propriete", "0014_alter_proprietes_status"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Reservation',
+            name="Reservation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('name_of_reserver', models.CharField(blank=True, max_length=200, null=True)),
-                ('phone', models.CharField(blank=True, max_length=200, null=True)),
-                ('email', models.EmailField(max_length=254)),
-                ('propriete_reserve', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, related_name='reserve_propriete', to='propriete.proprietes')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                (
+                    "name_of_reserver",
+                    models.CharField(blank=True, max_length=200, null=True),
+                ),
+                ("phone", models.CharField(blank=True, max_length=200, null=True)),
+                ("email", models.EmailField(max_length=254)),
+                (
+                    "propriete_reserve",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        related_name="reserve_propriete",
+                        to="propriete.proprietes",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Réservation',
-                'verbose_name_plural': 'Réservations',
+                "verbose_name": "Réservation",
+                "verbose_name_plural": "Réservations",
             },
         ),
     ]

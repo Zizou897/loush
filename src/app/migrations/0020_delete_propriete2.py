@@ -4,13 +4,12 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0019_delete_propriete'),
+        ("app", "0019_delete_propriete"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='Propriete2',
+            name="Propriete2",
         ),
     ]

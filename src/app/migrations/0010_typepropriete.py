@@ -4,25 +4,32 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0009_localite_delete_agencyrealestate'),
+        ("app", "0009_localite_delete_agencyrealestate"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='TypePropriete',
+            name="TypePropriete",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('name', models.CharField(blank=True, max_length=200, null=True)),
-                ('description', models.TextField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("name", models.CharField(blank=True, max_length=200, null=True)),
+                ("description", models.TextField()),
             ],
             options={
-                'verbose_name': 'Type de Propriété',
-                'verbose_name_plural': 'Type de Propriétés',
+                "verbose_name": "Type de Propriété",
+                "verbose_name_plural": "Type de Propriétés",
             },
         ),
     ]

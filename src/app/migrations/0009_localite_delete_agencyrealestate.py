@@ -4,29 +4,36 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0008_agencyrealestate'),
+        ("app", "0008_agencyrealestate"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Localite',
+            name="Localite",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('update_at', models.DateTimeField(auto_now=True)),
-                ('publish', models.BooleanField(default=False)),
-                ('name', models.CharField(blank=True, max_length=150, null=True)),
-                ('longitude', models.CharField(blank=True, max_length=150, null=True)),
-                ('laltitude', models.CharField(blank=True, max_length=150, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("update_at", models.DateTimeField(auto_now=True)),
+                ("publish", models.BooleanField(default=False)),
+                ("name", models.CharField(blank=True, max_length=150, null=True)),
+                ("longitude", models.CharField(blank=True, max_length=150, null=True)),
+                ("laltitude", models.CharField(blank=True, max_length=150, null=True)),
             ],
             options={
-                'verbose_name': 'Localité',
-                'verbose_name_plural': 'Localités',
+                "verbose_name": "Localité",
+                "verbose_name_plural": "Localités",
             },
         ),
         migrations.DeleteModel(
-            name='AgencyRealEstate',
+            name="AgencyRealEstate",
         ),
     ]
